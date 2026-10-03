@@ -47,15 +47,8 @@
   .belofte{padding:56px 0}
   .belofte ul{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
   .belofte li{border-top:3px solid var(--marine);padding-top:12px}
-  fieldset{border:0;margin:14px 0 0}
-  legend{font-weight:600;font-size:15px;margin-bottom:8px}
-  .hint{font-weight:400;font-size:13px;color:var(--zacht);margin-left:4px}
-  label.optie{display:flex;align-items:center;gap:10px;font-weight:400;font-size:15px;margin:0;padding:9px 12px;border:2px solid var(--grijs);border-radius:10px;cursor:pointer;margin-bottom:6px}
-  label.optie:has(input:checked){border-color:var(--marine);background:#f7f8fa}
-  label.optie input{width:18px;height:18px;accent-color:var(--marine);flex:none}
-  input[type=text]{width:100%;font:inherit;font-size:16px;padding:12px 14px;border:2px solid var(--marine);border-radius:10px;margin-top:2px}
+  input[type=text]{width:100%;font:inherit;font-size:16px;padding:12px 14px;border:2px solid var(--marine);border-radius:10px;margin-top:8px}
   input[type=text]:focus{outline:3px solid var(--geel)}
-  .fout{color:#b42318;font-size:14px;margin-top:6px}
   .socials{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
   .socials a{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:600;font-size:15px;color:var(--marine);background:var(--wit);border:2px solid var(--marine);border-radius:999px;padding:8px 14px}
   .socials a:hover{background:var(--marine);color:var(--wit)}
@@ -96,21 +89,16 @@
       <label for="email">Je e-mailadres</label>
       <input type="email" id="email" name="email" required autocomplete="email" placeholder="jij@voorbeeld.nl">
 
-      <fieldset id="vergeet">
-        <legend>Wat vergeet jij het vaakst? <span class="hint">Meerdere antwoorden mogelijk</span></legend>
-        <input type="hidden" name="vergeet-het-vaakst" id="vergeet-veld">
-        <label class="optie"><input type="checkbox" value="Een retour op tijd terugsturen"> Een retour op tijd terugsturen</label>
-        <label class="optie"><input type="checkbox" value="Een abonnement of contract op tijd opzeggen"> Een abonnement of contract op tijd opzeggen</label>
-        <label class="optie"><input type="checkbox" value="Wanneer een proefperiode afloopt"> Wanneer een proefperiode afloopt</label>
-        <label class="optie"><input type="checkbox" value="Prijsstijgingen van vaste lasten"> Prijsstijgingen van vaste lasten</label>
-        <label class="optie"><input type="checkbox" value="Waar mijn bon of garantie is"> Waar mijn bon of garantie is</label>
-        <label class="optie"><input type="checkbox" value="Verzekeringen en polissen nalopen"> Verzekeringen en polissen nalopen</label>
-        <label class="optie"><input type="checkbox" value="APK, onderhoud of keuringen"> APK, onderhoud of keuringen (auto, cv-ketel)</label>
-        <label class="optie"><input type="checkbox" value="Paspoort of rijbewijs verlengen"> Paspoort of rijbewijs verlengen</label>
-        <label class="optie"><input type="checkbox" id="anders-check" value="Iets anders"> Iets anders</label>
-        <input type="text" id="anders" name="vergeet-anders" maxlength="200" placeholder="Wat vergeet jij? Vertel het ons" hidden>
-        <p class="fout" id="vergeet-fout" hidden>Kies minstens één antwoord.</p>
-      </fieldset>
+      <label for="vergeet">Wat vergeet jij het vaakst?</label>
+      <select id="vergeet" name="vergeet-het-vaakst" required>
+        <option value="" disabled selected>Kies er één</option>
+        <option>Een retour op tijd terugsturen</option>
+        <option>Een abonnement opzeggen</option>
+        <option>Prijsstijgingen van vaste lasten</option>
+        <option>Waar mijn bon of garantie is</option>
+        <option value="Iets anders">Iets anders, namelijk…</option>
+      </select>
+      <input type="text" id="anders" name="vergeet-anders" maxlength="200" placeholder="Wat vergeet jij? Vertel het ons" hidden>
 
       <label for="bedrag">Wat heb je ervoor over als OEPS! dit voor je regelt?</label>
       <select id="bedrag" name="bedrag-per-maand" required>
@@ -183,23 +171,16 @@
     var bron = p.get('utm_source') || p.get('bron');
     if (!bron && document.referrer) { try { bron = new URL(document.referrer).hostname; } catch(e){} }
     if (bron) { document.getElementById('bron').value = bron + (p.get('utm_content') ? ' / ' + p.get('utm_content') : ''); }
-    var form = document.querySelector('form[name=wachtlijst]');
-    var andersCheck = document.getElementById('anders-check');
+    var sel = document.getElementById('vergeet');
     var anders = document.getElementById('anders');
-    var fout = document.getElementById('vergeet-fout');
-    andersCheck.addEventListener('change', function(){
-      anders.hidden = !andersCheck.checked;
-      anders.required = andersCheck.checked;
-      if (andersCheck.checked) anders.focus();
+    var andersOpt = sel.querySelector('option[value="Iets anders"]');
+    sel.addEventListener('change', function(){
+      var aan = sel.value.indexOf('Iets anders') === 0;
+      anders.hidden = !aan; anders.required = aan;
+      if (aan) anders.focus();
     });
-    form.addEventListener('submit', function(e){
-      var keuzes = Array.prototype.map.call(form.querySelectorAll('#vergeet input[type=checkbox]:checked'), function(c){
-        if (c === andersCheck) { var t = anders.value.trim(); return t ? 'Iets anders: ' + t : 'Iets anders'; }
-        return c.value;
-      });
-      if (!keuzes.length) { e.preventDefault(); fout.hidden = false; document.getElementById('vergeet').scrollIntoView({behavior:'smooth',block:'center'}); return; }
-      fout.hidden = true;
-      document.getElementById('vergeet-veld').value = keuzes.join('; ');
+    document.querySelector('form[name=wachtlijst]').addEventListener('submit', function(){
+      if (andersOpt.selected) { var t = anders.value.trim(); andersOpt.value = t ? 'Iets anders: ' + t : 'Iets anders'; }
     });
   })();
 </script>
