@@ -47,6 +47,25 @@
   .belofte{padding:56px 0}
   .belofte ul{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
   .belofte li{border-top:3px solid var(--marine);padding-top:12px}
+  fieldset{border:0;margin:14px 0 0}
+  legend{font-weight:600;font-size:15px;margin-bottom:8px}
+  .hint{font-weight:400;font-size:13px;color:var(--zacht);margin-left:4px}
+  label.optie{display:flex;align-items:center;gap:10px;font-weight:400;font-size:15px;margin:0;padding:9px 12px;border:2px solid var(--grijs);border-radius:10px;cursor:pointer;margin-bottom:6px}
+  label.optie:has(input:checked){border-color:var(--marine);background:#f7f8fa}
+  label.optie input{width:18px;height:18px;accent-color:var(--marine);flex:none}
+  input[type=text]{width:100%;font:inherit;font-size:16px;padding:12px 14px;border:2px solid var(--marine);border-radius:10px;margin-top:2px}
+  input[type=text]:focus{outline:3px solid var(--geel)}
+  .fout{color:#b42318;font-size:14px;margin-top:6px}
+  .socials{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+  .socials a{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:600;font-size:15px;color:var(--marine);background:var(--wit);border:2px solid var(--marine);border-radius:999px;padding:8px 14px}
+  .socials a:hover{background:var(--marine);color:var(--wit)}
+  .socials svg{width:18px;height:18px;fill:currentColor}
+  #bedankt .socials a{border-color:var(--marine)}
+  section.volg{background:var(--marine);color:var(--wit);padding:48px 0}
+  section.volg h2{margin-bottom:8px}
+  section.volg p{color:#c9cfdb;max-width:34em}
+  section.volg .socials a{background:transparent;color:var(--wit);border-color:var(--wit)}
+  section.volg .socials a:hover{background:var(--geel);color:var(--marine);border-color:var(--geel)}
   footer{padding:28px 0 40px;font-size:13px;color:var(--zacht)}
   footer a{color:inherit}
   #bedankt{display:none;background:var(--geel);padding:24px;border-radius:14px;max-width:520px}
@@ -77,15 +96,21 @@
       <label for="email">Je e-mailadres</label>
       <input type="email" id="email" name="email" required autocomplete="email" placeholder="jij@voorbeeld.nl">
 
-      <label for="vergeet">Wat vergeet jij het vaakst?</label>
-      <select id="vergeet" name="vergeet-het-vaakst" required>
-        <option value="" disabled selected>Kies er één</option>
-        <option>Een retour op tijd terugsturen</option>
-        <option>Een abonnement opzeggen</option>
-        <option>Prijsstijgingen van vaste lasten</option>
-        <option>Waar mijn bon of garantie is</option>
-        <option>Iets anders</option>
-      </select>
+      <fieldset id="vergeet">
+        <legend>Wat vergeet jij het vaakst? <span class="hint">Meerdere antwoorden mogelijk</span></legend>
+        <input type="hidden" name="vergeet-het-vaakst" id="vergeet-veld">
+        <label class="optie"><input type="checkbox" value="Een retour op tijd terugsturen"> Een retour op tijd terugsturen</label>
+        <label class="optie"><input type="checkbox" value="Een abonnement of contract op tijd opzeggen"> Een abonnement of contract op tijd opzeggen</label>
+        <label class="optie"><input type="checkbox" value="Wanneer een proefperiode afloopt"> Wanneer een proefperiode afloopt</label>
+        <label class="optie"><input type="checkbox" value="Prijsstijgingen van vaste lasten"> Prijsstijgingen van vaste lasten</label>
+        <label class="optie"><input type="checkbox" value="Waar mijn bon of garantie is"> Waar mijn bon of garantie is</label>
+        <label class="optie"><input type="checkbox" value="Verzekeringen en polissen nalopen"> Verzekeringen en polissen nalopen</label>
+        <label class="optie"><input type="checkbox" value="APK, onderhoud of keuringen"> APK, onderhoud of keuringen (auto, cv-ketel)</label>
+        <label class="optie"><input type="checkbox" value="Paspoort of rijbewijs verlengen"> Paspoort of rijbewijs verlengen</label>
+        <label class="optie"><input type="checkbox" id="anders-check" value="Iets anders"> Iets anders</label>
+        <input type="text" id="anders" name="vergeet-anders" maxlength="200" placeholder="Wat vergeet jij? Vertel het ons" hidden>
+        <p class="fout" id="vergeet-fout" hidden>Kies minstens één antwoord.</p>
+      </fieldset>
 
       <label for="bedrag">Wat heb je ervoor over als OEPS! dit voor je regelt?</label>
       <select id="bedrag" name="bedrag-per-maand" required>
@@ -103,7 +128,8 @@
 
     <div id="bedankt">
       <b>Je staat erop. Dank je!</b>
-      Zodra de bèta opengaat, hoor je het als eerste. Volg ondertussen <a href="https://www.instagram.com/oeps.app/">@oeps.app</a> op Instagram.
+      Zodra de bèta opengaat, hoor je het als eerste. Volg ondertussen hoe OEPS! ontstaat:
+      <div class="socials"><a href="https://www.instagram.com/oeps.app/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zm0 4.9a4.9 4.9 0 1 0 0 9.8 4.9 4.9 0 0 0 0-9.8zm0 8.1a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zm5.1-9.4a1.2 1.2 0 1 0 0 2.3 1.2 1.2 0 0 0 0-2.3z"/></svg>Instagram</a><a href="https://www.facebook.com/profile.php?id=61594785122050" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12a12 12 0 1 0-13.9 11.9v-8.4H7.1V12h3V9.4c0-3 1.8-4.7 4.5-4.7 1.3 0 2.7.2 2.7.2v2.9h-1.5c-1.5 0-2 .9-2 1.9V12h3.4l-.5 3.5h-2.9v8.4A12 12 0 0 0 24 12z"/></svg>Facebook</a></div>
     </div>
   </div>
 
@@ -139,9 +165,16 @@
     </ul>
   </div>
 </section>
+<section class="volg">
+  <div class="wrap">
+    <h2>Volg OEPS!</h2>
+    <p>Korte tips over retourtermijnen, opzegdata en prijsstijgingen. En een kijkje achter de schermen terwijl we bouwen.</p>
+    <div class="socials"><a href="https://www.instagram.com/oeps.app/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zm0 4.9a4.9 4.9 0 1 0 0 9.8 4.9 4.9 0 0 0 0-9.8zm0 8.1a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zm5.1-9.4a1.2 1.2 0 1 0 0 2.3 1.2 1.2 0 0 0 0-2.3z"/></svg>Instagram</a><a href="https://www.facebook.com/profile.php?id=61594785122050" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12a12 12 0 1 0-13.9 11.9v-8.4H7.1V12h3V9.4c0-3 1.8-4.7 4.5-4.7 1.3 0 2.7.2 2.7.2v2.9h-1.5c-1.5 0-2 .9-2 1.9V12h3.4l-.5 3.5h-2.9v8.4A12 12 0 0 0 24 12z"/></svg>Facebook</a></div>
+  </div>
+</section>
 </main>
 
-<footer><div class="wrap">OEPS! is in ontwikkeling in Nederland. Vragen? Stuur een DM naar <a href="https://www.instagram.com/oeps.app/">@oeps.app</a>.</div></footer>
+<footer><div class="wrap">OEPS! is in ontwikkeling in Nederland. Vragen? Stuur een DM via <a href="https://www.instagram.com/oeps.app/">Instagram</a> of <a href="https://www.facebook.com/profile.php?id=61594785122050">Facebook</a>.</div></footer>
 
 <script>
   (function(){
@@ -150,6 +183,24 @@
     var bron = p.get('utm_source') || p.get('bron');
     if (!bron && document.referrer) { try { bron = new URL(document.referrer).hostname; } catch(e){} }
     if (bron) { document.getElementById('bron').value = bron + (p.get('utm_content') ? ' / ' + p.get('utm_content') : ''); }
+    var form = document.querySelector('form[name=wachtlijst]');
+    var andersCheck = document.getElementById('anders-check');
+    var anders = document.getElementById('anders');
+    var fout = document.getElementById('vergeet-fout');
+    andersCheck.addEventListener('change', function(){
+      anders.hidden = !andersCheck.checked;
+      anders.required = andersCheck.checked;
+      if (andersCheck.checked) anders.focus();
+    });
+    form.addEventListener('submit', function(e){
+      var keuzes = Array.prototype.map.call(form.querySelectorAll('#vergeet input[type=checkbox]:checked'), function(c){
+        if (c === andersCheck) { var t = anders.value.trim(); return t ? 'Iets anders: ' + t : 'Iets anders'; }
+        return c.value;
+      });
+      if (!keuzes.length) { e.preventDefault(); fout.hidden = false; document.getElementById('vergeet').scrollIntoView({behavior:'smooth',block:'center'}); return; }
+      fout.hidden = true;
+      document.getElementById('vergeet-veld').value = keuzes.join('; ');
+    });
   })();
 </script>
 </body>
