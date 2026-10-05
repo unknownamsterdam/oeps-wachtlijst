@@ -1,0 +1,129 @@
+---
+import Base from '../layouts/Base.astro';
+import Plaatje from '../components/Plaatje.astro';
+import Wachtlijst from '../components/Wachtlijst.astro';
+import { SITE, ONDERWERPEN } from '../data/site.js';
+import { VRAGEN } from '../data/vragen.js';
+
+const uitgelicht = VRAGEN.slice(0, 4);
+---
+<Base
+  title="OEPS! — Nooit meer een opzegtermijn, garantie of prijsverhoging missen"
+  description="Leg het één keer vast, OEPS! onthoudt de rest. Wij bewaken je retourtermijnen, garantie, opzegtermijnen en prijsstijgingen. Meld je gratis aan."
+>
+  <div class="wrap hero">
+    <div>
+      <h1>Leg het één keer vast. <mark>Wij onthouden de rest.</mark></h1>
+      <p class="lead">OEPS! is het geheugen van je huishouden. Stuur je bonnen, abonnementen en vaste lasten door. Wij letten op retourtermijnen, prijsstijgingen en je rechten als iets kapotgaat.</p>
+      <Wachtlijst />
+    </div>
+
+    <div class="bon" aria-hidden="true">
+      <h3>OEPS! · DEZE MAAND</h3>
+      <div class="r"><span>Koptelefoon</span><span>retour ok</span></div>
+      <div class="r hl"><span>Sportschool</span><span>+ €3,50/mnd</span></div>
+      <div class="r"><span>Energie</span><span>jaarafr. binnen</span></div>
+      <div class="r"><span>Wasmachine</span><span>bon bewaard</span></div>
+      <div class="r"><span>Streaming</span><span>niet gebruikt</span></div>
+      <div class="r tot"><span>ACTIES</span><span>1 klaar</span></div>
+    </div>
+  </div>
+
+  <section class="drie">
+    <div class="wrap">
+      <h2>Zo werkt het</h2>
+      <div class="grid">
+        <div class="stap"><span class="n">01</span><b>Stuur door</b>Orderbevestigingen, abonnementsmails en polissen naar je eigen OEPS!-adres. Of maak een foto van de bon.</div>
+        <div class="stap"><span class="n">02</span><b>Wij bewaken</b>Retourtermijnen, prijswijzigingen, jaarafrekeningen en garantie. Je hoort alleen iets als het nodig is.</div>
+        <div class="stap"><span class="n">03</span><b>Actie klaar</b>Bij elke melding staat de retourlink, opzegmail of claim klaar. Jij verstuurt zelf.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hoe">
+    <div class="wrap">
+      <div class="hoe-kop">
+        <h2>Hoe zit dat?</h2>
+        <a href="/hoe-zit-dat/" class="alles">Alles bekijken →</a>
+      </div>
+      <p class="sub">Je hebt vaak meer rechten dan je denkt. Simpel uitgelegd.</p>
+      <div class="kaarten">
+        {uitgelicht.map((v) => {
+          const o = ONDERWERPEN[v.onderwerp];
+          return (
+            <a href={v.url} class={`kaart bg-${o.kleur}`}>
+              <Plaatje naam={o.plaatje} grootte={84} />
+              <div>
+                <small>{o.naam}</small>
+                <b>{v.titel}</b>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <section class="belofte">
+    <div class="wrap">
+      <h2>Onze belofte</h2>
+      <ul>
+        <li><b>Geen melding zonder reden.</b><br>Geel betekent: hier moet je iets mee.</li>
+        <li><b>Je data is van jou.</b><br>We verkopen niets door. Account weg is alles weg.</li>
+        <li><b>Niets zonder jouw ja.</b><br>OEPS! verstuurt nooit iets zonder je bevestiging.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="volg">
+    <div class="wrap">
+      <h2>Volg OEPS!</h2>
+      <p>Korte tips over retourtermijnen, opzegdata en prijsstijgingen. En een kijkje achter de schermen terwijl we bouwen.</p>
+      <div class="socials">
+        <a href={SITE.instagram} target="_blank" rel="noopener">Instagram</a>
+        <a href={SITE.facebook} target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding:32px 20px 64px}
+  .hero h1{margin-bottom:20px}
+  .lead{font-size:19px;color:var(--zacht);max-width:34em;margin-bottom:28px}
+  .bon{background:var(--wit);font-family:"IBM Plex Mono",monospace;font-size:14px;padding:24px 22px 30px;box-shadow:0 10px 30px rgba(20,33,61,.12);transform:rotate(1.5deg);max-width:360px;justify-self:center;width:100%;
+       -webkit-mask:linear-gradient(#000 0 0) top/100% calc(100% - 10px) no-repeat,radial-gradient(circle 6px at 8px 100%,transparent 6px,#000 6.5px) bottom left/16px 10px repeat-x;
+       mask:linear-gradient(#000 0 0) top/100% calc(100% - 10px) no-repeat,radial-gradient(circle 6px at 8px 100%,transparent 6px,#000 6.5px) bottom left/16px 10px repeat-x}
+  .bon h3{font-family:inherit;text-align:center;font-weight:500;letter-spacing:2px;margin-bottom:14px}
+  .bon .r{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed #c9ced8}
+  .bon .hl{background:var(--geel);margin:0 -6px;padding:6px}
+  .bon .tot{border:0;font-weight:500;margin-top:8px}
+
+  section.drie{background:var(--wit);padding:64px 0}
+  section.drie h2{margin-bottom:28px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .stap{background:var(--grijs);border-radius:var(--rond);padding:22px}
+  .stap b{display:block;font-stretch:112%;font-size:19px;margin-bottom:6px}
+  .stap .n{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--zacht);display:block;margin-bottom:10px}
+
+  .hoe{padding:64px 0 8px}
+  .hoe-kop{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+  .alles{font-weight:700;text-decoration:none;white-space:nowrap}
+  .alles:hover{text-decoration:underline}
+  .sub{color:var(--zacht);margin:6px 0 22px;font-size:17px}
+
+  .belofte{padding:56px 0}
+  .belofte h2{margin-bottom:28px}
+  .belofte ul{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .belofte li{border-top:3px solid var(--marine);padding-top:12px}
+
+  section.volg{background:var(--wit);border-radius:var(--rond);max-width:1000px;margin:0 auto;padding:40px 0}
+  section.volg p{color:var(--zacht);max-width:34em;margin-top:6px}
+
+  @media (max-width:800px){
+    .hero{grid-template-columns:1fr;gap:36px;padding:16px 20px 48px}
+    .grid,.belofte ul{grid-template-columns:1fr}
+    .bon{transform:none}
+    section.volg{border-radius:0}
+  }
+</style>

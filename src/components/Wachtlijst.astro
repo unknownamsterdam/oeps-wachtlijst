@@ -1,0 +1,66 @@
+---
+// Het wachtlijstformulier. Elke inzending gaat via Netlify Forms naar de functie
+// netlify/functions/submission-created.js, die het adres in Brevo zet.
+// Alle varianten hebben dezelfde velden, zodat Netlify ze als één formulier ziet.
+import { SITE } from '../data/site.js';
+const { compact = false, bron = 'direct' } = Astro.props;
+const terug = Astro.url.pathname + '?aangemeld=1#aanmelden';
+---
+<div class={compact ? 'aanmeld aanmeld--compact' : 'aanmeld'} id="aanmelden">
+  <form name="wachtlijst" method="POST" action={terug} data-netlify="true" netlify-honeypot="bot-veld" class="formulier">
+    <input type="hidden" name="form-name" value="wachtlijst">
+    <input type="hidden" name="bron" class="js-bron" value={bron}>
+    <p class="verborgen"><label>Niet invullen: <input name="bot-veld"></label></p>
+
+    {compact ? (
+      <>
+        <input type="hidden" name="vergeet-het-vaakst" value="">
+        <input type="hidden" name="vergeet-anders" value="">
+        <input type="hidden" name="bedrag-per-maand" value="">
+        <label for={'email-' + bron}>Je e-mailadres</label>
+        <div class="rij">
+          <input type="email" id={'email-' + bron} name="email" required autocomplete="email" placeholder="jij@voorbeeld.nl">
+          <button type="submit">Zet me erop</button>
+        </div>
+      </>
+    ) : (
+      <>
+        <label for="email">Je e-mailadres</label>
+        <input type="email" id="email" name="email" required autocomplete="email" placeholder="jij@voorbeeld.nl">
+
+        <label for="vergeet">Wat vergeet jij het vaakst?</label>
+        <select id="vergeet" name="vergeet-het-vaakst" required class="js-vergeet">
+          <option value="" disabled selected>Kies er één</option>
+          <option>Een retour op tijd terugsturen</option>
+          <option>Een abonnement opzeggen</option>
+          <option>Prijsstijgingen van vaste lasten</option>
+          <option>Waar mijn bon of garantie is</option>
+          <option value="Iets anders">Iets anders, namelijk…</option>
+        </select>
+        <input type="text" name="vergeet-anders" class="js-anders" maxlength="200" placeholder="Wat vergeet jij? Vertel het ons" hidden>
+
+        <label for="bedrag">Wat heb je ervoor over als OEPS! dit voor je regelt?</label>
+        <select id="bedrag" name="bedrag-per-maand" required>
+          <option value="" disabled selected>Kies een bedrag</option>
+          <option>Niets, alleen gratis</option>
+          <option>€1 per maand</option>
+          <option>€2 per maand</option>
+          <option>€3 tot €5 per maand</option>
+          <option>Meer dan €5 per maand</option>
+        </select>
+
+        <button type="submit">Zet me op de wachtlijst</button>
+      </>
+    )}
+    <p class="klein">Gratis. We mailen je alleen over OEPS! en de bèta. Afmelden kan altijd. <a href="/privacy/">Privacy</a></p>
+  </form>
+
+  <div class="bedankt">
+    <b>Je staat erop. Dank je!</b>
+    Zodra de bèta opengaat, hoor je het als eerste. Kijk in je mail: daar staat een berichtje van ons.
+    <div class="socials">
+      <a href={SITE.instagram} target="_blank" rel="noopener">Instagram</a>
+      <a href={SITE.facebook} target="_blank" rel="noopener">Facebook</a>
+    </div>
+  </div>
+</div>
