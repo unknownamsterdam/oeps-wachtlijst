@@ -68,10 +68,17 @@ const schema = [
         <Content />
       </div>
 
+      {vraag.misgaat && (
+        <div class="misgaat">
+          <span class="misgaat-label">Oeps, hier gaat het mis</span>
+          <p>{vraag.misgaat}</p>
+        </div>
+      )}
+
       <aside class="oeps-blok">
         <div class="oeps-blok-tekst">
           <span class="badge">Binnenkort</span>
-          <h2>Dit hoef je straks niet meer te onthouden</h2>
+          <h2>Weten is makkelijk. Onthouden niet.</h2>
           <p>{vraag.oepsZin}</p>
         </div>
         <Wachtlijst compact bron={vraag.slug} />
@@ -137,7 +144,10 @@ const schema = [
   .tekst :global(ol li){counter-increment:stap}
   .tekst :global(ol li)::before{content:counter(stap);position:absolute;left:12px;top:11px;width:26px;height:26px;border-radius:50%;background:var(--marine);color:var(--wit);font-weight:800;font-size:14px;display:grid;place-items:center}
 
-  .oeps-blok{margin:48px 0 0;background:var(--marine);color:var(--wit);border-radius:var(--rond);padding:26px;display:grid;gap:18px}
+  .misgaat{margin-top:36px;background:var(--perzik);border-radius:var(--rond);padding:22px 24px;transform:rotate(-.4deg)}
+  .misgaat-label{display:inline-block;font-weight:800;font-stretch:112%;font-size:14px;background:var(--wit);padding:3px 12px;border-radius:999px;margin-bottom:8px}
+  .misgaat p{font-size:18px}
+  .oeps-blok{margin:28px 0 0;background:var(--marine);color:var(--wit);border-radius:var(--rond);padding:26px;display:grid;gap:18px}
   .oeps-blok h2{color:var(--wit);margin:10px 0 6px}
   .oeps-blok p{color:#d6dbe5}
   .badge{display:inline-block;background:var(--geel);color:var(--marine);font-weight:800;font-size:13px;padding:3px 10px;border-radius:999px}
