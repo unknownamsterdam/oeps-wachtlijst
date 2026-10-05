@@ -70,7 +70,14 @@ const schema = [{
   .onderaan{margin-top:48px;background:var(--geel);border-radius:var(--rond);padding:26px;display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center}
   .onderaan p{margin-top:6px}
   @media (max-width:800px){
-    .groep{grid-template-columns:1fr}
+    .groep{grid-template-columns:1fr;gap:8px;margin-top:18px}
+    .groep-kop{padding:10px 14px;gap:10px;border-radius:18px}
+    .groep-kop :global(.plaatje){width:52px;height:52px}
+    .groep-kop h2{font-size:19px;line-height:1.15}
+    .groep-kop p{font-size:14px}
+    .vragen a{padding:13px 16px;font-size:16px;border-radius:14px}
     .onderaan{grid-template-columns:1fr}
+    .intro{padding:22px 0 8px}
+    .lead{font-size:17px}
   }
 </style>

@@ -92,7 +92,7 @@ const basisSchema = {
   .logo{font-weight:800;font-stretch:112%;font-size:26px;letter-spacing:-.5px;text-decoration:none}
   .logo span{background:var(--geel);padding:0 4px;border-radius:4px}
   .menu{margin-left:auto;display:flex;align-items:center;gap:6px}
-  .menu a{text-decoration:none;font-weight:600;font-size:15px;padding:9px 14px;border-radius:999px}
+  .menu a{text-decoration:none;font-weight:600;font-size:15px;padding:9px 14px;border-radius:999px;white-space:nowrap}
   .menu a:hover,.menu a[aria-current]{background:var(--wit)}
   .menu .knop-klein{background:var(--marine);color:var(--wit)}
   .menu .knop-klein:hover{background:#0c1528}
@@ -151,6 +151,14 @@ const basisSchema = {
     .kaarten{grid-template-columns:1fr}
     .voet .kolommen{grid-template-columns:1fr}
     .menu a.verberg-mobiel{display:none}
+    .kop .wrap{height:60px;gap:8px}
+    .logo{font-size:22px}
+    .menu{gap:4px}
+    .menu a{font-size:14px;padding:8px 11px}
+    .kaarten{gap:10px}
+    .kaart{padding:10px 14px;gap:12px;border-radius:18px}
+    .kaart .plaatje{width:52px;height:52px}
+    .kaart b{font-size:17px}
   }
   @media (max-width:420px){
     .aanmeld--compact .rij{flex-direction:column}
