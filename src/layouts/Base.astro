@@ -1,0 +1,233 @@
+---
+// De basis voor elke pagina: <head>, header, footer en de gedeelde stijl.
+import { SITE, ONDERWERPEN } from '../data/site.js';
+
+const {
+  title,
+  description,
+  ogImage = '/og-image.png',
+  schema = [],
+  noindex = false,
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, SITE.url).href;
+const ogUrl = new URL(ogImage, SITE.url).href;
+const pad = Astro.url.pathname;
+
+const basisSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': SITE.url + '/#organization',
+      name: 'OEPS!',
+      alternateName: 'Oeps.app',
+      url: SITE.url + '/',
+      logo: SITE.url + '/icon-512.png',
+      email: SITE.mail,
+      sameAs: [SITE.instagram, SITE.facebook],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': SITE.url + '/#website',
+      name: 'OEPS!',
+      alternateName: 'Oeps.app',
+      url: SITE.url + '/',
+      inLanguage: 'nl-NL',
+      publisher: { '@id': SITE.url + '/#organization' },
+    },
+    ...schema,
+  ],
+};
+---
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{title}</title>
+<meta name="description" content={description}>
+<link rel="canonical" href={canonical}>
+<meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow'}>
+<meta name="theme-color" content="#14213D">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="OEPS!">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:url" content={canonical}>
+<meta property="og:title" content={title}>
+<meta property="og:description" content={description}>
+<meta property="og:image" content={ogUrl}>
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content={title}>
+<meta name="twitter:description" content={description}>
+<meta name="twitter:image" content={ogUrl}>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,500;112,800;100,400;100,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json" set:html={JSON.stringify(basisSchema)} />
+<style is:global>
+  :root{
+    --marine:#14213D;--geel:#FFD23F;--grijs:#EDEFF2;--wit:#fff;--tekst:#14213D;--zacht:#5B6477;
+    --mint:#D4F2E6;--perzik:#FFE3D1;--lila:#E6E0FF;--zon:#FFF0B8;
+    --rond:22px;--schaduw:0 2px 0 rgba(20,33,61,.08),0 10px 24px rgba(20,33,61,.06);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:Archivo,system-ui,sans-serif;background:var(--grijs);color:var(--tekst);line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  img,svg{max-width:100%}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+  .smal{max-width:720px}
+
+  /* Header */
+  .kop{position:sticky;top:0;z-index:10;background:rgba(237,239,242,.92);backdrop-filter:saturate(1.4) blur(8px)}
+  .kop .wrap{display:flex;align-items:center;gap:16px;height:68px}
+  .logo{font-weight:800;font-stretch:112%;font-size:26px;letter-spacing:-.5px;text-decoration:none}
+  .logo span{background:var(--geel);padding:0 4px;border-radius:4px}
+  .menu{margin-left:auto;display:flex;align-items:center;gap:6px}
+  .menu a{text-decoration:none;font-weight:600;font-size:15px;padding:9px 14px;border-radius:999px}
+  .menu a:hover,.menu a[aria-current]{background:var(--wit)}
+  .menu .knop-klein{background:var(--marine);color:var(--wit)}
+  .menu .knop-klein:hover{background:#0c1528}
+
+  /* Knoppen en formulier */
+  .knop{display:inline-block;font:inherit;font-weight:800;font-stretch:112%;font-size:17px;padding:13px 22px;border:0;border-radius:14px;background:var(--marine);color:var(--wit);text-decoration:none;cursor:pointer}
+  .knop:hover{background:#0c1528}
+  .formulier{background:var(--wit);padding:24px;border-radius:var(--rond);box-shadow:var(--schaduw);max-width:520px}
+  .formulier label{display:block;font-weight:600;font-size:15px;margin:14px 0 6px}
+  .formulier label:first-of-type{margin-top:0}
+  .formulier input[type=email],.formulier input[type=text],.formulier select{width:100%;font:inherit;font-size:16px;padding:12px 14px;border:2px solid var(--grijs);border-radius:12px;background:var(--wit);color:var(--tekst)}
+  .formulier input:focus,.formulier select:focus{outline:none;border-color:var(--marine)}
+  .formulier input[type=text]{margin-top:8px;border-color:var(--marine)}
+  .formulier button{margin-top:20px;width:100%;font:inherit;font-weight:800;font-stretch:112%;font-size:18px;padding:14px;border:0;border-radius:12px;background:var(--marine);color:var(--wit);cursor:pointer}
+  .formulier button:hover{background:#0c1528}
+  .aanmeld--compact .formulier{max-width:none;box-shadow:none;padding:0;background:transparent}
+  .aanmeld--compact .rij{display:flex;gap:8px}
+  .aanmeld--compact .rij input{flex:1}
+  .aanmeld--compact .rij button{margin-top:0;width:auto;padding:12px 18px;white-space:nowrap}
+  .klein{font-size:13px;color:var(--zacht);margin-top:12px}
+  .verborgen{position:absolute;left:-9999px}
+  .bedankt{display:none;background:var(--geel);padding:22px;border-radius:var(--rond);max-width:520px}
+  .bedankt b{font-stretch:112%;font-size:22px;display:block;margin-bottom:6px}
+  body.aangemeld .bedankt{display:block}
+  body.aangemeld .formulier{display:none}
+  .socials{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+  .socials a{text-decoration:none;font-weight:600;font-size:15px;background:var(--wit);border:2px solid var(--marine);border-radius:999px;padding:7px 14px}
+
+  /* Kaarten per onderwerp */
+  .kaarten{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .kaart{display:flex;gap:16px;align-items:center;text-decoration:none;border-radius:var(--rond);padding:18px 20px;box-shadow:var(--schaduw);transition:transform .15s}
+  .kaart:hover{transform:translateY(-3px) rotate(-.4deg)}
+  .kaart .plaatje{flex:none;width:84px;height:84px}
+  .kaart small{display:block;font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.5px;text-transform:uppercase;opacity:.75}
+  .kaart b{display:block;font-stretch:112%;font-size:20px;line-height:1.2;margin:2px 0 4px}
+  .kaart span{font-size:15px;color:var(--zacht)}
+  .bg-mint{background:var(--mint)}.bg-perzik{background:var(--perzik)}.bg-lila{background:var(--lila)}.bg-zon{background:var(--zon)}
+
+  h1{font-weight:800;font-stretch:112%;font-size:clamp(34px,6vw,58px);line-height:1.04;letter-spacing:-1px}
+  h2{font-weight:800;font-stretch:112%;font-size:clamp(24px,3.4vw,30px);line-height:1.15;letter-spacing:-.5px}
+  mark{background:linear-gradient(transparent 55%,var(--geel) 55%);color:inherit;padding:0 2px}
+
+  /* Footer */
+  .voet{margin-top:72px;background:var(--marine);color:#d6dbe5;padding:44px 0 36px;font-size:15px}
+  .voet .kolommen{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:28px}
+  .voet b{display:block;color:var(--wit);font-stretch:112%;margin-bottom:10px}
+  .voet ul{list-style:none;display:grid;gap:6px}
+  .voet a{text-decoration:none}
+  .voet a:hover{text-decoration:underline}
+  .voet .logo{color:var(--wit);font-size:24px}
+  .voet .logo span{color:var(--marine)}
+  .voet p{margin-top:8px;max-width:28em}
+  .voet .onder{margin-top:30px;padding-top:18px;border-top:1px solid rgba(255,255,255,.15);font-size:13px;color:#aab3c5}
+
+  @media (max-width:800px){
+    .kaarten{grid-template-columns:1fr}
+    .voet .kolommen{grid-template-columns:1fr}
+    .menu a.verberg-mobiel{display:none}
+  }
+  @media (max-width:420px){
+    .aanmeld--compact .rij{flex-direction:column}
+    .aanmeld--compact .rij button{width:100%}
+  }
+</style>
+</head>
+<body>
+<header class="kop">
+  <div class="wrap">
+    <a href="/" class="logo" aria-label="OEPS! home">OEPS<span>!</span></a>
+    <nav class="menu" aria-label="Hoofdmenu">
+      <a href="/hoe-zit-dat/" aria-current={pad.startsWith('/hoe-zit-dat/') ? 'page' : undefined}>Hoe zit dat?</a>
+      {SITE.fase === 'live'
+        ? <a href="https://app.oeps.app" class="knop-klein">Inloggen</a>
+        : <a href="/#aanmelden" class="knop-klein">Wachtlijst</a>}
+    </nav>
+  </div>
+</header>
+
+<main>
+  <slot />
+</main>
+
+<footer class="voet">
+  <div class="wrap">
+    <div class="kolommen">
+      <div>
+        <a href="/" class="logo">OEPS<span>!</span></a>
+        <p>Leg het één keer vast. Wij onthouden de rest. OEPS! wordt gebouwd in Nederland.</p>
+      </div>
+      <div>
+        <b>Hoe zit dat?</b>
+        <ul>
+          {Object.entries(ONDERWERPEN).map(([sleutel, o]) => (
+            <li><a href={`/hoe-zit-dat/#${sleutel}`}>{o.naam}</a></li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <b>OEPS!</b>
+        <ul>
+          <li><a href="/#aanmelden">Wachtlijst</a></li>
+          <li><a href={`mailto:${SITE.mail}`}>{SITE.mail}</a></li>
+          <li><a href={SITE.instagram} rel="noopener">Instagram</a></li>
+          <li><a href="/privacy/">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="onder">© {new Date().getFullYear()} OEPS! · Uitleg op deze site is algemene informatie, geen juridisch advies.</div>
+  </div>
+</footer>
+
+<script is:inline>
+  (function(){
+    var p = new URLSearchParams(location.search);
+    if (p.get('aangemeld')) { document.body.classList.add('aangemeld'); }
+    var bron = p.get('utm_source') || p.get('bron');
+    if (!bron && document.referrer) { try { var h = new URL(document.referrer).hostname; if (h !== location.hostname) bron = h; } catch(e){} }
+    document.querySelectorAll('.js-bron').forEach(function(veld){
+      if (bron) veld.value = bron + (p.get('utm_content') ? ' / ' + p.get('utm_content') : '') + (veld.value !== 'direct' ? ' / ' + veld.value : '');
+    });
+    document.querySelectorAll('form[name=wachtlijst]').forEach(function(form){
+      var sel = form.querySelector('.js-vergeet');
+      var anders = form.querySelector('.js-anders');
+      if (!sel || !anders) return;
+      var andersOpt = sel.querySelector('option[value="Iets anders"]');
+      sel.addEventListener('change', function(){
+        var aan = sel.value.indexOf('Iets anders') === 0;
+        anders.hidden = !aan; anders.required = aan;
+        if (aan) anders.focus();
+      });
+      form.addEventListener('submit', function(){
+        if (andersOpt.selected) { var t = anders.value.trim(); andersOpt.value = t ? 'Iets anders: ' + t : 'Iets anders'; }
+      });
+    });
+  })();
+</script>
+</body>
+</html>
