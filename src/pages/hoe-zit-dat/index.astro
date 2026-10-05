@@ -1,0 +1,76 @@
+---
+import Base from '../../layouts/Base.astro';
+import Plaatje from '../../components/Plaatje.astro';
+import Wachtlijst from '../../components/Wachtlijst.astro';
+import { SITE } from '../../data/site.js';
+import { vragenPerOnderwerp } from '../../data/vragen.js';
+
+const groepen = vragenPerOnderwerp();
+const schema = [{
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url + '/' },
+    { '@type': 'ListItem', position: 2, name: 'Hoe zit dat?', item: SITE.url + '/hoe-zit-dat/' },
+  ],
+}];
+---
+<Base
+  title="Hoe zit dat? Retour, garantie, abonnementen en prijzen simpel uitgelegd | OEPS!"
+  description="Hoe lang mag je iets terugsturen? Wanneer mag je opzeggen? Wat als iets kapotgaat? Korte, simpele antwoorden op vragen over je huishouden."
+  schema={schema}
+>
+  <section class="intro">
+    <div class="wrap">
+      <span class="sticker">Simpel uitgelegd</span>
+      <h1>Hoe zit <mark>dat?</mark></h1>
+      <p class="lead">Terugsturen, garantie, opzeggen, duurder worden. Je hebt vaak meer rechten dan je denkt. Hier lees je hoe het zit, in gewone taal.</p>
+    </div>
+  </section>
+
+  <div class="wrap">
+    {groepen.map((g) => (
+      <section class="groep" id={g.sleutel}>
+        <div class={`groep-kop bg-${g.kleur}`}>
+          <Plaatje naam={g.plaatje} grootte={88} />
+          <div>
+            <h2>{g.naam}</h2>
+            <p>{g.kort}</p>
+          </div>
+        </div>
+        <ul class="vragen">
+          {g.vragen.map((v) => (
+            <li><a href={v.url}><span>{v.titel}</span><span class="pijl" aria-hidden="true">→</span></a></li>
+          ))}
+        </ul>
+      </section>
+    ))}
+
+    <section class="onderaan">
+      <div>
+        <h2>Liever niet alles zelf onthouden?</h2>
+        <p>OEPS! houdt straks je retourdagen, garanties, opzegtermijnen en prijzen voor je bij. Zet je op de wachtlijst, dan hoor je het als eerste.</p>
+      </div>
+      <Wachtlijst compact bron="hoe-zit-dat" />
+    </section>
+  </div>
+</Base>
+
+<style>
+  .intro{padding:36px 0 28px}
+  .sticker{display:inline-block;background:var(--wit);border:3px solid var(--marine);border-radius:999px;font-weight:800;font-size:14px;padding:4px 12px;transform:rotate(-2deg);margin-bottom:14px}
+  .lead{font-size:20px;color:var(--zacht);max-width:34em;margin-top:14px}
+  .groep{display:grid;grid-template-columns:320px 1fr;gap:16px;margin-top:22px;scroll-margin-top:90px}
+  .groep-kop{display:flex;gap:14px;align-items:center;border-radius:var(--rond);padding:18px}
+  .groep-kop h2{font-size:24px}
+  .groep-kop p{color:var(--zacht);font-size:15px}
+  .vragen{list-style:none;display:grid;gap:10px;align-content:start}
+  .vragen a{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--wit);border-radius:18px;padding:18px 20px;text-decoration:none;font-weight:700;font-size:19px;box-shadow:var(--schaduw)}
+  .vragen a:hover .pijl{transform:translateX(4px)}
+  .pijl{font-size:22px;transition:transform .15s}
+  .onderaan{margin-top:48px;background:var(--geel);border-radius:var(--rond);padding:26px;display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center}
+  .onderaan p{margin-top:6px}
+  @media (max-width:800px){
+    .groep{grid-template-columns:1fr}
+    .onderaan{grid-template-columns:1fr}
+  }
+</style>

@@ -1,0 +1,173 @@
+---
+import Base from '../../layouts/Base.astro';
+import Plaatje from '../../components/Plaatje.astro';
+import Wachtlijst from '../../components/Wachtlijst.astro';
+import { SITE, ONDERWERPEN } from '../../data/site.js';
+import { VRAGEN, datumNL } from '../../data/vragen.js';
+
+export function getStaticPaths() {
+  return VRAGEN.map((v) => ({ params: { slug: v.slug }, props: { vraag: v } }));
+}
+
+const { vraag } = Astro.props;
+const onderwerp = ONDERWERPEN[vraag.onderwerp];
+const { Content } = vraag;
+const meer = VRAGEN.filter((v) => v.slug !== vraag.slug).slice(0, 3);
+const url = SITE.url + vraag.url;
+
+const schema = [
+  {
+    '@type': 'Article',
+    headline: vraag.titel,
+    description: vraag.beschrijving,
+    inLanguage: 'nl-NL',
+    dateModified: vraag.bijgewerkt,
+    mainEntityOfPage: url,
+    author: { '@type': 'Person', name: 'Joël', worksFor: { '@id': SITE.url + '/#organization' } },
+    publisher: { '@id': SITE.url + '/#organization' },
+  },
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url + '/' },
+      { '@type': 'ListItem', position: 2, name: 'Hoe zit dat?', item: SITE.url + '/hoe-zit-dat/' },
+      { '@type': 'ListItem', position: 3, name: vraag.titel, item: url },
+    ],
+  },
+  {
+    '@type': 'FAQPage',
+    mainEntity: (vraag.faq || []).map((f) => ({
+      '@type': 'Question',
+      name: f.vraag,
+      acceptedAnswer: { '@type': 'Answer', text: f.antwoord },
+    })),
+  },
+];
+---
+<Base title={vraag.seoTitel} description={vraag.beschrijving} schema={schema}>
+  <article class="vraag">
+    <div class={`kopblok bg-${onderwerp.kleur}`}>
+      <div class="wrap smal kopblok-in">
+        <div>
+          <nav class="kruimel" aria-label="Kruimelpad">
+            <a href="/hoe-zit-dat/">Hoe zit dat?</a> <span>›</span> <a href={`/hoe-zit-dat/#${vraag.onderwerp}`}>{onderwerp.naam}</a>
+          </nav>
+          <h1>{vraag.titel}</h1>
+        </div>
+        <Plaatje naam={onderwerp.plaatje} grootte={130} />
+      </div>
+    </div>
+
+    <div class="wrap smal">
+      <div class="kort">
+        <span class="kort-label">Kort gezegd</span>
+        <p>{vraag.kortAntwoord}</p>
+      </div>
+
+      <div class="tekst">
+        <Content />
+      </div>
+
+      <aside class="oeps-blok">
+        <div class="oeps-blok-tekst">
+          <span class="badge">Binnenkort</span>
+          <h2>Dit hoef je straks niet meer te onthouden</h2>
+          <p>{vraag.oepsZin}</p>
+        </div>
+        <Wachtlijst compact bron={vraag.slug} />
+      </aside>
+
+      {vraag.faq?.length > 0 && (
+        <section class="faq">
+          <h2>Vaak gevraagd</h2>
+          {vraag.faq.map((f) => (
+            <details>
+              <summary>{f.vraag}</summary>
+              <p>{f.antwoord}</p>
+            </details>
+          ))}
+        </section>
+      )}
+
+      <footer class="info">
+        <p>Geschreven door Joël van OEPS! · Bijgewerkt op {datumNL(vraag.bijgewerkt)}</p>
+        <p>Gecheckt bij: {vraag.bronnen.map((b, i) => (<>{i > 0 && ' · '}<a href={b.url} rel="noopener" target="_blank">{b.naam}</a></>))}</p>
+        <p>Dit is algemene uitleg, geen juridisch advies. Twijfel je? Kijk dan bij ACM ConsuWijzer of vraag het Juridisch Loket.</p>
+      </footer>
+
+      <section class="meer">
+        <h2>Ook handig om te weten</h2>
+        <div class="meer-lijst">
+          {meer.map((v) => {
+            const o = ONDERWERPEN[v.onderwerp];
+            return (
+              <a href={v.url} class={`mini bg-${o.kleur}`}>
+                <Plaatje naam={o.plaatje} grootte={56} />
+                <span>{v.titel}</span>
+              </a>
+            );
+          })}
+        </div>
+      </section>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .kopblok{padding:28px 0 46px;margin-bottom:-22px}
+  .kopblok-in{display:flex;align-items:center;gap:20px;justify-content:space-between}
+  .kopblok h1{font-size:clamp(32px,5.4vw,50px)}
+  .kopblok :global(.plaatje){flex:none}
+  .kruimel{font-size:14px;font-weight:600;margin-bottom:12px}
+  .kruimel a{text-decoration:none;opacity:.8}
+  .kruimel a:hover{opacity:1;text-decoration:underline}
+  .kruimel span{opacity:.5;margin:0 4px}
+
+  .kort{position:relative;background:var(--wit);border-radius:var(--rond);box-shadow:var(--schaduw);padding:24px 24px 22px;border:3px solid var(--marine)}
+  .kort-label{position:absolute;top:-14px;left:20px;background:var(--geel);font-weight:800;font-stretch:112%;font-size:14px;padding:3px 12px;border-radius:999px;border:3px solid var(--marine)}
+  .kort p{font-size:20px;line-height:1.45;font-weight:600}
+
+  .tekst{margin-top:36px;font-size:18px}
+  .tekst :global(h2){margin:38px 0 12px}
+  .tekst :global(p){margin:10px 0}
+  .tekst :global(ul),.tekst :global(ol){margin:12px 0;padding-left:0;list-style:none;display:grid;gap:10px}
+  .tekst :global(li){background:var(--wit);border-radius:14px;padding:12px 16px 12px 48px;position:relative}
+  .tekst :global(ul li)::before{content:"";position:absolute;left:18px;top:19px;width:12px;height:12px;border-radius:50%;background:var(--geel);border:2.5px solid var(--marine)}
+  .tekst :global(ol){counter-reset:stap}
+  .tekst :global(ol li){counter-increment:stap}
+  .tekst :global(ol li)::before{content:counter(stap);position:absolute;left:12px;top:11px;width:26px;height:26px;border-radius:50%;background:var(--marine);color:var(--wit);font-weight:800;font-size:14px;display:grid;place-items:center}
+
+  .oeps-blok{margin:48px 0 0;background:var(--marine);color:var(--wit);border-radius:var(--rond);padding:26px;display:grid;gap:18px}
+  .oeps-blok h2{color:var(--wit);margin:10px 0 6px}
+  .oeps-blok p{color:#d6dbe5}
+  .badge{display:inline-block;background:var(--geel);color:var(--marine);font-weight:800;font-size:13px;padding:3px 10px;border-radius:999px}
+  .oeps-blok :global(label){color:var(--wit)}
+  .oeps-blok :global(.klein){color:#aab3c5}
+  .oeps-blok :global(.formulier button){background:var(--geel);color:var(--marine)}
+  .oeps-blok :global(.formulier button:hover){background:#ffdd66}
+  .oeps-blok :global(.formulier input[type=email]){border-color:transparent}
+
+  .faq{margin-top:48px}
+  .faq h2{margin-bottom:14px}
+  .faq details{background:var(--wit);border-radius:16px;margin-bottom:10px;box-shadow:var(--schaduw)}
+  .faq summary{cursor:pointer;font-weight:700;font-size:17px;padding:16px 48px 16px 18px;list-style:none;position:relative}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";position:absolute;right:18px;top:12px;font-size:24px;font-weight:800}
+  .faq details[open] summary::after{content:"–"}
+  .faq details p{padding:0 18px 16px;font-size:17px}
+
+  .info{margin-top:36px;font-size:14px;color:var(--zacht);display:grid;gap:4px}
+
+  .meer{margin-top:44px}
+  .meer h2{margin-bottom:14px}
+  .meer-lijst{display:grid;gap:12px}
+  .mini{display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:18px;text-decoration:none;font-weight:700;font-size:17px}
+  .mini:hover{transform:translateX(4px)}
+
+  @media (max-width:640px){
+    .kopblok-in{flex-direction:column-reverse;align-items:flex-start;gap:4px}
+    .kopblok :global(.plaatje){width:90px;height:90px}
+    .tekst{font-size:17px}
+    .kort p{font-size:18px}
+  }
+</style>
