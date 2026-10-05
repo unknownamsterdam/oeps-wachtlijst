@@ -1,0 +1,53 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../data/site.js';
+---
+<Base
+  title="Privacy | OEPS!"
+  description="Wat OEPS! doet met je gegevens als je je aanmeldt voor de wachtlijst. Kort en duidelijk."
+>
+  <div class="wrap smal privacy">
+    <h1>Privacy</h1>
+    <p class="lead">Kort en duidelijk: wat we doen met je gegevens als je je aanmeldt voor de wachtlijst.</p>
+
+    <h2>Wat we bewaren</h2>
+    <ul>
+      <li>Je e-mailadres.</li>
+      <li>Je antwoorden in het formulier (wat je het vaakst vergeet en wat je ervoor over hebt).</li>
+      <li>Via welke weg je bij ons kwam, bijvoorbeeld Instagram.</li>
+    </ul>
+
+    <h2>Waarvoor</h2>
+    <ul>
+      <li>Om je te mailen over OEPS! en de bèta: een welkomstmail en af en toe een update.</li>
+      <li>Om te leren wat mensen het meest vergeten, zodat we de juiste dingen bouwen.</li>
+    </ul>
+    <p>Dat doen we omdat je er zelf om vraagt door je aan te melden.</p>
+
+    <h2>Wie helpen ons</h2>
+    <ul>
+      <li><b>Netlify</b> host deze website en ontvangt het formulier.</li>
+      <li><b>Brevo</b> verstuurt onze mails en bewaart de wachtlijst.</li>
+    </ul>
+    <p>We verkopen je gegevens nooit en delen ze met niemand anders.</p>
+
+    <h2>Hoe lang</h2>
+    <p>Zolang je op de wachtlijst staat. Meld je je af? Dan mailen we je niet meer. Wil je dat we alles van je verwijderen? Stuur ons een mailtje, dan regelen we het.</p>
+
+    <h2>Jouw rechten</h2>
+    <p>Je mag altijd vragen welke gegevens we van je hebben, ze laten aanpassen of laten verwijderen. Afmelden kan met één klik onderaan elke mail. Je mag ook een klacht indienen bij de Autoriteit Persoonsgegevens.</p>
+
+    <h2>Contact</h2>
+    <p>Vragen? Mail naar <a href={`mailto:${SITE.mail}`}>{SITE.mail}</a>.</p>
+
+    <p class="klein">Laatst bijgewerkt: 5 oktober 2026</p>
+  </div>
+</Base>
+
+<style>
+  .privacy{padding-top:32px}
+  .lead{font-size:19px;color:var(--zacht);margin:12px 0 8px}
+  h2{margin:30px 0 10px;font-size:24px}
+  p{margin:8px 0}
+  ul{margin:8px 0 8px 20px;display:grid;gap:4px}
+</style>
