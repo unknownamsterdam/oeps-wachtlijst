@@ -11,7 +11,7 @@ export const SITE = {
   fase: 'wachtlijst',
   // Google Analytics 4 (Metings-ID, begint met G-). Leeg = geen meting en geen cookiemelding.
   // GA4 laadt pas nadat een bezoeker op "Prima" heeft geklikt.
-  ga4: '',
+  ga4: 'G-ZT7YKY4KFQ',
 };
 
 // De vier onderwerpen van "Hoe zit dat?". Ze volgen de onderdelen van de app,
