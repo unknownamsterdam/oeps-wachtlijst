@@ -9,6 +9,9 @@ export const SITE = {
   // Fase van het product. Zet op 'live' zodra de app beschikbaar is:
   // dan veranderen knoppen en teksten van "wachtlijst" naar "probeer OEPS!".
   fase: 'wachtlijst',
+  // Google Analytics 4 (Metings-ID, begint met G-). Leeg = geen meting en geen cookiemelding.
+  // GA4 laadt pas nadat een bezoeker op "Prima" heeft geklikt.
+  ga4: '',
 };
 
 // De vier onderwerpen van "Hoe zit dat?". Ze volgen de onderdelen van de app,
