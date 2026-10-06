@@ -39,6 +39,7 @@ const basisSchema = {
     ...schema,
   ],
 };
+import Cookies from '../components/Cookies.astro';
 ---
 <!doctype html>
 <html lang="nl">
@@ -205,6 +206,7 @@ const basisSchema = {
           <li><a href={`mailto:${SITE.mail}`}>{SITE.mail}</a></li>
           <li><a href={SITE.instagram} rel="noopener">Instagram</a></li>
           <li><a href="/privacy/">Privacy</a></li>
+          {SITE.ga4 && <li><a href="/privacy/#cookies" class="js-cookies">Cookies</a></li>}
         </ul>
       </div>
     </div>
@@ -237,5 +239,6 @@ const basisSchema = {
     });
   })();
 </script>
+<Cookies />
 </body>
 </html>
