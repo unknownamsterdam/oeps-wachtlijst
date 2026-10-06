@@ -1,0 +1,55 @@
+---
+// Cookiemelding + Google Analytics 4. Laadt GA4 pas na toestemming (zo hoort het in Nederland).
+// De keuze wordt in de browser onthouden; via "Cookies" onderaan de pagina kun je hem veranderen.
+import { SITE } from '../data/site.js';
+const id = SITE.ga4;
+---
+{id && (
+  <>
+    <div class="koekje" id="koekje" hidden role="dialog" aria-live="polite" aria-label="Cookies">
+      <p><b>Mogen we tellen?</b> We willen weten hoeveel mensen hier komen en welke pagina's ze lezen. Daarvoor gebruiken we Google Analytics, met een cookie. We zien niet wie jij bent. <a href="/privacy/#cookies">Meer weten</a></p>
+      <div class="knoppen">
+        <button type="button" class="knop" data-keuze="ja">Prima</button>
+        <button type="button" class="knop" data-keuze="nee">Liever niet</button>
+      </div>
+    </div>
+    <script is:inline define:vars={{ id }}>
+      (function () {
+        var SLEUTEL = 'oeps-cookies';
+        var balk = document.getElementById('koekje');
+        function lees() { try { return localStorage.getItem(SLEUTEL); } catch (e) { return null; } }
+        function bewaar(k) { try { localStorage.setItem(SLEUTEL, k); } catch (e) {} }
+        function laadGa() {
+          if (window.__oepsGa) return; window.__oepsGa = true;
+          var s = document.createElement('script'); s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
+          document.head.appendChild(s);
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function () { dataLayer.push(arguments); };
+          gtag('js', new Date());
+          gtag('config', id);
+          // Aanmelding voor de wachtlijst meten (het formulier stuurt terug met ?aangemeld=1).
+          if (new URLSearchParams(location.search).get('aangemeld')) gtag('event', 'generate_lead', { method: 'wachtlijst' });
+        }
+        var keuze = lees();
+        if (keuze === 'ja') laadGa(); else if (keuze !== 'nee') balk.hidden = false;
+        balk.addEventListener('click', function (e) {
+          var k = e.target.getAttribute('data-keuze'); if (!k) return;
+          bewaar(k); balk.hidden = true;
+          if (k === 'ja') laadGa();
+        });
+        document.querySelectorAll('.js-cookies').forEach(function (a) {
+          a.addEventListener('click', function (e) { e.preventDefault(); balk.hidden = false; });
+        });
+      })();
+    </script>
+  </>
+)}
+
+<style>
+  .koekje{position:fixed;left:16px;right:16px;bottom:16px;z-index:50;max-width:560px;margin:0 auto;background:var(--wit);border:3px solid var(--marine);border-radius:var(--rond);box-shadow:var(--schaduw);padding:16px 18px;display:grid;gap:12px}
+  .koekje p{font-size:15px;line-height:1.45}
+  .koekje a{color:var(--marine);font-weight:700}
+  .knoppen{display:flex;gap:10px;flex-wrap:wrap}
+  .knoppen .knop{flex:1;min-width:120px}
+  .knoppen [data-keuze=nee]{background:var(--wit);color:var(--marine);box-shadow:none;border:3px solid var(--marine)}
+</style>
