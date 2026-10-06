@@ -114,12 +114,13 @@ const basisSchema = {
   .aanmeld--compact .rij button{margin-top:0;width:auto;padding:12px 18px;white-space:nowrap}
   .klein{font-size:13px;color:var(--zacht);margin-top:12px}
   .verborgen{position:absolute;left:-9999px}
-  .bedankt{display:none;background:var(--geel);padding:22px;border-radius:var(--rond);max-width:520px}
+  .bedankt{display:none;background:var(--geel);color:var(--marine);padding:22px;border-radius:var(--rond);max-width:520px}
   .bedankt b{font-stretch:112%;font-size:22px;display:block;margin-bottom:6px}
   body.aangemeld .bedankt{display:block}
   body.aangemeld .formulier{display:none}
   .socials{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
-  .socials a{text-decoration:none;font-weight:600;font-size:15px;background:var(--wit);border:2px solid var(--marine);border-radius:999px;padding:7px 14px}
+  .socials a{text-decoration:none;font-weight:600;font-size:15px;background:var(--wit);border:2px solid var(--marine);border-radius:999px;padding:7px 14px;color:var(--marine)}
+  .socials a:hover{background:var(--marine);color:var(--wit)}
 
   /* Kaarten per onderwerp */
   .kaarten{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
