@@ -1,14 +1,13 @@
 ---
-// Het wachtlijstformulier. Elke inzending gaat via Netlify Forms naar de functie
-// netlify/functions/submission-created.js, die het adres in Brevo zet.
-// Alle varianten hebben dezelfde velden, zodat Netlify ze als één formulier ziet.
+// Het wachtlijstformulier. Elke inzending gaat naar /aanmelden (worker/index.js op Cloudflare),
+// die het adres in Brevo zet en daarna terugstuurt naar deze pagina met ?aangemeld=1.
 import { SITE } from '../data/site.js';
 const { compact = false, bron = 'direct' } = Astro.props;
 const terug = Astro.url.pathname + '?aangemeld=1#aanmelden';
 ---
 <div class={compact ? 'aanmeld aanmeld--compact' : 'aanmeld'} id="aanmelden">
-  <form name="wachtlijst" method="POST" action={terug} data-netlify="true" netlify-honeypot="bot-veld" class="formulier">
-    <input type="hidden" name="form-name" value="wachtlijst">
+  <form name="wachtlijst" method="POST" action="/aanmelden/" class="formulier">
+    <input type="hidden" name="terug" value={terug}>
     <input type="hidden" name="bron" class="js-bron" value={bron}>
     <p class="verborgen"><label>Niet invullen: <input name="bot-veld"></label></p>
 

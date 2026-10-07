@@ -165,6 +165,11 @@ import Cookies from '../components/Cookies.astro';
     .aanmeld--compact .rij{flex-direction:column}
     .aanmeld--compact .rij button{width:100%}
   }
+  @media (max-width:400px){
+    .menu{gap:0}
+    .menu a{padding:8px 7px}
+    .menu .knop-klein{padding:8px 11px}
+  }
 </style>
 </head>
 <body>
@@ -174,8 +179,8 @@ import Cookies from '../components/Cookies.astro';
     <nav class="menu" aria-label="Hoofdmenu">
       <a href="/hoe-zit-dat/" aria-current={pad.startsWith('/hoe-zit-dat/') ? 'page' : undefined}>Hoe zit dat?</a>
       {SITE.fase === 'live'
-        ? <a href="https://app.oeps.app" class="knop-klein">Inloggen</a>
-        : <a href="/#aanmelden" class="knop-klein">Wachtlijst</a>}
+        ? <a href="/inloggen" class="knop-klein">Inloggen</a>
+        : <><a href="/inloggen">Inloggen</a><a href="/#aanmelden" class="knop-klein">Wachtlijst</a></>}
     </nav>
   </div>
 </header>
