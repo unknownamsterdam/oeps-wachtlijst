@@ -1,5 +1,6 @@
 {
   // OEPS! website op Cloudflare. Bouwen: npm run build (Astro maakt dist/), live zetten: npx wrangler deploy.
+  // Gekoppeld aan Cloudflare Builds (project oeps-site), branch cloudflare tot de omschakeling van oeps.app.
   "name": "oeps-site",
   "main": "worker/index.js",
   "compatibility_date": "2026-10-05",
