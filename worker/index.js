@@ -35,28 +35,49 @@ export async function aanmelden(request, env) {
   return naarBedankt;
 }
 
-// De app staat op oeps.app/app/. De site stuurt die verzoeken door naar oeps-mail (binding APP),
-// zonder /app ervoor, en vertelt met x-oeps-basis waar de app staat (voor de inloglink).
-export async function naarApp(request, env) {
+// De app draait in oeps-mail (binding APP). Op oeps.app is alles één adres:
+// - oeps.app           → ben je ingelogd, dan de app; anders de homepage
+// - oeps.app/inloggen  → het inlogscherm (de link in de inlogmail komt hier ook uit)
+// - oude adressen oeps.app/app/... → doorsturen naar /inloggen
+const APP_BESTANDEN = new Set(['/app.css', '/app.js', '/sw.js', '/manifest.webmanifest', '/icon.svg', '/icon-180.png', '/icon-192.png', '/app-512.png']);
+const geenCache = (r) => { const n = new Response(r.body, r); n.headers.set('cache-control', 'private, no-store'); n.headers.append('vary', 'cookie'); return n; };
+
+export function naarApp(request, env, pad) {
   const url = new URL(request.url);
-  const pad = url.pathname.slice('/app'.length) || '/';
-  const doel = new URL(pad + url.search, url.origin);
-  const req = new Request(doel, request);
-  req.headers.set('x-oeps-basis', '/app');
+  const req = new Request(new URL((pad || url.pathname) + url.search, url.origin), request);
+  req.headers.set('x-oeps-basis', '/inloggen'); // zo weet de app waar de inloglink heen moet
   return env.APP.fetch(req);
+}
+
+// Ingelogd? Vraag het de app (met de cookie van de bezoeker). Geeft het antwoord terug, of null.
+async function ingelogd(request, env) {
+  if (!/(?:^|;\s*)oeps_sessie=/.test(request.headers.get('cookie') || '')) return null;
+  const r = await env.APP.fetch(new Request(new URL('/api/ik', request.url), { headers: { cookie: request.headers.get('cookie') } }));
+  return r.ok ? r : null;
 }
 
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    const pad = url.pathname;
     // www.oeps.app → oeps.app
     if (url.hostname.startsWith('www.')) {
       url.hostname = url.hostname.slice(4);
       return Response.redirect(url.toString(), 301);
     }
-    if (url.pathname === '/app') return Response.redirect(new URL('/app/', request.url).toString(), 301);
-    if (url.pathname.startsWith('/app/')) return naarApp(request, env);
-    if (url.pathname.replace(/\/$/, '') === '/aanmelden') {
+    if (pad === '/') {
+      const ik = await ingelogd(request, env);
+      if (!ik) return geenCache(await env.ASSETS.fetch(request));
+      const app = geenCache(await naarApp(request, env, '/'));
+      const vers = ik.headers.get('set-cookie'); // ingelogd blijven
+      if (vers) app.headers.append('set-cookie', vers);
+      return app;
+    }
+    if (pad === '/inloggen') return geenCache(await naarApp(request, env, '/'));
+    if (pad === '/inloggen/') return Response.redirect(new URL('/inloggen' + url.search, request.url).toString(), 301);
+    if (pad === '/app' || pad.startsWith('/app/')) return Response.redirect(new URL('/inloggen', request.url).toString(), 302);
+    if (pad.startsWith('/api/') || APP_BESTANDEN.has(pad)) return naarApp(request, env);
+    if (pad.replace(/\/$/, '') === '/aanmelden') {
       if (request.method !== 'POST') return Response.redirect(new URL('/#aanmelden', request.url).toString(), 302);
       return aanmelden(request, env);
     }
