@@ -9,11 +9,15 @@
     "directory": "./dist",
     "binding": "ASSETS",
     "html_handling": "auto-trailing-slash",
-    "run_worker_first": ["/aanmelden", "/aanmelden/"]
+    "run_worker_first": ["/aanmelden", "/aanmelden/", "/app", "/app/*"]
   },
   // BREVO_LIST_ID: de lijst "OEPS! wachtlijst" in Brevo. MELDING_AAN: wie een seintje krijgt per aanmelding.
   "vars": { "BREVO_LIST_ID": "3", "MELDING_AAN": "joelmombarg@gmail.com" },
   // Aanmeldingen gaan via oeps-mail (die heeft de Brevo-sleutel), niet rechtstreeks naar Brevo.
-  "services": [{ "binding": "MAIL", "service": "oeps-mail", "entrypoint": "Wachtlijst" }],
+  // De app (oeps.app/app/) draait ook in oeps-mail: binding APP stuurt die verzoeken door.
+  "services": [
+    { "binding": "MAIL", "service": "oeps-mail", "entrypoint": "Wachtlijst" },
+    { "binding": "APP", "service": "oeps-mail" }
+  ],
   "observability": { "enabled": true }
 }
