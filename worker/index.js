@@ -35,9 +35,27 @@ export async function aanmelden(request, env) {
   return naarBedankt;
 }
 
+// De app staat op oeps.app/app/. De site stuurt die verzoeken door naar oeps-mail (binding APP),
+// zonder /app ervoor, en vertelt met x-oeps-basis waar de app staat (voor de inloglink).
+export async function naarApp(request, env) {
+  const url = new URL(request.url);
+  const pad = url.pathname.slice('/app'.length) || '/';
+  const doel = new URL(pad + url.search, url.origin);
+  const req = new Request(doel, request);
+  req.headers.set('x-oeps-basis', '/app');
+  return env.APP.fetch(req);
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    // www.oeps.app → oeps.app
+    if (url.hostname.startsWith('www.')) {
+      url.hostname = url.hostname.slice(4);
+      return Response.redirect(url.toString(), 301);
+    }
+    if (url.pathname === '/app') return Response.redirect(new URL('/app/', request.url).toString(), 301);
+    if (url.pathname.startsWith('/app/')) return naarApp(request, env);
     if (url.pathname.replace(/\/$/, '') === '/aanmelden') {
       if (request.method !== 'POST') return Response.redirect(new URL('/#aanmelden', request.url).toString(), 302);
       return aanmelden(request, env);
