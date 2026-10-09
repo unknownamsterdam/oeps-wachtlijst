@@ -14,6 +14,8 @@ export async function aanmelden(request, env) {
   if (f.get('bot-veld')) return naarBedankt; // robot: doen alsof het gelukt is
   const email = String(f.get('email') || '').trim().toLowerCase();
   if (!isEmail(email)) return tekst('Dat e-mailadres lijkt niet te kloppen. Ga terug en probeer het opnieuw.', 400);
+  // Naam (9 okt): zodat Joël weet wie zich aanmeldt. Leeg mag nog, voor oude pagina's in iemands browser.
+  const naam = String(f.get('naam') || '').replace(/\s+/g, ' ').trim().slice(0, 80);
 
   const vergeet = String(f.get('vergeet-het-vaakst') || '');
   const anders = String(f.get('vergeet-anders') || '').slice(0, 200);
@@ -25,7 +27,7 @@ export async function aanmelden(request, env) {
 
   let uitslag = { inBrevo: false, gemeld: false };
   try {
-    uitslag = await env.MAIL.aanmelden({ email, velden, lijst: env.BREVO_LIST_ID, meldingAan: env.MELDING_AAN });
+    uitslag = await env.MAIL.aanmelden({ email, naam, velden, lijst: env.BREVO_LIST_ID, meldingAan: env.MELDING_AAN });
   } catch (fout) {
     console.error(JSON.stringify({ taak: 'aanmelden-fout', fout: String(fout).slice(0, 200) }));
   }
