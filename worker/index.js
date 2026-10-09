@@ -41,7 +41,7 @@ export async function aanmelden(request, env) {
 // - oeps.app           → ben je ingelogd, dan de app; anders de homepage
 // - oeps.app/inloggen  → het inlogscherm (de link in de inlogmail komt hier ook uit)
 // - oude adressen oeps.app/app/... → doorsturen naar /inloggen
-const APP_BESTANDEN = new Set(['/app.css', '/app.js', '/sw.js', '/manifest.webmanifest', '/icon.svg', '/icon-180.png', '/icon-192.png', '/app-512.png']);
+const APP_BESTANDEN = new Set(['/app.css', '/app.js', '/sw.js', '/manifest.webmanifest', '/icon.svg', '/icon-180.png', '/icon-192.png', '/app-512.png', '/badge-96.png']);
 const geenCache = (r) => { const n = new Response(r.body, r); n.headers.set('cache-control', 'private, no-store'); n.headers.append('vary', 'cookie'); return n; };
 
 export function naarApp(request, env, pad) {
