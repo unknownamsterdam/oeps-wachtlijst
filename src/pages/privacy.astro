@@ -31,7 +31,7 @@ import { SITE } from '../data/site.js';
       <li>Mails die je doorstuurt naar je OEPS!-adres, en mails die we ophalen uit je gekoppelde Gmail of Outlook (zie hieronder).</li>
       <li>Foto's en pdf's die je zelf toevoegt, zoals een kassabon of garantiebewijs.</li>
       <li>Wat we uit die mails en bonnen halen: winkel, product, prijs, ordernummer, aankoop- en leverdatum, retourtermijn, garantie, verlenging, opzegtermijn en pakketgegevens.</li>
-      <li>Wat je zelf invult: keuzes (zoals "ik houd het"), notities, je postcode (om PostNL-pakketten te volgen) en je adres (alleen voor een retourlabel).</li>
+      <li>Wat je zelf invult: keuzes (zoals "ik houd het"), notities, je postcode (om PostNL-pakketten te volgen), je adres (alleen voor een retourlabel), je kenteken (voor de APK) en de vervaldatum van documenten zoals je paspoort. Het nummer van je paspoort of rijbewijs vragen we niet.</li>
       <li>Berichtjes die je ons stuurt.</li>
       <li>Voor meldingen op je telefoon: het adres van je toestel waar meldingen naartoe gaan.</li>
     </ul>
@@ -47,7 +47,9 @@ import { SITE } from '../data/site.js';
 
     <h3>Waarvoor</h3>
     <ul>
-      <li>Je overzicht, en op tijd een seintje over retour, garantie, verlenging, opzeggen, prijsverhogingen en pakketten.</li>
+      <li>Je overzicht, en op tijd een seintje over retour, garantie, verlenging, opzeggen, prijsverhogingen, pakketten, je APK en documenten die verlopen.</li>
+      <li>Opvallende dingen in je rekeningen, zoals een rekening die veel hoger is dan normaal, of iets dat je twee keer bestelde.</li>
+      <li>Zolang je iets nog kunt terugsturen: kijken of het bij dezelfde winkel goedkoper is geworden.</li>
       <li>Hulp waar je zelf om vraagt, zoals een klachtmail, de stappen om op te zeggen of een retourlabel. Versturen, opzeggen of betalen gebeurt alleen als jij op de knop drukt.</li>
       <li>De app beter maken: we kijken naar tellingen (hoeveel mails, hoeveel goed gelezen), niet naar de inhoud van jouw mails.</li>
     </ul>
@@ -63,10 +65,11 @@ import { SITE } from '../data/site.js';
     <p>Deze bedrijven verwerken gegevens voor ons, alleen voor wat hieronder staat, en met afspraken die de AVG eist:</p>
     <ul>
       <li><b>Cloudflare</b>: de app, de database en de opslag van mails. In de Europese Unie.</li>
-      <li><b>Anthropic</b>: leest mails en bonnen om de gegevens eruit te halen (zie hierboven). Anthropic zit in de Verenigde Staten; de doorgifte gebeurt met de standaardcontractbepalingen van de Europese Commissie.</li>
+      <li><b>Anthropic</b>: leest mails en bonnen om de gegevens eruit te halen (zie hierboven). Om te zien of iets goedkoper is geworden, zoekt Claude op internet met alleen de productnaam en de winkel, nooit met je naam of mailadres. Anthropic zit in de Verenigde Staten; de doorgifte gebeurt met de standaardcontractbepalingen van de Europese Commissie.</li>
       <li><b>Brevo</b>: verstuurt de mails van OEPS! aan jou, zoals je inloglink. In de Europese Unie.</li>
       <li><b>Apple, Google of Mozilla</b>: bezorgen de meldingen op je telefoon of computer. De inhoud is versleuteld.</li>
       <li><b>Google en Microsoft</b>: alleen als je je Gmail of Outlook koppelt.</li>
+      <li><b>RDW</b>: als je je kenteken invult, vragen we daar de APK-datum op. De RDW krijgt alleen het kenteken.</li>
       <li><b>17TRACK</b>: volgt je pakketten met de trackcode en de vervoerder, en bij PostNL je postcode.</li>
       <li><b>Sendcloud</b>: alleen als je een retourlabel laat maken; dan krijgt Sendcloud je naam, adres en de bestelling.</li>
     </ul>
