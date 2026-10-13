@@ -1,38 +1,130 @@
 ---
 import Base from '../layouts/Base.astro';
 import { SITE } from '../data/site.js';
+// 13 okt 2026: uitgebreid met de app (Gmail, Outlook, doorsturen, AI) en de eisen van Google voor Gmail-toegang.
+// De teksten moeten kloppen met wat de app doet (repo oeps-mail) en met het scherm "Wat OEPS! met je mail doet".
 ---
 <Base
   title="Privacy | OEPS!"
-  description="Wat OEPS! doet met je gegevens als je je aanmeldt voor de wachtlijst. Kort en duidelijk."
+  description="Wat OEPS! doet met je gegevens: in de app, met je mail en op de wachtlijst. Kort en duidelijk."
 >
   <div class="wrap smal privacy">
     <h1>Privacy</h1>
-    <p class="lead">Kort en duidelijk: wat we doen met je gegevens als je je aanmeldt voor de wachtlijst.</p>
+    <p class="lead">Kort en duidelijk: wat OEPS! doet met je gegevens. Eerst de app, daarna de wachtlijst en deze website.</p>
 
-    <h2>Wat we bewaren</h2>
+    <h2>In het kort</h2>
+    <ul>
+      <li>We lezen alleen mails over aankopen, rekeningen, abonnementen, bezorging en retouren.</li>
+      <li>We halen er de datums en bedragen uit die tellen, zodat je op tijd een seintje krijgt.</li>
+      <li>We verkopen niets door, tonen geen reclame en laten geen AI trainen op je mails.</li>
+      <li>Je gegevens staan in de Europese Unie. Je kunt alles downloaden en alles laten verwijderen.</li>
+    </ul>
+
+    <h2>Wie is verantwoordelijk</h2>
+    <p>OEPS! is verantwoordelijk voor je gegevens (in de AVG heet dat de verwerkingsverantwoordelijke). Je bereikt ons via <a href={`mailto:${SITE.mail}`}>{SITE.mail}</a>.</p>
+
+    <h2 id="app">De app</h2>
+
+    <h3>Wat we bewaren</h3>
+    <ul>
+      <li>Je account: je e-mailadres, je naam en je eigen OEPS!-adres.</li>
+      <li>Mails die je doorstuurt naar je OEPS!-adres, en mails die we ophalen uit je gekoppelde Gmail of Outlook (zie hieronder).</li>
+      <li>Foto's en pdf's die je zelf toevoegt, zoals een kassabon of garantiebewijs.</li>
+      <li>Wat we uit die mails en bonnen halen: winkel, product, prijs, ordernummer, aankoop- en leverdatum, retourtermijn, garantie, verlenging, opzegtermijn en pakketgegevens.</li>
+      <li>Wat je zelf invult: keuzes (zoals "ik houd het"), notities, je postcode (om PostNL-pakketten te volgen) en je adres (alleen voor een retourlabel).</li>
+      <li>Berichtjes die je ons stuurt.</li>
+      <li>Voor meldingen op je telefoon: het adres van je toestel waar meldingen naartoe gaan.</li>
+    </ul>
+
+    <h3 id="gmail">Gmail en Outlook koppelen</h3>
+    <ul>
+      <li>Je geeft zelf toestemming via Google of Microsoft. We vragen alleen om je mail te <b>lezen</b>.</li>
+      <li>In Gmail zoeken we met een vaste zoekopdracht naar mails over bestellingen, facturen, abonnementen, bezorging en retouren. Alleen die mails halen we op.</li>
+      <li>In Outlook kijken we naar het onderwerp en de afzender van de mails in je Postvak IN, en halen we alleen de mails op die daarbij passen.</li>
+      <li>Nieuwsbrieven, reclame en gewone mails van mensen openen we niet. We sturen niets vanuit je mailbox, veranderen niets en verwijderen niets.</li>
+      <li>Ontkoppelen kan altijd in de app, onder Account. Dan trekken we de toegang in en halen we niets meer op. Je kunt de toegang ook intrekken in je Google- of Microsoft-account.</li>
+    </ul>
+
+    <h3>Waarvoor</h3>
+    <ul>
+      <li>Je overzicht, en op tijd een seintje over retour, garantie, verlenging, opzeggen, prijsverhogingen en pakketten.</li>
+      <li>Hulp waar je zelf om vraagt, zoals een klachtmail, de stappen om op te zeggen of een retourlabel. Versturen, opzeggen of betalen gebeurt alleen als jij op de knop drukt.</li>
+      <li>De app beter maken: we kijken naar tellingen (hoeveel mails, hoeveel goed gelezen), niet naar de inhoud van jouw mails.</li>
+    </ul>
+    <p>We doen dit omdat je de app gebruikt en ons vraagt dit voor je bij te houden (de overeenkomst met jou). Voor het koppelen van Gmail of Outlook vragen we daarnaast je toestemming. Die kun je altijd intrekken door te ontkoppelen.</p>
+
+    <h3>Wie leest je mail</h3>
+    <ul>
+      <li><b>Claude, de AI van Anthropic,</b> leest de mail en haalt eruit wat telt. Anthropic mag je gegevens niet gebruiken om AI te trainen en wist ze binnen 30 dagen.</li>
+      <li><b>Geen mensen.</b> Wie OEPS! beheert, ziet alleen dát er een mail binnenkwam, niet wat erin staat. Stuur je ons zelf een berichtje over een mail, dan kijken we alleen naar wat jij meestuurt. Alleen als de wet het eist of voor de veiligheid van de dienst kan een uitzondering nodig zijn.</li>
+    </ul>
+
+    <h3>Wie helpen ons</h3>
+    <p>Deze bedrijven verwerken gegevens voor ons, alleen voor wat hieronder staat, en met afspraken die de AVG eist:</p>
+    <ul>
+      <li><b>Cloudflare</b>: de app, de database en de opslag van mails. In de Europese Unie.</li>
+      <li><b>Anthropic</b>: leest mails en bonnen om de gegevens eruit te halen (zie hierboven). Anthropic zit in de Verenigde Staten; de doorgifte gebeurt met de standaardcontractbepalingen van de Europese Commissie.</li>
+      <li><b>Brevo</b>: verstuurt de mails van OEPS! aan jou, zoals je inloglink. In de Europese Unie.</li>
+      <li><b>Apple, Google of Mozilla</b>: bezorgen de meldingen op je telefoon of computer. De inhoud is versleuteld.</li>
+      <li><b>Google en Microsoft</b>: alleen als je je Gmail of Outlook koppelt.</li>
+      <li><b>17TRACK</b>: volgt je pakketten met de trackcode en de vervoerder, en bij PostNL je postcode.</li>
+      <li><b>Sendcloud</b>: alleen als je een retourlabel laat maken; dan krijgt Sendcloud je naam, adres en de bestelling.</li>
+    </ul>
+    <p>We verkopen je gegevens nooit en gebruiken ze niet voor reclame.</p>
+
+    <h3>Hoe lang</h3>
+    <ul>
+      <li>Je gegevens blijven zolang je een account hebt.</li>
+      <li>Mails waar niets uit kwam, zoals reclame of een bezorgbericht, halen we na 90 dagen weg.</li>
+      <li>Een mail die het bewijs is van een aankoop of abonnement bewaren we, want die heb je nodig voor garantie of opzeggen. Die blijft tot je dat item of je account weghaalt.</li>
+      <li>Verwijder je je account in de app, dan halen we alles meteen weg en trekken we de toegang tot je Gmail of Outlook in. Reservekopieën bij Cloudflare verdwijnen binnen 30 dagen.</li>
+    </ul>
+
+    <h3>Beveiliging</h3>
+    <ul>
+      <li>Alle verbindingen zijn versleuteld.</li>
+      <li>De toegangssleutels voor Gmail en Outlook bewaren we versleuteld.</li>
+      <li>Inloggen gaat zonder wachtwoord, met een link die maar één keer werkt.</li>
+      <li>In ons beheer is de inhoud van je mails afgeschermd.</li>
+    </ul>
+
+    <h3>Jouw rechten</h3>
+    <ul>
+      <li><b>Inzien en downloaden:</b> in de app onder Account, Download je gegevens.</li>
+      <li><b>Aanpassen:</b> klopt iets niet, pas het aan bij het item, of stuur ons een berichtje.</li>
+      <li><b>Verwijderen:</b> een item of je hele account, in de app.</li>
+      <li><b>Toestemming intrekken:</b> ontkoppel Gmail of Outlook.</li>
+      <li><b>Bezwaar en vragen:</b> mail naar <a href={`mailto:${SITE.mail}`}>{SITE.mail}</a>.</li>
+      <li>Je mag ook een klacht indienen bij de <a href="https://autoriteitpersoonsgegevens.nl" rel="noopener">Autoriteit Persoonsgegevens</a>.</li>
+    </ul>
+
+    <h2 id="google">Gegevens van Google</h2>
+    <p>Voor gegevens die we via Google ophalen (je Gmail) geldt bovendien:</p>
+    <ul>
+      <li>We gebruiken ze alleen om de functies van OEPS! te leveren die je ziet en waar je om vroeg.</li>
+      <li>We geven ze alleen door aan de verwerkers hierboven, voor zover dat nodig is voor die functies, of als de wet het eist.</li>
+      <li>We gebruiken ze niet voor reclame en verkopen ze niet.</li>
+      <li>We gebruiken ze niet om algemene AI-modellen te ontwikkelen, verbeteren of trainen.</li>
+      <li>Mensen lezen ze niet, behalve met jouw uitdrukkelijke toestemming voor een bepaalde mail, voor de veiligheid van de dienst of als de wet het eist.</li>
+    </ul>
+    <p lang="en" class="en">OEPS!'s use and transfer to any other app of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy" rel="noopener">Google API Services User Data Policy</a>, including the Limited Use requirements. OEPS! does not use Google Workspace API data to develop, improve or train generalized AI or machine learning models.</p>
+
+    <h2 id="wachtlijst">De wachtlijst en deze website</h2>
+    <h3>Wat we bewaren</h3>
     <ul>
       <li>Je naam en e-mailadres.</li>
       <li>Je antwoorden in het formulier (wat je het vaakst vergeet en wat je ervoor over hebt).</li>
       <li>Via welke weg je bij ons kwam, bijvoorbeeld Instagram.</li>
     </ul>
-
-    <h2>Waarvoor</h2>
+    <h3>Waarvoor</h3>
     <ul>
       <li>Om je te mailen over OEPS! en de bèta: een welkomstmail en af en toe een update.</li>
       <li>Om te leren wat mensen het meest vergeten, zodat we de juiste dingen bouwen.</li>
     </ul>
-    <p>Dat doen we omdat je er zelf om vraagt door je aan te melden.</p>
+    <p>Dat doen we omdat je er zelf om vraagt door je aan te melden. Cloudflare host deze website en ontvangt het formulier; Brevo verstuurt onze mails en bewaart de wachtlijst.</p>
+    <p>Zolang je op de wachtlijst staat, bewaren we deze gegevens. Meld je je af? Dan mailen we je niet meer. Wil je dat we alles verwijderen? Stuur ons een mailtje, dan regelen we het.</p>
 
-    <h2>Wie helpen ons</h2>
-    <ul>
-      <li><b>Cloudflare</b> host deze website en ontvangt het formulier.</li>
-      <li><b>Brevo</b> verstuurt onze mails en bewaart de wachtlijst.</li>
-      <li><b>Google Analytics</b> telt hoeveel mensen de site bezoeken, alleen als je daar toestemming voor geeft (zie hieronder).</li>
-    </ul>
-    <p>We verkopen je gegevens nooit en delen ze met niemand anders.</p>
-
-    <h2 id="cookies">Cookies en bezoekers tellen</h2>
+    <h3 id="cookies">Cookies en bezoekers tellen</h3>
     <p>We willen weten hoeveel mensen op oeps.app komen, welke pagina's ze lezen en via welke weg ze ons vinden. Daarvoor gebruiken we Google Analytics. Dat zet een cookie in je browser.</p>
     <ul>
       <li>We doen dit alleen als je bij de melding op <b>Prima</b> klikt. Klik je op <b>Liever niet</b>, dan tellen we je niet.</li>
@@ -40,25 +132,24 @@ import { SITE } from '../data/site.js';
       <li>Google bewaart deze gegevens voor ons. Google mag ze niet voor reclame gebruiken.</li>
       <li>Van gedachten veranderd? Klik onderaan elke pagina op <b>Cookies</b>.</li>
     </ul>
-    <p>Verder gebruiken we geen cookies om je te volgen.</p>
+    <p>De app zelf gebruikt alleen een cookie om je ingelogd te houden. Verder gebruiken we geen cookies om je te volgen.</p>
 
-    <h2>Hoe lang</h2>
-    <p>Zolang je op de wachtlijst staat. Meld je je af? Dan mailen we je niet meer. Wil je dat we alles van je verwijderen? Stuur ons een mailtje, dan regelen we het.</p>
-
-    <h2>Jouw rechten</h2>
-    <p>Je mag altijd vragen welke gegevens we van je hebben, ze laten aanpassen of laten verwijderen. Afmelden kan met één klik onderaan elke mail. Je mag ook een klacht indienen bij de Autoriteit Persoonsgegevens.</p>
+    <h2>Wijzigingen</h2>
+    <p>Veranderen we iets belangrijks aan deze uitleg, dan laten we het je eerst weten in de app of per mail.</p>
 
     <h2>Contact</h2>
     <p>Vragen? Mail naar <a href={`mailto:${SITE.mail}`}>{SITE.mail}</a>.</p>
 
-    <p class="klein">Laatst bijgewerkt: 9 oktober 2026</p>
+    <p class="klein">Laatst bijgewerkt: 13 oktober 2026</p>
   </div>
 </Base>
 
 <style>
   .privacy{padding-top:32px}
   .lead{font-size:19px;color:var(--zacht);margin:12px 0 8px}
-  h2{margin:30px 0 10px;font-size:24px}
+  h2{margin:34px 0 10px;font-size:24px}
+  h3{margin:22px 0 8px;font-size:19px}
   p{margin:8px 0}
   ul{margin:8px 0 8px 20px;display:grid;gap:4px}
+  .en{font-size:15px;color:var(--zacht)}
 </style>
