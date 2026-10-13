@@ -1,6 +1,7 @@
 ---
 // Het wachtlijstformulier. Elke inzending gaat naar /aanmelden (worker/index.js op Cloudflare),
 // die het adres in Brevo zet en daarna terugstuurt naar deze pagina met ?aangemeld=1.
+// 13 okt: vinkje voor Engels (in het Engels geschreven, zodat wie geen Nederlands leest het snapt); de app volgt die keuze.
 import { SITE } from '../data/site.js';
 const { compact = false, bron = 'direct' } = Astro.props;
 const terug = Astro.url.pathname + '?aangemeld=1#aanmelden';
@@ -23,6 +24,7 @@ const terug = Astro.url.pathname + '?aangemeld=1#aanmelden';
           <input type="email" id={'email-' + bron} name="email" required autocomplete="email" placeholder="jij@voorbeeld.nl">
           <button type="submit">Zet me erop</button>
         </div>
+        <label class="taalkeuze"><input type="checkbox" name="taal" value="en"> I'd rather use OEPS! in English</label>
       </>
     ) : (
       <>
@@ -52,6 +54,8 @@ const terug = Astro.url.pathname + '?aangemeld=1#aanmelden';
           <option>€3 tot €5 per maand</option>
           <option>Meer dan €5 per maand</option>
         </select>
+
+        <label class="taalkeuze"><input type="checkbox" name="taal" value="en"> I'd rather use OEPS! in English</label>
 
         <button type="submit">Zet me op de wachtlijst</button>
       </>

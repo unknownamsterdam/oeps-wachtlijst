@@ -27,7 +27,9 @@ export async function aanmelden(request, env) {
 
   let uitslag = { inBrevo: false, gemeld: false };
   try {
-    uitslag = await env.MAIL.aanmelden({ email, naam, velden, lijst: env.BREVO_LIST_ID, meldingAan: env.MELDING_AAN });
+    // 13 okt: vinkje "in English" -> taal 'en'; de uitnodiging en de app volgen die keuze.
+    const taal = f.get('taal') === 'en' ? 'en' : 'nl';
+    uitslag = await env.MAIL.aanmelden({ email, naam, velden, lijst: env.BREVO_LIST_ID, meldingAan: env.MELDING_AAN, taal });
   } catch (fout) {
     console.error(JSON.stringify({ taak: 'aanmelden-fout', fout: String(fout).slice(0, 200) }));
   }
