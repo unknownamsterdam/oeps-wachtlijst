@@ -1,0 +1,7 @@
+---
+import GidsPagina from '../../components/GidsPagina.astro';
+import { RETOUR } from '../../data/gids.js';
+export function getStaticPaths() { return RETOUR.map((p) => ({ params: { slug: p.slug }, props: { p } })); }
+const { p } = Astro.props;
+---
+<GidsPagina p={p} />

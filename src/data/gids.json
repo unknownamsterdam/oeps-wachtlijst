@@ -1,0 +1,861 @@
+{
+ "bijgewerkt": "2026-10-14",
+ "paginas": [
+  {
+   "naam": "bol",
+   "soort": "retour",
+   "slug": "bol",
+   "klaar": true,
+   "bijgewerkt": "2026-10-11",
+   "bron": "https://www.bol.com/nl/nl/klantenservice/a/5692853414002688/select",
+   "zeker": 0.95,
+   "retour": {
+    "dagen": 30,
+    "vanaf": "levering",
+    "kosten": "Gratis",
+    "manieren": [
+     "account",
+     "retourpunt"
+    ],
+    "stappen": [
+     "Log in op je bol.com account",
+     "Ga naar 'Mijn bestellingen' en klik op 'Retourneren'",
+     "Selecteer het artikel en geef een retourreden op",
+     "Breng het pakket naar een PostNL-retourpunt met je retourlabel"
+    ],
+    "url": "https://www.bol.com/nl/nl/klantenservice"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.bol.com/nl/nl/klantenservice/a/4844544761790464/contact-opnemen",
+    "telefoon": "030-310 49 95"
+   }
+  },
+  {
+   "naam": "Coolblue",
+   "soort": "retour",
+   "slug": "coolblue",
+   "klaar": true,
+   "bijgewerkt": "2026-10-14",
+   "bron": "https://www.coolblue.nl/klantenservice/abonnement",
+   "zeker": 0.9,
+   "retour": {
+    "dagen": 30,
+    "vanaf": "levering",
+    "kosten": "Gratis",
+    "manieren": [
+     "account",
+     "winkel"
+    ],
+    "stappen": [
+     "Meld je retour aan via het online retourformulier",
+     "Ontvang binnen een uur een bevestigingsmail met retournummer en verzendlabel",
+     "Pak het product goed in en stuur het gratis via PostNL",
+     "Volg de status via Mijn Coolblue"
+    ],
+    "url": "https://www.coolblue.nl/retouraanvraag"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.coolblue.nl/klantenservice/contact-opnemen",
+    "telefoon": "010 798 89 99"
+   }
+  },
+  {
+   "naam": "Zalando",
+   "soort": "retour",
+   "slug": "zalando",
+   "klaar": false
+  },
+  {
+   "naam": "Amazon.nl",
+   "soort": "retour",
+   "slug": "amazon-nl",
+   "klaar": true,
+   "bijgewerkt": "2026-10-08",
+   "bron": "https://www.amazon.nl/gp/help/customer/display.html?nodeId=201910380",
+   "zeker": 0.95,
+   "retour": {
+    "dagen": 30,
+    "vanaf": "levering",
+    "kosten": "Gratis voor bepaalde items, anders afhankelijk van verkoper",
+    "manieren": [
+     "account"
+    ],
+    "stappen": [
+     "Ga naar je bestellingen",
+     "Selecteer de bestelling en klik op Items retourneren of vervangen",
+     "Selecteer het item en geef retourredenen op",
+     "Print het retourlabel en breng het pakket naar het postpunt"
+    ],
+    "url": "https://www.amazon.nl/gp/help/customer/display.html?nodeId=G6E3B2E8QPHQ88KF"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.amazon.nl/gp/help/customer/display.html?nodeId=GSD587LKW72HKU2V",
+    "telefoon": "+31 20 808 0866"
+   }
+  },
+  {
+   "naam": "Wehkamp",
+   "soort": "retour",
+   "slug": "wehkamp",
+   "klaar": true,
+   "bijgewerkt": "2026-10-14",
+   "bron": "https://www.wehkamp.nl/klantenservice/categorie/gegevens-en-voorwaarden/vraag/wat-zijn-de-voorwaarden-van-ophalen-plus",
+   "zeker": 0.85,
+   "retour": {
+    "dagen": 30,
+    "vanaf": "levering",
+    "kosten": "€0,50 per artikel, of €2,95 per zending via Ophalen Plus",
+    "manieren": [
+     "account",
+     "retourpunt"
+    ],
+    "stappen": [
+     "Meld je retour aan in Mijn Retouren op je account",
+     "Pak de artikelen in (bij voorkeur originele verpakking)",
+     "Lever je pakket in bij een DHL ServicePoint, Buurtpunt of Pakketautomaat",
+     "Volg je retour via de track & trace-code"
+    ],
+    "url": "https://www.wehkamp.nl/klantenservice/categorie/retourneren/vraag/hoe-werkt-retourneren/"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.wehkamp.nl/klantenservice/",
+    "telefoon": "038-8454545"
+   }
+  },
+  {
+   "naam": "H&M",
+   "soort": "retour",
+   "slug": "h-en-m",
+   "klaar": true,
+   "bijgewerkt": "2026-10-08",
+   "bron": "https://www2.hm.com/nl_nl/customer-service/h-m-club/h-m-club-terms-conditions.html",
+   "zeker": 0.7,
+   "retour": {
+    "dagen": 30,
+    "vanaf": "levering",
+    "kosten": "€2,99 voor online retouren (gratis in de winkel)",
+    "manieren": [
+     "account",
+     "winkel"
+    ],
+    "stappen": [
+     "Log in op je account en ga naar 'Mijn bestellingen'",
+     "Selecteer de items die je wilt terugsturen",
+     "Meld je retour aan in het retourportaal",
+     "Stuur de artikelen terug met het retourlabel"
+    ],
+    "url": "https://www2.hm.com/nl_nl/customer-service/returns.html"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www2.hm.com/nl_nl/customer-service/",
+    "telefoon": "0900-1988"
+   }
+  },
+  {
+   "naam": "Zara",
+   "soort": "retour",
+   "slug": "zara",
+   "klaar": true,
+   "bijgewerkt": "2026-10-08",
+   "bron": "https://www.zara.com/nl/nl/",
+   "zeker": 1,
+   "retour": {
+    "dagen": 30,
+    "vanaf": "levering",
+    "kosten": "Gratis retourneren in winkel; €2,95 per retour via ophaalpunt",
+    "manieren": [
+     "account",
+     "winkel",
+     "retourpunt"
+    ],
+    "stappen": [
+     "Log in op je Zara-account en ga naar 'Mijn bestellingen'",
+     "Selecteer de bestelling en kies retouroptie (winkel of ophaalpunt)",
+     "Bij ophaalpunt: ontvang DHL-retourlabel per e-mail en print het uit",
+     "Lever het pakket in bij een Zara-winkel of DHL-servicepunt"
+    ],
+    "url": "https://www.zara.com/nl/nl/help-center/HowToReturn"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.zara.com/nl/nl/help-center/",
+    "telefoon": null
+   }
+  },
+  {
+   "naam": "MediaMarkt",
+   "soort": "retour",
+   "slug": "mediamarkt",
+   "klaar": true,
+   "bijgewerkt": "2026-10-14",
+   "bron": "https://assets.ctfassets.net/jq6pdee2ul1f/1DC9sUetJFb8iQwk9YfjZN/ae0aede56b84cb2525f429c4067db0f8/Algemene-voorwaarden-MediaMarkt-Club.pdf",
+   "zeker": 0.85,
+   "retour": {
+    "dagen": 30,
+    "vanaf": "levering",
+    "kosten": "Gratis",
+    "manieren": [
+     "account",
+     "winkel",
+     "ophalen"
+    ],
+    "stappen": [
+     "Meld je retour aan via het online retourformulier in je account",
+     "Lever het product in in een MediaMarkt-winkel of stuur het per post terug",
+     "Bij grote producten haalt MediaMarkt deze in de meeste gevallen thuis op"
+    ],
+    "url": "https://www.mediamarkt.nl/nl/service/klantenservice/ruilen-retourneren"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.mediamarkt.nl/nl/service/klantenservice",
+    "telefoon": "010-8082207"
+   }
+  },
+  {
+   "naam": "IKEA",
+   "soort": "retour",
+   "slug": "ikea",
+   "klaar": true,
+   "bijgewerkt": "2026-10-14",
+   "bron": "https://www.ikea.com/nl/nl/customer-service/knowledge/articles/bb4f4276-37ff-41b8-beba-955674d9f53f.html",
+   "zeker": 0.95,
+   "retour": {
+    "dagen": 365,
+    "vanaf": "levering",
+    "kosten": "Gratis retour in IKEA winkel, betaald retour per pakket of vrachtwagen",
+    "manieren": [
+     "account",
+     "winkel",
+     "retourpunt",
+     "ophalen"
+    ],
+    "stappen": [
+     "Meld je retour aan via je IKEA Family account onder 'Aankopen' of via het retourformulier",
+     "Kies je retourmethode: in winkel, per pakket of per vrachtwagen",
+     "Voor pakketretour: ontvang barcode per e-mail en breng pakketje naar PostNL",
+     "Voor winkelretour of vrachtwagen: volg de instructies in je retourbevestiging"
+    ],
+    "url": "https://www.ikea.com/nl/nl/customer-service/returns-claims/"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.ikea.com/nl/nl/customer-service/",
+    "telefoon": "050-7111267"
+   }
+  },
+  {
+   "naam": "Decathlon",
+   "soort": "retour",
+   "slug": "decathlon",
+   "klaar": true,
+   "bijgewerkt": "2026-10-14",
+   "bron": null,
+   "zeker": 0.1,
+   "retour": {
+    "dagen": 365,
+    "vanaf": "levering",
+    "kosten": "Gratis",
+    "manieren": [
+     "account",
+     "winkel",
+     "retourpunt"
+    ],
+    "stappen": [
+     "Log in op je account en ga naar Retour aanmaken",
+     "Selecteer de gewenste artikelen en kies de retourreden",
+     "Ontvang een retourlabel per mail of gebruik het label uit de doos",
+     "Lever het pakket in bij een PostNL-pakketpunt of Decathlon-winkel"
+    ],
+    "url": "https://help.decathlon.nl/hc/nl/articles/13672938618652-Hoe-kan-ik-mijn-Decathlon-producten-retourneren"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://help.decathlon.nl/hc/nl/articles/26047246865308-Wat-zijn-de-contactmogelijkheden-van-Decathlon",
+    "telefoon": "085 0003 637"
+   }
+  },
+  {
+   "naam": "About You",
+   "soort": "retour",
+   "slug": "about-you",
+   "klaar": true,
+   "bijgewerkt": "2026-10-14",
+   "bron": null,
+   "zeker": 0,
+   "retour": {
+    "dagen": 100,
+    "vanaf": "levering",
+    "kosten": "Gratis",
+    "manieren": [
+     "account"
+    ],
+    "stappen": [
+     "Log in op je ABOUT YOU-account",
+     "Vul het retourformulier in",
+     "Pak het artikel in met het retourlabel",
+     "Geef het pakket af bij PostNL"
+    ],
+    "url": "https://www.aboutyou.nl"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.aboutyou.nl",
+    "telefoon": "0800 / 02 29 967"
+   }
+  },
+  {
+   "naam": "Shein",
+   "soort": "retour",
+   "slug": "shein",
+   "klaar": true,
+   "bijgewerkt": "2026-10-14",
+   "bron": "https://m.shein.com/nl/Delete-or-Cancel-Account-a-1054.html",
+   "zeker": 0.8,
+   "retour": {
+    "dagen": 45,
+    "vanaf": "aankoop",
+    "kosten": "Gratis voor de eerste retourzending, €4,50 voor verdere retouren van dezelfde…",
+    "manieren": [
+     "account"
+    ],
+    "stappen": [
+     "Log in op je SHEIN-account en ga naar 'Mijn bestellingen'",
+     "Klik op 'Artikelen retourneren' en selecteer welke items je terugstuurt",
+     "Download het retourlabel en print het uit",
+     "Lever het pakket in bij een PostNL-servicepunt"
+    ],
+    "url": "https://m.shein.com/euqs/coupon-a-281.html?language=nl"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://nl.shein.com/contact-us.html",
+    "telefoon": "+31 97 006 52 1188"
+   }
+  },
+  {
+   "naam": "Uniqlo",
+   "soort": "retour",
+   "slug": "uniqlo",
+   "klaar": true,
+   "bijgewerkt": "2026-10-09",
+   "bron": "https://faq-nl.uniqlo.com/",
+   "zeker": 0.3,
+   "retour": {
+    "dagen": 30,
+    "vanaf": "levering",
+    "kosten": "€2,95 per retouraanvraag",
+    "manieren": [
+     "account",
+     "winkel"
+    ],
+    "stappen": [
+     "Log in op je UNIQLO-account",
+     "Ga naar Aankoopgeschiedenis onder Mijn Account",
+     "Selecteer de bestelling die je wilt retourneren",
+     "Volg de stappen om je retourlabel af te drukken en stuur het terug"
+    ],
+    "url": "https://faq-nl.uniqlo.com/pkb_Home_UQ_NL?id=kA0Vh0000001MK2&l=nl_NL&fs=Search&pn=1"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://faq-nl.uniqlo.com/pkb_Home_UQ_NL?id=kA13z0000008lA7&l=nl_NL&fs=RelatedArticle",
+    "telefoon": "020 808 1489"
+   }
+  },
+  {
+   "naam": "Nike",
+   "soort": "retour",
+   "slug": "nike",
+   "klaar": true,
+   "bijgewerkt": "2026-10-14",
+   "bron": "https://www.nike.com/nl/",
+   "zeker": 0.3,
+   "retour": {
+    "dagen": 60,
+    "vanaf": "levering",
+    "kosten": "Gratis voor Nike Members, mogelijk van toepassing voor niet-leden",
+    "manieren": [
+     "account",
+     "winkel"
+    ],
+    "stappen": [
+     "Log in op je Nike-account op Nike.com",
+     "Selecteer de bestelling die je wilt retourneren",
+     "Klik op 'Start Return' en vink de items aan die je terug wilt sturen",
+     "Print het retourlabel en lever het pakket in bij de aangegeven vervoerder"
+    ],
+    "url": "https://www.nike.com/nl/help/a/retourneren-eu"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.nike.com/nl/help/a/nike-contact-lijst",
+    "telefoon": "+31 (0) 207219453"
+   }
+  },
+  {
+   "naam": "de Bijenkorf",
+   "soort": "retour",
+   "slug": "de-bijenkorf",
+   "klaar": true,
+   "bijgewerkt": "2026-10-14",
+   "bron": null,
+   "zeker": 0.1,
+   "retour": {
+    "dagen": 30,
+    "vanaf": "levering",
+    "kosten": "Gratis",
+    "manieren": [
+     "account",
+     "winkel"
+    ],
+    "stappen": [
+     "Log in op je account",
+     "Klik op Retouren",
+     "Meld je retour aan",
+     "Lever het pakket in bij een PostNL-punt"
+    ],
+    "url": "https://klantenservice.debijenkorf.nl"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.debijenkorf.nl/contact",
+    "telefoon": "020 808 9333"
+   }
+  },
+  {
+   "naam": "HEMA",
+   "soort": "retour",
+   "slug": "hema",
+   "klaar": true,
+   "bijgewerkt": "2026-10-14",
+   "bron": "https://www.hema.nl/klantenservice",
+   "zeker": 0.1,
+   "retour": {
+    "dagen": 30,
+    "vanaf": "levering",
+    "kosten": "Gratis in winkel, verzendkosten via UPS of DHL",
+    "manieren": [
+     "winkel",
+     "retourpunt"
+    ],
+    "stappen": [
+     "Log in op hema.nl in je account",
+     "Ga naar mijn bestellingen en selecteer de bestelling",
+     "Meld de retour aan en vul het retourformulier in",
+     "Breng het pakket naar een UPS-punt of HEMA-winkel"
+    ],
+    "url": "https://www.hema.nl/klantenservice/retourneren-en-ruilen"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.hema.nl/klantenservice",
+    "telefoon": "020 224 2424"
+   }
+  },
+  {
+   "naam": "Netflix",
+   "soort": "opzeggen",
+   "slug": "netflix",
+   "klaar": true,
+   "bijgewerkt": "2026-10-14",
+   "bron": "https://www.netflix-nederland.nl/faq/hoe-stop-ik-mijn-abonnement-op-netflix/",
+   "zeker": 0.95,
+   "retour": null,
+   "opzeggen": {
+    "via": "account",
+    "stappen": [
+     "Log in op netflix.com",
+     "Klik rechtsboven op je profielicoon en ga naar 'Account'",
+     "Klik onder 'Lidmaatschap en facturering' op 'Lidmaatschap opzeggen'",
+     "Bevestig je keuze"
+    ],
+    "let_op": "Je houdt toegang tot Netflix tot het einde van je huidige factureringsperiode.",
+    "url": "https://www.netflix-nederland.nl/faq/hoe-neem-ik-contact-op-met-netflix/"
+   },
+   "contact": {
+    "url": "https://www.netflix-nederland.nl/faq/hoe-neem-ik-contact-op-met-netflix/",
+    "telefoon": "0800-022-5173"
+   }
+  },
+  {
+   "naam": "Spotify",
+   "soort": "opzeggen",
+   "slug": "spotify",
+   "klaar": true,
+   "bijgewerkt": "2026-10-14",
+   "bron": "https://www.spotify.com/nl/legal/end-user-agreement/",
+   "zeker": 0.95,
+   "retour": null,
+   "opzeggen": {
+    "via": "account",
+    "stappen": [
+     "Log in op spotify.com/account",
+     "Klik op 'Je abonnement'",
+     "Kies 'Abonnement wijzigen'",
+     "Klik op 'Premium annuleren'"
+    ],
+    "let_op": "Je abonnement blijft actief tot de volgende factuurdatum.",
+    "url": "https://www.spotify.com/nl/account/"
+   },
+   "contact": {
+    "url": "https://www.spotify.com/nl/about-us/contact/",
+    "telefoon": null
+   }
+  },
+  {
+   "naam": "Disney+",
+   "soort": "opzeggen",
+   "slug": "disney-plus",
+   "klaar": true,
+   "bijgewerkt": "2026-10-14",
+   "bron": "https://help.disney.com",
+   "zeker": 0.9,
+   "retour": null,
+   "opzeggen": {
+    "via": "account",
+    "stappen": [
+     "Log in op je Disney+ account",
+     "Klik op je profielicoon",
+     "Ga naar Account",
+     "Klik op Abonnement opzeggen"
+    ],
+    "let_op": "Je abonnement loopt door tot het einde van je betaalde periode.",
+    "url": "https://help.disney.com"
+   },
+   "contact": {
+    "url": "https://help.disney.com",
+    "telefoon": "020-2622124"
+   }
+  },
+  {
+   "naam": "Videoland",
+   "soort": "opzeggen",
+   "slug": "videoland",
+   "klaar": true,
+   "bijgewerkt": "2026-10-14",
+   "bron": "https://www.videoland.com",
+   "zeker": 0.75,
+   "retour": null,
+   "opzeggen": {
+    "via": "account",
+    "stappen": [
+     "Log in op www.videoland.com",
+     "Ga naar 'Mijn account'",
+     "Selecteer 'Abonnement opzeggen'",
+     "Bevestig je opzegging"
+    ],
+    "let_op": "Je houdt toegang tot het einde van je huidige factureringsperiode.",
+    "url": "https://www.videoland.com/klantenservice"
+   },
+   "contact": {
+    "url": "https://www.videoland.com/klantenservice",
+    "telefoon": null
+   }
+  },
+  {
+   "naam": "HBO Max",
+   "soort": "opzeggen",
+   "slug": "hbo-max",
+   "klaar": true,
+   "bijgewerkt": "2026-10-14",
+   "bron": "https://help.hbomax.com/nl-nl/answer/detail/000002526",
+   "zeker": 0.95,
+   "retour": null,
+   "opzeggen": {
+    "via": "account",
+    "stappen": [
+     "Log in op je HBO Max-account via hbomax.com",
+     "Klik op je profielicoon en ga naar Abonnement",
+     "Kies Abonnement beheren",
+     "Selecteer Abonnement opzeggen en bevestig"
+    ],
+    "let_op": "Zeg je abonnement op voor de volgende factuurdatum om verdere kosten te voorkomen.",
+    "url": "https://www.hbomax.com/nl/subscription"
+   },
+   "contact": {
+    "url": "https://help.hbomax.com/nl-nl/contactus/topic/using_hbo_max",
+    "telefoon": "0800 022 2734"
+   }
+  },
+  {
+   "naam": "Amazon Prime",
+   "soort": "opzeggen",
+   "slug": "amazon-prime",
+   "klaar": true,
+   "bijgewerkt": "2026-10-14",
+   "bron": "https://www.amazon.nl",
+   "zeker": 0.85,
+   "retour": null,
+   "opzeggen": {
+    "via": "account",
+    "stappen": [
+     "Log in op amazon.nl",
+     "Ga naar 'Account & instellingen' en vervolgens 'Je Prime-lidmaatschap'",
+     "Klik op 'Lidmaatschap beëindigen'",
+     "Bevestig de opzegging"
+    ],
+    "let_op": "Na opzegging behoud je meestal toegang tot het einde van de betaalde periode.",
+    "url": "https://www.amazon.nl/gp/css/order-history"
+   },
+   "contact": {
+    "url": "https://www.amazon.nl/gp/help/customer/contact-us",
+    "telefoon": "+31 20 808 0866"
+   }
+  },
+  {
+   "naam": "bol Select",
+   "soort": "opzeggen",
+   "slug": "bol-select",
+   "klaar": true,
+   "bijgewerkt": "2026-10-14",
+   "bron": "https://www.bol.com/nl/nl/tc/select-voorwaarden/",
+   "zeker": 0.95,
+   "retour": null,
+   "opzeggen": {
+    "via": "account",
+    "stappen": [
+     "Log in op je bol.com account",
+     "Ga naar Mijn bol en klik op Select",
+     "Kies voor Select opzeggen",
+     "Bevestig je opzegging"
+    ],
+    "let_op": "Na 30 dagen gratis proefperiode kun je maandelijks opzeggen na het eerste jaar van 12 maanden.",
+    "url": "https://www.bol.com/nl/nl/mijn-bol/"
+   },
+   "contact": {
+    "url": "https://www.bol.com/nl/nl/klantenservice/a/4844544761790464/contactez-nous",
+    "telefoon": "+31 30 310 4999"
+   }
+  },
+  {
+   "naam": "Ziggo",
+   "soort": "opzeggen",
+   "slug": "ziggo",
+   "klaar": true,
+   "bijgewerkt": "2026-10-14",
+   "bron": "https://www.ziggo.nl/klantenservice/abonnement/opzeggen",
+   "zeker": 0.85,
+   "retour": null,
+   "opzeggen": {
+    "via": "account",
+    "stappen": [
+     "Log in op Mijn Ziggo",
+     "Ga naar Producten",
+     "Klik op Abonnement opzeggen",
+     "Bevestig je opzegging online"
+    ],
+    "let_op": "Abonnement stopt aan het einde van de lopende factuurperiode; opzegtermijn is 1 maand",
+    "url": "https://www.ziggo.nl/klantenservice"
+   },
+   "contact": {
+    "url": "https://www.ziggo.nl/klantenservice/contact",
+    "telefoon": "0900-1884"
+   }
+  },
+  {
+   "naam": "KPN",
+   "soort": "opzeggen",
+   "slug": "kpn",
+   "klaar": true,
+   "bijgewerkt": "2026-10-14",
+   "bron": "https://www.kpn.com/service/administratie/opzeggen",
+   "zeker": 0.95,
+   "retour": null,
+   "opzeggen": {
+    "via": "formulier",
+    "stappen": [
+     "Log in op MijnKPN",
+     "Ga naar je producten",
+     "Klik op het product dat je wilt opzeggen",
+     "Vul het online opzegformulier in"
+    ],
+    "let_op": "Opzegtermijn is 1 maand na afloop van je contract",
+    "url": "https://mijnkpn.kpn.com"
+   },
+   "contact": {
+    "url": "https://www.kpn.com/service/contact",
+    "telefoon": "0800-0402"
+   }
+  },
+  {
+   "naam": "Odido",
+   "soort": "opzeggen",
+   "slug": "odido",
+   "klaar": true,
+   "bijgewerkt": "2026-10-08",
+   "bron": "https://www.odido.nl/service/abonnement/opzeggen",
+   "zeker": 0.85,
+   "retour": null,
+   "opzeggen": {
+    "via": "telefoon",
+    "stappen": [
+     "Log in op Mijn Odido",
+     "Navigeer naar je actieve abonnementen",
+     "Zoek de optie 'abonnement opzeggen'",
+     "Vul het formulier in en bevestig"
+    ],
+    "let_op": "Je opzegging gaat in na het einde van je contract, opzegtermijn bedraagt één maand.",
+    "url": "https://mijnodido.odido.nl"
+   },
+   "contact": {
+    "url": "https://www.odido.nl/service/contact",
+    "telefoon": "0800-0092"
+   }
+  },
+  {
+   "naam": "Vodafone",
+   "soort": "opzeggen",
+   "slug": "vodafone",
+   "klaar": true,
+   "bijgewerkt": "2026-10-14",
+   "bron": "https://www.vodafone.nl/support/abonnement-en-rekening/opzeggen",
+   "zeker": 0.85,
+   "retour": null,
+   "opzeggen": {
+    "via": "formulier",
+    "stappen": [
+     "Vul het online opzegformulier in op vodafone.nl",
+     "Vermeld je contactgegevens en contractnummer",
+     "Dien het formulier minimaal 1 maand voor je gewenste opzegdatum in",
+     "Ontvang bevestiging van je opzegging"
+    ],
+    "let_op": "Opzegtermijn is minimaal 1 maand. Vroegtijdig opzeggen voor contracteinde kost 50% afkoopsom.",
+    "url": "https://www.vodafone.nl/mijn-vodafone"
+   },
+   "contact": {
+    "url": "https://www.vodafone.nl/support/contact",
+    "telefoon": "0800-0094"
+   }
+  },
+  {
+   "naam": "Basic-Fit",
+   "soort": "opzeggen",
+   "slug": "basic-fit",
+   "klaar": true,
+   "bijgewerkt": "2026-10-14",
+   "bron": "https://www.basic-fit.com/nl-nl/prijs",
+   "zeker": 0.9,
+   "retour": null,
+   "opzeggen": {
+    "via": "account",
+    "stappen": [
+     "Log in op je Basic-Fit account via de website of app",
+     "Ga naar je lidmaatschapsinformatie",
+     "Klik op de opzeg-optie",
+     "Volg de bevestigingsstappen"
+    ],
+    "let_op": "Opzegtermijn is vier weken na de minimale contractduur van 52 weken.",
+    "url": "https://my.basic-fit.com"
+   },
+   "contact": {
+    "url": "https://www.basic-fit.com/nl-nl/klantenservice",
+    "telefoon": null
+   }
+  },
+  {
+   "naam": "ANWB Wegenwacht",
+   "soort": "opzeggen",
+   "slug": "anwb-wegenwacht",
+   "klaar": true,
+   "bijgewerkt": "2026-10-14",
+   "bron": "https://www.anwb.nl/service-en-contact/categorie/opzeggen",
+   "zeker": 0.9,
+   "retour": null,
+   "opzeggen": {
+    "via": "formulier",
+    "stappen": [
+     "Ga naar https://www.anwb.nl/service-en-contact/categorie/opzeggen",
+     "Vul het opzegformulier in voor je Wegenwacht",
+     "Of bel 088 269 22 22 met je lidmaatschapsnummer"
+    ],
+    "let_op": "Na de eerste contractperiode: 1 maand opzegtermijn.",
+    "url": "https://www.anwb.nl/lidmaatschap/wijzigen"
+   },
+   "contact": {
+    "url": "https://www.anwb.nl/service-en-contact/categorie/wegenwacht",
+    "telefoon": "088 269 22 22"
+   }
+  },
+  {
+   "naam": "Eneco",
+   "soort": "opzeggen",
+   "slug": "eneco",
+   "klaar": true,
+   "bijgewerkt": "2026-10-08",
+   "bron": "https://www.eneco.nl/klantenservice/contract-opzeggen/",
+   "zeker": 0.85,
+   "retour": null,
+   "opzeggen": {
+    "via": "account",
+    "stappen": [
+     "Log in op Mijn Eneco",
+     "Selecteer je opzegreden",
+     "Kies de gewenste einddatum",
+     "Bevestig je opzegging"
+    ],
+    "let_op": "Opzegtermijn is 30 dagen. Bij vaste contracten kunnen opzegkosten gelden.",
+    "url": "https://www.eneco.nl/klantenservice/bekijk-je-contract/"
+   },
+   "contact": {
+    "url": "https://www.eneco.nl/klantenservice/",
+    "telefoon": "088-895-5955"
+   }
+  },
+  {
+   "naam": "Vattenfall",
+   "soort": "opzeggen",
+   "slug": "vattenfall",
+   "klaar": true,
+   "bijgewerkt": "2026-10-14",
+   "bron": "https://www.vattenfall.nl/klantenservice/contact/",
+   "zeker": 0.75,
+   "retour": null,
+   "opzeggen": {
+    "via": "account",
+    "stappen": [
+     "Log in op Mijn Vattenfall",
+     "Ga naar je contract",
+     "Selecteer de opzegoptie",
+     "Voltooi de opzegging en ontvang bevestiging per e-mail"
+    ],
+    "let_op": "Opzegtermijn is 30 dagen. Bij vast contract kan opzegvergoeding gelden.",
+    "url": "https://www.vattenfall.nl/mijn-vattenfall/"
+   },
+   "contact": {
+    "url": "https://www.vattenfall.nl/klantenservice/contact/",
+    "telefoon": "0900 0808"
+   }
+  },
+  {
+   "naam": "Essent",
+   "soort": "opzeggen",
+   "slug": "essent",
+   "klaar": true,
+   "bijgewerkt": "2026-10-14",
+   "bron": "https://www.essent.nl/klantenservice/contract/opzeggen",
+   "zeker": 0.85,
+   "retour": null,
+   "opzeggen": {
+    "via": "account",
+    "stappen": [
+     "Log in op Mijn Essent",
+     "Ga naar je contract",
+     "Selecteer opzeggen",
+     "Voltooi het opzegproces"
+    ],
+    "let_op": "Bij voortijdige opzegging van een vast contract kan een opzegvergoeding gelden.",
+    "url": "https://www.essent.nl/klantenservice/mijn-essent"
+   },
+   "contact": {
+    "url": "https://www.essent.nl/klantenservice",
+    "telefoon": "0900 15 50"
+   }
+  }
+ ]
+}

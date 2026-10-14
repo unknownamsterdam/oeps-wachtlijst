@@ -1,0 +1,97 @@
+---
+// 14 okt: één zoekpagina uit de bedrijvengids. soort 'retour' (webwinkel) of 'opzeggen' (abonnement).
+import Base from '../layouts/Base.astro';
+import Plaatje from './Plaatje.astro';
+import Wachtlijst from './Wachtlijst.astro';
+import { SITE } from '../data/site.js';
+import { datumNL } from '../data/vragen.js';
+import { RETOUR, OPZEGGEN, VIA, MANIER } from '../data/gids.js';
+
+const { p } = Astro.props;
+const retour = p.soort === 'retour';
+const r = p.retour || {}, o = p.opzeggen || {};
+const pad = retour ? `/retour/${p.slug}/` : `/opzeggen/${p.slug}/`;
+const titel = retour ? `Retourtermijn ${p.naam}` : `${p.naam} opzeggen`;
+const seoTitel = retour ? `Retourtermijn ${p.naam}: hoe lang kun je terugsturen? | OEPS!` : `${p.naam} opzeggen: zo doe je het | OEPS!`;
+const termijn = r.dagen ? `${r.dagen} dagen${r.vanaf === 'levering' ? ' na ontvangst' : r.vanaf === 'aankoop' ? ' na je bestelling' : ''}` : null;
+const kort = retour
+  ? (termijn ? `Bij ${p.naam} heb je ${termijn} om iets terug te sturen.${r.kosten ? ` Retourkosten: ${r.kosten.replace(/\.$/, '')}.` : ''}` : `Zo stuur je iets terug naar ${p.naam}.`)
+  : `Je zegt ${p.naam} op ${VIA[o.via] || 'via je account'}.${o.let_op ? ' ' + o.let_op : ''}`;
+const beschrijving = retour
+  ? `${termijn ? `Je hebt ${termijn} om je bestelling bij ${p.naam} terug te sturen.` : `Zo stuur je je bestelling bij ${p.naam} terug.`} Stappen, kosten en een seintje voordat het te laat is.`
+  : `Zo zeg je ${p.naam} op, in een paar stappen. Plus: waar je op moet letten zodat je niet nog een periode vastzit.`;
+const stappen = retour ? r.stappen : o.stappen;
+const link = retour ? r.url : o.url;
+const meer = (retour ? RETOUR : OPZEGGEN).filter((x) => x.slug !== p.slug).slice(0, 6);
+const schema = [
+  { '@type': 'HowTo', name: titel, description: beschrijving, inLanguage: 'nl-NL', step: stappen.map((s, i) => ({ '@type': 'HowToStep', position: i + 1, text: s })) },
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url + '/' },
+    { '@type': 'ListItem', position: 2, name: retour ? 'Retourtermijnen' : 'Opzeggen', item: SITE.url + (retour ? '/retour/' : '/opzeggen/') },
+    { '@type': 'ListItem', position: 3, name: titel, item: SITE.url + pad } ] },
+];
+---
+<Base title={seoTitel} description={beschrijving} schema={schema}>
+  <article class="gids">
+    <div class={`kopblok bg-${retour ? 'mint' : 'geel'}`}>
+      <div class="wrap smal kopblok-in">
+        <div>
+          <nav class="kruimel" aria-label="Kruimelpad"><a href={retour ? '/retour/' : '/opzeggen/'}>{retour ? 'Retourtermijnen' : 'Opzeggen'}</a> <span>›</span> {p.naam}</nav>
+          <h1>{titel}</h1>
+        </div>
+        <Plaatje naam={retour ? 'doos' : 'kalender'} grootte={130} />
+      </div>
+    </div>
+    <div class="wrap smal">
+      <div class="kort"><span class="kort-label">Kort gezegd</span><p>{kort}</p></div>
+      {stappen.length > 0 && (<section class="tekst"><h2>{retour ? 'Zo stuur je het terug' : 'Zo zeg je op'}</h2><ol>{stappen.map((s) => <li>{s}</li>)}</ol></section>)}
+      {retour && r.manieren?.length > 0 && (<section class="tekst"><h2>Manieren om terug te sturen</h2><ul>{r.manieren.map((m) => <li>{MANIER[m] || m}</li>)}</ul></section>)}
+      {link && <p class="naar"><a href={link} rel="noopener nofollow" target="_blank">{retour ? `Naar de retourpagina van ${p.naam}` : `Naar ${p.naam}`} ›</a></p>}
+      <aside class="oeps-blok">
+        <div><span class="badge">Binnenkort</span>
+          <h2>{retour ? 'Nooit meer net te laat.' : 'Nooit meer een jaar te lang vast.'}</h2>
+          <p>{retour ? `OEPS! onthoudt de retourtermijn van elke bestelling en geeft je een seintje voordat hij afloopt. Jij hoeft niets bij te houden.` : `OEPS! houdt je abonnementen bij en geeft je een seintje voordat ${p.naam} verlengt of duurder wordt.`}</p></div>
+        <Wachtlijst compact bron={(retour ? 'retour-' : 'opzeggen-') + p.slug} />
+      </aside>
+      <footer class="info">
+        <p>Opgezocht op de site van {p.naam} · Bijgewerkt op {datumNL(p.bijgewerkt)}{p.bron && <> · <a href={p.bron} rel="noopener nofollow" target="_blank">bron</a></>}</p>
+        <p>Klopt er iets niet meer? Mail <a href={`mailto:${SITE.mail}`}>{SITE.mail}</a>, dan passen we het aan. Voorwaarden kunnen veranderen; check bij twijfel de site van {p.naam}.</p>
+      </footer>
+      {meer.length > 0 && (<section class="meer"><h2>{retour ? 'Andere retourtermijnen' : 'Andere abonnementen opzeggen'}</h2>
+        <div class="meer-lijst">{meer.map((x) => <a class="mini" href={retour ? `/retour/${x.slug}/` : `/opzeggen/${x.slug}/`}>{retour ? `Retourtermijn ${x.naam}` : `${x.naam} opzeggen`}</a>)}</div></section>)}
+    </div>
+  </article>
+</Base>
+<style>
+  .kopblok{padding:28px 0 46px;margin-bottom:-22px}
+  .kopblok-in{display:flex;align-items:center;gap:20px;justify-content:space-between}
+  .kopblok h1{font-size:clamp(32px,5.4vw,50px)}
+  .kruimel{font-size:14px;font-weight:600;margin-bottom:12px}
+  .kruimel a{text-decoration:none;opacity:.8}
+  .kruimel span{opacity:.5;margin:0 4px}
+  .kort{position:relative;background:var(--wit);border-radius:var(--rond);box-shadow:var(--schaduw);padding:24px 24px 22px;border:3px solid var(--marine)}
+  .kort-label{position:absolute;top:-14px;left:20px;background:var(--geel);font-weight:800;font-stretch:112%;font-size:14px;padding:3px 12px;border-radius:999px;border:3px solid var(--marine)}
+  .kort p{font-size:20px;line-height:1.45;font-weight:600}
+  .tekst{margin-top:32px;font-size:18px}
+  .tekst h2{margin:0 0 12px}
+  .tekst ol,.tekst ul{margin:12px 0;padding-left:0;list-style:none;display:grid;gap:10px}
+  .tekst li{background:var(--wit);border-radius:14px;padding:12px 16px 12px 48px;position:relative}
+  .tekst ul li::before{content:"";position:absolute;left:18px;top:19px;width:12px;height:12px;border-radius:50%;background:var(--geel);border:2.5px solid var(--marine)}
+  .tekst ol{counter-reset:stap}
+  .tekst ol li{counter-increment:stap}
+  .tekst ol li::before{content:counter(stap);position:absolute;left:12px;top:11px;width:26px;height:26px;border-radius:50%;background:var(--marine);color:var(--wit);font-weight:800;font-size:14px;display:grid;place-items:center}
+  .naar{margin-top:18px;font-weight:700}
+  .oeps-blok{margin:28px 0 0;background:var(--marine);color:var(--wit);border-radius:var(--rond);padding:26px;display:grid;gap:18px}
+  .oeps-blok h2{color:var(--wit);margin:10px 0 6px}
+  .oeps-blok p{color:#d6dbe5}
+  .badge{display:inline-block;background:var(--geel);color:var(--marine);font-weight:800;font-size:13px;padding:3px 10px;border-radius:999px}
+  .oeps-blok :global(label){color:var(--wit)}
+  .oeps-blok :global(.klein){color:#aab3c5}
+  .oeps-blok :global(.formulier button){background:var(--geel);color:var(--marine)}
+  .info{margin-top:30px;font-size:14px;color:var(--zacht);display:grid;gap:4px}
+  .meer{margin-top:40px}
+  .meer h2{margin-bottom:14px}
+  .meer-lijst{display:grid;gap:10px}
+  .mini{display:block;padding:12px 16px;border-radius:16px;background:var(--wit);text-decoration:none;font-weight:700;font-size:17px}
+  @media (max-width:640px){.kopblok-in{flex-direction:column-reverse;align-items:flex-start;gap:4px}.kopblok :global(.plaatje){width:90px;height:90px}.tekst{font-size:17px}.kort p{font-size:18px}}
+</style>

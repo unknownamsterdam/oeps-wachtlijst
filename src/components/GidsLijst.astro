@@ -1,0 +1,30 @@
+---
+// 14 okt: overzicht van de zoekpagina's (retourtermijnen of opzeggen).
+import Base from '../layouts/Base.astro';
+import Wachtlijst from './Wachtlijst.astro';
+import { RETOUR, OPZEGGEN } from '../data/gids.js';
+const { soort } = Astro.props;
+const retour = soort === 'retour';
+const lijst = (retour ? RETOUR : OPZEGGEN).slice().sort((a, b) => a.naam.localeCompare(b.naam, 'nl'));
+const titel = retour ? 'Retourtermijnen van webwinkels' : 'Abonnementen opzeggen';
+---
+<Base title={`${titel} | OEPS!`} description={retour ? 'Hoe lang kun je terugsturen bij bol, Coolblue, Zalando en andere webwinkels? Per winkel de termijn, de kosten en de stappen.' : 'Zo zeg je Netflix, Spotify, Ziggo, KPN en andere abonnementen op. Per dienst de stappen en waar je op moet letten.'}>
+  <div class={`kopblok bg-${retour ? 'mint' : 'geel'}`}><div class="wrap smal"><h1>{titel}</h1><p class="sub">{retour ? 'Per winkel: hoe lang je hebt, wat het kost en hoe het werkt.' : 'Per dienst: hoe je opzegt en waar je op moet letten.'}</p></div></div>
+  <div class="wrap smal">
+    <div class="lijst">{lijst.map((p) => <a class="mini" href={`/${soort}/${p.slug}/`}><span>{retour ? `Retourtermijn ${p.naam}` : `${p.naam} opzeggen`}</span>{retour && p.retour.dagen && <b>{p.retour.dagen} dagen</b>}</a>)}</div>
+    <aside class="oeps"><h2>{retour ? 'Liever niet onthouden?' : 'Liever een seintje?'}</h2><p>{retour ? 'OEPS! onthoudt de retourtermijn van al je bestellingen en waarschuwt je op tijd.' : 'OEPS! waarschuwt je voordat een abonnement verlengt of duurder wordt.'}</p><Wachtlijst compact bron={retour ? 'retour-lijst' : 'opzeggen-lijst'} /></aside>
+  </div>
+</Base>
+<style>
+  .kopblok{padding:28px 0 40px;margin-bottom:-18px}
+  .kopblok h1{font-size:clamp(32px,5.4vw,50px)}
+  .sub{font-size:18px;margin-top:8px}
+  .lijst{display:grid;gap:10px}
+  .mini{display:flex;justify-content:space-between;gap:12px;padding:14px 16px;border-radius:16px;background:var(--wit);text-decoration:none;font-weight:700;font-size:17px;box-shadow:var(--schaduw)}
+  .mini b{white-space:nowrap}
+  .oeps{margin-top:32px;background:var(--marine);color:var(--wit);border-radius:var(--rond);padding:24px;display:grid;gap:12px}
+  .oeps h2{color:var(--wit)}
+  .oeps p{color:#d6dbe5}
+  .oeps :global(label){color:var(--wit)}
+  .oeps :global(.formulier button){background:var(--geel);color:var(--marine)}
+</style>
