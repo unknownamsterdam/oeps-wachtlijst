@@ -1,0 +1,61 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../data/site.js';
+// 13 okt 2026: eerste versie van de gebruiksvoorwaarden, voor de bèta. Laten nakijken vóór er betaald wordt.
+---
+<Base
+  title="Voorwaarden | OEPS!"
+  description="De afspraken tussen jou en OEPS!, kort en duidelijk."
+>
+  <div class="wrap smal voorwaarden">
+    <h1>Voorwaarden</h1>
+    <p class="lead">De afspraken tussen jou en OEPS!, kort en duidelijk.</p>
+
+    <h2>Wat OEPS! doet</h2>
+    <p>OEPS! leest je mails over aankopen, rekeningen en abonnementen en de bonnen die je toevoegt. Daaruit houden we termijnen bij, zoals retour, garantie, verlenging en opzeggen, en we geven je op tijd een seintje. Hoe we met je gegevens omgaan, staat in de <a href="/privacy/">privacyuitleg</a>.</p>
+
+    <h2>Een hulpmiddel, geen garantie</h2>
+    <ul>
+      <li>We doen ons best om alles goed te lezen, maar een mail kan onduidelijk zijn of ontbreken. Dan kan een datum of bedrag niet kloppen, of missen we iets.</li>
+      <li>Twijfelen we, dan vragen we het je in de app. Belangrijke datums kun je altijd zelf nakijken en aanpassen.</li>
+      <li>Jij blijft zelf verantwoordelijk voor je afspraken met winkels en aanbieders.</li>
+      <li>Wat we vertellen over je rechten (bijvoorbeeld bedenktijd of garantie) is algemene uitleg, geen juridisch advies.</li>
+    </ul>
+
+    <h2>Jij beslist</h2>
+    <p>OEPS! verstuurt niets, zegt niets op en koopt niets zonder dat jij op de knop drukt. Een conceptmail of opzegstap is een voorstel; jij kijkt het na en verstuurt het.</p>
+
+    <h2>Je account</h2>
+    <ul>
+      <li>Je account is persoonlijk. Je koppelt alleen mailboxen die van jou zijn.</li>
+      <li>Je gebruikt OEPS! niet om anderen te hinderen, de dienst te verstoren of er iets onrechtmatigs mee te doen. Gebeurt dat toch, dan mogen we je account stopzetten.</li>
+      <li>Stoppen kan altijd: verwijder je account in de app. Dan halen we je gegevens weg zoals in de privacyuitleg staat.</li>
+    </ul>
+
+    <h2>Kosten</h2>
+    <p>Tijdens de bèta is OEPS! gratis. Komt er een betaalde versie, dan zie je de prijs vooraf en kies je zelf of je die neemt. Er wordt nooit iets afgeschreven zonder dat jij daar eerst ja op zei.</p>
+
+    <h2>Als er iets misgaat</h2>
+    <ul>
+      <li>OEPS! is nieuw en kan soms niet werken of een fout bevatten. We lossen dat zo snel mogelijk op.</li>
+      <li>Mis je door een fout van OEPS! een termijn, dan zijn we niet aansprakelijk voor de schade daarvan, tenzij we opzettelijk of met grove nalatigheid handelden, of de wet anders bepaalt.</li>
+      <li>Je wettelijke rechten als consument blijven altijd gelden.</li>
+    </ul>
+
+    <h2>Veranderingen</h2>
+    <p>Passen we deze voorwaarden aan, dan laten we het je minstens 30 dagen van tevoren weten. Ben je het er niet mee eens, dan kun je je account verwijderen.</p>
+
+    <h2>Recht en vragen</h2>
+    <p>Op deze afspraken is Nederlands recht van toepassing. Vragen of een klacht? Mail naar <a href={`mailto:${SITE.mail}`}>{SITE.mail}</a>, dan zoeken we samen een oplossing.</p>
+
+    <p class="klein">Laatst bijgewerkt: 13 oktober 2026</p>
+  </div>
+</Base>
+
+<style>
+  .voorwaarden{padding-top:32px}
+  .lead{font-size:19px;color:var(--zacht);margin:12px 0 8px}
+  h2{margin:30px 0 10px;font-size:24px}
+  p{margin:8px 0}
+  ul{margin:8px 0 8px 20px;display:grid;gap:4px}
+</style>
