@@ -160,7 +160,32 @@
    "naam": "Zara",
    "soort": "retour",
    "slug": "zara",
-   "klaar": false
+   "klaar": true,
+   "bijgewerkt": "2026-10-08",
+   "bron": "https://www.zara.com/nl/nl/",
+   "zeker": 1,
+   "retour": {
+    "dagen": 30,
+    "vanaf": "levering",
+    "kosten": "Gratis retourneren in winkel; €2,95 per retour via ophaalpunt",
+    "manieren": [
+     "account",
+     "winkel",
+     "retourpunt"
+    ],
+    "stappen": [
+     "Log in op je Zara-account en ga naar 'Mijn bestellingen'",
+     "Selecteer de bestelling en kies retouroptie (winkel of ophaalpunt)",
+     "Bij ophaalpunt: ontvang DHL-retourlabel per e-mail en print het uit",
+     "Lever het pakket in bij een Zara-winkel of DHL-servicepunt"
+    ],
+    "url": "https://www.zara.com/nl/nl/help-center/HowToReturn"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.zara.com/nl/nl/help-center/",
+    "telefoon": null
+   }
   },
   {
    "naam": "MediaMarkt",
@@ -228,13 +253,61 @@
    "naam": "Decathlon",
    "soort": "retour",
    "slug": "decathlon",
-   "klaar": false
+   "klaar": true,
+   "bijgewerkt": "2026-10-14",
+   "bron": null,
+   "zeker": 0.1,
+   "retour": {
+    "dagen": 365,
+    "vanaf": "levering",
+    "kosten": "Gratis",
+    "manieren": [
+     "account",
+     "winkel",
+     "retourpunt"
+    ],
+    "stappen": [
+     "Log in op je account en ga naar Retour aanmaken",
+     "Selecteer de gewenste artikelen en kies de retourreden",
+     "Ontvang een retourlabel per mail of gebruik het label uit de doos",
+     "Lever het pakket in bij een PostNL-pakketpunt of Decathlon-winkel"
+    ],
+    "url": "https://help.decathlon.nl/hc/nl/articles/13672938618652-Hoe-kan-ik-mijn-Decathlon-producten-retourneren"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://help.decathlon.nl/hc/nl/articles/26047246865308-Wat-zijn-de-contactmogelijkheden-van-Decathlon",
+    "telefoon": "085 0003 637"
+   }
   },
   {
    "naam": "About You",
    "soort": "retour",
    "slug": "about-you",
-   "klaar": false
+   "klaar": true,
+   "bijgewerkt": "2026-10-14",
+   "bron": null,
+   "zeker": 0,
+   "retour": {
+    "dagen": 100,
+    "vanaf": "levering",
+    "kosten": "Gratis",
+    "manieren": [
+     "account"
+    ],
+    "stappen": [
+     "Log in op je ABOUT YOU-account",
+     "Vul het retourformulier in",
+     "Pak het artikel in met het retourlabel",
+     "Geef het pakket af bij PostNL"
+    ],
+    "url": "https://www.aboutyou.nl"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.aboutyou.nl",
+    "telefoon": "0800 / 02 29 967"
+   }
   },
   {
    "naam": "Shein",
@@ -269,25 +342,121 @@
    "naam": "Uniqlo",
    "soort": "retour",
    "slug": "uniqlo",
-   "klaar": false
+   "klaar": true,
+   "bijgewerkt": "2026-10-09",
+   "bron": "https://faq-nl.uniqlo.com/",
+   "zeker": 0.3,
+   "retour": {
+    "dagen": 30,
+    "vanaf": "levering",
+    "kosten": "€2,95 per retouraanvraag",
+    "manieren": [
+     "account",
+     "winkel"
+    ],
+    "stappen": [
+     "Log in op je UNIQLO-account",
+     "Ga naar Aankoopgeschiedenis onder Mijn Account",
+     "Selecteer de bestelling die je wilt retourneren",
+     "Volg de stappen om je retourlabel af te drukken en stuur het terug"
+    ],
+    "url": "https://faq-nl.uniqlo.com/pkb_Home_UQ_NL?id=kA0Vh0000001MK2&l=nl_NL&fs=Search&pn=1"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://faq-nl.uniqlo.com/pkb_Home_UQ_NL?id=kA13z0000008lA7&l=nl_NL&fs=RelatedArticle",
+    "telefoon": "020 808 1489"
+   }
   },
   {
    "naam": "Nike",
    "soort": "retour",
    "slug": "nike",
-   "klaar": false
+   "klaar": true,
+   "bijgewerkt": "2026-10-14",
+   "bron": "https://www.nike.com/nl/",
+   "zeker": 0.3,
+   "retour": {
+    "dagen": 60,
+    "vanaf": "levering",
+    "kosten": "Gratis voor Nike Members, mogelijk van toepassing voor niet-leden",
+    "manieren": [
+     "account",
+     "winkel"
+    ],
+    "stappen": [
+     "Log in op je Nike-account op Nike.com",
+     "Selecteer de bestelling die je wilt retourneren",
+     "Klik op 'Start Return' en vink de items aan die je terug wilt sturen",
+     "Print het retourlabel en lever het pakket in bij de aangegeven vervoerder"
+    ],
+    "url": "https://www.nike.com/nl/help/a/retourneren-eu"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.nike.com/nl/help/a/nike-contact-lijst",
+    "telefoon": "+31 (0) 207219453"
+   }
   },
   {
    "naam": "de Bijenkorf",
    "soort": "retour",
    "slug": "de-bijenkorf",
-   "klaar": false
+   "klaar": true,
+   "bijgewerkt": "2026-10-14",
+   "bron": null,
+   "zeker": 0.1,
+   "retour": {
+    "dagen": 30,
+    "vanaf": "levering",
+    "kosten": "Gratis",
+    "manieren": [
+     "account",
+     "winkel"
+    ],
+    "stappen": [
+     "Log in op je account",
+     "Klik op Retouren",
+     "Meld je retour aan",
+     "Lever het pakket in bij een PostNL-punt"
+    ],
+    "url": "https://klantenservice.debijenkorf.nl"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.debijenkorf.nl/contact",
+    "telefoon": "020 808 9333"
+   }
   },
   {
    "naam": "HEMA",
    "soort": "retour",
    "slug": "hema",
-   "klaar": false
+   "klaar": true,
+   "bijgewerkt": "2026-10-14",
+   "bron": "https://www.hema.nl/klantenservice",
+   "zeker": 0.1,
+   "retour": {
+    "dagen": 30,
+    "vanaf": "levering",
+    "kosten": "Gratis in winkel, verzendkosten via UPS of DHL",
+    "manieren": [
+     "winkel",
+     "retourpunt"
+    ],
+    "stappen": [
+     "Log in op hema.nl in je account",
+     "Ga naar mijn bestellingen en selecteer de bestelling",
+     "Meld de retour aan en vul het retourformulier in",
+     "Breng het pakket naar een UPS-punt of HEMA-winkel"
+    ],
+    "url": "https://www.hema.nl/klantenservice/retourneren-en-ruilen"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.hema.nl/klantenservice",
+    "telefoon": "020 224 2424"
+   }
   },
   {
    "naam": "Netflix",
