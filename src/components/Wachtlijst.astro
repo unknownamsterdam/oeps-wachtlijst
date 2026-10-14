@@ -1,5 +1,6 @@
 ---
-// Het wachtlijstformulier. Elke inzending gaat naar /aanmelden (worker/index.js op Cloudflare),
+// Het aanmeldformulier (14 okt: directe toegang; de worker van oeps-mail maakt meteen een account en mailt de inloglink).
+// Vroeger het wachtlijstformulier. Elke inzending gaat naar /aanmelden (worker/index.js op Cloudflare),
 // die het adres in Brevo zet en daarna terugstuurt naar deze pagina met ?aangemeld=1.
 // 13 okt: vinkje voor Engels (in het Engels geschreven, zodat wie geen Nederlands leest het snapt); de app volgt die keuze.
 import { SITE } from '../data/site.js';
@@ -22,7 +23,7 @@ const terug = Astro.url.pathname + '?aangemeld=1#aanmelden';
         <label for={'email-' + bron}>Je e-mailadres</label>
         <div class="rij">
           <input type="email" id={'email-' + bron} name="email" required autocomplete="email" placeholder="jij@voorbeeld.nl">
-          <button type="submit">Zet me erop</button>
+          <button type="submit">Start gratis</button>
         </div>
         <label class="taalkeuze"><input type="checkbox" name="taal" value="en"> I'd rather use OEPS! in English</label>
       </>
@@ -57,13 +58,17 @@ const terug = Astro.url.pathname + '?aangemeld=1#aanmelden';
 
         <label class="taalkeuze"><input type="checkbox" name="taal" value="en"> I'd rather use OEPS! in English</label>
 
-        <button type="submit">Zet me op de wachtlijst</button>
+        <button type="submit">Start gratis</button>
       </>
     )}
-    <p class="klein">Gratis. We mailen je alleen over OEPS! en de bèta. Afmelden kan altijd. <a href="/privacy/">Privacy</a></p>
+    <p class="klein">Gratis. Je krijgt meteen een inloglink in je mail. <a href="/privacy/">Privacy</a> · <a href="/voorwaarden/">Voorwaarden</a></p>
   </form>
 
-  <div class="bedankt">
+  <div class="bedankt bedankt--binnen">
+    <b>Kijk in je mail.</b>
+    Je inloglink staat klaar. Tik erop en je bent binnen. Niets gezien? Kijk even bij reclame of spam.
+  </div>
+  <div class="bedankt bedankt--lijst">
     <b>Je staat erop. Dank je!</b>
     Zodra de bèta opengaat, hoor je het als eerste. Kijk in je mail: daar staat een berichtje van ons.
     <div class="socials">

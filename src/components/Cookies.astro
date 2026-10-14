@@ -28,7 +28,9 @@ const id = SITE.ga4;
           gtag('js', new Date());
           gtag('config', id);
           // Aanmelding voor de wachtlijst meten (het formulier stuurt terug met ?aangemeld=1).
-          if (new URLSearchParams(location.search).get('aangemeld')) gtag('event', 'generate_lead', { method: 'wachtlijst' });
+          var zoek = new URLSearchParams(location.search);
+          if (zoek.get('aangemeld')) gtag('event', 'generate_lead', { method: 'wachtlijst' });
+          if (zoek.get('binnen')) gtag('event', 'sign_up', { method: 'direct' });
         }
         var keuze = lees();
         if (keuze === 'ja') laadGa(); else if (keuze !== 'nee') balk.hidden = false;

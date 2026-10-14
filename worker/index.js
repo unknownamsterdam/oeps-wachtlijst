@@ -33,9 +33,11 @@ export async function aanmelden(request, env) {
   } catch (fout) {
     console.error(JSON.stringify({ taak: 'aanmelden-fout', fout: String(fout).slice(0, 200) }));
   }
-  if (!uitslag.inBrevo && !uitslag.gemeld) {
+  if (!uitslag.inBrevo && !uitslag.gemeld && !uitslag.direct) {
     return tekst('Er ging iets mis bij het aanmelden. Probeer het over een paar minuten nog eens, of mail hallo@oeps.app.', 502);
   }
+  // 14 okt: directe toegang → "Kijk in je mail, je inloglink staat klaar" in plaats van "je staat op de lijst".
+  if (uitslag.direct) return Response.redirect(new URL(terug.replace('aangemeld=1', 'binnen=1'), request.url).toString(), 303);
   return naarBedankt;
 }
 

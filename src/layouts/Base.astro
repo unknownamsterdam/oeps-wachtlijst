@@ -119,8 +119,8 @@ import Cookies from '../components/Cookies.astro';
   .verborgen{position:absolute;left:-9999px}
   .bedankt{display:none;background:var(--geel);color:var(--marine);padding:22px;border-radius:var(--rond);max-width:520px}
   .bedankt b{font-stretch:112%;font-size:22px;display:block;margin-bottom:6px}
-  body.aangemeld .bedankt{display:block}
-  body.aangemeld .formulier{display:none}
+  body.aangemeld .bedankt--lijst,body.binnen .bedankt--binnen{display:block}
+  body.aangemeld .formulier,body.binnen .formulier{display:none}
   .socials{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
   .socials a{text-decoration:none;font-weight:600;font-size:15px;background:var(--wit);border:2px solid var(--marine);border-radius:999px;padding:7px 14px;color:var(--marine)}
   .socials a:hover{background:var(--marine);color:var(--wit)}
@@ -183,7 +183,7 @@ import Cookies from '../components/Cookies.astro';
       <a href="/hoe-zit-dat/" aria-current={pad.startsWith('/hoe-zit-dat/') ? 'page' : undefined}>Hoe zit dat?</a>
       {SITE.fase === 'live'
         ? <a href="/inloggen" class="knop-klein">Inloggen</a>
-        : <><a href="/inloggen">Inloggen</a><a href="/#aanmelden" class="knop-klein">Wachtlijst</a></>}
+        : <><a href="/inloggen">Inloggen</a><a href="/#aanmelden" class="knop-klein">Start gratis</a></>}
     </nav>
   </div>
 </header>
@@ -217,7 +217,7 @@ import Cookies from '../components/Cookies.astro';
       <div>
         <b>OEPS!</b>
         <ul>
-          <li><a href="/#aanmelden">Wachtlijst</a></li>
+          <li><a href="/#aanmelden">Aanmelden</a></li>
           <li><a href={`mailto:${SITE.mail}`}>{SITE.mail}</a></li>
           <li><a href={SITE.instagram} rel="noopener">Instagram</a></li>
           <li><a href="/privacy/">Privacy</a></li>
@@ -234,6 +234,7 @@ import Cookies from '../components/Cookies.astro';
   (function(){
     var p = new URLSearchParams(location.search);
     if (p.get('aangemeld')) { document.body.classList.add('aangemeld'); }
+    if (p.get('binnen')) { document.body.classList.add('binnen'); }
     var bron = p.get('utm_source') || p.get('bron');
     if (!bron && document.referrer) { try { var h = new URL(document.referrer).hostname; if (h !== location.hostname) bron = h; } catch(e){} }
     document.querySelectorAll('.js-bron').forEach(function(veld){
