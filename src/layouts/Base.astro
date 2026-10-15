@@ -90,7 +90,7 @@ import Cookies from '../components/Cookies.astro';
   /* Header */
   .kop{position:sticky;top:0;z-index:10;background:rgba(237,239,242,.92);backdrop-filter:saturate(1.4) blur(8px)}
   .kop .wrap{display:flex;align-items:center;gap:16px;height:68px}
-  .logo{font-weight:800;font-stretch:112%;font-size:26px;letter-spacing:-.5px;text-decoration:none}
+  .logo{flex:none;font-weight:800;font-stretch:112%;font-size:26px;letter-spacing:-.5px;text-decoration:none}
   .logo span{background:var(--geel);padding:0 4px;border-radius:4px}
   .menu{margin-left:auto;display:flex;align-items:center;gap:6px}
   .menu a{text-decoration:none;font-weight:600;font-size:15px;padding:9px 14px;border-radius:999px;white-space:nowrap}
@@ -168,10 +168,16 @@ import Cookies from '../components/Cookies.astro';
     .aanmeld--compact .rij{flex-direction:column}
     .aanmeld--compact .rij button{width:100%}
   }
-  @media (max-width:400px){
-    .menu{gap:0}
-    .menu a{padding:8px 7px}
-    .menu .knop-klein{padding:8px 11px}
+  /* 15 okt (Joël): op de telefoon viel "Start gratis" er rechts af. Smal: logo, Inloggen en de knop op één rij;
+     "Hoe zit dat?" staat dan op de homepage en in de footer. */
+  @media (max-width:560px){
+    .menu a.alleen-breed{display:none}
+    .menu .knop-klein{padding:10px 16px;font-weight:700}
+  }
+  @media (max-width:360px){
+    .kop .wrap{padding:0 14px}
+    .menu a{padding:8px 8px}
+    .menu .knop-klein{padding:9px 12px}
   }
 </style>
 </head>
@@ -180,7 +186,7 @@ import Cookies from '../components/Cookies.astro';
   <div class="wrap">
     <a href="/" class="logo" aria-label="OEPS! home">OEPS<span>!</span></a>
     <nav class="menu" aria-label="Hoofdmenu">
-      <a href="/hoe-zit-dat/" aria-current={pad.startsWith('/hoe-zit-dat/') ? 'page' : undefined}>Hoe zit dat?</a>
+      <a href="/hoe-zit-dat/" class="alleen-breed" aria-current={pad.startsWith('/hoe-zit-dat/') ? 'page' : undefined}>Hoe zit dat?</a>
       {SITE.fase === 'live'
         ? <a href="/inloggen" class="knop-klein">Inloggen</a>
         : <><a href="/inloggen">Inloggen</a><a href="/#aanmelden" class="knop-klein">Start gratis</a></>}
