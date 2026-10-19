@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { SITE } from '../data/site.js';
+// 19 okt 2026: kortingscodes uit reclamemail erbij.
 // 13 okt 2026: uitgebreid met de app (Gmail, Outlook, doorsturen, AI) en de eisen van Google voor Gmail-toegang.
 // De teksten moeten kloppen met wat de app doet (repo oeps-mail) en met het scherm "Wat OEPS! met je mail doet".
 ---
@@ -41,7 +42,8 @@ import { SITE } from '../data/site.js';
       <li>Je geeft zelf toestemming via Google of Microsoft. We vragen alleen om je mail te <b>lezen</b>.</li>
       <li>In Gmail zoeken we met een vaste zoekopdracht naar mails over bestellingen, facturen, abonnementen, bezorging en retouren. Alleen die mails halen we op.</li>
       <li>In Outlook kijken we naar het onderwerp en de afzender van de mails in je Postvak IN, en halen we alleen de mails op die daarbij passen.</li>
-      <li>Nieuwsbrieven, reclame en gewone mails van mensen openen we niet. We sturen niets vanuit je mailbox, veranderen niets en verwijderen niets.</li>
+      <li>Gewone mails van mensen openen we niet. We sturen niets vanuit je mailbox, veranderen niets en verwijderen niets.</li>
+      <li>Reclame en nieuwsbrieven lezen we alleen om er een <b>kortingscode</b> uit te halen. In Gmail zoeken we daarvoor apart naar reclamemails met een code erin; in Outlook kijken we naar onderwerpen die op een actie lijken. Van zo'n mail bewaren we alleen de code, de winkel, wat de korting is, de voorwaarden en tot wanneer de code geldt. De mail zelf bewaren we niet. Je ziet de codes in de app onder Overzicht en kunt ze daar verbergen.</li>
       <li>Ontkoppelen kan altijd in de app, onder Account. Dan trekken we de toegang in en halen we niets meer op. Je kunt de toegang ook intrekken in je Google- of Microsoft-account.</li>
     </ul>
 
@@ -79,6 +81,7 @@ import { SITE } from '../data/site.js';
     <ul>
       <li>Je gegevens blijven zolang je een account hebt.</li>
       <li>Mails waar niets uit kwam, zoals reclame of een bezorgbericht, halen we na 90 dagen weg.</li>
+      <li>Kortingscodes blijven in je lijst staan (verlopen codes apart) tot je je account verwijdert; dan zijn ze ook weg.</li>
       <li>Een mail die het bewijs is van een aankoop of abonnement bewaren we, want die heb je nodig voor garantie of opzeggen. Die blijft tot je dat item of je account weghaalt.</li>
       <li>Verwijder je je account in de app, dan halen we alles meteen weg en trekken we de toegang tot je Gmail of Outlook in. Reservekopieën bij Cloudflare verdwijnen binnen 30 dagen.</li>
     </ul>
