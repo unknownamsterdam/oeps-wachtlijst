@@ -2,6 +2,7 @@
 import { SITE } from '../data/site.js';
 import { VRAGEN } from '../data/vragen.js';
 import { RETOUR, OPZEGGEN } from '../data/gids.js';
+import { GARANTIE } from '../data/garantie.js';
 
 export function GET() {
   const vandaag = new Date().toISOString().slice(0, 10);
@@ -13,6 +14,8 @@ export function GET() {
     { loc: '/voorwaarden/', lastmod: '2026-10-14' },
     // 14 okt: zoekpagina's
     { loc: '/retour/', lastmod: vandaag }, { loc: '/opzeggen/', lastmod: vandaag },
+    { loc: '/garantie/', lastmod: vandaag },
+    ...GARANTIE.map((p) => ({ loc: `/garantie/${p.slug}/`, lastmod: p.bijgewerkt })),
     ...RETOUR.map((p) => ({ loc: `/retour/${p.slug}/`, lastmod: p.bijgewerkt })),
     ...OPZEGGEN.map((p) => ({ loc: `/opzeggen/${p.slug}/`, lastmod: p.bijgewerkt })),
   ];

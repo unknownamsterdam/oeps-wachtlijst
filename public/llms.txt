@@ -7,6 +7,9 @@ Elke pagina noemt de bron (de site van het bedrijf zelf) en de datum waarop we h
 ## Retourtermijnen per webwinkel
 - [Overzicht retourtermijnen](https://oeps.app/retour/): hoe lang je kunt terugsturen, wat het kost en hoe, per winkel
 
+## Garantie per winkel
+- [Overzicht garantie](https://oeps.app/garantie/): hoe lang je garantie hebt, hoe je die claimt en wat je nodig hebt (bol, Coolblue, IKEA, Decathlon)
+
 ## Abonnementen opzeggen
 - [Overzicht abonnementen opzeggen](https://oeps.app/opzeggen/): stappen en aandachtspunten per abonnement
 

@@ -6,6 +6,7 @@ import Wachtlijst from './Wachtlijst.astro';
 import { SITE } from '../data/site.js';
 import { datumNL } from '../data/vragen.js';
 import { RETOUR, OPZEGGEN, VIA, MANIER } from '../data/gids.js';
+import { GARANTIE } from '../data/garantie.js';
 
 const { p } = Astro.props;
 const retour = p.soort === 'retour';
@@ -65,6 +66,7 @@ const schema = [
       <div class="kort"><span class="kort-label">Kort gezegd</span><p>{kort}</p><p class="gecontroleerd">Gecontroleerd op {gecontroleerd}{p.bron && <> · bron: <a href={p.bron} rel="noopener nofollow" target="_blank">site van {p.naam}</a></>}</p></div>
       {stappen.length > 0 && (<section class="tekst"><h2>{retour ? 'Zo stuur je het terug' : 'Zo zeg je op'}</h2><ol>{stappen.map((s) => <li>{s}</li>)}</ol></section>)}
       {retour && r.manieren?.length > 0 && (<section class="tekst"><h2>Manieren om terug te sturen</h2><ul>{r.manieren.map((m) => <li>{MANIER[m] || m}</li>)}</ul></section>)}
+      {retour && GARANTIE.some((x) => x.slug === p.slug) && <p class="naar"><a href={`/garantie/${p.slug}/`}>Iets kapot? Bekijk de garantie van {p.naam} ›</a></p>}
       {link && <p class="naar"><a href={link} rel="noopener nofollow" target="_blank">{retour ? `Naar de retourpagina van ${p.naam}` : `Naar ${p.naam}`} ›</a></p>}
       <section class="tekst vragen"><h2>Veelgestelde vragen</h2>
         {faq.map((f) => (<details><summary>{f.v}</summary><p>{f.a}</p></details>))}

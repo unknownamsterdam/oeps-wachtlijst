@@ -1,0 +1,7 @@
+---
+import GarantiePagina from '../../components/GarantiePagina.astro';
+import { GARANTIE } from '../../data/garantie.js';
+export function getStaticPaths() { return GARANTIE.map((g) => ({ params: { slug: g.slug }, props: { g } })); }
+const { g } = Astro.props;
+---
+<GarantiePagina g={g} />

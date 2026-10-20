@@ -1,0 +1,114 @@
+---
+// 20 okt: garantiepagina per winkel, uit src/data/garantie.js
+import Base from '../layouts/Base.astro';
+import Plaatje from './Plaatje.astro';
+import Wachtlijst from './Wachtlijst.astro';
+import { SITE } from '../data/site.js';
+import { datumNL } from '../data/vragen.js';
+import { GARANTIE, WET, WET_BRON } from '../data/garantie.js';
+import { RETOUR } from '../data/gids.js';
+
+const { g } = Astro.props;
+const pad = `/garantie/${g.slug}/`;
+const titel = `Garantie ${g.naam}`;
+const seoTitel = `Garantie ${g.naam}: hoe lang en hoe claim je? | OEPS!`;
+const beschrijving = `Hoe lang heb je garantie bij ${g.naam}, hoe claim je het en wat heb je nodig? Duur, stappen en wat niet gedekt is, met bron en datum.`;
+const gecontroleerd = datumNL(g.bijgewerkt);
+const lijst = (a) => a.map((x) => x.replace(/\.$/, '') + '.').join(' ');
+const faq = [
+  { v: `Hoe lang heb je garantie bij ${g.naam}?`, a: lijst(g.duur) },
+  { v: `Hoe claim je garantie bij ${g.naam}?`, a: g.stappen.map((x, i) => `${i + 1}. ${x.replace(/\.$/, '')}.`).join(' ') },
+  { v: `Wat heb je nodig om garantie te claimen bij ${g.naam}?`, a: lijst(g.nodig) },
+  { v: `Wat valt niet onder de garantie van ${g.naam}?`, a: lijst(g.niet) },
+];
+const retourPagina = RETOUR.find((x) => x.slug === g.slug);
+const meer = GARANTIE.filter((x) => x.slug !== g.slug);
+const schema = [
+  { '@type': 'WebPage', '@id': SITE.url + pad + '#pagina', url: SITE.url + pad, name: seoTitel.replace(' | OEPS!', ''), description: beschrijving, inLanguage: 'nl-NL', dateModified: g.bijgewerkt, isPartOf: { '@id': SITE.url + '/#website' }, publisher: { '@id': SITE.url + '/#organization' } },
+  { '@type': 'FAQPage', mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.v, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url + '/' },
+    { '@type': 'ListItem', position: 2, name: 'Garantie', item: SITE.url + '/garantie/' },
+    { '@type': 'ListItem', position: 3, name: titel, item: SITE.url + pad } ] },
+];
+---
+<Base title={seoTitel} description={beschrijving} schema={schema}>
+  <article class="gids">
+    <div class="kopblok bg-perzik">
+      <div class="wrap smal kopblok-in">
+        <div>
+          <nav class="kruimel" aria-label="Kruimelpad"><a href="/garantie/">Garantie</a> <span>›</span> {g.naam}</nav>
+          <h1>{titel}</h1>
+        </div>
+        <Plaatje naam="wasmachine" grootte={130} />
+      </div>
+    </div>
+    <div class="wrap smal">
+      <div class="kort"><span class="kort-label">Kort gezegd</span><p>{g.kort}</p><p class="gecontroleerd">Gecontroleerd op {gecontroleerd} · bron: <a href={g.bron} rel="noopener nofollow" target="_blank">site van {g.naam}</a></p></div>
+      <section class="tekst"><h2>Hoe lang heb je garantie?</h2><ul>{g.duur.map((x) => <li>{x}</li>)}</ul></section>
+      <section class="tekst"><h2>Zo claim je garantie</h2><ol>{g.stappen.map((x) => <li>{x}</li>)}</ol></section>
+      <section class="tekst"><h2>Wat heb je nodig?</h2><ul>{g.nodig.map((x) => <li>{x}</li>)}</ul></section>
+      <section class="tekst"><h2>Wat valt er niet onder?</h2><ul>{g.niet.map((x) => <li>{x}</li>)}</ul></section>
+      {g.letop.length > 0 && (<section class="tekst"><h2>Goed om te weten</h2><ul>{g.letop.map((x) => <li>{x}</li>)}</ul></section>)}
+      <section class="tekst"><h2>Je wettelijke recht</h2><ul>{WET.map((x) => <li>{x}</li>)}</ul><p class="wet">Bron: <a href={WET_BRON} rel="noopener nofollow" target="_blank">Rijksoverheid</a></p></section>
+      <section class="tekst vragen"><h2>Veelgestelde vragen</h2>
+        {faq.map((f) => (<details><summary>{f.v}</summary><p>{f.a}</p></details>))}
+      </section>
+      {retourPagina && <p class="naar"><a href={`/retour/${g.slug}/`}>Ook nodig: de retourtermijn van {g.naam} ›</a></p>}
+      <aside class="oeps-blok">
+        <div><span class="badge">Binnenkort</span>
+          <h2>Nooit meer garantie missen.</h2>
+          <p>OEPS! onthoudt de garantie van elke aankoop en geeft je een seintje voordat hij afloopt. Jij hoeft niets bij te houden.</p></div>
+        <Wachtlijst compact bron={'garantie-' + g.slug} />
+      </aside>
+      <footer class="info">
+        <p>Opgezocht op de site van {g.naam} · Bijgewerkt op {gecontroleerd} · <a href={g.bron} rel="noopener nofollow" target="_blank">bron</a></p>
+        <p>Klopt er iets niet meer? Mail <a href={`mailto:${SITE.mail}`}>{SITE.mail}</a>, dan passen we het aan. Voorwaarden kunnen veranderen; check bij twijfel de site van {g.naam}.</p>
+      </footer>
+      {meer.length > 0 && (<section class="meer"><h2>Garantie bij andere winkels</h2>
+        <div class="meer-lijst">{meer.map((x) => <a class="mini" href={`/garantie/${x.slug}/`}>Garantie {x.naam}</a>)}</div></section>)}
+    </div>
+  </article>
+</Base>
+<style>
+  .kopblok{padding:28px 0 46px;margin-bottom:-22px}
+  .kopblok-in{display:flex;align-items:center;gap:20px;justify-content:space-between}
+  .kopblok h1{font-size:clamp(32px,5.4vw,50px)}
+  .kruimel{font-size:14px;font-weight:600;margin-bottom:12px}
+  .kruimel a{text-decoration:none;opacity:.8}
+  .kruimel span{opacity:.5;margin:0 4px}
+  .kort{position:relative;background:var(--wit);border-radius:var(--rond);box-shadow:var(--schaduw);padding:24px 24px 22px;border:3px solid var(--marine)}
+  .kort-label{position:absolute;top:-14px;left:20px;background:var(--geel);font-weight:800;font-stretch:112%;font-size:14px;padding:3px 12px;border-radius:999px;border:3px solid var(--marine)}
+  .kort p{font-size:20px;line-height:1.45;font-weight:600}
+  .tekst{margin-top:32px;font-size:18px}
+  .tekst h2{margin:0 0 12px}
+  .tekst ol,.tekst ul{margin:12px 0;padding-left:0;list-style:none;display:grid;gap:10px}
+  .tekst li{background:var(--wit);border-radius:14px;padding:12px 16px 12px 48px;position:relative}
+  .tekst ul li::before{content:"";position:absolute;left:18px;top:19px;width:12px;height:12px;border-radius:50%;background:var(--geel);border:2.5px solid var(--marine)}
+  .tekst ol{counter-reset:stap}
+  .tekst ol li{counter-increment:stap}
+  .tekst ol li::before{content:counter(stap);position:absolute;left:12px;top:11px;width:26px;height:26px;border-radius:50%;background:var(--marine);color:var(--wit);font-weight:800;font-size:14px;display:grid;place-items:center}
+  .naar{margin-top:18px;font-weight:700}
+  .kort .gecontroleerd{font-size:14px;font-weight:500;color:var(--zacht);margin-top:10px}
+  .vragen details{background:var(--wit);border-radius:14px;padding:0;margin-top:10px}
+  .vragen summary{cursor:pointer;font-weight:700;padding:14px 18px;list-style:none;font-size:17px}
+  .vragen summary::-webkit-details-marker{display:none}
+  .vragen summary::after{content:"+";float:right;font-weight:800}
+  .vragen details[open] summary::after{content:"–"}
+  .vragen details p{padding:0 18px 16px;font-size:16px;color:var(--zacht)}
+  .wet{margin-top:14px;font-size:15px;color:var(--zacht)}
+  .tekst ul.zacht li{background:var(--wit)}
+  .oeps-blok{margin:28px 0 0;background:var(--marine);color:var(--wit);border-radius:var(--rond);padding:26px;display:grid;gap:18px}
+  .oeps-blok h2{color:var(--wit);margin:10px 0 6px}
+  .oeps-blok p{color:#d6dbe5}
+  .badge{display:inline-block;background:var(--geel);color:var(--marine);font-weight:800;font-size:13px;padding:3px 10px;border-radius:999px}
+  .oeps-blok :global(label){color:var(--wit)}
+  .oeps-blok :global(.klein){color:#aab3c5}
+  .oeps-blok :global(.formulier button){background:var(--geel);color:var(--marine)}
+  .info{margin-top:30px;font-size:14px;color:var(--zacht);display:grid;gap:4px}
+  .meer{margin-top:40px}
+  .meer h2{margin-bottom:14px}
+  .meer-lijst{display:grid;gap:10px}
+  .mini{display:block;padding:12px 16px;border-radius:16px;background:var(--wit);text-decoration:none;font-weight:700;font-size:17px}
+  @media (max-width:640px){.kopblok-in{flex-direction:column-reverse;align-items:flex-start;gap:4px}.kopblok :global(.plaatje){width:90px;height:90px}.tekst{font-size:17px}.kort p{font-size:18px}}
+</style>

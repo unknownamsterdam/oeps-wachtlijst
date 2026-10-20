@@ -1,0 +1,29 @@
+---
+import Base from '../../layouts/Base.astro';
+import Wachtlijst from '../../components/Wachtlijst.astro';
+import { GARANTIE, WET, WET_BRON } from '../../data/garantie.js';
+const lijst = GARANTIE.slice().sort((a, b) => a.naam.localeCompare(b.naam, 'nl'));
+---
+<Base title="Garantie per winkel: bol, Coolblue, IKEA, Decathlon | OEPS!" description="Hoe lang heb je garantie bij bol, Coolblue, IKEA en Decathlon en hoe claim je die? Per winkel de duur, de stappen en wat je nodig hebt.">
+  <div class="kopblok bg-perzik"><div class="wrap smal"><h1>Garantie per winkel</h1><p class="sub">Per winkel: hoe lang je garantie hebt, hoe je die claimt en wat je nodig hebt.</p></div></div>
+  <div class="wrap smal">
+    <div class="lijst">{lijst.map((g) => <a class="mini" href={`/garantie/${g.slug}/`}><span>Garantie {g.naam}</span></a>)}</div>
+    <section class="wettig"><h2>Wat de wet zegt</h2><ul>{WET.map((x) => <li>{x}</li>)}</ul><p class="klein">Bron: <a href={WET_BRON} rel="noopener nofollow" target="_blank">Rijksoverheid</a>. Algemene informatie, geen juridisch advies.</p></section>
+    <aside class="oeps"><h2>Liever niet onthouden?</h2><p>OEPS! onthoudt de garantie van al je aankopen en waarschuwt je op tijd.</p><Wachtlijst compact bron="garantie-lijst" /></aside>
+  </div>
+</Base>
+<style>
+  .kopblok{padding:28px 0 40px;margin-bottom:-18px}
+  .kopblok h1{font-size:clamp(32px,5.4vw,50px)}
+  .sub{font-size:18px;margin-top:8px}
+  .lijst{display:grid;gap:10px}
+  .mini{display:flex;justify-content:space-between;gap:12px;padding:14px 16px;border-radius:16px;background:var(--wit);text-decoration:none;font-weight:700;font-size:17px;box-shadow:var(--schaduw)}
+  .wettig{margin-top:32px;font-size:17px}
+  .wettig ul{margin-top:12px;display:grid;gap:10px;list-style:none}
+  .wettig li{background:var(--wit);border-radius:14px;padding:12px 16px}
+  .oeps{margin-top:32px;background:var(--marine);color:var(--wit);border-radius:var(--rond);padding:24px;display:grid;gap:12px}
+  .oeps h2{color:var(--wit)}
+  .oeps p{color:#d6dbe5}
+  .oeps :global(label){color:var(--wit)}
+  .oeps :global(.formulier button){background:var(--geel);color:var(--marine)}
+</style>
