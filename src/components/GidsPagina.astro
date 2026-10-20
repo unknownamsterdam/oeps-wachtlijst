@@ -23,8 +23,27 @@ const beschrijving = retour
 const stappen = retour ? r.stappen : o.stappen;
 const link = retour ? r.url : o.url;
 const meer = (retour ? RETOUR : OPZEGGEN).filter((x) => x.slug !== p.slug).slice(0, 6);
+const gecontroleerd = datumNL(p.bijgewerkt);
+const kosten = r.kosten ? r.kosten.replace(/\.$/, '') : null;
+const contactTel = p.contact && p.contact.telefoon;
+// Vragen en antwoorden: alleen wat in de gids staat, in gewone zinnen. Staan ook zichtbaar op de pagina (schema moet daarmee kloppen).
+const vragen = retour
+  ? [
+      termijn && { v: `Hoe lang kun je terugsturen bij ${p.naam}?`, a: `Bij ${p.naam} heb je ${termijn} om je bestelling terug te sturen.` },
+      kosten && { v: `Wat kost retourneren bij ${p.naam}?`, a: /^gratis/i.test(kosten) ? `Retourneren bij ${p.naam} is gratis.` : `Retourkosten bij ${p.naam}: ${kosten}.` },
+      stappen.length > 0 && { v: `Hoe stuur je iets terug naar ${p.naam}?`, a: stappen.map((x, i) => `${i + 1}. ${x.replace(/\.$/, '')}.`).join(' ') },
+      { v: `Wat als de retourtermijn van ${p.naam} voorbij is?`, a: `Dan kun je meestal niet meer zomaar terugsturen. Is het product kapot of niet zoals beschreven, dan kun je nog wel een beroep doen op garantie. Neem contact op met ${p.naam} en leg uit wat er aan de hand is.` },
+    ]
+  : [
+      { v: `Hoe zeg je ${p.naam} op?`, a: `Je zegt ${p.naam} op ${VIA[o.via] || 'via je account'}. ${stappen.map((x, i) => `${i + 1}. ${x.replace(/\.$/, '')}.`).join(' ')}` },
+      o.let_op && { v: `Waar moet je op letten bij het opzeggen van ${p.naam}?`, a: o.let_op },
+      { v: `Hoe voorkom je dat je ${p.naam} te laat opzegt?`, a: `Zet de opzegdatum in je agenda of laat een app als OEPS! je een seintje geven voordat het abonnement verlengt.` },
+    ];
+const faq = vragen.filter(Boolean);
 const schema = [
+  { '@type': 'WebPage', '@id': SITE.url + pad + '#pagina', url: SITE.url + pad, name: seoTitel.replace(' | OEPS!', ''), description: beschrijving, inLanguage: 'nl-NL', dateModified: p.bijgewerkt, isPartOf: { '@id': SITE.url + '/#website' }, publisher: { '@id': SITE.url + '/#organization' } },
   { '@type': 'HowTo', name: titel, description: beschrijving, inLanguage: 'nl-NL', step: stappen.map((s, i) => ({ '@type': 'HowToStep', position: i + 1, text: s })) },
+  { '@type': 'FAQPage', mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.v, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
   { '@type': 'BreadcrumbList', itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url + '/' },
     { '@type': 'ListItem', position: 2, name: retour ? 'Retourtermijnen' : 'Opzeggen', item: SITE.url + (retour ? '/retour/' : '/opzeggen/') },
@@ -43,10 +62,14 @@ const schema = [
       </div>
     </div>
     <div class="wrap smal">
-      <div class="kort"><span class="kort-label">Kort gezegd</span><p>{kort}</p></div>
+      <div class="kort"><span class="kort-label">Kort gezegd</span><p>{kort}</p><p class="gecontroleerd">Gecontroleerd op {gecontroleerd}{p.bron && <> · bron: <a href={p.bron} rel="noopener nofollow" target="_blank">site van {p.naam}</a></>}</p></div>
       {stappen.length > 0 && (<section class="tekst"><h2>{retour ? 'Zo stuur je het terug' : 'Zo zeg je op'}</h2><ol>{stappen.map((s) => <li>{s}</li>)}</ol></section>)}
       {retour && r.manieren?.length > 0 && (<section class="tekst"><h2>Manieren om terug te sturen</h2><ul>{r.manieren.map((m) => <li>{MANIER[m] || m}</li>)}</ul></section>)}
       {link && <p class="naar"><a href={link} rel="noopener nofollow" target="_blank">{retour ? `Naar de retourpagina van ${p.naam}` : `Naar ${p.naam}`} ›</a></p>}
+      <section class="tekst vragen"><h2>Veelgestelde vragen</h2>
+        {faq.map((f) => (<details><summary>{f.v}</summary><p>{f.a}</p></details>))}
+      </section>
+      {retour && <p class="wet">Bestel je online, dan heb je volgens de wet minstens 14 dagen bedenktijd na ontvangst. Veel winkels geven meer tijd, zoals hierboven.</p>}
       <aside class="oeps-blok">
         <div><span class="badge">Binnenkort</span>
           <h2>{retour ? 'Nooit meer net te laat.' : 'Nooit meer een jaar te lang vast.'}</h2>
@@ -81,6 +104,14 @@ const schema = [
   .tekst ol li{counter-increment:stap}
   .tekst ol li::before{content:counter(stap);position:absolute;left:12px;top:11px;width:26px;height:26px;border-radius:50%;background:var(--marine);color:var(--wit);font-weight:800;font-size:14px;display:grid;place-items:center}
   .naar{margin-top:18px;font-weight:700}
+  .kort .gecontroleerd{font-size:14px;font-weight:500;color:var(--zacht);margin-top:10px}
+  .vragen details{background:var(--wit);border-radius:14px;padding:0;margin-top:10px}
+  .vragen summary{cursor:pointer;font-weight:700;padding:14px 18px;list-style:none;font-size:17px}
+  .vragen summary::-webkit-details-marker{display:none}
+  .vragen summary::after{content:"+";float:right;font-weight:800}
+  .vragen details[open] summary::after{content:"–"}
+  .vragen details p{padding:0 18px 16px;font-size:16px;color:var(--zacht)}
+  .wet{margin-top:14px;font-size:15px;color:var(--zacht)}
   .oeps-blok{margin:28px 0 0;background:var(--marine);color:var(--wit);border-radius:var(--rond);padding:26px;display:grid;gap:18px}
   .oeps-blok h2{color:var(--wit);margin:10px 0 6px}
   .oeps-blok p{color:#d6dbe5}

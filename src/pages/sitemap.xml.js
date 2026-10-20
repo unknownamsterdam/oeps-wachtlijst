@@ -9,7 +9,8 @@ export function GET() {
     { loc: '/', lastmod: vandaag },
     { loc: '/hoe-zit-dat/', lastmod: vandaag },
     ...VRAGEN.map((v) => ({ loc: v.url, lastmod: v.bijgewerkt })),
-    { loc: '/privacy/', lastmod: '2026-10-05' },
+    { loc: '/privacy/', lastmod: '2026-10-14' },
+    { loc: '/voorwaarden/', lastmod: '2026-10-14' },
     // 14 okt: zoekpagina's
     { loc: '/retour/', lastmod: vandaag }, { loc: '/opzeggen/', lastmod: vandaag },
     ...RETOUR.map((p) => ({ loc: `/retour/${p.slug}/`, lastmod: p.bijgewerkt })),

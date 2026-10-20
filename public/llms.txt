@@ -1,0 +1,20 @@
+# OEPS!
+
+> OEPS! is een Nederlandse app die je aankopen, abonnementen en vaste lasten bijhoudt en je een seintje geeft voordat een retourtermijn, garantie of opzegtermijn afloopt. Op deze site staan gecontroleerde uitlegpagina's over retourtermijnen en opzeggen bij Nederlandse winkels en diensten.
+
+Elke pagina noemt de bron (de site van het bedrijf zelf) en de datum waarop we het voor het laatst controleerden. Algemene informatie, geen juridisch advies.
+
+## Retourtermijnen per webwinkel
+- [Overzicht retourtermijnen](https://oeps.app/retour/): hoe lang je kunt terugsturen, wat het kost en hoe, per winkel
+
+## Abonnementen opzeggen
+- [Overzicht abonnementen opzeggen](https://oeps.app/opzeggen/): stappen en aandachtspunten per abonnement
+
+## Uitleg
+- [Hoe zit dat?](https://oeps.app/hoe-zit-dat/): bedenktijd, garantie, abonnementen en prijsverhogingen in gewone taal
+
+## Over OEPS!
+- [Startpagina](https://oeps.app/): wat OEPS! doet
+- [Privacy](https://oeps.app/privacy/)
+- [Voorwaarden](https://oeps.app/voorwaarden/)
+- Contact: hallo@oeps.app
