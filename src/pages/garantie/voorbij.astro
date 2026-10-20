@@ -1,0 +1,163 @@
+---
+// 20 okt: "Garantie voorbij, wat nu?" Feiten: Rijksoverheid (defect product), Consumentenbond (Geschillencommissie).
+import Base from '../../layouts/Base.astro';
+import Plaatje from '../../components/Plaatje.astro';
+import Wachtlijst from '../../components/Wachtlijst.astro';
+import { SITE } from '../../data/site.js';
+import { datumNL } from '../../data/vragen.js';
+import { GARANTIE } from '../../data/garantie.js';
+
+const bijgewerkt = '2026-10-20';
+const pad = '/garantie/voorbij/';
+const titel = 'Garantie voorbij, wat nu?';
+const seoTitel = 'Garantie voorbij en product kapot: wat kun je nog doen? | OEPS!';
+const beschrijving = 'Je apparaat gaat na 2 jaar kapot en de winkel zegt: garantie voorbij. Zo gebruik je je wettelijke recht: stappen, een voorbeeldmail en waar je hulp krijgt.';
+const bronnen = {
+  defect: 'https://www.rijksoverheid.nl/vraag-en-antwoord/bescherming-van-consumenten/wat-kan-ik-doen-als-het-product-dat-ik-heb-aangeschaft-defect-is',
+  garanties: 'https://www.rijksoverheid.nl/vraag-en-antwoord/bescherming-van-consumenten/welke-garanties-heb-ik-op-een-product',
+  commissie: 'https://www.consumentenbond.nl/juridisch-advies/juridische-hulp/klachten/geschillencommissie/',
+};
+const stappen = [
+  'Zoek je aankoopbewijs op en kijk of de fabrikant een eigen, langere garantie geeft. Bij duurdere apparaten is dat vaak 3 tot 5 jaar.',
+  'Meld het defect bij de verkoper en vraag om gratis reparatie of vervanging. Je hoeft geen tegoedbon te accepteren en niet bij te betalen.',
+  'Komt er geen oplossing? Stuur dan een schriftelijke klacht (mail of brief) met een redelijke termijn waarbinnen de verkoper het moet oplossen, en wat jij daarna doet. Bewaar alles.',
+  'Reageert de verkoper niet of weigert hij? Dan heb je opties: de betaling opschorten (alleen als je nog niet alles betaald hebt), een ander bedrijf laten repareren op kosten van de verkoper (eerst schriftelijk melden), of de koop ontbinden en je geld terugkrijgen. Laat je hierover eerst adviseren.',
+  'Is de verkoper aangesloten bij de Geschillencommissie? Dan kun je daar een klacht indienen, maar pas nadat je die schriftelijk bij de verkoper hebt gemeld. Anders is de rechter de route.',
+];
+const faq = [
+  { v: 'Mag een winkel zeggen dat de garantie voorbij is na 2 jaar?', a: 'De garantie van de winkel of fabrikant is een extra. Je wettelijke recht op een goed product blijft bestaan. In Nederland is er geen vaste wettelijke garantietermijn: hoe lang een product mee moet gaan hangt af van het soort product, de prijs en wat je mocht verwachten.' },
+  { v: 'Moet ik naar de fabrikant of naar de winkel?', a: 'Naar de verkoper. Hij moet het probleem zelf oplossen of de fabrikant inschakelen. Hij mag je niet zomaar naar de fabrikant doorverwijzen.' },
+  { v: 'Wie moet bewijzen dat een apparaat echt defect is?', a: 'Binnen 12 maanden na aankoop moet de verkoper aantonen dat het probleem door jou komt. Daarna moet jij aantonen dat het aan het product ligt en niet aan jou. Een schriftelijk oordeel van een onafhankelijke reparateur helpt daarbij.' },
+  { v: 'Waar kan ik terecht als de winkel blijft weigeren?', a: 'ConsuWijzer (informatie en advies voor consumenten), het Juridisch Loket (juridische vragen) en, als de verkoper is aangesloten, de Geschillencommissie. Anders de rechter.' },
+];
+const schema = [
+  { '@type': 'WebPage', '@id': SITE.url + pad + '#pagina', url: SITE.url + pad, name: titel, description: beschrijving, inLanguage: 'nl-NL', dateModified: bijgewerkt, isPartOf: { '@id': SITE.url + '/#website' }, publisher: { '@id': SITE.url + '/#organization' } },
+  { '@type': 'HowTo', name: 'Wat doe je als je garantie voorbij is en je product kapot gaat', description: beschrijving, inLanguage: 'nl-NL', step: stappen.map((s, i) => ({ '@type': 'HowToStep', position: i + 1, text: s })) },
+  { '@type': 'FAQPage', mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.v, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url + '/' },
+    { '@type': 'ListItem', position: 2, name: 'Garantie', item: SITE.url + '/garantie/' },
+    { '@type': 'ListItem', position: 3, name: titel, item: SITE.url + pad } ] },
+];
+const mail = `Onderwerp: Klacht over defect [apparaat], gekocht op [datum]
+
+Geachte heer/mevrouw,
+
+Op [datum] kocht ik bij u een [apparaat] voor € [bedrag] (aankoopbewijs in de bijlage). Op [datum] ging het kapot, terwijl ik het normaal heb gebruikt. Het voldoet daarmee niet aan wat ik redelijkerwijs mocht verwachten van een product van deze prijs.
+
+Ik doe een beroep op mijn wettelijke rechten als consument en verzoek u het apparaat kosteloos te repareren of te vervangen. Ik ga niet akkoord met bijbetalen of een tegoedbon. Verwijzing naar de fabrikant accepteer ik niet: mijn overeenkomst is met u.
+
+Ik verwacht uiterlijk [datum, bijvoorbeeld over 14 dagen] een reactie van u. Komt die er niet, dan leg ik de zaak voor aan een instantie die mij verder helpt.
+
+Met vriendelijke groet,
+[naam]`;
+const meer = GARANTIE;
+---
+<Base title={seoTitel} description={beschrijving} schema={schema}>
+  <article class="gids">
+    <div class="kopblok bg-perzik">
+      <div class="wrap smal kopblok-in">
+        <div>
+          <nav class="kruimel" aria-label="Kruimelpad"><a href="/garantie/">Garantie</a> <span>›</span> Garantie voorbij</nav>
+          <h1>{titel}</h1>
+        </div>
+        <Plaatje naam="wasmachine" grootte={130} />
+      </div>
+    </div>
+    <div class="wrap smal">
+      <div class="kort"><span class="kort-label">Kort gezegd</span><p>Gaat je apparaat na 2 jaar kapot en zegt de winkel "garantie voorbij"? Dan heb je vaak nog steeds recht op een oplossing. De verkoper moet het zelf regelen en mag je niet zomaar naar de fabrikant sturen.</p><p class="gecontroleerd">Gecontroleerd op {datumNL(bijgewerkt)} · bronnen: <a href={bronnen.defect} rel="noopener nofollow" target="_blank">Rijksoverheid</a>, <a href={bronnen.commissie} rel="noopener nofollow" target="_blank">Consumentenbond</a></p></div>
+
+      <section class="tekst"><h2>Waarom "garantie voorbij" niet het hele verhaal is</h2>
+        <ul>
+          <li>De "2 jaar garantie" van een winkel of fabrikant is een extra bovenop je wettelijke recht. Die extra termijn kan afgelopen zijn, je wettelijke recht niet.</li>
+          <li>In Nederland is er geen vaste wettelijke garantietermijn. Hoe lang een product mee moet gaan, hangt af van het soort product, de prijs en wat je mocht verwachten.</li>
+          <li>Een wasmachinemotor die na 2 jaar kapotgaat bij normaal gebruik valt, volgens de Rijksoverheid, onder de wettelijke garantie. Een lampje in de koelkast niet.</li>
+        </ul></section>
+
+      <section class="tekst"><h2>Zo pak je het aan</h2><ol>{stappen.map((s) => <li>{s}</li>)}</ol></section>
+
+      <section class="tekst"><h2>Wie moet wat bewijzen?</h2>
+        <ul>
+          <li>Binnen 12 maanden na aankoop moet de verkoper aantonen dat het probleem door jou komt.</li>
+          <li>Daarna moet jij aantonen dat het aan het product ligt. Een schriftelijk oordeel van een onafhankelijke reparateur ("defect aan onderdeel X, geen gebruiksschade") helpt daarbij.</li>
+          <li>Normale slijtage en schade door eigen schuld vallen er niet onder.</li>
+        </ul>
+        <p class="wet">Je hoeft niet zelf de precieze oorzaak aan te wijzen, zoals "het is de motor". Het gaat erom dat het product niet doet wat je ervan mocht verwachten.</p></section>
+
+      <section class="tekst"><h2>Voorbeeldmail aan de winkel</h2>
+        <p>Pas de gegevens tussen haakjes aan en verstuur de mail zo dat je kunt bewijzen dat je hem verstuurd hebt.</p>
+        <div class="mailbox">{mail}</div></section>
+
+      <section class="tekst"><h2>Hier kun je terecht voor hulp</h2>
+        <ul class="wegwijs">
+          <li><b><a href="https://www.consuwijzer.nl" rel="noopener nofollow" target="_blank">ConsuWijzer</a></b><span>Het loket van de overheid voor consumenten. Informatie en advies over je rechten, ook bij een defect product.</span></li>
+          <li><b><a href="https://www.juridischloket.nl" rel="noopener nofollow" target="_blank">Juridisch Loket</a></b><span>Voor juridische vragen. Handig als je twijfelt over je volgende stap bij een duur apparaat.</span></li>
+          <li><b><a href="https://www.degeschillencommissie.nl" rel="noopener nofollow" target="_blank">De Geschillencommissie</a></b><span>Alleen als de verkoper is aangesloten. Je meldt eerst schriftelijk je klacht bij de verkoper en geeft hem tijd om te reageren (vaak 4 weken). Daarna kun je tegen betaling van klachtgeld een klacht indienen (meestal een paar tientjes, terug als je gelijk krijgt). De uitspraak is bindend. Vaak moet je binnen een jaar na je klacht bij de verkoper indienen; check de exacte termijn bij de commissie.</span></li>
+        </ul></section>
+
+      <section class="tekst vragen"><h2>Veelgestelde vragen</h2>
+        {faq.map((f) => (<details><summary>{f.v}</summary><p>{f.a}</p></details>))}
+      </section>
+
+      <p class="naar">Garantie per winkel: {meer.map((x, i) => <><a href={`/garantie/${x.slug}/`}>{x.naam}</a>{i < meer.length - 1 ? ', ' : ''}</>)} ›</p>
+
+      <aside class="oeps-blok">
+        <div><span class="badge">Binnenkort</span>
+          <h2>Altijd je bewijs bij de hand.</h2>
+          <p>OEPS! bewaart je aankoopbewijs en onthoudt de garantie van elke aankoop. Dan hoef je er niet naar te zoeken als iets kapotgaat.</p></div>
+        <Wachtlijst compact bron="garantie-voorbij" />
+      </aside>
+      <footer class="info">
+        <p>Bijgewerkt op {datumNL(bijgewerkt)} · bronnen: <a href={bronnen.defect} rel="noopener nofollow" target="_blank">Rijksoverheid: defect product</a>, <a href={bronnen.garanties} rel="noopener nofollow" target="_blank">Rijksoverheid: welke garanties</a>, <a href={bronnen.commissie} rel="noopener nofollow" target="_blank">Consumentenbond: Geschillencommissie</a>.</p>
+        <p>Dit is algemene informatie en geen juridisch advies. Klopt er iets niet meer? Mail <a href={`mailto:${SITE.mail}`}>{SITE.mail}</a>, dan passen we het aan.</p>
+      </footer>
+    </div>
+  </article>
+</Base>
+<style>
+  .kopblok{padding:28px 0 46px;margin-bottom:-22px}
+  .kopblok-in{display:flex;align-items:center;gap:20px;justify-content:space-between}
+  .kopblok h1{font-size:clamp(32px,5.4vw,50px)}
+  .kruimel{font-size:14px;font-weight:600;margin-bottom:12px}
+  .kruimel a{text-decoration:none;opacity:.8}
+  .kruimel span{opacity:.5;margin:0 4px}
+  .kort{position:relative;background:var(--wit);border-radius:var(--rond);box-shadow:var(--schaduw);padding:24px 24px 22px;border:3px solid var(--marine)}
+  .kort-label{position:absolute;top:-14px;left:20px;background:var(--geel);font-weight:800;font-stretch:112%;font-size:14px;padding:3px 12px;border-radius:999px;border:3px solid var(--marine)}
+  .kort p{font-size:20px;line-height:1.45;font-weight:600}
+  .tekst{margin-top:32px;font-size:18px}
+  .tekst h2{margin:0 0 12px}
+  .tekst ol,.tekst ul{margin:12px 0;padding-left:0;list-style:none;display:grid;gap:10px}
+  .tekst li{background:var(--wit);border-radius:14px;padding:12px 16px 12px 48px;position:relative}
+  .tekst ul li::before{content:"";position:absolute;left:18px;top:19px;width:12px;height:12px;border-radius:50%;background:var(--geel);border:2.5px solid var(--marine)}
+  .tekst ol{counter-reset:stap}
+  .tekst ol li{counter-increment:stap}
+  .tekst ol li::before{content:counter(stap);position:absolute;left:12px;top:11px;width:26px;height:26px;border-radius:50%;background:var(--marine);color:var(--wit);font-weight:800;font-size:14px;display:grid;place-items:center}
+  .naar{margin-top:18px;font-weight:700}
+  .kort .gecontroleerd{font-size:14px;font-weight:500;color:var(--zacht);margin-top:10px}
+  .vragen details{background:var(--wit);border-radius:14px;padding:0;margin-top:10px}
+  .vragen summary{cursor:pointer;font-weight:700;padding:14px 18px;list-style:none;font-size:17px}
+  .vragen summary::-webkit-details-marker{display:none}
+  .vragen summary::after{content:"+";float:right;font-weight:800}
+  .vragen details[open] summary::after{content:"–"}
+  .vragen details p{padding:0 18px 16px;font-size:16px;color:var(--zacht)}
+  .wet{margin-top:14px;font-size:15px;color:var(--zacht)}
+  .tekst ul.zacht li{background:var(--wit)}
+  .oeps-blok{margin:28px 0 0;background:var(--marine);color:var(--wit);border-radius:var(--rond);padding:26px;display:grid;gap:18px}
+  .oeps-blok h2{color:var(--wit);margin:10px 0 6px}
+  .oeps-blok p{color:#d6dbe5}
+  .badge{display:inline-block;background:var(--geel);color:var(--marine);font-weight:800;font-size:13px;padding:3px 10px;border-radius:999px}
+  .oeps-blok :global(label){color:var(--wit)}
+  .oeps-blok :global(.klein){color:#aab3c5}
+  .oeps-blok :global(.formulier button){background:var(--geel);color:var(--marine)}
+  .info{margin-top:30px;font-size:14px;color:var(--zacht);display:grid;gap:4px}
+  .meer{margin-top:40px}
+  .meer h2{margin-bottom:14px}
+  .meer-lijst{display:grid;gap:10px}
+  .mini{display:block;padding:12px 16px;border-radius:16px;background:var(--wit);text-decoration:none;font-weight:700;font-size:17px}
+  @media (max-width:640px){.kopblok-in{flex-direction:column-reverse;align-items:flex-start;gap:4px}.kopblok :global(.plaatje){width:90px;height:90px}.tekst{font-size:17px}.kort p{font-size:18px}}
+  .mailbox{margin-top:14px;background:var(--wit);border:2px dashed var(--marine);border-radius:var(--rond);padding:18px 20px;font-size:16px;line-height:1.6;white-space:pre-line}
+  .wegwijs{display:grid;gap:10px;margin-top:12px;list-style:none;padding:0}
+  .wegwijs li{background:var(--wit);border-radius:14px;padding:14px 16px}
+  .wegwijs b{display:block;font-stretch:112%}
+  .wegwijs span{color:var(--zacht);font-size:15px}
+</style>

@@ -15,6 +15,7 @@ export function GET() {
     // 14 okt: zoekpagina's
     { loc: '/retour/', lastmod: vandaag }, { loc: '/opzeggen/', lastmod: vandaag },
     { loc: '/garantie/', lastmod: vandaag },
+    { loc: '/garantie/voorbij/', lastmod: '2026-10-20' },
     ...GARANTIE.map((p) => ({ loc: `/garantie/${p.slug}/`, lastmod: p.bijgewerkt })),
     ...RETOUR.map((p) => ({ loc: `/retour/${p.slug}/`, lastmod: p.bijgewerkt })),
     ...OPZEGGEN.map((p) => ({ loc: `/opzeggen/${p.slug}/`, lastmod: p.bijgewerkt })),

@@ -10,6 +10,8 @@ Elke pagina noemt de bron (de site van het bedrijf zelf) en de datum waarop we h
 ## Garantie per winkel
 - [Overzicht garantie](https://oeps.app/garantie/): hoe lang je garantie hebt, hoe je die claimt en wat je nodig hebt (bol, Coolblue, IKEA, Decathlon)
 
+- [Garantie voorbij, wat nu?](https://oeps.app/garantie/voorbij/): wat je doet als een duur apparaat na de winkelgarantie kapotgaat, met voorbeeldmail en waar je hulp krijgt
+
 ## Abonnementen opzeggen
 - [Overzicht abonnementen opzeggen](https://oeps.app/opzeggen/): stappen en aandachtspunten per abonnement
 
