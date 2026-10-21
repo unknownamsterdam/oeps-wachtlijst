@@ -3,6 +3,7 @@
 import Base from '../layouts/Base.astro';
 import Plaatje from './Plaatje.astro';
 import Wachtlijst from './Wachtlijst.astro';
+import AppBalk from './AppBalk.astro';
 import { SITE } from '../data/site.js';
 import { datumNL } from '../data/vragen.js';
 import { GARANTIE, WET, WET_BRON } from '../data/garantie.js';
@@ -71,6 +72,7 @@ const schema = [
         <div class="meer-lijst">{meer.map((x) => <a class="mini" href={`/garantie/${x.slug}/`}>Garantie {x.naam}</a>)}</div></section>)}
     </div>
   </article>
+<AppBalk tekst="Nooit meer je kassabon of garantie kwijt?" />
 </Base>
 <style>
   .kopblok{padding:28px 0 46px;margin-bottom:-22px}

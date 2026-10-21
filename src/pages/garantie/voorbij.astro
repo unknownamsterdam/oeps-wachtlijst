@@ -3,6 +3,7 @@
 import Base from '../../layouts/Base.astro';
 import Plaatje from '../../components/Plaatje.astro';
 import Wachtlijst from '../../components/Wachtlijst.astro';
+import AppBalk from '../../components/AppBalk.astro';
 import { SITE } from '../../data/site.js';
 import { datumNL } from '../../data/vragen.js';
 import { GARANTIE } from '../../data/garantie.js';
@@ -91,6 +92,8 @@ const meer = GARANTIE;
         <button type="button" class="kopieer" data-doel="mailtekst">Kopieer de mail</button>
         <div class="mailbox" id="mailtekst">{mail}</div></section>
 
+      <p class="tip tip-app"><b>Straks weer iets kapot?</b> Met OEPS! staan je bon, de garantie en de einddatum altijd klaar. Dan is dit je volgende keer zo geregeld. <a href="/#aanmelden">Start gratis ›</a></p>
+
       <section class="tekst"><h2>Hier kun je terecht voor hulp</h2>
         <ul class="wegwijs">
           <li><b><a href="https://www.consuwijzer.nl" rel="noopener nofollow" target="_blank">ConsuWijzer ›</a></b><span>Het loket van de overheid voor consumenten. Informatie en advies over je rechten, ook bij een defect product.</span></li>
@@ -117,6 +120,7 @@ const meer = GARANTIE;
     </div>
   </article>
 
+<AppBalk tekst="Nooit meer je bon of garantie kwijt?" />
 <script>
   document.querySelectorAll('.kopieer').forEach((knop) => {
     const start = knop.textContent;
@@ -185,8 +189,8 @@ const meer = GARANTIE;
   .kopieer.klaar{background:var(--geel);color:var(--marine)}
   .mailbox{margin-top:14px;background:var(--wit);border:2px dashed var(--marine);border-radius:var(--rond);padding:18px 20px;font-size:16px;line-height:1.6;white-space:pre-line}
   .tekst .wegwijs{display:grid;gap:10px;margin-top:12px;list-style:none;padding:0}
-  .tekst .wegwijs li{background:var(--wit);border-radius:14px;padding:16px 18px 16px 50px}
-  .tekst .wegwijs li::before{top:23px}
+  .tekst .wegwijs li{background:var(--wit);border-radius:14px;padding:16px 18px 16px 62px}
+  .tekst .wegwijs li::before{top:23px;left:22px}
   .tip{margin-top:22px;background:var(--mint);border-radius:var(--rond);padding:16px 18px;font-size:16px}
   .tip a{font-weight:800;white-space:nowrap}
   .tekst .wegwijs b{display:block;font-stretch:112%;font-size:19px;margin-bottom:4px}

@@ -1,0 +1,44 @@
+---
+// 21 okt: rustige balk onderin die pas na wat scrollen verschijnt. Verdwijnt bij het aanmeldblok, de cookiebalk en na sluiten.
+const { tekst = 'Nooit meer je bon of garantie kwijt?', bron = '' } = Astro.props;
+---
+<div class="appbalk" id="appbalk" hidden role="region" aria-label="OEPS! uitnodiging">
+  <span class="appbalk-tekst">{tekst}</span>
+  <a class="appbalk-knop" href="/#aanmelden">Start gratis</a>
+  <button type="button" class="appbalk-dicht" aria-label="Sluiten">×</button>
+</div>
+<script>
+  (function () {
+    var balk = document.getElementById('appbalk');
+    if (!balk) return;
+    var SLEUTEL = 'oeps-appbalk-dicht';
+    var dicht = false;
+    try { dicht = sessionStorage.getItem(SLEUTEL) === '1'; } catch (e) {}
+    var blok = document.querySelector('.oeps-blok');
+    var blokZichtbaar = false;
+    if (blok && 'IntersectionObserver' in window) {
+      new IntersectionObserver(function (items) { blokZichtbaar = items[0].isIntersecting; werkBij(); }).observe(blok);
+    }
+    function werkBij() {
+      var koekje = document.getElementById('koekje');
+      var koekjeZichtbaar = koekje && !koekje.hidden;
+      var genoegGescrold = window.scrollY > 700;
+      balk.hidden = dicht || blokZichtbaar || koekjeZichtbaar || !genoegGescrold;
+    }
+    window.addEventListener('scroll', werkBij, { passive: true });
+    document.addEventListener('click', function () { setTimeout(werkBij, 50); });
+    balk.querySelector('.appbalk-dicht').addEventListener('click', function () {
+      dicht = true;
+      try { sessionStorage.setItem(SLEUTEL, '1'); } catch (e) {}
+      werkBij();
+    });
+    werkBij();
+  })();
+</script>
+<style>
+  .appbalk{position:fixed;left:16px;right:16px;bottom:16px;z-index:20;max-width:520px;margin:0 auto;display:flex;align-items:center;gap:12px;background:var(--marine);color:var(--wit);border-radius:16px;padding:10px 10px 10px 16px;box-shadow:0 10px 30px rgba(20,33,61,.3)}
+  .appbalk[hidden]{display:none}
+  .appbalk-tekst{flex:1;font-weight:600;font-size:15px;line-height:1.3}
+  .appbalk-knop{flex:none;background:var(--geel);color:var(--marine);font-weight:800;font-stretch:112%;font-size:15px;text-decoration:none;padding:10px 16px;border-radius:12px;white-space:nowrap}
+  .appbalk-dicht{flex:none;background:transparent;border:0;color:#aab3c5;font-size:24px;line-height:1;padding:4px 8px;cursor:pointer}
+</style>
