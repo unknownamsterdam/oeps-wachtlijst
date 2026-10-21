@@ -88,7 +88,8 @@ const meer = GARANTIE;
 
       <section class="tekst"><h2>Voorbeeldmail aan de winkel</h2>
         <p>Pas de gegevens tussen haakjes aan en verstuur de mail zo dat je kunt bewijzen dat je hem verstuurd hebt.</p>
-        <div class="mailbox">{mail}</div></section>
+        <button type="button" class="kopieer" data-doel="mailtekst">Kopieer de mail</button>
+        <div class="mailbox" id="mailtekst">{mail}</div></section>
 
       <section class="tekst"><h2>Hier kun je terecht voor hulp</h2>
         <ul class="wegwijs">
@@ -115,6 +116,28 @@ const meer = GARANTIE;
       </footer>
     </div>
   </article>
+
+<script>
+  document.querySelectorAll('.kopieer').forEach((knop) => {
+    const start = knop.textContent;
+    knop.addEventListener('click', async () => {
+      const bron = document.getElementById(knop.dataset.doel);
+      const tekst = bron ? bron.textContent.trim() : '';
+      try {
+        await navigator.clipboard.writeText(tekst);
+      } catch (e) {
+        const veld = document.createElement('textarea');
+        veld.value = tekst; veld.style.position = 'fixed'; veld.style.opacity = '0';
+        document.body.appendChild(veld); veld.select();
+        try { document.execCommand('copy'); } catch (e2) {}
+        document.body.removeChild(veld);
+      }
+      knop.textContent = 'Gekopieerd ✓';
+      knop.classList.add('klaar');
+      setTimeout(() => { knop.textContent = start; knop.classList.remove('klaar'); }, 2500);
+    });
+  });
+</script>
 </Base>
 <style>
   .kopblok{padding:28px 0 46px;margin-bottom:-22px}
@@ -157,6 +180,9 @@ const meer = GARANTIE;
   .meer-lijst{display:grid;gap:10px}
   .mini{display:block;padding:12px 16px;border-radius:16px;background:var(--wit);text-decoration:none;font-weight:700;font-size:17px}
   @media (max-width:640px){.kopblok-in{flex-direction:column-reverse;align-items:flex-start;gap:4px}.kopblok :global(.plaatje){width:90px;height:90px}.tekst{font-size:17px}.kort p{font-size:18px}}
+  .kopieer{margin-top:12px;font:inherit;font-weight:800;font-stretch:112%;font-size:16px;padding:12px 20px;border:0;border-radius:12px;background:var(--marine);color:var(--wit);cursor:pointer}
+  .kopieer:hover{background:#0c1528}
+  .kopieer.klaar{background:var(--geel);color:var(--marine)}
   .mailbox{margin-top:14px;background:var(--wit);border:2px dashed var(--marine);border-radius:var(--rond);padding:18px 20px;font-size:16px;line-height:1.6;white-space:pre-line}
   .tekst .wegwijs{display:grid;gap:10px;margin-top:12px;list-style:none;padding:0}
   .tekst .wegwijs li{background:var(--wit);border-radius:14px;padding:16px 18px 16px 50px}
