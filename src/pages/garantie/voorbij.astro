@@ -25,7 +25,7 @@ const stappen = [
   'Is de verkoper aangesloten bij de Geschillencommissie? Dan kun je daar een klacht indienen, maar pas nadat je die schriftelijk bij de verkoper hebt gemeld. Anders is de rechter de route.',
 ];
 const faq = [
-  { v: 'Mag een winkel zeggen dat de garantie voorbij is na 2 jaar?', a: 'De garantie van de winkel of fabrikant is een extra. Je wettelijke recht op een goed product blijft bestaan. In Nederland is er geen vaste wettelijke garantietermijn: hoe lang een product mee moet gaan hangt af van het soort product, de prijs en wat je mocht verwachten.' },
+  { v: 'Mag een winkel zeggen dat de garantie voorbij is na 2 jaar?', a: 'De garantie van de winkel of fabrikant komt bovenop je wettelijke recht. Is die garantie voorbij, dan blijft je wettelijke recht op een goed product bestaan. In Nederland is er geen vaste wettelijke garantietermijn: hoe lang een product mee moet gaan hangt af van het soort product, de prijs en wat je mocht verwachten.' },
   { v: 'Moet ik naar de fabrikant of naar de winkel?', a: 'Naar de verkoper. Hij moet het probleem zelf oplossen of de fabrikant inschakelen. Hij mag je niet zomaar naar de fabrikant doorverwijzen.' },
   { v: 'Wie moet bewijzen dat een apparaat echt defect is?', a: 'Binnen 12 maanden na aankoop moet de verkoper aantonen dat het probleem door jou komt. Daarna moet jij aantonen dat het aan het product ligt en niet aan jou. Een schriftelijk oordeel van een onafhankelijke reparateur helpt daarbij.' },
   { v: 'Waar kan ik terecht als de winkel blijft weigeren?', a: 'ConsuWijzer (informatie en advies voor consumenten), het Juridisch Loket (juridische vragen) en, als de verkoper is aangesloten, de Geschillencommissie. Anders de rechter.' },
@@ -69,12 +69,14 @@ const meer = GARANTIE;
 
       <section class="tekst"><h2>Waarom "garantie voorbij" niet het hele verhaal is</h2>
         <ul>
-          <li>De "2 jaar garantie" van een winkel of fabrikant is een extra bovenop je wettelijke recht. Die extra termijn kan afgelopen zijn, je wettelijke recht niet.</li>
+          <li>De "2 jaar garantie" van een winkel of fabrikant komt bovenop je wettelijke recht. Als die 2 jaar voorbij zijn, blijft je wettelijke recht gewoon bestaan.</li>
           <li>In Nederland is er geen vaste wettelijke garantietermijn. Hoe lang een product mee moet gaan, hangt af van het soort product, de prijs en wat je mocht verwachten.</li>
           <li>Een wasmachinemotor die na 2 jaar kapotgaat bij normaal gebruik valt, volgens de Rijksoverheid, onder de wettelijke garantie. Een lampje in de koelkast niet.</li>
         </ul></section>
 
       <section class="tekst"><h2>Zo pak je het aan</h2><ol>{stappen.map((s) => <li>{s}</li>)}</ol></section>
+
+      <p class="tip"><b>Aankoopbewijs al kwijt?</b> OEPS! bewaart je bonnen en onthoudt de garantie van elke aankoop. Dan hoef je nooit meer te zoeken. <a href="/#aanmelden">Start gratis ›</a></p>
 
       <section class="tekst"><h2>Wie moet wat bewijzen?</h2>
         <ul>
@@ -90,9 +92,9 @@ const meer = GARANTIE;
 
       <section class="tekst"><h2>Hier kun je terecht voor hulp</h2>
         <ul class="wegwijs">
-          <li><b><a href="https://www.consuwijzer.nl" rel="noopener nofollow" target="_blank">ConsuWijzer</a></b><span>Het loket van de overheid voor consumenten. Informatie en advies over je rechten, ook bij een defect product.</span></li>
-          <li><b><a href="https://www.juridischloket.nl" rel="noopener nofollow" target="_blank">Juridisch Loket</a></b><span>Voor juridische vragen. Handig als je twijfelt over je volgende stap bij een duur apparaat.</span></li>
-          <li><b><a href="https://www.degeschillencommissie.nl" rel="noopener nofollow" target="_blank">De Geschillencommissie</a></b><span>Alleen als de verkoper is aangesloten. Je meldt eerst schriftelijk je klacht bij de verkoper en geeft hem tijd om te reageren (vaak 4 weken). Daarna kun je tegen betaling van klachtgeld een klacht indienen (meestal een paar tientjes, terug als je gelijk krijgt). De uitspraak is bindend. Vaak moet je binnen een jaar na je klacht bij de verkoper indienen; check de exacte termijn bij de commissie.</span></li>
+          <li><b><a href="https://www.consuwijzer.nl" rel="noopener nofollow" target="_blank">ConsuWijzer ›</a></b><span>Het loket van de overheid voor consumenten. Informatie en advies over je rechten, ook bij een defect product.</span></li>
+          <li><b><a href="https://www.juridischloket.nl" rel="noopener nofollow" target="_blank">Juridisch Loket ›</a></b><span>Voor juridische vragen. Handig als je twijfelt over je volgende stap bij een duur apparaat.</span></li>
+          <li><b><a href="https://www.degeschillencommissie.nl" rel="noopener nofollow" target="_blank">De Geschillencommissie ›</a></b><span>Alleen als de verkoper is aangesloten. Je meldt eerst schriftelijk je klacht bij de verkoper en geeft hem tijd om te reageren (vaak 4 weken). Daarna kun je tegen betaling van klachtgeld een klacht indienen (meestal een paar tientjes, terug als je gelijk krijgt). De uitspraak is bindend. Vaak moet je binnen een jaar na je klacht bij de verkoper indienen; check de exacte termijn bij de commissie.</span></li>
         </ul></section>
 
       <section class="tekst vragen"><h2>Veelgestelde vragen</h2>
@@ -156,8 +158,12 @@ const meer = GARANTIE;
   .mini{display:block;padding:12px 16px;border-radius:16px;background:var(--wit);text-decoration:none;font-weight:700;font-size:17px}
   @media (max-width:640px){.kopblok-in{flex-direction:column-reverse;align-items:flex-start;gap:4px}.kopblok :global(.plaatje){width:90px;height:90px}.tekst{font-size:17px}.kort p{font-size:18px}}
   .mailbox{margin-top:14px;background:var(--wit);border:2px dashed var(--marine);border-radius:var(--rond);padding:18px 20px;font-size:16px;line-height:1.6;white-space:pre-line}
-  .wegwijs{display:grid;gap:10px;margin-top:12px;list-style:none;padding:0}
-  .wegwijs li{background:var(--wit);border-radius:14px;padding:14px 16px}
-  .wegwijs b{display:block;font-stretch:112%}
-  .wegwijs span{color:var(--zacht);font-size:15px}
+  .tekst .wegwijs{display:grid;gap:10px;margin-top:12px;list-style:none;padding:0}
+  .tekst .wegwijs li{background:var(--wit);border-radius:14px;padding:16px 18px}
+  .tekst .wegwijs li::before{display:none}
+  .tip{margin-top:22px;background:var(--mint);border-radius:var(--rond);padding:16px 18px;font-size:16px}
+  .tip a{font-weight:800;white-space:nowrap}
+  .tekst .wegwijs b{display:block;font-stretch:112%;font-size:19px;margin-bottom:4px}
+  .tekst .wegwijs b a{text-underline-offset:3px}
+  .tekst .wegwijs span{display:block;color:var(--zacht);font-size:15px;line-height:1.5}
 </style>

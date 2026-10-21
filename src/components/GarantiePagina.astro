@@ -48,6 +48,7 @@ const schema = [
       <section class="tekst"><h2>Hoe lang heb je garantie?</h2><ul>{g.duur.map((x) => <li>{x}</li>)}</ul></section>
       <section class="tekst"><h2>Zo claim je garantie</h2><ol>{g.stappen.map((x) => <li>{x}</li>)}</ol></section>
       <section class="tekst"><h2>Wat heb je nodig?</h2><ul>{g.nodig.map((x) => <li>{x}</li>)}</ul></section>
+      <p class="tip"><b>Kassabon kwijt?</b> OEPS! bewaart je bonnen en onthoudt de garantie van elke aankoop. <a href="/#aanmelden">Start gratis ›</a></p>
       <section class="tekst"><h2>Wat valt er niet onder?</h2><ul>{g.niet.map((x) => <li>{x}</li>)}</ul></section>
       {g.letop.length > 0 && (<section class="tekst"><h2>Goed om te weten</h2><ul>{g.letop.map((x) => <li>{x}</li>)}</ul></section>)}
       <section class="tekst"><h2>Je wettelijke recht</h2><ul>{WET.map((x) => <li>{x}</li>)}</ul><p class="wet">Bron: <a href={WET_BRON} rel="noopener nofollow" target="_blank">Rijksoverheid</a></p></section>
@@ -97,6 +98,8 @@ const schema = [
   .vragen summary::after{content:"+";float:right;font-weight:800}
   .vragen details[open] summary::after{content:"–"}
   .vragen details p{padding:0 18px 16px;font-size:16px;color:var(--zacht)}
+  .tip{margin-top:22px;background:var(--mint);border-radius:var(--rond);padding:16px 18px;font-size:16px}
+  .tip a{font-weight:800;white-space:nowrap}
   .wet{margin-top:14px;font-size:15px;color:var(--zacht)}
   .tekst ul.zacht li{background:var(--wit)}
   .oeps-blok{margin:28px 0 0;background:var(--marine);color:var(--wit);border-radius:var(--rond);padding:26px;display:grid;gap:18px}
