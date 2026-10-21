@@ -8,7 +8,7 @@ Elke pagina noemt de bron (de site van het bedrijf zelf) en de datum waarop we h
 - [Overzicht retourtermijnen](https://oeps.app/retour/): hoe lang je kunt terugsturen, wat het kost en hoe, per winkel
 
 ## Garantie per winkel
-- [Overzicht garantie](https://oeps.app/garantie/): hoe lang je garantie hebt, hoe je die claimt en wat je nodig hebt (bol, Coolblue, IKEA, Decathlon)
+- [Overzicht garantie](https://oeps.app/garantie/): hoe lang je garantie hebt, hoe je die claimt en wat je nodig hebt (bol, Coolblue, Wehkamp, IKEA, Decathlon, Gamma, Karwei, Praxis, HEMA)
 
 - [Garantie voorbij, wat nu?](https://oeps.app/garantie/voorbij/): wat je doet als een duur apparaat na de winkelgarantie kapotgaat, met voorbeeldmail en waar je hulp krijgt
 

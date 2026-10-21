@@ -114,4 +114,133 @@ export const GARANTIE = [
       'Telefoon: 085 0003 637, maandag t/m zaterdag 9:00 tot 12:00. Chat: maandag t/m zaterdag 13:00 tot 17:00.',
     ],
   },
+  {
+    slug: 'wehkamp', naam: 'Wehkamp', bijgewerkt: '2026-10-21',
+    bron: 'https://images.wehkamp.nl/raw/aanvullende_algemene_voorwaarden.pdf',
+    kort: 'Op het eigen assortiment van Wehkamp (Nous en Studio Livit) heb je 2 jaar garantie, vanaf de factuurdatum. Bij andere merken geldt de fabrieksgarantie, die op de productpagina staat. Een klacht over een artikel meld je via de klantenservice van Wehkamp.',
+    duur: [
+      'Eigen assortiment (Nous, Studio Livit): 2 jaar garantie, ingaand op de datum van de factuur.',
+      'Overig assortiment: de fabrikant kan fabrieksgarantie geven, onder zijn eigen voorwaarden. Wehkamp zet dat bij het product op de site.',
+      'Na een herstel geeft Wehkamp 3 maanden garantie op die herstelwerkzaamheden.',
+      'Wehkamp gebruikt de levensduurlijst van UNETO/VNI om te bepalen hoe lang je een product mag verwachten mee te gaan.',
+    ],
+    stappen: [
+      'Meld je klacht via de klantenservicepagina van Wehkamp, onder "Ik heb een klacht op een artikel, wat nu?".',
+      'Wehkamp kan om aanvullende informatie vragen en beoordeelt je klacht.',
+      'Is de klacht terecht en kan het op meer manieren opgelost worden (herstel of vervanging), dan kies jij. Stop dan met het gebruik van het product.',
+      'Geef je keuze op tijd door: na meer dan 2 maanden zonder keuze beschouwt Wehkamp de termijn als verstreken.',
+    ],
+    nodig: ['Houd je factuur of bestelbevestiging bij de hand: de garantietermijn op het eigen assortiment loopt vanaf de factuurdatum.'],
+    niet: ['Verlies van gegevens of software bij elektronica: daarvoor is Wehkamp niet aansprakelijk, behalve bij opzet of bewuste roekeloosheid.'],
+    letop: [
+      'Gaat je elektronica ter reparatie? Maak dan zelf eerst een kopie van je gegevens.',
+      'In de voorwaarden staan geen kosten voor garantie of reparatie. Vraag dat na bij de klantenservice.',
+      'Dit is de stand van de aanvullende voorwaarden van september 2024.',
+    ],
+  },
+  {
+    slug: 'gamma', naam: 'Gamma', bijgewerkt: '2026-10-21',
+    bron: 'https://www.gamma.nl/klantenservice/garantie',
+    kort: 'Gamma hanteert de garantietermijn van de fabrikant (die staat op de verpakking), naast je wettelijke garantie zonder vaste termijn. Binnen 30 dagen meld je een defect bij de klantenservice of in de winkel. Daarna ga je naar een Gamma-bouwmarkt, ook als je online kocht.',
+    duur: [
+      'Fabrieksgarantie: de termijn van de fabrikant. Die verschilt per merk en staat op de verpakking.',
+      'Wettelijke garantie: geen vaste termijn. Gamma beoordeelt per soort artikel.',
+      'De eerste 30 dagen zijn de zichttermijn.',
+    ],
+    stappen: [
+      'Binnen 30 dagen, online gekocht: neem direct contact op met de klantenservice. In de bouwmarkt gekocht: ga met je bon naar de winkel.',
+      'Na 30 dagen: ga naar een Gamma-bouwmarkt, ook bij een online aankoop. Kun je het product niet meenemen of is het al verwerkt? Neem dan contact op met de klantenservice.',
+      'Binnen 30 dagen krijg je meestal een nieuw of vergelijkbaar product van gelijke waarde. Is dat niet op voorraad, dan kan het vaak besteld worden. Kan het niet vervangen worden, dan volgt meestal je geld terug, met enkele uitzonderingen.',
+      'Na 30 dagen repareert Gamma het product. Kan dat niet, dan zoekt Gamma samen met jou een andere oplossing.',
+    ],
+    nodig: [
+      'Een bewijs van aankoop: je kassabon, of bij een online bestelling je factuur. Dat geldt als garantiebewijs.',
+      'Bon of factuur kwijt? Met een Gamma-account of voordeelpas vind je een kopie. Online facturen staan in de orderbevestigingsmail. Een kopie van een kassabon kun je tot 15 maanden terug opvragen bij de bouwmarkt.',
+    ],
+    niet: ['Gamma noemt op de pagina geen volledige lijst met uitsluitingen. Garantie wordt beoordeeld naar het verwachte gebruik en de levensduur van het artikel.'],
+    letop: [
+      'Defect of beschadigd ontvangen? Controleer het pakket direct, meld het snel bij de klantenservice en bewaar de verpakking. Gamma kan om foto’s vragen.',
+      'Een klacht meld je bij de klantenservice. Je hoort binnen 14 dagen hoe Gamma het aanpakt.',
+      'Klantenservice: 088 010 86 10. Kosten voor reparatie staan niet op de pagina.',
+    ],
+  },
+  {
+    slug: 'karwei', naam: 'Karwei', bijgewerkt: '2026-10-21',
+    bron: 'https://www.karwei.nl/klantenservice/garantie',
+    kort: 'Karwei hanteert de garantietermijn van de fabrikant (die staat op de verpakking), naast je wettelijke garantie zonder vaste termijn. Binnen 30 dagen meld je een defect bij de klantenservice of in de winkel. Daarna ga je naar een Karwei-bouwmarkt, ook als je online kocht.',
+    duur: [
+      'Fabrieksgarantie: de termijn van de fabrikant. Die verschilt per merk en staat op de verpakking.',
+      'Wettelijke garantie: geen vaste termijn. Het artikel moet bij normaal gebruik blijven werken zoals je mag verwachten.',
+      'De eerste 30 dagen zijn de zichttermijn.',
+    ],
+    stappen: [
+      'Binnen 30 dagen, online gekocht: neem direct contact op met de klantenservice. In de winkel gekocht: ga met je bon naar de bouwmarkt.',
+      'Binnen 30 dagen krijg je meestal direct een nieuw of vergelijkbaar product van gelijke waarde. Alleen als vervangen niet kan, krijg je je geld terug, met enkele uitzonderingen.',
+      'Na 30 dagen: ga naar een Karwei-bouwmarkt, ook bij een webshopaankoop, met je factuur of kassabon. Karwei zorgt dan voor reparatie. Kan dat niet, dan zoekt Karwei samen met jou een andere oplossing.',
+      'Kun je het product niet meenemen of is het al verwerkt? Neem dan contact op met de klantenservice.',
+    ],
+    nodig: [
+      'Je kassabon (winkel) of factuur (online).',
+      'Een kopie van je kassabon kun je tot 15 maanden terug opvragen bij de bouwmarkt waar je kocht. Je online factuur staat in de orderbevestigingsmail of in je Karwei-account.',
+    ],
+    niet: ['Karwei noemt op de pagina geen volledige lijst met uitsluitingen, alleen dat er bij geld terug enkele uitzonderingen zijn.'],
+    letop: [
+      'Defect of beschadigd ontvangen? Controleer het pakket direct, meld het snel bij de klantenservice en bewaar de verpakking. Er kunnen foto’s gevraagd worden.',
+      'Een klacht meld je bij de klantenservice. Je hoort binnen 14 dagen hoe Karwei het oplost.',
+      'Klantenservice: 088 010 86 20 (ma t/m vr 8:00 tot 20:00, za 9:00 tot 18:00), of via WhatsApp of chat op de site. Kosten voor reparatie staan niet op de pagina.',
+    ],
+  },
+  {
+    slug: 'praxis', naam: 'Praxis', bijgewerkt: '2026-10-21',
+    bron: 'https://www.praxis.nl/garantievoorwaarden',
+    kort: 'Praxis geeft garantie op eigen merken van Maxeda DIY (zoals Baseline, Central Park, Sencys, Perfection en Decomode), alleen als er expliciet garantie op een product is verleend. De termijn staat op de verpakking. Je wettelijke rechten blijven altijd gelden. Neem je kassabon mee.',
+    duur: [
+      'De garantietermijn start op de aankoopdatum in de winkel en verschilt per product of onderdeel. Je vindt hem op de verpakking.',
+      'Accu’s hebben 1 jaar garantie.',
+      'Wordt een product vervangen, dan begint de garantie opnieuw bij de aankoop van het vervangende product.',
+      'Fabrieksgarantie doet niets af aan je wettelijke garantie, die voor alle artikelen geldt.',
+    ],
+    stappen: [
+      'Meld het gebrek binnen een redelijke termijn nadat je het ontdekt, en in elk geval voordat de garantietermijn afloopt.',
+      'Dien je claim in bij de consumenten service desk van het Maxeda-bedrijf waar je kocht (de adressen staan op maxeda.com). Je kunt ook de winkel benaderen.',
+      'Neem het product, of het gebrekkige onderdeel, mee.',
+    ],
+    nodig: ['Het product (of het gebrekkige onderdeel) en je originele kassabon.'],
+    niet: [
+      'Slijtage, corrosie, verkleuring en veroudering door normaal gebruik.',
+      'Schade door verkeerd onderhoud, of door externe oorzaken zoals brand, water, vocht, ijs, vallen, verwaarlozing of verkeerd gebruik.',
+      'Verbruiksartikelen en vervangbare onderdelen, zoals batterijen.',
+    ],
+    letop: [
+      'De garantie dekt materiaal- en fabricagefouten bij normaal gebruik, als je de installatie- en onderhoudsvoorschriften hebt gevolgd.',
+      'Gekocht bij een externe verkooppartner op Praxis.nl? Dan neem je contact op met die partner.',
+      'De garantie geldt alleen in het land van aankoop. Kosten voor een claim staan niet in de voorwaarden.',
+    ],
+  },
+  {
+    slug: 'hema', naam: 'HEMA', bijgewerkt: '2026-10-21',
+    bron: 'https://www.hema.nl/garantie-en-retour',
+    kort: 'De bekendste garantie bij HEMA is die op matrassen: 10 jaar vanaf ontvangst. Daarnaast bepalen de algemene voorwaarden van HEMA dat een extra garantie je wettelijke rechten nooit beperkt. Neem voor een claim contact op met de klantenservice en lever je betalingsbewijs en een foto aan.',
+    duur: [
+      'Matrassen: 10 jaar, vanaf het moment dat je de matras ontvangt.',
+      'Een extra garantie van de verkoper of fabrikant beperkt volgens de algemene voorwaarden van HEMA nooit je wettelijke rechten.',
+      'Los van de garantie heb je bij een matras 100 nachten proefslapen. Dat is iets anders dan de garantie.',
+    ],
+    stappen: [
+      'Neem contact op met de klantenservice van HEMA.',
+      'Lever je betalingsbewijs aan.',
+      'Stuur een foto van de beschadiging mee.',
+    ],
+    nodig: ['Je betalingsbewijs en een foto van de beschadiging.'],
+    niet: [
+      'Persoonlijke voorkeuren over comfort.',
+      'Schade door onder meer snijwonden, brandplekken, scheuren, vloeistoffen en vlekken.',
+      'Vervanging van onbeschadigde onderdelen van de matras.',
+    ],
+    letop: [
+      'Gedekt zijn scheuren, deuken of beschadigingen van het schuim, als de matras goed is behandeld, en productiefouten aan de rits.',
+      'Klantenservice: 020 224 2424 (ma t/m vr 8:30 tot 21:00, za 9:00 tot 18:00).',
+      'Deze pagina gaat over matrassen. Over de garantieduur van andere HEMA-producten kon ik op de site niets vinden.',
+    ],
+  },
 ];
