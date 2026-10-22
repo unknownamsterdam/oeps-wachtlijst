@@ -2,15 +2,18 @@
 // Cookiemelding + Google Analytics 4. Laadt GA4 pas na toestemming (zo hoort het in Nederland).
 // De keuze wordt in de browser onthouden; via "Cookies" onderaan de pagina kun je hem veranderen.
 import { SITE } from '../data/site.js';
+import { taalVan, TEKST, PAD } from '../i18n.js';
 const id = SITE.ga4;
+const taal = taalVan(Astro.url.pathname);
+const T = TEKST[taal];
 ---
 {id && (
   <>
     <div class="koekje" id="koekje" hidden role="dialog" aria-live="polite" aria-label="Cookies">
-      <p><b>Help je ons beter worden?</b> Een cookie van Google laat ons zien wat werkt en wat niet. Wie jij bent, blijft geheim. <a href="/privacy/#cookies">Meer weten</a></p>
+      <p><b>{T.koekjeKop}</b> {T.koekjeTekst} <a href={PAD[taal].privacy + '#cookies'}>{T.koekjeMeer}</a></p>
       <div class="knoppen">
-        <button type="button" class="knop" data-keuze="ja">Prima</button>
-        <button type="button" class="knop" data-keuze="nee">Liever niet</button>
+        <button type="button" class="knop" data-keuze="ja">{T.koekjeJa}</button>
+        <button type="button" class="knop" data-keuze="nee">{T.koekjeNee}</button>
       </div>
     </div>
     <script is:inline define:vars={{ id }}>

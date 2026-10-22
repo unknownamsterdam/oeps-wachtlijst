@@ -23,3 +23,13 @@ Elke pagina noemt de bron (de site van het bedrijf zelf) en de datum waarop we h
 - [Privacy](https://oeps.app/privacy/)
 - [Voorwaarden](https://oeps.app/voorwaarden/)
 - Contact: hallo@oeps.app
+
+## In English
+OEPS! is also available in English, for everyone living in the Netherlands who prefers English. The same checked pages, translated. Dutch consumer law applies.
+- [Home (English)](https://oeps.app/en/): what OEPS! does
+- [Return periods per web shop](https://oeps.app/en/returns/): how long you can send things back, what it costs and how
+- [Warranty per shop](https://oeps.app/en/warranty/): how long the warranty lasts and how to claim it
+- [Warranty over, now what?](https://oeps.app/en/warranty/expired/): what to do when an appliance breaks after the shop warranty, with an example email
+- [Cancel a subscription](https://oeps.app/en/cancel/): steps per subscription
+- [Know your rights](https://oeps.app/en/explained/): cooling-off period, warranty, subscriptions and price increases in plain English
+- [Privacy](https://oeps.app/en/privacy/) · [Terms](https://oeps.app/en/terms/)

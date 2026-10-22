@@ -1,11 +1,14 @@
 ---
 // 21 okt: rustige balk onderin die pas na wat scrollen verschijnt. Verdwijnt bij het aanmeldblok, de cookiebalk en na sluiten.
-const { tekst = 'Nooit meer je bon of garantie kwijt?', bron = '' } = Astro.props;
+import { taalVan, TEKST, PAD } from '../i18n.js';
+const taal = taalVan(Astro.url.pathname);
+const T = TEKST[taal];
+const { tekst = T.balkTekst, bron = '' } = Astro.props;
 ---
-<div class="appbalk" id="appbalk" hidden role="region" aria-label="OEPS! uitnodiging">
+<div class="appbalk" id="appbalk" hidden role="region" aria-label={T.balkLabel}>
   <span class="appbalk-tekst">{tekst}</span>
-  <a class="appbalk-knop" href="/#aanmelden">Start gratis</a>
-  <button type="button" class="appbalk-dicht" aria-label="Sluiten">×</button>
+  <a class="appbalk-knop" href={PAD[taal].aanmelden}>{T.start}</a>
+  <button type="button" class="appbalk-dicht" aria-label={T.sluiten}>×</button>
 </div>
 <script>
   (function () {

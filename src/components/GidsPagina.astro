@@ -1,89 +1,143 @@
 ---
 // 14 okt: één zoekpagina uit de bedrijvengids. soort 'retour' (webwinkel) of 'opzeggen' (abonnement).
+// 22 okt: ook in het Engels (/en/returns/<slug>/ en /en/cancel/<slug>/); de Engelse gegevens komen uit gids-en.js.
 import Base from '../layouts/Base.astro';
 import Plaatje from './Plaatje.astro';
 import Wachtlijst from './Wachtlijst.astro';
 import { SITE } from '../data/site.js';
-import { datumNL } from '../data/vragen.js';
-import { RETOUR, OPZEGGEN, VIA, MANIER } from '../data/gids.js';
+import { RETOUR, OPZEGGEN, VIA, MANIER, RETOUR_EN, OPZEGGEN_EN, VIA_EN, MANIER_EN, gidsPad, heeftEngels } from '../data/gids.js';
 import { GARANTIE } from '../data/garantie.js';
+import { PAD, TEKST, datum } from '../i18n.js';
 
-const { p } = Astro.props;
+const { p, taal = 'nl' } = Astro.props;
+const en = taal === 'en';
+const T = TEKST[taal];
 const retour = p.soort === 'retour';
 const r = p.retour || {}, o = p.opzeggen || {};
-const pad = retour ? `/retour/${p.slug}/` : `/opzeggen/${p.slug}/`;
-const titel = retour ? `Retourtermijn ${p.naam}` : `${p.naam} opzeggen`;
-const seoTitel = retour ? `Retourtermijn ${p.naam}: hoe lang kun je terugsturen? | OEPS!` : `${p.naam} opzeggen: zo doe je het | OEPS!`;
-const termijn = r.dagen ? `${r.dagen} dagen${r.vanaf === 'levering' ? ' na ontvangst' : r.vanaf === 'aankoop' ? ' na je bestelling' : ''}` : null;
-const kort = retour
-  ? (termijn ? `Bij ${p.naam} heb je ${termijn} om iets terug te sturen.${r.kosten ? ` Retourkosten: ${r.kosten.replace(/\.$/, '')}.` : ''}` : `Zo stuur je iets terug naar ${p.naam}.`)
-  : `Je zegt ${p.naam} op ${VIA[o.via] || 'via je account'}.${o.let_op ? ' ' + o.let_op : ''}`;
-const beschrijving = retour
-  ? `${termijn ? `Je hebt ${termijn} om je bestelling bij ${p.naam} terug te sturen.` : `Zo stuur je je bestelling bij ${p.naam} terug.`} Stappen, kosten en een seintje voordat het te laat is.`
-  : `Zo zeg je ${p.naam} op, in een paar stappen. Plus: waar je op moet letten zodat je niet nog een periode vastzit.`;
+const pad = gidsPad(p.soort, p.slug, taal);
+const andere = en ? gidsPad(p.soort, p.slug, 'nl') : (heeftEngels(p.soort, p.slug) ? gidsPad(p.soort, p.slug, 'en') : null);
+const zin = (x) => x.replace(/\.$/, '');
+const stappenZin = (a) => a.map((x, i) => `${i + 1}. ${zin(x)}.`).join(' ');
+const kosten = r.kosten ? zin(r.kosten) : null;
+const X = en ? {
+  titel: retour ? `${p.naam} return period` : `Cancel ${p.naam}`,
+  seoTitel: retour ? `${p.naam} return period: how long can you send it back? | OEPS!` : `How to cancel ${p.naam}: step by step | OEPS!`,
+  termijn: r.dagen ? `${r.dagen} days${r.vanaf === 'levering' ? ' after delivery' : r.vanaf === 'aankoop' ? ' after you order' : ''}` : null,
+  via: VIA_EN[o.via] || 'in your account', manier: MANIER_EN, kruimel: retour ? 'Return periods' : 'Cancel a subscription',
+  terug: 'How to send it back', opzeg: 'How to cancel', manieren: 'Ways to send it back',
+  naarGarantie: `Something broken? See the ${p.naam} warranty ›`, naarLink: retour ? `Go to the ${p.naam} returns page` : `Go to ${p.naam}`,
+  wet: 'If you order online, Dutch law gives you at least 14 days to change your mind after delivery. Many shops give you more time, as shown above.',
+  blokKop: retour ? 'Never just too late again.' : 'Never stuck for another year again.',
+  blok: retour ? 'OEPS! remembers the return period of every order and gives you a nudge before it ends. You don’t have to keep track of anything.' : `OEPS! keeps track of your subscriptions and gives you a nudge before ${p.naam} renews or gets more expensive.`,
+  meer: retour ? 'Other return periods' : 'Cancel other subscriptions', mini: (x) => (retour ? `${x.naam} return period` : `Cancel ${x.naam}`),
+  nlKnoppen: `These steps are for ${p.naam}’s Dutch website. Buttons and menus are named in Dutch there; the English meaning is in brackets.`,
+} : {
+  titel: retour ? `Retourtermijn ${p.naam}` : `${p.naam} opzeggen`,
+  seoTitel: retour ? `Retourtermijn ${p.naam}: hoe lang kun je terugsturen? | OEPS!` : `${p.naam} opzeggen: zo doe je het | OEPS!`,
+  termijn: r.dagen ? `${r.dagen} dagen${r.vanaf === 'levering' ? ' na ontvangst' : r.vanaf === 'aankoop' ? ' na je bestelling' : ''}` : null,
+  via: VIA[o.via] || 'via je account', manier: MANIER, kruimel: retour ? 'Retourtermijnen' : 'Opzeggen',
+  terug: 'Zo stuur je het terug', opzeg: 'Zo zeg je op', manieren: 'Manieren om terug te sturen',
+  naarGarantie: `Iets kapot? Bekijk de garantie van ${p.naam} ›`, naarLink: retour ? `Naar de retourpagina van ${p.naam}` : `Naar ${p.naam}`,
+  wet: 'Bestel je online, dan heb je volgens de wet minstens 14 dagen bedenktijd na ontvangst. Veel winkels geven meer tijd, zoals hierboven.',
+  blokKop: retour ? 'Nooit meer net te laat.' : 'Nooit meer een jaar te lang vast.',
+  blok: retour ? `OEPS! onthoudt de retourtermijn van elke bestelling en geeft je een seintje voordat hij afloopt. Jij hoeft niets bij te houden.` : `OEPS! houdt je abonnementen bij en geeft je een seintje voordat ${p.naam} verlengt of duurder wordt.`,
+  meer: retour ? 'Andere retourtermijnen' : 'Andere abonnementen opzeggen', mini: (x) => (retour ? `Retourtermijn ${x.naam}` : `${x.naam} opzeggen`),
+  nlKnoppen: null,
+};
+const { titel, seoTitel, termijn } = X;
+const kort = en
+  ? (retour
+      ? (termijn ? `At ${p.naam} you have ${termijn} to send something back.${kosten ? ` Return costs: ${kosten}.` : ''}` : `Here’s how to send something back to ${p.naam}.`)
+      : `You cancel ${p.naam} ${X.via}.${o.let_op ? ' ' + zin(o.let_op) + '.' : ''}`)
+  : (retour
+      ? (termijn ? `Bij ${p.naam} heb je ${termijn} om iets terug te sturen.${r.kosten ? ` Retourkosten: ${r.kosten.replace(/\.$/, '')}.` : ''}` : `Zo stuur je iets terug naar ${p.naam}.`)
+      : `Je zegt ${p.naam} op ${X.via}.${o.let_op ? ' ' + o.let_op : ''}`);
+const beschrijving = en
+  ? (retour
+      ? `${termijn ? `You have ${termijn} to send your ${p.naam} order back.` : `How to send your ${p.naam} order back.`} Steps, costs and a nudge before it’s too late.`
+      : `How to cancel ${p.naam} in a few steps. Plus: what to watch out for so you’re not stuck for another period.`)
+  : (retour
+      ? `${termijn ? `Je hebt ${termijn} om je bestelling bij ${p.naam} terug te sturen.` : `Zo stuur je je bestelling bij ${p.naam} terug.`} Stappen, kosten en een seintje voordat het te laat is.`
+      : `Zo zeg je ${p.naam} op, in een paar stappen. Plus: waar je op moet letten zodat je niet nog een periode vastzit.`);
 const stappen = retour ? r.stappen : o.stappen;
 const link = retour ? r.url : o.url;
-const meer = (retour ? RETOUR : OPZEGGEN).filter((x) => x.slug !== p.slug).slice(0, 6);
-const gecontroleerd = datumNL(p.bijgewerkt);
-const kosten = r.kosten ? r.kosten.replace(/\.$/, '') : null;
+const lijstIn = en ? (retour ? RETOUR_EN : OPZEGGEN_EN) : (retour ? RETOUR : OPZEGGEN);
+const meer = lijstIn.filter((x) => x.slug !== p.slug).slice(0, 6);
+const gecontroleerd = datum(p.bijgewerkt, taal);
 const contactTel = p.contact && p.contact.telefoon;
 // Vragen en antwoorden: alleen wat in de gids staat, in gewone zinnen. Staan ook zichtbaar op de pagina (schema moet daarmee kloppen).
-const vragen = retour
-  ? [
-      termijn && { v: `Hoe lang kun je terugsturen bij ${p.naam}?`, a: `Bij ${p.naam} heb je ${termijn} om je bestelling terug te sturen.` },
-      kosten && { v: `Wat kost retourneren bij ${p.naam}?`, a: /^gratis/i.test(kosten) ? `Retourneren bij ${p.naam} is gratis.` : `Retourkosten bij ${p.naam}: ${kosten}.` },
-      stappen.length > 0 && { v: `Hoe stuur je iets terug naar ${p.naam}?`, a: stappen.map((x, i) => `${i + 1}. ${x.replace(/\.$/, '')}.`).join(' ') },
-      { v: `Wat als de retourtermijn van ${p.naam} voorbij is?`, a: `Dan kun je meestal niet meer zomaar terugsturen. Is het product kapot of niet zoals beschreven, dan kun je nog wel een beroep doen op garantie. Neem contact op met ${p.naam} en leg uit wat er aan de hand is.` },
-    ]
-  : [
-      { v: `Hoe zeg je ${p.naam} op?`, a: `Je zegt ${p.naam} op ${VIA[o.via] || 'via je account'}. ${stappen.map((x, i) => `${i + 1}. ${x.replace(/\.$/, '')}.`).join(' ')}` },
-      o.let_op && { v: `Waar moet je op letten bij het opzeggen van ${p.naam}?`, a: o.let_op },
-      { v: `Hoe voorkom je dat je ${p.naam} te laat opzegt?`, a: `Zet de opzegdatum in je agenda of laat een app als OEPS! je een seintje geven voordat het abonnement verlengt.` },
-    ];
+const vragen = en
+  ? (retour
+    ? [
+        termijn && { v: `How long can you send something back to ${p.naam}?`, a: `At ${p.naam} you have ${termijn} to send your order back.` },
+        kosten && { v: `What does it cost to return something to ${p.naam}?`, a: /^free/i.test(kosten) ? `Returning to ${p.naam} is free.` : `Return costs at ${p.naam}: ${kosten}.` },
+        stappen.length > 0 && { v: `How do you send something back to ${p.naam}?`, a: stappenZin(stappen) },
+        { v: `What if the ${p.naam} return period has ended?`, a: `Then you usually can’t just send it back anymore. If the product is broken or not as described, you can still rely on the warranty. Contact ${p.naam} and explain what’s wrong.` },
+      ]
+    : [
+        { v: `How do you cancel ${p.naam}?`, a: `You cancel ${p.naam} ${X.via}. ${stappenZin(stappen)}` },
+        o.let_op && { v: `What should you watch out for when cancelling ${p.naam}?`, a: zin(o.let_op) + '.' },
+        { v: `How do you avoid cancelling ${p.naam} too late?`, a: `Put the cancellation date in your calendar, or let an app like OEPS! give you a nudge before the subscription renews.` },
+      ])
+  : (retour
+    ? [
+        termijn && { v: `Hoe lang kun je terugsturen bij ${p.naam}?`, a: `Bij ${p.naam} heb je ${termijn} om je bestelling terug te sturen.` },
+        kosten && { v: `Wat kost retourneren bij ${p.naam}?`, a: /^gratis/i.test(kosten) ? `Retourneren bij ${p.naam} is gratis.` : `Retourkosten bij ${p.naam}: ${kosten}.` },
+        stappen.length > 0 && { v: `Hoe stuur je iets terug naar ${p.naam}?`, a: stappenZin(stappen) },
+        { v: `Wat als de retourtermijn van ${p.naam} voorbij is?`, a: `Dan kun je meestal niet meer zomaar terugsturen. Is het product kapot of niet zoals beschreven, dan kun je nog wel een beroep doen op garantie. Neem contact op met ${p.naam} en leg uit wat er aan de hand is.` },
+      ]
+    : [
+        { v: `Hoe zeg je ${p.naam} op?`, a: `Je zegt ${p.naam} op ${X.via}. ${stappenZin(stappen)}` },
+        o.let_op && { v: `Waar moet je op letten bij het opzeggen van ${p.naam}?`, a: o.let_op },
+        { v: `Hoe voorkom je dat je ${p.naam} te laat opzegt?`, a: `Zet de opzegdatum in je agenda of laat een app als OEPS! je een seintje geven voordat het abonnement verlengt.` },
+      ]);
 const faq = vragen.filter(Boolean);
+const lijstPad = PAD[taal][retour ? 'retour' : 'opzeggen'];
+const garantiePad = en ? `/en/warranty/${p.slug}/` : `/garantie/${p.slug}/`;
+const lang = en ? 'en' : 'nl-NL';
 const schema = [
-  { '@type': 'WebPage', '@id': SITE.url + pad + '#pagina', url: SITE.url + pad, name: seoTitel.replace(' | OEPS!', ''), description: beschrijving, inLanguage: 'nl-NL', dateModified: p.bijgewerkt, isPartOf: { '@id': SITE.url + '/#website' }, publisher: { '@id': SITE.url + '/#organization' } },
-  { '@type': 'HowTo', name: titel, description: beschrijving, inLanguage: 'nl-NL', step: stappen.map((s, i) => ({ '@type': 'HowToStep', position: i + 1, text: s })) },
+  { '@type': 'WebPage', '@id': SITE.url + pad + '#pagina', url: SITE.url + pad, name: seoTitel.replace(' | OEPS!', ''), description: beschrijving, inLanguage: lang, dateModified: p.bijgewerkt, isPartOf: { '@id': SITE.url + '/#website' }, publisher: { '@id': SITE.url + '/#organization' } },
+  { '@type': 'HowTo', name: titel, description: beschrijving, inLanguage: lang, step: stappen.map((s, i) => ({ '@type': 'HowToStep', position: i + 1, text: s })) },
   { '@type': 'FAQPage', mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.v, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
   { '@type': 'BreadcrumbList', itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url + '/' },
-    { '@type': 'ListItem', position: 2, name: retour ? 'Retourtermijnen' : 'Opzeggen', item: SITE.url + (retour ? '/retour/' : '/opzeggen/') },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url + PAD[taal].home },
+    { '@type': 'ListItem', position: 2, name: X.kruimel, item: SITE.url + lijstPad },
     { '@type': 'ListItem', position: 3, name: titel, item: SITE.url + pad } ] },
 ];
 ---
-<Base title={seoTitel} description={beschrijving} schema={schema}>
+<Base title={seoTitel} description={beschrijving} schema={schema} taal={taal} andere={andere}>
   <article class="gids">
     <div class={`kopblok bg-${retour ? 'mint' : 'geel'}`}>
       <div class="wrap smal kopblok-in">
         <div>
-          <nav class="kruimel" aria-label="Kruimelpad"><a href={retour ? '/retour/' : '/opzeggen/'}>{retour ? 'Retourtermijnen' : 'Opzeggen'}</a> <span>›</span> {p.naam}</nav>
+          <nav class="kruimel" aria-label={T.kruimel}><a href={lijstPad}>{X.kruimel}</a> <span>›</span> {p.naam}</nav>
           <h1>{titel}</h1>
         </div>
         <Plaatje naam={retour ? 'doos' : 'kalender'} grootte={130} />
       </div>
     </div>
     <div class="wrap smal">
-      <div class="kort"><span class="kort-label">Kort gezegd</span><p>{kort}</p><p class="gecontroleerd">Gecontroleerd op {gecontroleerd}{p.bron && <> · bron: <a href={p.bron} rel="noopener nofollow" target="_blank">site van {p.naam}</a></>}</p></div>
-      {stappen.length > 0 && (<section class="tekst"><h2>{retour ? 'Zo stuur je het terug' : 'Zo zeg je op'}</h2><ol>{stappen.map((s) => <li>{s}</li>)}</ol></section>)}
-      {retour && r.manieren?.length > 0 && (<section class="tekst"><h2>Manieren om terug te sturen</h2><ul>{r.manieren.map((m) => <li>{MANIER[m] || m}</li>)}</ul></section>)}
-      {retour && GARANTIE.some((x) => x.slug === p.slug) && <p class="naar"><a href={`/garantie/${p.slug}/`}>Iets kapot? Bekijk de garantie van {p.naam} ›</a></p>}
-      {link && <p class="naar"><a href={link} rel="noopener nofollow" target="_blank">{retour ? `Naar de retourpagina van ${p.naam}` : `Naar ${p.naam}`} ›</a></p>}
-      <section class="tekst vragen"><h2>Veelgestelde vragen</h2>
+      <div class="kort"><span class="kort-label">{T.kortGezegd}</span><p>{kort}</p><p class="gecontroleerd">{T.gecontroleerdOp} {gecontroleerd}{p.bron && <> · {T.bron}: <a href={p.bron} rel="noopener nofollow" target="_blank">{T.siteVan(p.naam)}</a></>}</p></div>
+      {stappen.length > 0 && (<section class="tekst"><h2>{retour ? X.terug : X.opzeg}</h2><ol>{stappen.map((s) => <li>{s}</li>)}</ol>{X.nlKnoppen && <p class="wet">{X.nlKnoppen}</p>}</section>)}
+      {retour && r.manieren?.length > 0 && (<section class="tekst"><h2>{X.manieren}</h2><ul>{r.manieren.map((m) => <li>{X.manier[m] || m}</li>)}</ul></section>)}
+      {retour && GARANTIE.some((x) => x.slug === p.slug) && <p class="naar"><a href={garantiePad}>{X.naarGarantie}</a></p>}
+      {link && <p class="naar"><a href={link} rel="noopener nofollow" target="_blank">{X.naarLink} ›</a></p>}
+      <section class="tekst vragen"><h2>{T.veelgesteld}</h2>
         {faq.map((f) => (<details><summary>{f.v}</summary><p>{f.a}</p></details>))}
       </section>
-      {retour && <p class="wet">Bestel je online, dan heb je volgens de wet minstens 14 dagen bedenktijd na ontvangst. Veel winkels geven meer tijd, zoals hierboven.</p>}
+      {retour && <p class="wet">{X.wet}</p>}
       <aside class="oeps-blok">
-        <div><span class="badge">Binnenkort</span>
-          <h2>{retour ? 'Nooit meer net te laat.' : 'Nooit meer een jaar te lang vast.'}</h2>
-          <p>{retour ? `OEPS! onthoudt de retourtermijn van elke bestelling en geeft je een seintje voordat hij afloopt. Jij hoeft niets bij te houden.` : `OEPS! houdt je abonnementen bij en geeft je een seintje voordat ${p.naam} verlengt of duurder wordt.`}</p></div>
-        <Wachtlijst compact bron={(retour ? 'retour-' : 'opzeggen-') + p.slug} />
+        <div><span class="badge">{T.binnenkort}</span>
+          <h2>{X.blokKop}</h2>
+          <p>{X.blok}</p></div>
+        <Wachtlijst compact bron={(retour ? 'retour-' : 'opzeggen-') + p.slug} taal={taal} />
       </aside>
       <footer class="info">
-        <p>Opgezocht op de site van {p.naam} · Bijgewerkt op {datumNL(p.bijgewerkt)}{p.bron && <> · <a href={p.bron} rel="noopener nofollow" target="_blank">bron</a></>}</p>
-        <p>Klopt er iets niet meer? Mail <a href={`mailto:${SITE.mail}`}>{SITE.mail}</a>, dan passen we het aan. Voorwaarden kunnen veranderen; check bij twijfel de site van {p.naam}.</p>
+        <p>{T.opgezocht(p.naam)} · {T.bijgewerktOp} {gecontroleerd}{p.bron && <> · <a href={p.bron} rel="noopener nofollow" target="_blank">{T.bron}</a></>}</p>
+        <p>{T.kloptNiet} <a href={`mailto:${SITE.mail}`}>{SITE.mail}</a>, {T.kloptNiet2(p.naam)}</p>
       </footer>
-      {meer.length > 0 && (<section class="meer"><h2>{retour ? 'Andere retourtermijnen' : 'Andere abonnementen opzeggen'}</h2>
-        <div class="meer-lijst">{meer.map((x) => <a class="mini" href={retour ? `/retour/${x.slug}/` : `/opzeggen/${x.slug}/`}>{retour ? `Retourtermijn ${x.naam}` : `${x.naam} opzeggen`}</a>)}</div></section>)}
+      {meer.length > 0 && (<section class="meer"><h2>{X.meer}</h2>
+        <div class="meer-lijst">{meer.map((x) => <a class="mini" href={gidsPad(x.soort, x.slug, taal)}>{X.mini(x)}</a>)}</div></section>)}
     </div>
   </article>
 </Base>

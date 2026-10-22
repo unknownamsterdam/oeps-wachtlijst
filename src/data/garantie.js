@@ -244,3 +244,16 @@ export const GARANTIE = [
     ],
   },
 ];
+
+// 22 okt: Engelse versies (garantie-en.js). Alleen winkels met een vertaling krijgen een Engelse pagina.
+import { GARANTIE_EN as VERTALING, WET_EN } from './garantie-en.js';
+export { WET_EN };
+export const GARANTIE_EN = GARANTIE.filter((g) => VERTALING[g.slug]).map((g) => {
+  const e = VERTALING[g.slug];
+  if (e.nl && e.nl !== g.bijgewerkt) console.warn(`[engels] garantie/${g.slug}: Nederlandse tekst is bijgewerkt (${g.bijgewerkt}), vertaling is van ${e.nl}`);
+  return { ...g, kort: e.kort, duur: e.duur, stappen: e.stappen, nodig: e.nodig, niet: e.niet, letop: e.letop || [] };
+});
+const zonderEn = GARANTIE.filter((g) => !VERTALING[g.slug]);
+if (zonderEn.length) console.warn(`[engels] nog geen Engelse garantiepagina voor: ${zonderEn.map((g) => g.slug).join(', ')}`);
+export const garantiePad = (slug, taal = 'nl') => (taal === 'en' ? `/en/warranty/${slug}/` : `/garantie/${slug}/`);
+export const heeftEngelseGarantie = (slug) => !!VERTALING[slug];

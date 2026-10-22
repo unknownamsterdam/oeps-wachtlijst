@@ -1,0 +1,7 @@
+---
+import UitlegPagina from '../../../components/UitlegPagina.astro';
+import { VRAGEN_EN } from '../../../data/vragen.js';
+export function getStaticPaths() { return VRAGEN_EN.map((v) => ({ params: { slug: v.slug }, props: { vraag: v } })); }
+const { vraag } = Astro.props;
+---
+<UitlegPagina vraag={vraag} taal="en" />

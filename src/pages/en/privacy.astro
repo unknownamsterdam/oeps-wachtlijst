@@ -1,0 +1,162 @@
+---
+import Base from '../../layouts/Base.astro';
+import { SITE } from '../../data/site.js';
+// 22 okt 2026: Engelse vertaling van /privacy/ (stand 19 okt, met kortingscodes). Pas je de Nederlandse tekst aan, pas deze dan ook aan.
+---
+<Base
+  title="Privacy | OEPS!"
+  description="What OEPS! does with your data: in the app, with your email and when you sign up. Short and clear."
+  andere="/privacy/"
+>
+  <div class="wrap smal privacy">
+    <h1>Privacy</h1>
+    <p class="lead">Short and clear: what OEPS! does with your data. First the app, then signing up and this website.</p>
+    <p class="vertaling">This is a translation of our Dutch <a href="/privacy/" hreflang="nl" lang="nl">privacy explanation</a>. If the two differ, the Dutch version applies.</p>
+
+    <h2>In short</h2>
+    <ul>
+      <li>We only read emails about purchases, bills, subscriptions, deliveries and returns.</li>
+      <li>We take out the dates and amounts that matter, so you get a nudge in time.</li>
+      <li>We don't sell anything on, show no ads and don't let AI train on your emails.</li>
+      <li>Your data is stored in the European Union. You can download everything and have everything deleted.</li>
+    </ul>
+
+    <h2>Who is responsible</h2>
+    <p>OEPS! is responsible for your data (under the GDPR this is called the controller). You can reach us at <a href={`mailto:${SITE.mail}`}>{SITE.mail}</a>.</p>
+
+    <h2 id="app">The app</h2>
+
+    <h3>What we store</h3>
+    <ul>
+      <li>Your account: your email address, your name and your own OEPS! address.</li>
+      <li>Emails you forward to your OEPS! address, and emails we fetch from your connected Gmail or Outlook (see below).</li>
+      <li>Photos and PDFs you add yourself, such as a receipt or warranty certificate.</li>
+      <li>What we take from those emails and receipts: shop, product, price, order number, purchase and delivery date, return period, warranty, renewal, notice period and parcel details.</li>
+      <li>What you fill in yourself: choices (such as "I'm keeping it"), notes, your postcode (to track PostNL parcels), your address (only for a return label), your licence plate (for the MOT, called APK in the Netherlands) and the expiry date of documents such as your passport. We don't ask for the number of your passport or driving licence.</li>
+      <li>Messages you send us.</li>
+      <li>For notifications on your phone: the address of your device that notifications are sent to.</li>
+    </ul>
+
+    <h3 id="gmail">Connecting Gmail and Outlook</h3>
+    <ul>
+      <li>You give permission yourself through Google or Microsoft. We only ask to <b>read</b> your email.</li>
+      <li>In Gmail we use a fixed search to look for emails about orders, invoices, subscriptions, deliveries and returns. We only fetch those emails.</li>
+      <li>In Outlook we look at the subject and sender of the emails in your inbox, and only fetch the emails that match.</li>
+      <li>We don't open ordinary emails from people. We don't send anything from your mailbox, change anything or delete anything.</li>
+      <li>We only read ads and newsletters to take a <b>discount code</b> out of them. In Gmail we search separately for promotional emails with a code in them; in Outlook we look at subjects that look like a promotion. From such an email we only keep the code, the shop, what the discount is, the conditions and until when the code is valid. We don't keep the email itself. You see the codes in the app under Overview and can hide them there.</li>
+      <li>You can always disconnect in the app, under Account. We then revoke the access and stop fetching anything. You can also revoke access in your Google or Microsoft account.</li>
+    </ul>
+
+    <h3>What for</h3>
+    <ul>
+      <li>Your overview, and a timely nudge about returns, warranty, renewals, cancelling, price increases, parcels, your MOT (APK) and documents that expire.</li>
+      <li>Things that stand out in your bills, such as a bill that is much higher than usual, or something you ordered twice.</li>
+      <li>As long as you can still send something back: checking whether it has become cheaper at the same shop.</li>
+      <li>Help you ask for yourself, such as a complaint email, the steps to cancel or a return label. Sending, cancelling or paying only happens when you press the button.</li>
+      <li>Making the app better: we look at counts (how many emails, how many read correctly), not at the content of your emails.</li>
+    </ul>
+    <p>We do this because you use the app and ask us to keep track of this for you (our agreement with you). For connecting Gmail or Outlook we also ask for your consent. You can withdraw it at any time by disconnecting.</p>
+
+    <h3>Who reads your email</h3>
+    <ul>
+      <li><b>Claude, the AI from Anthropic,</b> reads the email and takes out what matters. Anthropic may not use your data to train AI and deletes it within 30 days.</li>
+      <li><b>No people.</b> Whoever manages OEPS! only sees <i>that</i> an email came in, not what's in it. If you send us a message about an email yourself, we only look at what you send along. Only if the law requires it, or for the security of the service, an exception may be needed.</li>
+    </ul>
+
+    <h3>Who helps us</h3>
+    <p>These companies process data for us, only for what is described below, and with the agreements the GDPR requires:</p>
+    <ul>
+      <li><b>Cloudflare</b>: the app, the database and the storage of emails. In the European Union.</li>
+      <li><b>Anthropic</b>: reads emails and receipts to take the details out (see above). To see whether something has become cheaper, Claude searches the internet with only the product name and the shop, never with your name or email address. Anthropic is based in the United States; the transfer takes place under the European Commission's standard contractual clauses.</li>
+      <li><b>Brevo</b>: sends the emails from OEPS! to you, such as your login link. In the European Union.</li>
+      <li><b>Apple, Google or Mozilla</b>: deliver the notifications on your phone or computer. The content is encrypted.</li>
+      <li><b>Google and Microsoft</b>: only if you connect your Gmail or Outlook.</li>
+      <li><b>RDW</b> (the Dutch vehicle authority): if you enter your licence plate, we ask them for the MOT (APK) date. The RDW only receives the licence plate.</li>
+      <li><b>17TRACK</b>: tracks your parcels with the tracking code and the carrier, and for PostNL your postcode.</li>
+      <li><b>Sendcloud</b>: only if you have a return label made; Sendcloud then receives your name, address and the order.</li>
+    </ul>
+    <p>We never sell your data and don't use it for advertising.</p>
+
+    <h3>How long</h3>
+    <ul>
+      <li>Your data stays as long as you have an account.</li>
+      <li>Emails that nothing came out of, such as ads or a delivery message, are removed after 90 days.</li>
+      <li>Discount codes stay in your list (expired codes separately) until you delete your account; then they're gone too.</li>
+      <li>An email that is the proof of a purchase or subscription is kept, because you need it for warranty or cancelling. It stays until you remove that item or your account.</li>
+      <li>If you delete your account in the app, we remove everything immediately and revoke access to your Gmail or Outlook. Backups at Cloudflare disappear within 30 days.</li>
+    </ul>
+
+    <h3>Security</h3>
+    <ul>
+      <li>All connections are encrypted.</li>
+      <li>We store the access keys for Gmail and Outlook encrypted.</li>
+      <li>Logging in works without a password, with a link that only works once.</li>
+      <li>In our admin area, the content of your emails is shielded.</li>
+    </ul>
+
+    <h3>Your rights</h3>
+    <ul>
+      <li><b>View and download:</b> in the app under Account, Download your data.</li>
+      <li><b>Correct:</b> if something is wrong, change it at the item, or send us a message.</li>
+      <li><b>Delete:</b> an item or your whole account, in the app.</li>
+      <li><b>Withdraw consent:</b> disconnect Gmail or Outlook.</li>
+      <li><b>Objections and questions:</b> email <a href={`mailto:${SITE.mail}`}>{SITE.mail}</a>.</li>
+      <li>You can also file a complaint with the <a href="https://autoriteitpersoonsgegevens.nl" rel="noopener">Autoriteit Persoonsgegevens</a> (the Dutch Data Protection Authority).</li>
+    </ul>
+
+    <h2 id="google">Data from Google</h2>
+    <p>For data we fetch through Google (your Gmail), the following also applies:</p>
+    <ul>
+      <li>We only use it to provide the OEPS! features you see and asked for.</li>
+      <li>We only pass it on to the processors above, as far as that's needed for those features, or if the law requires it.</li>
+      <li>We don't use it for advertising and don't sell it.</li>
+      <li>We don't use it to develop, improve or train general AI models.</li>
+      <li>People don't read it, except with your explicit permission for a specific email, for the security of the service or if the law requires it.</li>
+    </ul>
+    <p class="en">OEPS!'s use and transfer to any other app of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy" rel="noopener">Google API Services User Data Policy</a>, including the Limited Use requirements. OEPS! does not use Google Workspace API data to develop, improve or train generalized AI or machine learning models.</p>
+
+    <h2 id="wachtlijst">Signing up and this website</h2>
+    <h3>What we store</h3>
+    <ul>
+      <li>Your name and email address.</li>
+      <li>Your answers in the form (what you forget most often and what it would be worth to you).</li>
+      <li>How you found us, for example Instagram.</li>
+    </ul>
+    <h3>What for</h3>
+    <ul>
+      <li>To email you about OEPS!: your login link, a welcome email and an occasional update.</li>
+      <li>To learn what people forget most, so we build the right things.</li>
+    </ul>
+    <p>We do this because you ask for it yourself by signing up. Cloudflare hosts this website and receives the form; Brevo sends our emails and keeps the list of sign-ups.</p>
+    <p>As long as you're signed up with us, we keep this data. Unsubscribe? Then we stop emailing you. Want us to delete everything? Send us an email and we'll take care of it.</p>
+
+    <h3 id="cookies">Cookies and counting visitors</h3>
+    <p>We want to know how many people visit oeps.app, which pages they read and how they find us. For that we use Google Analytics. It places a cookie in your browser.</p>
+    <ul>
+      <li>We only do this if you click <b>Fine</b> in the notice. If you click <b>No thanks</b>, we don't count you.</li>
+      <li>We don't see names or email addresses, only numbers: how many visitors, which pages, which country.</li>
+      <li>Google stores this data for us. Google may not use it for advertising.</li>
+      <li>Changed your mind? Click <b>Cookies</b> at the bottom of any page.</li>
+    </ul>
+    <p>The app itself only uses a cookie to keep you logged in. Apart from that, we don't use cookies to track you.</p>
+
+    <h2>Changes</h2>
+    <p>If we change something important in this explanation, we'll let you know first in the app or by email.</p>
+
+    <h2>Contact</h2>
+    <p>Questions? Email <a href={`mailto:${SITE.mail}`}>{SITE.mail}</a>.</p>
+
+    <p class="klein">Last updated: 13 October 2026 (English translation: 22 October 2026)</p>
+  </div>
+</Base>
+
+<style>
+  .privacy{padding-top:32px}
+  .lead{font-size:19px;color:var(--zacht);margin:12px 0 8px}
+  .vertaling{font-size:15px;color:var(--zacht);background:var(--wit);border-radius:14px;padding:10px 14px}
+  h2{margin:34px 0 10px;font-size:24px}
+  h3{margin:22px 0 8px;font-size:19px}
+  p{margin:8px 0}
+  ul{margin:8px 0 8px 20px;display:grid;gap:4px}
+  .en{font-size:15px;color:var(--zacht)}
+</style>

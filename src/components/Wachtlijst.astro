@@ -3,74 +3,88 @@
 // Vroeger het wachtlijstformulier. Elke inzending gaat naar /aanmelden (worker/index.js op Cloudflare),
 // die het adres in Brevo zet en daarna terugstuurt naar deze pagina met ?aangemeld=1.
 // 13 okt: vinkje voor Engels (in het Engels geschreven, zodat wie geen Nederlands leest het snapt); de app volgt die keuze.
+// 22 okt: ook in het Engels (op /en/...). Daar gaat taal=en altijd mee, dus zonder vinkje. De antwoorden in de keuzelijsten
+// blijven in het Nederlands naar Brevo gaan (value), zodat alle aanmeldingen in één taal staan; alleen wat je ziet is Engels.
 import { SITE } from '../data/site.js';
-const { compact = false, bron = 'direct' } = Astro.props;
+import { taalVan, TEKST, PAD } from '../i18n.js';
+const { compact = false, bron = 'direct', taal = taalVan(Astro.url.pathname) } = Astro.props;
+const T = TEKST[taal];
+const en = taal === 'en';
 const terug = Astro.url.pathname + '?aangemeld=1#aanmelden';
+const VERGEET = [
+  ['Een retour op tijd terugsturen', 'Sending a return back in time'],
+  ['Een abonnement opzeggen', 'Cancelling a subscription'],
+  ['Prijsstijgingen van vaste lasten', 'Price increases on fixed costs'],
+  ['Waar mijn bon of garantie is', 'Where my receipt or warranty is'],
+];
+const BEDRAG = [
+  ['Niets, alleen gratis', 'Nothing, free only'],
+  ['€1 per maand', '€1 a month'],
+  ['€2 per maand', '€2 a month'],
+  ['€3 tot €5 per maand', '€3 to €5 a month'],
+  ['Meer dan €5 per maand', 'More than €5 a month'],
+];
+const taalVeld = en
+  ? '<input type="hidden" name="taal" value="en">'
+  : '<label class="taalkeuze"><input type="checkbox" name="taal" value="en"> I\'d rather use OEPS! in English</label>';
 ---
 <div class={compact ? 'aanmeld aanmeld--compact' : 'aanmeld'} id="aanmelden">
   <form name="wachtlijst" method="POST" action="/aanmelden/" class="formulier">
     <input type="hidden" name="terug" value={terug}>
     <input type="hidden" name="bron" class="js-bron" value={bron}>
-    <p class="verborgen"><label>Niet invullen: <input name="bot-veld"></label></p>
+    <p class="verborgen"><label>{en ? 'Leave empty:' : 'Niet invullen:'} <input name="bot-veld"></label></p>
 
     {compact ? (
       <>
         <input type="hidden" name="vergeet-het-vaakst" value="">
         <input type="hidden" name="vergeet-anders" value="">
         <input type="hidden" name="bedrag-per-maand" value="">
-        <label for={'naam-' + bron}>Hoe heet je?</label>
-        <input type="text" id={'naam-' + bron} name="naam" class="js-naam" required autocomplete="name" maxlength="80" placeholder="Bijv. Sanne de Vries">
-        <label for={'email-' + bron}>Je e-mailadres</label>
+        <label for={'naam-' + bron}>{T.naam}</label>
+        <input type="text" id={'naam-' + bron} name="naam" class="js-naam" required autocomplete="name" maxlength="80" placeholder={T.naamVb}>
+        <label for={'email-' + bron}>{T.email}</label>
         <div class="rij">
-          <input type="email" id={'email-' + bron} name="email" required autocomplete="email" placeholder="jij@voorbeeld.nl">
-          <button type="submit">Start gratis</button>
+          <input type="email" id={'email-' + bron} name="email" required autocomplete="email" placeholder={T.emailVb}>
+          <button type="submit">{T.start}</button>
         </div>
-        <label class="taalkeuze"><input type="checkbox" name="taal" value="en"> I'd rather use OEPS! in English</label>
+        <Fragment set:html={taalVeld} />
       </>
     ) : (
       <>
-        <label for="naam">Hoe heet je?</label>
-        <input type="text" id="naam" name="naam" class="js-naam" required autocomplete="name" maxlength="80" placeholder="Bijv. Sanne de Vries">
+        <label for="naam">{T.naam}</label>
+        <input type="text" id="naam" name="naam" class="js-naam" required autocomplete="name" maxlength="80" placeholder={T.naamVb}>
 
-        <label for="email">Je e-mailadres</label>
-        <input type="email" id="email" name="email" required autocomplete="email" placeholder="jij@voorbeeld.nl">
+        <label for="email">{T.email}</label>
+        <input type="email" id="email" name="email" required autocomplete="email" placeholder={T.emailVb}>
 
-        <label for="vergeet">Wat vergeet jij het vaakst?</label>
+        <label for="vergeet">{T.vergeet}</label>
         <select id="vergeet" name="vergeet-het-vaakst" required class="js-vergeet">
-          <option value="" disabled selected>Kies er één</option>
-          <option>Een retour op tijd terugsturen</option>
-          <option>Een abonnement opzeggen</option>
-          <option>Prijsstijgingen van vaste lasten</option>
-          <option>Waar mijn bon of garantie is</option>
-          <option value="Iets anders">Iets anders, namelijk…</option>
+          <option value="" disabled selected>{T.kies}</option>
+          {VERGEET.map(([nl, eng]) => en ? <option value={nl}>{eng}</option> : <option>{nl}</option>)}
+          <option value="Iets anders">{en ? 'Something else, namely…' : 'Iets anders, namelijk…'}</option>
         </select>
-        <input type="text" name="vergeet-anders" class="js-anders" maxlength="200" placeholder="Wat vergeet jij? Vertel het ons" hidden>
+        <input type="text" name="vergeet-anders" class="js-anders" maxlength="200" placeholder={T.vergeetAnders} hidden>
 
-        <label for="bedrag">Wat heb je ervoor over als OEPS! dit voor je regelt?</label>
+        <label for="bedrag">{T.bedrag}</label>
         <select id="bedrag" name="bedrag-per-maand" required>
-          <option value="" disabled selected>Kies een bedrag</option>
-          <option>Niets, alleen gratis</option>
-          <option>€1 per maand</option>
-          <option>€2 per maand</option>
-          <option>€3 tot €5 per maand</option>
-          <option>Meer dan €5 per maand</option>
+          <option value="" disabled selected>{T.kiesBedrag}</option>
+          {BEDRAG.map(([nl, eng]) => en ? <option value={nl}>{eng}</option> : <option>{nl}</option>)}
         </select>
 
-        <label class="taalkeuze"><input type="checkbox" name="taal" value="en"> I'd rather use OEPS! in English</label>
+        <Fragment set:html={taalVeld} />
 
-        <button type="submit">Start gratis</button>
+        <button type="submit">{T.start}</button>
       </>
     )}
-    <p class="klein">Gratis. Je krijgt meteen een inloglink in je mail. <a href="/privacy/">Privacy</a> · <a href="/voorwaarden/">Voorwaarden</a></p>
+    <p class="klein">{T.formKlein} <a href={PAD[taal].privacy}>{T.privacy}</a> · <a href={PAD[taal].voorwaarden}>{T.voorwaarden}</a></p>
   </form>
 
   <div class="bedankt bedankt--binnen">
-    <b>Kijk in je mail.</b>
-    Je inloglink staat klaar. Tik erop en je bent binnen. Niets gezien? Kijk even bij reclame of spam.
+    <b>{T.binnenKop}</b>
+    {T.binnenTekst}
   </div>
   <div class="bedankt bedankt--lijst">
-    <b>Je staat erop. Dank je!</b>
-    Zodra de bèta opengaat, hoor je het als eerste. Kijk in je mail: daar staat een berichtje van ons.
+    <b>{T.lijstKop}</b>
+    {T.lijstTekst}
     <div class="socials">
       <a href={SITE.instagram} target="_blank" rel="noopener">Instagram</a>
       <a href={SITE.facebook} target="_blank" rel="noopener">Facebook</a>

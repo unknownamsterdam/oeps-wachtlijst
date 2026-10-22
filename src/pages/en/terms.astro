@@ -1,0 +1,64 @@
+---
+import Base from '../../layouts/Base.astro';
+import { SITE } from '../../data/site.js';
+// 22 okt 2026: Engelse vertaling van /voorwaarden/ (stand 13 okt). Pas je de Nederlandse tekst aan, pas deze dan ook aan.
+---
+<Base
+  title="Terms | OEPS!"
+  description="The agreements between you and OEPS!, short and clear."
+  andere="/voorwaarden/"
+>
+  <div class="wrap smal voorwaarden">
+    <h1>Terms</h1>
+    <p class="lead">The agreements between you and OEPS!, short and clear.</p>
+    <p class="vertaling">This is a translation of our Dutch <a href="/voorwaarden/" hreflang="nl" lang="nl">Voorwaarden</a>. If the two differ, the Dutch version applies.</p>
+
+    <h2>What OEPS! does</h2>
+    <p>OEPS! reads your emails about purchases, bills and subscriptions, and the receipts you add. From those we keep track of deadlines, such as returns, warranty, renewals and cancelling, and we give you a nudge in time. How we handle your data is explained in the <a href="/en/privacy/">privacy explanation</a>.</p>
+
+    <h2>A tool, not a guarantee</h2>
+    <ul>
+      <li>We do our best to read everything correctly, but an email can be unclear or missing. Then a date or amount may be wrong, or we may miss something.</li>
+      <li>If we're unsure, we ask you in the app. You can always check and change important dates yourself.</li>
+      <li>You remain responsible for your own agreements with shops and providers.</li>
+      <li>What we tell you about your rights (for example the cooling-off period or warranty) is a general explanation, not legal advice.</li>
+    </ul>
+
+    <h2>You decide</h2>
+    <p>OEPS! doesn't send anything, cancel anything or buy anything unless you press the button. A draft email or cancellation step is a suggestion; you check it and send it.</p>
+
+    <h2>Your account</h2>
+    <ul>
+      <li>Your account is personal. You only connect mailboxes that belong to you.</li>
+      <li>You don't use OEPS! to bother others, disrupt the service or do anything unlawful with it. If that happens anyway, we may close your account.</li>
+      <li>You can stop at any time: delete your account in the app. We then remove your data as described in the privacy explanation.</li>
+    </ul>
+
+    <h2>Costs</h2>
+    <p>During the beta, OEPS! is free. If a paid version comes, you'll see the price up front and choose yourself whether to take it. Nothing is ever charged without you saying yes first.</p>
+
+    <h2>If something goes wrong</h2>
+    <ul>
+      <li>OEPS! is new and may sometimes not work or contain a mistake. We fix that as quickly as possible.</li>
+      <li>If you miss a deadline because of a mistake by OEPS!, we are not liable for the resulting damage, unless we acted intentionally or with gross negligence, or the law says otherwise.</li>
+      <li>Your legal rights as a consumer always remain.</li>
+    </ul>
+
+    <h2>Changes</h2>
+    <p>If we change these terms, we'll let you know at least 30 days in advance. If you don't agree, you can delete your account.</p>
+
+    <h2>Law and questions</h2>
+    <p>Dutch law applies to these agreements. Questions or a complaint? Email <a href={`mailto:${SITE.mail}`}>{SITE.mail}</a> and we'll find a solution together.</p>
+
+    <p class="klein">Last updated: 13 October 2026 (English translation: 22 October 2026)</p>
+  </div>
+</Base>
+
+<style>
+  .voorwaarden{padding-top:32px}
+  .lead{font-size:19px;color:var(--zacht);margin:12px 0 8px}
+  .vertaling{font-size:15px;color:var(--zacht);background:var(--wit);border-radius:14px;padding:10px 14px}
+  h2{margin:30px 0 10px;font-size:24px}
+  p{margin:8px 0}
+  ul{margin:8px 0 8px 20px;display:grid;gap:4px}
+</style>

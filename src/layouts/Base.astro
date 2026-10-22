@@ -1,6 +1,7 @@
 ---
 // De basis voor elke pagina: <head>, header, footer en de gedeelde stijl.
-import { SITE, ONDERWERPEN } from '../data/site.js';
+import { SITE, ONDERWERPEN, onderwerpIn } from '../data/site.js';
+import { taalVan, PAD, TEKST, andereTaal } from '../i18n.js';
 
 const {
   title,
@@ -8,7 +9,15 @@ const {
   ogImage = '/og-image.png',
   schema = [],
   noindex = false,
+  // 22 okt: taal van de pagina (volgt het adres: /en/... is Engels) en het adres van dezelfde pagina in de andere taal.
+  taal = taalVan(Astro.url.pathname),
+  andere = null,
 } = Astro.props;
+const T = TEKST[taal];
+const P = PAD[taal];
+const ander = andereTaal(taal);
+const naarAnder = andere || PAD[ander].home;
+const hreflang = andere ? { [taal]: Astro.url.pathname, [ander]: andere } : null;
 
 const canonical = new URL(Astro.url.pathname, SITE.url).href;
 const ogUrl = new URL(ogImage, SITE.url).href;
@@ -33,7 +42,7 @@ const basisSchema = {
       name: 'OEPS!',
       alternateName: 'Oeps.app',
       url: SITE.url + '/',
-      inLanguage: 'nl-NL',
+      inLanguage: ['nl-NL', 'en'],
       publisher: { '@id': SITE.url + '/#organization' },
     },
     ...schema,
@@ -42,7 +51,7 @@ const basisSchema = {
 import Cookies from '../components/Cookies.astro';
 ---
 <!doctype html>
-<html lang="nl">
+<html lang={taal}>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -50,6 +59,11 @@ import Cookies from '../components/Cookies.astro';
 <meta name="description" content={description}>
 <link rel="canonical" href={canonical}>
 <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow'}>
+{hreflang && (<>
+<link rel="alternate" hreflang="nl" href={new URL(hreflang.nl, SITE.url).href}>
+<link rel="alternate" hreflang="en" href={new URL(hreflang.en, SITE.url).href}>
+<link rel="alternate" hreflang="x-default" href={new URL(hreflang.nl, SITE.url).href}>
+</>)}
 <meta name="theme-color" content="#14213D">
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
@@ -57,7 +71,8 @@ import Cookies from '../components/Cookies.astro';
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="OEPS!">
-<meta property="og:locale" content="nl_NL">
+<meta property="og:locale" content={taal === 'en' ? 'en_GB' : 'nl_NL'}>
+{hreflang && <meta property="og:locale:alternate" content={taal === 'en' ? 'nl_NL' : 'en_GB'}>}
 <meta property="og:url" content={canonical}>
 <meta property="og:title" content={title}>
 <meta property="og:description" content={description}>
@@ -96,6 +111,12 @@ import Cookies from '../components/Cookies.astro';
   .menu a{text-decoration:none;font-weight:600;font-size:15px;padding:9px 14px;border-radius:999px;white-space:nowrap}
   .menu a:hover,.menu a[aria-current]{background:var(--wit)}
   .menu .knop-klein{background:var(--marine);color:var(--wit)}
+  .menu a.taal{font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:14px;letter-spacing:.5px;padding:8px 10px}
+  .taalhint{background:var(--geel);color:var(--marine);font-size:15px;font-weight:600}
+  .taalhint[hidden]{display:none}
+  .taalhint .wrap{display:flex;align-items:center;gap:10px;min-height:44px;flex-wrap:wrap;padding-top:6px;padding-bottom:6px}
+  .taalhint a{font-weight:800;white-space:nowrap}
+  .taalhint-dicht{margin-left:auto;background:transparent;border:0;font-size:22px;line-height:1;padding:2px 6px;cursor:pointer;color:var(--marine)}
   .menu .knop-klein:hover{background:#0c1528}
 
   /* Knoppen en formulier */
@@ -178,18 +199,25 @@ import Cookies from '../components/Cookies.astro';
     .kop .wrap{padding:0 14px}
     .menu a{padding:8px 8px}
     .menu .knop-klein{padding:9px 12px}
+    .menu a.taal{padding:8px 6px}
   }
 </style>
 </head>
 <body>
+{taal === 'nl' && (
+  <div class="taalhint" id="taalhint" hidden lang="en">
+    <div class="wrap"><span>This page is also available in English.</span> <a href={naarAnder} hreflang="en" class="js-taal" data-taal="en">Read in English ›</a><button type="button" class="taalhint-dicht" aria-label="Close">×</button></div>
+  </div>
+)}
 <header class="kop">
   <div class="wrap">
-    <a href="/" class="logo" aria-label="OEPS! home">OEPS<span>!</span></a>
-    <nav class="menu" aria-label="Hoofdmenu">
-      <a href="/hoe-zit-dat/" class="alleen-breed" aria-current={pad.startsWith('/hoe-zit-dat/') ? 'page' : undefined}>Hoe zit dat?</a>
+    <a href={P.home} class="logo" aria-label="OEPS! home">OEPS<span>!</span></a>
+    <nav class="menu" aria-label={T.menu}>
+      <a href={P.uitleg} class="alleen-breed" aria-current={pad.startsWith(P.uitleg) ? 'page' : undefined}>{T.uitleg}</a>
+      <a href={naarAnder} class="taal js-taal" hreflang={ander} lang={ander} data-taal={ander} aria-label={T.taalKnopLabel} title={T.taalNaam}>{T.taalKnop}</a>
       {SITE.fase === 'live'
-        ? <a href="/inloggen" class="knop-klein">Inloggen</a>
-        : <><a href="/inloggen">Inloggen</a><a href="/#aanmelden" class="knop-klein">Start gratis</a></>}
+        ? <a href="/inloggen" class="knop-klein">{T.inloggen}</a>
+        : <><a href="/inloggen" class="inlog">{T.inloggen}</a><a href={P.aanmelden} class="knop-klein">{T.start}</a></>}
     </nav>
   </div>
 </header>
@@ -202,43 +230,57 @@ import Cookies from '../components/Cookies.astro';
   <div class="wrap">
     <div class="kolommen">
       <div>
-        <a href="/" class="logo">OEPS<span>!</span></a>
-        <p>Leg het één keer vast. Wij onthouden de rest. OEPS! wordt gebouwd in Nederland.</p>
+        <a href={P.home} class="logo">OEPS<span>!</span></a>
+        <p>{T.voetZin}</p>
       </div>
       <div>
-        <b>Hoe zit dat?</b>
+        <b>{T.uitleg}</b>
         <ul>
           {Object.entries(ONDERWERPEN).map(([sleutel, o]) => (
-            <li><a href={`/hoe-zit-dat/#${sleutel}`}>{o.naam}</a></li>
+            <li><a href={`${P.uitleg}#${sleutel}`}>{onderwerpIn(o, taal).naam}</a></li>
           ))}
         </ul>
       </div>
       <div>
-        <b>Handig</b>
+        <b>{T.handig}</b>
         <ul>
-          <li><a href="/retour/">Retourtermijnen</a></li>
-          <li><a href="/garantie/">Garantie per winkel</a></li>
-          <li><a href="/opzeggen/">Abonnementen opzeggen</a></li>
+          <li><a href={P.retour}>{T.retourtermijnen}</a></li>
+          <li><a href={P.garantie}>{T.garantiePerWinkel}</a></li>
+          <li><a href={P.opzeggen}>{T.abonnementenOpzeggen}</a></li>
         </ul>
       </div>
       <div>
         <b>OEPS!</b>
         <ul>
-          <li><a href="/#aanmelden">Aanmelden</a></li>
+          <li><a href={P.aanmelden}>{T.aanmelden}</a></li>
           <li><a href={`mailto:${SITE.mail}`}>{SITE.mail}</a></li>
           <li><a href={SITE.instagram} rel="noopener">Instagram</a></li>
-          <li><a href="/privacy/">Privacy</a></li>
-          <li><a href="/voorwaarden/">Voorwaarden</a></li>
-          {SITE.ga4 && <li><a href="/privacy/#cookies" class="js-cookies">Cookies</a></li>}
+          <li><a href={P.privacy}>{T.privacy}</a></li>
+          <li><a href={P.voorwaarden}>{T.voorwaarden}</a></li>
+          {SITE.ga4 && <li><a href={P.privacy + '#cookies'} class="js-cookies">{T.cookies}</a></li>}
+          <li><a href={naarAnder} class="js-taal" hreflang={ander} lang={ander} data-taal={ander}>{T.taalNaam}</a></li>
         </ul>
       </div>
     </div>
-    <div class="onder">© {new Date().getFullYear()} OEPS! · Uitleg op deze site is algemene informatie, geen juridisch advies.</div>
+    <div class="onder">© {new Date().getFullYear()} OEPS! · {T.voetOnder}</div>
   </div>
 </footer>
 
-<script is:inline>
+<script is:inline define:vars={{ taal }}>
   (function(){
+    // 22 okt: taal onthouden voor het inlogscherm van de app (zelfde adres, app.js leest 'oeps-taal').
+    // Een Engelse pagina zet Engels; de taalknop zet de taal waar je naartoe gaat. Een Nederlandse pagina verandert niets.
+    function zetTaal(t){ try { localStorage.setItem('oeps-taal', t); } catch(e){} }
+    if (taal === 'en') zetTaal('en');
+    document.querySelectorAll('.js-taal').forEach(function(a){ a.addEventListener('click', function(){ zetTaal(a.getAttribute('data-taal')); try { localStorage.setItem('oeps-taalhint', 'weg'); } catch(e){} }); });
+    // Bezoeker zonder Nederlands in de browserinstellingen? Dan een rustige regel bovenaan naar de Engelse versie.
+    var hint = document.getElementById('taalhint');
+    if (hint) {
+      var talen = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || '']).join(',').toLowerCase();
+      var weg = false; try { weg = localStorage.getItem('oeps-taalhint') === 'weg'; } catch(e){}
+      if (!weg && talen && !/(^|,)nl/.test(talen)) hint.hidden = false;
+      hint.querySelector('.taalhint-dicht').addEventListener('click', function(){ hint.hidden = true; try { localStorage.setItem('oeps-taalhint', 'weg'); } catch(e){} });
+    }
     var p = new URLSearchParams(location.search);
     if (p.get('aangemeld')) { document.body.classList.add('aangemeld'); }
     if (p.get('binnen')) { document.body.classList.add('binnen'); }

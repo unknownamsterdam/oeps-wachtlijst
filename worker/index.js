@@ -13,7 +13,8 @@ export async function aanmelden(request, env) {
   const naarBedankt = Response.redirect(new URL(terug, request.url).toString(), 303);
   if (f.get('bot-veld')) return naarBedankt; // robot: doen alsof het gelukt is
   const email = String(f.get('email') || '').trim().toLowerCase();
-  if (!isEmail(email)) return tekst('Dat e-mailadres lijkt niet te kloppen. Ga terug en probeer het opnieuw.', 400);
+  const en = f.get('taal') === 'en'; // 22 okt: Engelse site -> foutmelding ook in het Engels
+  if (!isEmail(email)) return tekst(en ? "That email address doesn't look right. Go back and try again." : 'Dat e-mailadres lijkt niet te kloppen. Ga terug en probeer het opnieuw.', 400);
   // Naam (9 okt): zodat Joël weet wie zich aanmeldt. Leeg mag nog, voor oude pagina's in iemands browser.
   const naam = String(f.get('naam') || '').replace(/\s+/g, ' ').trim().slice(0, 80);
 
@@ -34,7 +35,7 @@ export async function aanmelden(request, env) {
     console.error(JSON.stringify({ taak: 'aanmelden-fout', fout: String(fout).slice(0, 200) }));
   }
   if (!uitslag.inBrevo && !uitslag.gemeld && !uitslag.direct) {
-    return tekst('Er ging iets mis bij het aanmelden. Probeer het over een paar minuten nog eens, of mail hallo@oeps.app.', 502);
+    return tekst(en ? 'Something went wrong while signing up. Try again in a few minutes, or email hallo@oeps.app.' : 'Er ging iets mis bij het aanmelden. Probeer het over een paar minuten nog eens, of mail hallo@oeps.app.', 502);
   }
   // 14 okt: directe toegang → "Kijk in je mail, je inloglink staat klaar" in plaats van "je staat op de lijst".
   if (uitslag.direct) return Response.redirect(new URL(terug.replace('aangemeld=1', 'binnen=1'), request.url).toString(), 303);
@@ -85,6 +86,7 @@ export default {
     if (pad.startsWith('/api/') || APP_BESTANDEN.has(pad)) return naarApp(request, env);
     if (pad.replace(/\/$/, '') === '/aanmelden') {
       if (request.method !== 'POST') return Response.redirect(new URL('/#aanmelden', request.url).toString(), 302);
+      // (De Engelse site post naar hetzelfde adres; het verborgen veld taal=en regelt de taal.)
       return aanmelden(request, env);
     }
     return env.ASSETS.fetch(request);

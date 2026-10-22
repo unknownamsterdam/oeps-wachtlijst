@@ -1,0 +1,7 @@
+---
+import GidsPagina from '../../../components/GidsPagina.astro';
+import { RETOUR_EN } from '../../../data/gids.js';
+export function getStaticPaths() { return RETOUR_EN.map((p) => ({ params: { slug: p.slug }, props: { p } })); }
+const { p } = Astro.props;
+---
+<GidsPagina p={p} taal="en" />

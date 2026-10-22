@@ -2,17 +2,35 @@
 // 14 okt: overzicht van de zoekpagina's (retourtermijnen of opzeggen).
 import Base from '../layouts/Base.astro';
 import Wachtlijst from './Wachtlijst.astro';
-import { RETOUR, OPZEGGEN } from '../data/gids.js';
-const { soort } = Astro.props;
+import { RETOUR, OPZEGGEN, RETOUR_EN, OPZEGGEN_EN, gidsPad } from '../data/gids.js';
+import { tegenhanger } from '../i18n.js';
+const { soort, taal = 'nl' } = Astro.props;
 const retour = soort === 'retour';
-const lijst = (retour ? RETOUR : OPZEGGEN).slice().sort((a, b) => a.naam.localeCompare(b.naam, 'nl'));
-const titel = retour ? 'Retourtermijnen van webwinkels' : 'Abonnementen opzeggen';
+const en = taal === 'en';
+const lijst = (en ? (retour ? RETOUR_EN : OPZEGGEN_EN) : (retour ? RETOUR : OPZEGGEN)).slice().sort((a, b) => a.naam.localeCompare(b.naam, taal));
+// 22 okt: teksten per taal
+const X = en ? {
+  titel: retour ? 'Return periods of web shops in the Netherlands' : 'Cancel a subscription in the Netherlands',
+  beschrijving: retour ? 'How long can you send things back to bol, Coolblue, Zara and other web shops? Per shop: the period, the costs and the steps, in English.' : 'How to cancel Netflix, Spotify, Ziggo, KPN and other subscriptions. Per service: the steps and what to watch out for, in English.',
+  sub: retour ? 'Per shop: how long you have, what it costs and how it works.' : 'Per service: how to cancel and what to watch out for.',
+  item: (p) => (retour ? `${p.naam} return period` : `Cancel ${p.naam}`), dagen: 'days',
+  oepsKop: retour ? 'Rather not remember?' : 'Rather get a nudge?',
+  oeps: retour ? 'OEPS! remembers the return period of all your orders and warns you in time.' : 'OEPS! warns you before a subscription renews or gets more expensive.',
+} : {
+  titel: retour ? 'Retourtermijnen van webwinkels' : 'Abonnementen opzeggen',
+  beschrijving: retour ? 'Hoe lang kun je terugsturen bij bol, Coolblue, Zalando en andere webwinkels? Per winkel de termijn, de kosten en de stappen.' : 'Zo zeg je Netflix, Spotify, Ziggo, KPN en andere abonnementen op. Per dienst de stappen en waar je op moet letten.',
+  sub: retour ? 'Per winkel: hoe lang je hebt, wat het kost en hoe het werkt.' : 'Per dienst: hoe je opzegt en waar je op moet letten.',
+  item: (p) => (retour ? `Retourtermijn ${p.naam}` : `${p.naam} opzeggen`), dagen: 'dagen',
+  oepsKop: retour ? 'Liever niet onthouden?' : 'Liever een seintje?',
+  oeps: retour ? 'OEPS! onthoudt de retourtermijn van al je bestellingen en waarschuwt je op tijd.' : 'OEPS! waarschuwt je voordat een abonnement verlengt of duurder wordt.',
+};
+const titel = X.titel;
 ---
-<Base title={`${titel} | OEPS!`} description={retour ? 'Hoe lang kun je terugsturen bij bol, Coolblue, Zalando en andere webwinkels? Per winkel de termijn, de kosten en de stappen.' : 'Zo zeg je Netflix, Spotify, Ziggo, KPN en andere abonnementen op. Per dienst de stappen en waar je op moet letten.'}>
-  <div class={`kopblok bg-${retour ? 'mint' : 'geel'}`}><div class="wrap smal"><h1>{titel}</h1><p class="sub">{retour ? 'Per winkel: hoe lang je hebt, wat het kost en hoe het werkt.' : 'Per dienst: hoe je opzegt en waar je op moet letten.'}</p></div></div>
+<Base title={`${titel} | OEPS!`} description={X.beschrijving} taal={taal} andere={tegenhanger(taal, retour ? 'retour' : 'opzeggen')}>
+  <div class={`kopblok bg-${retour ? 'mint' : 'geel'}`}><div class="wrap smal"><h1>{titel}</h1><p class="sub">{X.sub}</p></div></div>
   <div class="wrap smal">
-    <div class="lijst">{lijst.map((p) => <a class="mini" href={`/${soort}/${p.slug}/`}><span>{retour ? `Retourtermijn ${p.naam}` : `${p.naam} opzeggen`}</span>{retour && p.retour.dagen && <b>{p.retour.dagen} dagen</b>}</a>)}</div>
-    <aside class="oeps"><h2>{retour ? 'Liever niet onthouden?' : 'Liever een seintje?'}</h2><p>{retour ? 'OEPS! onthoudt de retourtermijn van al je bestellingen en waarschuwt je op tijd.' : 'OEPS! waarschuwt je voordat een abonnement verlengt of duurder wordt.'}</p><Wachtlijst compact bron={retour ? 'retour-lijst' : 'opzeggen-lijst'} /></aside>
+    <div class="lijst">{lijst.map((p) => <a class="mini" href={gidsPad(soort, p.slug, taal)}><span>{X.item(p)}</span>{retour && p.retour.dagen && <b>{p.retour.dagen} {X.dagen}</b>}</a>)}</div>
+    <aside class="oeps"><h2>{X.oepsKop}</h2><p>{X.oeps}</p><Wachtlijst compact bron={retour ? 'retour-lijst' : 'opzeggen-lijst'} taal={taal} /></aside>
   </div>
 </Base>
 <style>

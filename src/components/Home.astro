@@ -1,0 +1,183 @@
+---
+// De homepage, in het Nederlands (/) en in het Engels (/en/). 22 okt: teksten per taal hieronder, opmaak gedeeld.
+import Base from '../layouts/Base.astro';
+import Plaatje from './Plaatje.astro';
+import Wachtlijst from './Wachtlijst.astro';
+import { SITE, ONDERWERPEN, onderwerpIn } from '../data/site.js';
+import { vragen } from '../data/vragen.js';
+import { PAD } from '../i18n.js';
+
+const { taal = 'nl' } = Astro.props;
+const uitgelicht = vragen(taal).slice(0, 4);
+const X = {
+  nl: {
+    titel: 'OEPS! — Nooit meer een opzegtermijn, garantie of prijsverhoging missen',
+    beschrijving: 'Leg het één keer vast, OEPS! onthoudt de rest. Wij bewaken je retourtermijnen, terugbetalingen, garanties en pakketten. Meld je gratis aan.',
+    h1a: 'Leg het één keer vast.', h1b: 'Wij onthouden de rest.',
+    lead: 'OEPS! is het geheugen van alles wat je koopt. Koppel je mailbox of stuur je bonnen door. Wij letten op je retourtermijn, of je geld terugkomt en hoe lang je garantie loopt.',
+    bonKop: 'OEPS! · DEZE MAAND',
+    bon: [['Koptelefoon', 'retour ok'], ['Zalando', '€89,95 terug ✓'], ['Wasmachine', 'garantie tot 2028'], ['Pakket', 'ligt klaar'], ['Dit jaar', '€134 opgeleverd']],
+    bonTot: ['ACTIES', '1 klaar'],
+    zoKop: 'Zo werkt het',
+    stappen: [
+      ['Koppel of stuur door', 'Koppel je Gmail, of stuur orderbevestigingen en bonnen naar je eigen OEPS!-adres. Een foto van de kassabon kan ook.'],
+      ['Wij bewaken', 'Retourtermijnen, terugbetalingen, garanties en je pakketten. Je hoort alleen iets als het nodig is.'],
+      ['Actie klaar', 'Bij elke melding staat de retourlink, de mail aan de winkel of je garantieclaim klaar. Jij verstuurt zelf.'],
+    ],
+    oplevertKop: 'Wat het je oplevert',
+    oplevert: 'Eén gemiste retour kost je zo €40. OEPS! laat zien wat het je oplevert: geld terug na retour, terugbetalingen die op tijd binnenkwamen en hoe vaak je iets op tijd regelde.',
+    hoeKop: 'Hoe zit dat?', alles: 'Alles bekijken →', hoeSub: 'Je hebt vaak meer rechten dan je denkt. Simpel uitgelegd.',
+    belofteKop: 'Onze belofte',
+    belofte: [
+      ['Geen melding zonder reden.', 'Geel betekent: hier moet je iets mee.'],
+      ['Je data is van jou.', 'We verkopen niets door. Account weg is alles weg.'],
+      ['Niets zonder jouw ja.', 'OEPS! verstuurt nooit iets zonder je bevestiging.'],
+    ],
+    volgKop: 'Volg OEPS!',
+    volg: 'Korte tips over retourtermijnen, terugbetalingen en garantie. En een kijkje achter de schermen terwijl we bouwen.',
+  },
+  en: {
+    titel: 'OEPS! — Never miss a return deadline, warranty or price increase again',
+    beschrijving: 'Save it once, OEPS! remembers the rest. We keep track of your return deadlines, refunds, warranties and parcels. For people living in the Netherlands. Sign up for free.',
+    h1a: 'Save it once.', h1b: 'We remember the rest.',
+    lead: 'OEPS! is the memory for everything you buy. Connect your mailbox or forward your receipts. We keep an eye on your return deadline, whether your money comes back and how long your warranty lasts.',
+    bonKop: 'OEPS! · THIS MONTH',
+    bon: [['Headphones', 'return ok'], ['Zalando', '€89.95 back ✓'], ['Washing machine', 'warranty until 2028'], ['Parcel', 'ready for pickup'], ['This year', '€134 saved']],
+    bonTot: ['ACTIONS', '1 done'],
+    zoKop: 'How it works',
+    stappen: [
+      ['Connect or forward', 'Connect your Gmail, or forward order confirmations and receipts to your own OEPS! address. A photo of a paper receipt works too.'],
+      ['We keep watch', "Return deadlines, refunds, warranties and your parcels. You only hear from us when it matters."],
+      ['Action ready', 'Every alert comes with the return link, the email to the shop or your warranty claim ready to go. You hit send yourself.'],
+    ],
+    oplevertKop: 'What you get out of it',
+    oplevert: 'One missed return easily costs you €40. OEPS! shows you what it brings in: money back after a return, refunds that arrived on time and how often you sorted something out in time.',
+    hoeKop: 'Know your rights', alles: 'See all →', hoeSub: 'You often have more rights than you think. Simply explained, for shopping in the Netherlands.',
+    belofteKop: 'Our promise',
+    belofte: [
+      ['No alert without a reason.', 'Yellow means: you need to do something.'],
+      ['Your data is yours.', 'We never sell anything on. Delete your account and everything is gone.'],
+      ['Nothing without your yes.', 'OEPS! never sends anything without your confirmation.'],
+    ],
+    volgKop: 'Follow OEPS!',
+    volg: 'Short tips on return deadlines, refunds and warranties. Plus a look behind the scenes while we build. (Our posts are in Dutch.)',
+  },
+}[taal];
+const andere = taal === 'en' ? PAD.nl.home : PAD.en.home;
+---
+<Base title={X.titel} description={X.beschrijving} taal={taal} andere={andere}>
+  <div class="wrap hero">
+    <div>
+      <h1>{X.h1a} <mark>{X.h1b}</mark></h1>
+      <p class="lead">{X.lead}</p>
+      <Wachtlijst taal={taal} />
+    </div>
+
+    <div class="bon" aria-hidden="true">
+      <h3>{X.bonKop}</h3>
+      {X.bon.map(([a, b], i) => <div class={i === 1 ? 'r hl' : 'r'}><span>{a}</span><span>{b}</span></div>)}
+      <div class="r tot"><span>{X.bonTot[0]}</span><span>{X.bonTot[1]}</span></div>
+    </div>
+  </div>
+
+  <section class="drie">
+    <div class="wrap">
+      <h2>{X.zoKop}</h2>
+      <div class="grid">
+        {X.stappen.map(([kop, tekst], i) => <div class="stap"><span class="n">0{i + 1}</span><b>{kop}</b>{tekst}</div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="drie">
+    <div class="wrap">
+      <h2>{X.oplevertKop}</h2>
+      <p class="lead" style="max-width:640px">{X.oplevert}</p>
+    </div>
+  </section>
+
+  <section class="hoe">
+    <div class="wrap">
+      <div class="hoe-kop">
+        <h2>{X.hoeKop}</h2>
+        <a href={PAD[taal].uitleg} class="alles">{X.alles}</a>
+      </div>
+      <p class="sub">{X.hoeSub}</p>
+      <div class="kaarten">
+        {uitgelicht.map((v) => {
+          const o = onderwerpIn(ONDERWERPEN[v.onderwerp], taal);
+          return (
+            <a href={v.url} class={`kaart bg-${o.kleur}`}>
+              <Plaatje naam={o.plaatje} grootte={84} />
+              <div>
+                <small>{o.naam}</small>
+                <b>{v.titel}</b>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <section class="belofte">
+    <div class="wrap">
+      <h2>{X.belofteKop}</h2>
+      <ul>
+        {X.belofte.map(([kop, tekst]) => <li><b>{kop}</b><br>{tekst}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="volg">
+    <div class="wrap">
+      <h2>{X.volgKop}</h2>
+      <p>{X.volg}</p>
+      <div class="socials">
+        <a href={SITE.instagram} target="_blank" rel="noopener">Instagram</a>
+        <a href={SITE.facebook} target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding:32px 20px 64px}
+  .hero h1{margin-bottom:20px}
+  .lead{font-size:19px;color:var(--zacht);max-width:34em;margin-bottom:28px}
+  .bon{background:var(--wit);font-family:"IBM Plex Mono",monospace;font-size:14px;padding:24px 22px 30px;box-shadow:0 10px 30px rgba(20,33,61,.12);transform:rotate(1.5deg);max-width:360px;justify-self:center;width:100%;
+       -webkit-mask:linear-gradient(#000 0 0) top/100% calc(100% - 10px) no-repeat,radial-gradient(circle 6px at 8px 100%,transparent 6px,#000 6.5px) bottom left/16px 10px repeat-x;
+       mask:linear-gradient(#000 0 0) top/100% calc(100% - 10px) no-repeat,radial-gradient(circle 6px at 8px 100%,transparent 6px,#000 6.5px) bottom left/16px 10px repeat-x}
+  .bon h3{font-family:inherit;text-align:center;font-weight:500;letter-spacing:2px;margin-bottom:14px}
+  .bon .r{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed #c9ced8}
+  .bon .hl{background:var(--geel);margin:0 -6px;padding:6px}
+  .bon .tot{border:0;font-weight:500;margin-top:8px}
+
+  section.drie{background:var(--wit);padding:64px 0}
+  section.drie h2{margin-bottom:28px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .stap{background:var(--grijs);border-radius:var(--rond);padding:22px}
+  .stap b{display:block;font-stretch:112%;font-size:19px;margin-bottom:6px}
+  .stap .n{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--zacht);display:block;margin-bottom:10px}
+
+  .hoe{padding:64px 0 8px}
+  .hoe-kop{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+  .alles{font-weight:700;text-decoration:none;white-space:nowrap}
+  .alles:hover{text-decoration:underline}
+  .sub{color:var(--zacht);margin:6px 0 22px;font-size:17px}
+
+  .belofte{padding:56px 0}
+  .belofte h2{margin-bottom:28px}
+  .belofte ul{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .belofte li{border-top:3px solid var(--marine);padding-top:12px}
+
+  section.volg{background:var(--wit);border-radius:var(--rond);max-width:1000px;margin:0 auto;padding:40px 0}
+  section.volg p{color:var(--zacht);max-width:34em;margin-top:6px}
+
+  @media (max-width:800px){
+    .hero{grid-template-columns:1fr;gap:36px;padding:16px 20px 48px}
+    .grid,.belofte ul{grid-template-columns:1fr}
+    .bon{transform:none}
+    section.volg{border-radius:0}
+  }
+</style>

@@ -1,78 +1,104 @@
 ---
-// 20 okt: garantiepagina per winkel, uit src/data/garantie.js
+// 20 okt: garantiepagina per winkel, uit src/data/garantie.js. 22 okt: ook in het Engels (/en/warranty/<slug>/).
 import Base from '../layouts/Base.astro';
 import Plaatje from './Plaatje.astro';
 import Wachtlijst from './Wachtlijst.astro';
 import AppBalk from './AppBalk.astro';
 import { SITE } from '../data/site.js';
-import { datumNL } from '../data/vragen.js';
-import { GARANTIE, WET, WET_BRON } from '../data/garantie.js';
-import { RETOUR } from '../data/gids.js';
+import { GARANTIE, GARANTIE_EN, WET, WET_EN, WET_BRON, garantiePad, heeftEngelseGarantie } from '../data/garantie.js';
+import { RETOUR, RETOUR_EN, gidsPad } from '../data/gids.js';
+import { PAD, TEKST, datum } from '../i18n.js';
 
-const { g } = Astro.props;
-const pad = `/garantie/${g.slug}/`;
-const titel = `Garantie ${g.naam}`;
-const seoTitel = `Garantie ${g.naam}: hoe lang en hoe claim je? | OEPS!`;
-const beschrijving = `Hoe lang heb je garantie bij ${g.naam}, hoe claim je het en wat heb je nodig? Duur, stappen en wat niet gedekt is, met bron en datum.`;
-const gecontroleerd = datumNL(g.bijgewerkt);
+const { g, taal = 'nl' } = Astro.props;
+const en = taal === 'en';
+const T = TEKST[taal];
+const pad = garantiePad(g.slug, taal);
+const andere = en ? garantiePad(g.slug, 'nl') : (heeftEngelseGarantie(g.slug) ? garantiePad(g.slug, 'en') : null);
+const X = en ? {
+  titel: `${g.naam} warranty`, seoTitel: `${g.naam} warranty: how long, and how do you claim it? | OEPS!`,
+  beschrijving: `How long is the warranty at ${g.naam}, how do you claim it and what do you need? Duration, steps and what isn’t covered, with source and date.`,
+  v1: `How long is the warranty at ${g.naam}?`, v2: `How do you claim warranty at ${g.naam}?`, v3: `What do you need to claim warranty at ${g.naam}?`, v4: `What isn’t covered by the ${g.naam} warranty?`,
+  kruimel: 'Warranty', hoeLang: 'How long is the warranty?', claim: 'How to claim warranty', nodig: 'What do you need?',
+  tipKop: 'Lost your receipt?', tip: 'OEPS! keeps your receipts and remembers the warranty of every purchase.',
+  niet: 'What isn’t covered?', letop: 'Good to know', wet: 'Your legal rights (Dutch law)', wetBron: 'Government of the Netherlands (Dutch)',
+  voorbij: 'Warranty over and still broken? Read what you can do ›', retour: `Also handy: the ${g.naam} return period ›`,
+  blokKop: 'Never miss a warranty again.', blok: 'OEPS! remembers the warranty of every purchase and gives you a nudge before it ends. You don’t have to keep track of anything.',
+  meer: 'Warranty at other shops', mini: (x) => `${x.naam} warranty`, balk: 'Never lose your receipt or warranty again?',
+  nlKnoppen: `${g.naam}’s website and customer service are in Dutch. Where a menu or button is named, the English meaning is in brackets.`,
+} : {
+  titel: `Garantie ${g.naam}`, seoTitel: `Garantie ${g.naam}: hoe lang en hoe claim je? | OEPS!`,
+  beschrijving: `Hoe lang heb je garantie bij ${g.naam}, hoe claim je het en wat heb je nodig? Duur, stappen en wat niet gedekt is, met bron en datum.`,
+  v1: `Hoe lang heb je garantie bij ${g.naam}?`, v2: `Hoe claim je garantie bij ${g.naam}?`, v3: `Wat heb je nodig om garantie te claimen bij ${g.naam}?`, v4: `Wat valt niet onder de garantie van ${g.naam}?`,
+  kruimel: 'Garantie', hoeLang: 'Hoe lang heb je garantie?', claim: 'Zo claim je garantie', nodig: 'Wat heb je nodig?',
+  tipKop: 'Kassabon kwijt?', tip: 'OEPS! bewaart je bonnen en onthoudt de garantie van elke aankoop.',
+  niet: 'Wat valt er niet onder?', letop: 'Goed om te weten', wet: 'Je wettelijke recht', wetBron: 'Rijksoverheid',
+  voorbij: 'Garantie voorbij en toch kapot? Lees wat je kunt doen ›', retour: `Ook handig: de retourtermijn van ${g.naam} ›`,
+  blokKop: 'Nooit meer garantie missen.', blok: 'OEPS! onthoudt de garantie van elke aankoop en geeft je een seintje voordat hij afloopt. Jij hoeft niets bij te houden.',
+  meer: 'Garantie bij andere winkels', mini: (x) => `Garantie ${x.naam}`, balk: 'Nooit meer je kassabon of garantie kwijt?',
+  nlKnoppen: null,
+};
+const { titel, seoTitel, beschrijving } = X;
+const gecontroleerd = datum(g.bijgewerkt, taal);
 const lijst = (a) => a.map((x) => x.replace(/\.$/, '') + '.').join(' ');
 const faq = [
-  { v: `Hoe lang heb je garantie bij ${g.naam}?`, a: lijst(g.duur) },
-  { v: `Hoe claim je garantie bij ${g.naam}?`, a: g.stappen.map((x, i) => `${i + 1}. ${x.replace(/\.$/, '')}.`).join(' ') },
-  { v: `Wat heb je nodig om garantie te claimen bij ${g.naam}?`, a: lijst(g.nodig) },
-  { v: `Wat valt niet onder de garantie van ${g.naam}?`, a: lijst(g.niet) },
+  { v: X.v1, a: lijst(g.duur) },
+  { v: X.v2, a: g.stappen.map((x, i) => `${i + 1}. ${x.replace(/\.$/, '')}.`).join(' ') },
+  { v: X.v3, a: lijst(g.nodig) },
+  { v: X.v4, a: lijst(g.niet) },
 ];
-const retourPagina = RETOUR.find((x) => x.slug === g.slug);
-const meer = GARANTIE.filter((x) => x.slug !== g.slug);
+const wet = en ? WET_EN : WET;
+const retourPagina = (en ? RETOUR_EN : RETOUR).find((x) => x.slug === g.slug);
+const meer = (en ? GARANTIE_EN : GARANTIE).filter((x) => x.slug !== g.slug);
+const lang = en ? 'en' : 'nl-NL';
 const schema = [
-  { '@type': 'WebPage', '@id': SITE.url + pad + '#pagina', url: SITE.url + pad, name: seoTitel.replace(' | OEPS!', ''), description: beschrijving, inLanguage: 'nl-NL', dateModified: g.bijgewerkt, isPartOf: { '@id': SITE.url + '/#website' }, publisher: { '@id': SITE.url + '/#organization' } },
+  { '@type': 'WebPage', '@id': SITE.url + pad + '#pagina', url: SITE.url + pad, name: seoTitel.replace(' | OEPS!', ''), description: beschrijving, inLanguage: lang, dateModified: g.bijgewerkt, isPartOf: { '@id': SITE.url + '/#website' }, publisher: { '@id': SITE.url + '/#organization' } },
   { '@type': 'FAQPage', mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.v, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
   { '@type': 'BreadcrumbList', itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url + '/' },
-    { '@type': 'ListItem', position: 2, name: 'Garantie', item: SITE.url + '/garantie/' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url + PAD[taal].home },
+    { '@type': 'ListItem', position: 2, name: X.kruimel, item: SITE.url + PAD[taal].garantie },
     { '@type': 'ListItem', position: 3, name: titel, item: SITE.url + pad } ] },
 ];
 ---
-<Base title={seoTitel} description={beschrijving} schema={schema}>
+<Base title={seoTitel} description={beschrijving} schema={schema} taal={taal} andere={andere}>
   <article class="gids">
     <div class="kopblok bg-perzik">
       <div class="wrap smal kopblok-in">
         <div>
-          <nav class="kruimel" aria-label="Kruimelpad"><a href="/garantie/">Garantie</a> <span>›</span> {g.naam}</nav>
+          <nav class="kruimel" aria-label={T.kruimel}><a href={PAD[taal].garantie}>{X.kruimel}</a> <span>›</span> {g.naam}</nav>
           <h1>{titel}</h1>
         </div>
         <Plaatje naam="wasmachine" grootte={130} />
       </div>
     </div>
     <div class="wrap smal">
-      <div class="kort"><span class="kort-label">Kort gezegd</span><p>{g.kort}</p><p class="gecontroleerd">Gecontroleerd op {gecontroleerd} · bron: <a href={g.bron} rel="noopener nofollow" target="_blank">site van {g.naam}</a></p></div>
-      <section class="tekst"><h2>Hoe lang heb je garantie?</h2><ul>{g.duur.map((x) => <li>{x}</li>)}</ul></section>
-      <section class="tekst"><h2>Zo claim je garantie</h2><ol>{g.stappen.map((x) => <li>{x}</li>)}</ol></section>
-      <section class="tekst"><h2>Wat heb je nodig?</h2><ul>{g.nodig.map((x) => <li>{x}</li>)}</ul></section>
-      <p class="tip"><b>Kassabon kwijt?</b> OEPS! bewaart je bonnen en onthoudt de garantie van elke aankoop. <a href="/#aanmelden">Start gratis ›</a></p>
-      <section class="tekst"><h2>Wat valt er niet onder?</h2><ul>{g.niet.map((x) => <li>{x}</li>)}</ul></section>
-      {g.letop.length > 0 && (<section class="tekst"><h2>Goed om te weten</h2><ul>{g.letop.map((x) => <li>{x}</li>)}</ul></section>)}
-      <section class="tekst"><h2>Je wettelijke recht</h2><ul>{WET.map((x) => <li>{x}</li>)}</ul><p class="wet">Bron: <a href={WET_BRON} rel="noopener nofollow" target="_blank">Rijksoverheid</a></p></section>
-      <section class="tekst vragen"><h2>Veelgestelde vragen</h2>
+      <div class="kort"><span class="kort-label">{T.kortGezegd}</span><p>{g.kort}</p><p class="gecontroleerd">{T.gecontroleerdOp} {gecontroleerd} · {T.bron}: <a href={g.bron} rel="noopener nofollow" target="_blank">{T.siteVan(g.naam)}</a></p></div>
+      <section class="tekst"><h2>{X.hoeLang}</h2><ul>{g.duur.map((x) => <li>{x}</li>)}</ul></section>
+      <section class="tekst"><h2>{X.claim}</h2><ol>{g.stappen.map((x) => <li>{x}</li>)}</ol>{X.nlKnoppen && <p class="wet">{X.nlKnoppen}</p>}</section>
+      <section class="tekst"><h2>{X.nodig}</h2><ul>{g.nodig.map((x) => <li>{x}</li>)}</ul></section>
+      <p class="tip"><b>{X.tipKop}</b> {X.tip} <a href={PAD[taal].aanmelden}>{T.start} ›</a></p>
+      <section class="tekst"><h2>{X.niet}</h2><ul>{g.niet.map((x) => <li>{x}</li>)}</ul></section>
+      {g.letop.length > 0 && (<section class="tekst"><h2>{X.letop}</h2><ul>{g.letop.map((x) => <li>{x}</li>)}</ul></section>)}
+      <section class="tekst"><h2>{X.wet}</h2><ul>{wet.map((x) => <li>{x}</li>)}</ul><p class="wet">{en ? 'Source' : 'Bron'}: <a href={WET_BRON} rel="noopener nofollow" target="_blank">{X.wetBron}</a></p></section>
+      <section class="tekst vragen"><h2>{T.veelgesteld}</h2>
         {faq.map((f) => (<details><summary>{f.v}</summary><p>{f.a}</p></details>))}
       </section>
-      <p class="naar"><a href="/garantie/voorbij/">Garantie voorbij en toch kapot? Lees wat je kunt doen ›</a></p>
-      {retourPagina && <p class="naar"><a href={`/retour/${g.slug}/`}>Ook handig: de retourtermijn van {g.naam} ›</a></p>}
+      <p class="naar"><a href={PAD[taal].voorbij}>{X.voorbij}</a></p>
+      {retourPagina && <p class="naar"><a href={gidsPad('retour', g.slug, taal)}>{X.retour}</a></p>}
       <aside class="oeps-blok">
-        <div><span class="badge">Binnenkort</span>
-          <h2>Nooit meer garantie missen.</h2>
-          <p>OEPS! onthoudt de garantie van elke aankoop en geeft je een seintje voordat hij afloopt. Jij hoeft niets bij te houden.</p></div>
-        <Wachtlijst compact bron={'garantie-' + g.slug} />
+        <div><span class="badge">{T.binnenkort}</span>
+          <h2>{X.blokKop}</h2>
+          <p>{X.blok}</p></div>
+        <Wachtlijst compact bron={'garantie-' + g.slug} taal={taal} />
       </aside>
       <footer class="info">
-        <p>Opgezocht op de site van {g.naam} · Bijgewerkt op {gecontroleerd} · <a href={g.bron} rel="noopener nofollow" target="_blank">bron</a></p>
-        <p>Klopt er iets niet meer? Mail <a href={`mailto:${SITE.mail}`}>{SITE.mail}</a>, dan passen we het aan. Voorwaarden kunnen veranderen; check bij twijfel de site van {g.naam}.</p>
+        <p>{T.opgezocht(g.naam)} · {T.bijgewerktOp} {gecontroleerd} · <a href={g.bron} rel="noopener nofollow" target="_blank">{T.bron}</a></p>
+        <p>{T.kloptNiet} <a href={`mailto:${SITE.mail}`}>{SITE.mail}</a>, {T.kloptNiet2(g.naam)}</p>
       </footer>
-      {meer.length > 0 && (<section class="meer"><h2>Garantie bij andere winkels</h2>
-        <div class="meer-lijst">{meer.map((x) => <a class="mini" href={`/garantie/${x.slug}/`}>Garantie {x.naam}</a>)}</div></section>)}
+      {meer.length > 0 && (<section class="meer"><h2>{X.meer}</h2>
+        <div class="meer-lijst">{meer.map((x) => <a class="mini" href={garantiePad(x.slug, taal)}>{X.mini(x)}</a>)}</div></section>)}
     </div>
   </article>
-<AppBalk tekst="Nooit meer je kassabon of garantie kwijt?" />
+<AppBalk tekst={X.balk} />
 </Base>
 <style>
   .kopblok{padding:28px 0 46px;margin-bottom:-22px}
