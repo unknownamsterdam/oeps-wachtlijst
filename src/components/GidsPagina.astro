@@ -47,7 +47,7 @@ const X = en ? {
 const { titel, seoTitel, termijn } = X;
 const kort = en
   ? (retour
-      ? (termijn ? `At ${p.naam} you have ${termijn} to send something back.${kosten ? ` Return costs: ${kosten}.` : ''}` : `Here’s how to send something back to ${p.naam}.`)
+      ? (termijn ? `At ${p.naam} you have ${termijn} to send something back.${kosten ? (/^free$/i.test(kosten) ? ' Returning is free.' : ` Return costs: ${kosten}.`) : ''}` : `Here’s how to send something back to ${p.naam}.`)
       : `You cancel ${p.naam} ${X.via}.${o.let_op ? ' ' + zin(o.let_op) + '.' : ''}`)
   : (retour
       ? (termijn ? `Bij ${p.naam} heb je ${termijn} om iets terug te sturen.${r.kosten ? ` Retourkosten: ${r.kosten.replace(/\.$/, '')}.` : ''}` : `Zo stuur je iets terug naar ${p.naam}.`)
