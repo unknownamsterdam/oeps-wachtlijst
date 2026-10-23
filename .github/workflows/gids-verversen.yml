@@ -1,0 +1,31 @@
+# 23 okt: de retourtermijnen op de zoekpagina's worden elke maand door oeps-mail bij de winkels zelf gecontroleerd
+# (eerste ochtend van de maand, 05:00 UTC). Deze taak haalt daarna de nieuwste stand op en zet hem in src/data/gids.json.
+# Is er iets veranderd, dan volgt een commit op main en bouwt Cloudflare de site vanzelf opnieuw.
+# Handmatig starten kan ook: Actions > "Gids verversen" > Run workflow.
+name: Gids verversen
+on:
+  schedule:
+    - cron: '30 6 1 * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  verversen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/gids.mjs
+      - name: Vastleggen als er iets veranderd is
+        run: |
+          if git diff --quiet -- src/data/gids.json; then
+            echo "Geen wijzigingen"
+          else
+            git config user.name "OEPS! gids"
+            git config user.email "hallo@oeps.app"
+            git add src/data/gids.json
+            git commit -m "Gids ververst na de maandelijkse retourcontrole"
+            git push
+          fi
