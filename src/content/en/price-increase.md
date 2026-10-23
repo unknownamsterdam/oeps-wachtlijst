@@ -8,7 +8,7 @@ nl: prijsverhoging
 kortAntwoord: "Not just like that. It has to be in the terms beforehand, and the company has to tell you in time. Can't you cancel then? Then the price increase is almost always not fair."
 misgaat: "The message arrives in an email with the subject 'Change to your terms'. In between the newsletters. You don't read it. Three months later you only spot it on your bank statement, and your chance to cancel is gone."
 oepsZin: "OEPS! reads along with your emails about price changes and spots it straight away when something gets more expensive. You get a nudge with what it costs you and what you can do."
-bijgewerkt: 2026-10-22
+bijgewerkt: 2026-10-23
 bronnen:
   - naam: "ACM ConsuWijzer — Subscription price increases (Dutch)"
     url: https://consument.acm.nl/prijzen-en-kosten/prijzen/prijsverhogingen-van-abonnementen
@@ -19,6 +19,8 @@ faq:
     antwoord: "Sometimes, if that was clearly stated in the terms beforehand."
   - vraag: "What if taxes go up?"
     antwoord: "Then the price may go up too, because the company doesn't choose that itself."
+  - vraag: "Why does so much get more expensive around 1 January?"
+    antwoord: "Many companies adjust their prices at the start of the year. In December and January, watch extra carefully for emails with 'new rates' or 'change' in the subject."
 ---
 
 ## How it works
