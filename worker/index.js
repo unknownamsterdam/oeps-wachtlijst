@@ -84,6 +84,8 @@ export default {
     if (pad === '/inloggen/') return Response.redirect(new URL('/inloggen' + url.search, request.url).toString(), 301);
     if (pad === '/app' || pad.startsWith('/app/')) return Response.redirect(new URL('/inloggen', request.url).toString(), 302);
     if (pad.startsWith('/api/') || APP_BESTANDEN.has(pad)) return naarApp(request, env);
+    // 23 okt: makerspakket voor influencers. Wachtwoord en bestanden zitten in oeps-mail (privé repo), de site stuurt alleen door.
+    if (pad === '/makers' || pad.startsWith('/makers/')) return naarApp(request, env);
     if (pad.replace(/\/$/, '') === '/aanmelden') {
       if (request.method !== 'POST') return Response.redirect(new URL('/#aanmelden', request.url).toString(), 302);
       // (De Engelse site post naar hetzelfde adres; het verborgen veld taal=en regelt de taal.)
