@@ -33,3 +33,14 @@ Is het cadeau in een **gewone winkel** gekocht? Dan is er geen bedenktijd. Ruile
 ## Het lastige deel
 
 De koper en de ontvanger zijn twee mensen. De ontvanger merkt dat het niet past. Maar alleen de koper kan het terugsturen, via zijn eigen account. En die is de datum allang vergeten.
+
+## Zo lost OEPS! dit straks op: de ruilbon
+
+*Binnenkort. Dit bouwen we nog.*
+
+Je geeft het cadeau met een link van OEPS! erbij. De ontvanger tikt op de link, zonder app en zonder account, en kiest:
+
+- **Houden.** Klaar. Wil de ontvanger de garantie bewaren, dan kan dat gratis, met alleen een e-mailadres.
+- **Ruilen.** Jij krijgt een seintje en zet het retourlabel klaar, op dezelfde link. De ontvanger ziet de prijs niet.
+
+Zo hoeft de ontvanger niet te vragen "waar was de bon ook alweer?", en jij hoeft de datum niet te onthouden.

@@ -34,3 +34,14 @@ Was the gift bought in a **regular shop**? Then there's no cooling-off period. E
 ## The tricky part
 
 The buyer and the receiver are two people. The receiver notices it doesn't fit. But only the buyer can send it back, through their own account. And they forgot the date long ago.
+
+## How OEPS! will solve this: the swap voucher
+
+*Coming soon. We're still building this.*
+
+You give the gift with an OEPS! link attached. The receiver taps the link, no app and no account, and chooses:
+
+- **Keep.** Done. If the receiver wants to keep the warranty, that's free, with just an email address.
+- **Swap.** You get a nudge and prepare the return label, on the same link. The receiver doesn't see the price.
+
+That way the receiver doesn't have to ask "where was the receipt again?", and you don't have to remember the date.
