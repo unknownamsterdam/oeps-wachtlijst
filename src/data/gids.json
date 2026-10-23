@@ -1,18 +1,18 @@
 {
- "bijgewerkt": "2026-10-14",
+ "bijgewerkt": "2026-10-23",
  "paginas": [
   {
    "naam": "bol",
    "soort": "retour",
    "slug": "bol",
    "klaar": true,
-   "bijgewerkt": "2026-10-11",
+   "bijgewerkt": "2026-10-23",
    "bron": "https://www.bol.com/nl/nl/klantenservice/a/5692853414002688/select",
    "zeker": 0.95,
    "retour": {
     "dagen": 30,
     "vanaf": "levering",
-    "kosten": "Gratis",
+    "kosten": "Terugsturen is altijd gratis.",
     "manieren": [
      "account",
      "retourpunt"
@@ -23,7 +23,8 @@
      "Selecteer het artikel en geef een retourreden op",
      "Breng het pakket naar een PostNL-retourpunt met je retourlabel"
     ],
-    "url": "https://www.bol.com/nl/nl/klantenservice"
+    "url": "https://www.bol.com/nl/nl/klantenservice/a/5675729136123904/zo-werkt-terugsturen",
+    "bronpagina": "https://www.bol.com/nl/nl/klantenservice/a/5675729136123904/zo-werkt-terugsturen"
    },
    "opzeggen": null,
    "contact": {
@@ -36,13 +37,13 @@
    "soort": "retour",
    "slug": "coolblue",
    "klaar": true,
-   "bijgewerkt": "2026-10-14",
+   "bijgewerkt": "2026-10-23",
    "bron": "https://www.coolblue.nl/klantenservice/abonnement",
    "zeker": 0.9,
    "retour": {
     "dagen": 30,
     "vanaf": "levering",
-    "kosten": "Gratis",
+    "kosten": "Gratis retourneren",
     "manieren": [
      "account",
      "winkel"
@@ -53,7 +54,8 @@
      "Pak het product goed in en stuur het gratis via PostNL",
      "Volg de status via Mijn Coolblue"
     ],
-    "url": "https://www.coolblue.nl/retouraanvraag"
+    "url": "https://www.coolblue.nl/klantenservice/retourvoorwaarden",
+    "bronpagina": "https://www.coolblue.nl/klantenservice/retourvoorwaarden"
    },
    "opzeggen": null,
    "contact": {
@@ -65,20 +67,37 @@
    "naam": "Zalando",
    "soort": "retour",
    "slug": "zalando",
-   "klaar": false
+   "klaar": true,
+   "bijgewerkt": "2026-10-22",
+   "bron": null,
+   "zeker": 0,
+   "retour": {
+    "dagen": 30,
+    "vanaf": "levering",
+    "kosten": "Gratis retour",
+    "manieren": [],
+    "stappen": [],
+    "url": "https://www.zalando.nl",
+    "bronpagina": "https://www.zalando.nl"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": null,
+    "telefoon": null
+   }
   },
   {
    "naam": "Amazon.nl",
    "soort": "retour",
    "slug": "amazon-nl",
    "klaar": true,
-   "bijgewerkt": "2026-10-08",
+   "bijgewerkt": "2026-10-23",
    "bron": "https://www.amazon.nl/gp/help/customer/display.html?nodeId=201910380",
    "zeker": 0.95,
    "retour": {
-    "dagen": 30,
-    "vanaf": "levering",
-    "kosten": "Gratis voor bepaalde items, anders afhankelijk van verkoper",
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
     "manieren": [
      "account"
     ],
@@ -88,7 +107,8 @@
      "Selecteer het item en geef retourredenen op",
      "Print het retourlabel en breng het pakket naar het postpunt"
     ],
-    "url": "https://www.amazon.nl/gp/help/customer/display.html?nodeId=G6E3B2E8QPHQ88KF"
+    "url": "https://www.amazon.nl/gp/help/customer/display.html?nodeId=G6E3B2E8QPHQ88KF",
+    "bronpagina": "https://www.amazon.nl/gp/help/customer/display.html?nodeId=G6E3B2E8QPHQ88KF"
    },
    "opzeggen": null,
    "contact": {
@@ -101,13 +121,13 @@
    "soort": "retour",
    "slug": "wehkamp",
    "klaar": true,
-   "bijgewerkt": "2026-10-14",
+   "bijgewerkt": "2026-10-23",
    "bron": "https://www.wehkamp.nl/klantenservice/categorie/gegevens-en-voorwaarden/vraag/wat-zijn-de-voorwaarden-van-ophalen-plus",
    "zeker": 0.85,
    "retour": {
     "dagen": 30,
     "vanaf": "levering",
-    "kosten": "€0,50 per artikel, of €2,95 per zending via Ophalen Plus",
+    "kosten": "€0,50 per artikel",
     "manieren": [
      "account",
      "retourpunt"
@@ -118,7 +138,8 @@
      "Lever je pakket in bij een DHL ServicePoint, Buurtpunt of Pakketautomaat",
      "Volg je retour via de track & trace-code"
     ],
-    "url": "https://www.wehkamp.nl/klantenservice/categorie/retourneren/vraag/hoe-werkt-retourneren/"
+    "url": "https://www.wehkamp.nl/klantenservice/categorie/retourneren/vraag/hoe-werkt-retourneren/",
+    "bronpagina": "https://www.wehkamp.nl/klantenservice/categorie/retourneren/vraag/hoe-werkt-retourneren/"
    },
    "opzeggen": null,
    "contact": {
@@ -131,13 +152,13 @@
    "soort": "retour",
    "slug": "h-en-m",
    "klaar": true,
-   "bijgewerkt": "2026-10-08",
+   "bijgewerkt": "2026-10-23",
    "bron": "https://www2.hm.com/nl_nl/customer-service/h-m-club/h-m-club-terms-conditions.html",
    "zeker": 0.7,
    "retour": {
-    "dagen": 30,
-    "vanaf": "levering",
-    "kosten": "€2,99 voor online retouren (gratis in de winkel)",
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
     "manieren": [
      "account",
      "winkel"
@@ -148,7 +169,8 @@
      "Meld je retour aan in het retourportaal",
      "Stuur de artikelen terug met het retourlabel"
     ],
-    "url": "https://www2.hm.com/nl_nl/customer-service/returns.html"
+    "url": "https://www2.hm.com/nl_nl/customer-service/returns.html",
+    "bronpagina": "https://www2.hm.com/nl_nl/customer-service/returns.html"
    },
    "opzeggen": null,
    "contact": {
@@ -161,13 +183,13 @@
    "soort": "retour",
    "slug": "zara",
    "klaar": true,
-   "bijgewerkt": "2026-10-08",
+   "bijgewerkt": "2026-10-23",
    "bron": "https://www.zara.com/nl/nl/",
    "zeker": 1,
    "retour": {
-    "dagen": 30,
-    "vanaf": "levering",
-    "kosten": "Gratis retourneren in winkel; €2,95 per retour via ophaalpunt",
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
     "manieren": [
      "account",
      "winkel",
@@ -179,7 +201,8 @@
      "Bij ophaalpunt: ontvang DHL-retourlabel per e-mail en print het uit",
      "Lever het pakket in bij een Zara-winkel of DHL-servicepunt"
     ],
-    "url": "https://www.zara.com/nl/nl/help-center/HowToReturn"
+    "url": "https://www.zara.com/nl/nl/help-center/HowToReturn",
+    "bronpagina": "https://www.zara.com/nl/nl/help-center/HowToReturn"
    },
    "opzeggen": null,
    "contact": {
@@ -192,13 +215,13 @@
    "soort": "retour",
    "slug": "mediamarkt",
    "klaar": true,
-   "bijgewerkt": "2026-10-14",
+   "bijgewerkt": "2026-10-23",
    "bron": "https://assets.ctfassets.net/jq6pdee2ul1f/1DC9sUetJFb8iQwk9YfjZN/ae0aede56b84cb2525f429c4067db0f8/Algemene-voorwaarden-MediaMarkt-Club.pdf",
    "zeker": 0.85,
    "retour": {
     "dagen": 30,
     "vanaf": "levering",
-    "kosten": "Gratis",
+    "kosten": "Gratis retourneren in alle winkels en online per post",
     "manieren": [
      "account",
      "winkel",
@@ -209,7 +232,8 @@
      "Lever het product in in een MediaMarkt-winkel of stuur het per post terug",
      "Bij grote producten haalt MediaMarkt deze in de meeste gevallen thuis op"
     ],
-    "url": "https://www.mediamarkt.nl/nl/service/klantenservice/ruilen-retourneren"
+    "url": "https://www.mediamarkt.nl/nl/service/klantenservice/ruilen-retourneren",
+    "bronpagina": "https://www.mediamarkt.nl/nl/service/klantenservice/ruilen-retourneren"
    },
    "opzeggen": null,
    "contact": {
@@ -222,13 +246,13 @@
    "soort": "retour",
    "slug": "ikea",
    "klaar": true,
-   "bijgewerkt": "2026-10-14",
+   "bijgewerkt": "2026-10-23",
    "bron": "https://www.ikea.com/nl/nl/customer-service/knowledge/articles/bb4f4276-37ff-41b8-beba-955674d9f53f.html",
    "zeker": 0.95,
    "retour": {
-    "dagen": 365,
-    "vanaf": "levering",
-    "kosten": "Gratis retour in IKEA winkel, betaald retour per pakket of vrachtwagen",
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
     "manieren": [
      "account",
      "winkel",
@@ -241,7 +265,8 @@
      "Voor pakketretour: ontvang barcode per e-mail en breng pakketje naar PostNL",
      "Voor winkelretour of vrachtwagen: volg de instructies in je retourbevestiging"
     ],
-    "url": "https://www.ikea.com/nl/nl/customer-service/returns-claims/"
+    "url": "https://www.ikea.com/nl/nl/customer-service/returns-claims/",
+    "bronpagina": "https://www.ikea.com/nl/nl/customer-service/returns-claims/"
    },
    "opzeggen": null,
    "contact": {
@@ -254,13 +279,13 @@
    "soort": "retour",
    "slug": "decathlon",
    "klaar": true,
-   "bijgewerkt": "2026-10-14",
+   "bijgewerkt": "2026-10-23",
    "bron": null,
    "zeker": 0.1,
    "retour": {
-    "dagen": 365,
-    "vanaf": "levering",
-    "kosten": "Gratis",
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
     "manieren": [
      "account",
      "winkel",
@@ -272,7 +297,8 @@
      "Ontvang een retourlabel per mail of gebruik het label uit de doos",
      "Lever het pakket in bij een PostNL-pakketpunt of Decathlon-winkel"
     ],
-    "url": "https://help.decathlon.nl/hc/nl/articles/13672938618652-Hoe-kan-ik-mijn-Decathlon-producten-retourneren"
+    "url": "https://help.decathlon.nl/hc/nl/articles/13672938618652-Hoe-kan-ik-mijn-Decathlon-producten-retourneren",
+    "bronpagina": "https://help.decathlon.nl/hc/nl/articles/13672938618652-Hoe-kan-ik-mijn-Decathlon-producten-retourneren"
    },
    "opzeggen": null,
    "contact": {
@@ -285,23 +311,17 @@
    "soort": "retour",
    "slug": "about-you",
    "klaar": true,
-   "bijgewerkt": "2026-10-14",
+   "bijgewerkt": "2026-10-22",
    "bron": null,
    "zeker": 0,
    "retour": {
-    "dagen": 100,
+    "dagen": 30,
     "vanaf": "levering",
     "kosten": "Gratis",
-    "manieren": [
-     "account"
-    ],
-    "stappen": [
-     "Log in op je ABOUT YOU-account",
-     "Vul het retourformulier in",
-     "Pak het artikel in met het retourlabel",
-     "Geef het pakket af bij PostNL"
-    ],
-    "url": "https://www.aboutyou.nl"
+    "manieren": [],
+    "stappen": [],
+    "url": "https://www.aboutyou.nl",
+    "bronpagina": "https://www.aboutyou.nl"
    },
    "opzeggen": null,
    "contact": {
@@ -314,13 +334,13 @@
    "soort": "retour",
    "slug": "shein",
    "klaar": true,
-   "bijgewerkt": "2026-10-14",
+   "bijgewerkt": "2026-10-23",
    "bron": "https://m.shein.com/nl/Delete-or-Cancel-Account-a-1054.html",
    "zeker": 0.8,
    "retour": {
-    "dagen": 45,
-    "vanaf": "aankoop",
-    "kosten": "Gratis voor de eerste retourzending, €4,50 voor verdere retouren van dezelfde…",
+    "dagen": 30,
+    "vanaf": "levering",
+    "kosten": "Eerste retour gratis, daarna €4,50 per extra retour van dezelfde bestelling",
     "manieren": [
      "account"
     ],
@@ -330,7 +350,8 @@
      "Download het retourlabel en print het uit",
      "Lever het pakket in bij een PostNL-servicepunt"
     ],
-    "url": "https://m.shein.com/euqs/coupon-a-281.html?language=nl"
+    "url": "https://m.shein.com/nl/coupon-a-281.html",
+    "bronpagina": "https://m.shein.com/nl/coupon-a-281.html"
    },
    "opzeggen": null,
    "contact": {
@@ -343,13 +364,13 @@
    "soort": "retour",
    "slug": "uniqlo",
    "klaar": true,
-   "bijgewerkt": "2026-10-09",
+   "bijgewerkt": "2026-10-23",
    "bron": "https://faq-nl.uniqlo.com/",
    "zeker": 0.3,
    "retour": {
-    "dagen": 30,
-    "vanaf": "levering",
-    "kosten": "€2,95 per retouraanvraag",
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
     "manieren": [
      "account",
      "winkel"
@@ -360,7 +381,8 @@
      "Selecteer de bestelling die je wilt retourneren",
      "Volg de stappen om je retourlabel af te drukken en stuur het terug"
     ],
-    "url": "https://faq-nl.uniqlo.com/pkb_Home_UQ_NL?id=kA0Vh0000001MK2&l=nl_NL&fs=Search&pn=1"
+    "url": "https://faq-nl.uniqlo.com/pkb_Home_UQ_NL?id=kA0Vh0000001MK2&l=nl_NL&fs=Search&pn=1",
+    "bronpagina": "https://faq-nl.uniqlo.com/pkb_Home_UQ_NL?id=kA0Vh0000001MK2&l=nl_NL&fs=Search&pn=1"
    },
    "opzeggen": null,
    "contact": {
@@ -373,13 +395,13 @@
    "soort": "retour",
    "slug": "nike",
    "klaar": true,
-   "bijgewerkt": "2026-10-14",
+   "bijgewerkt": "2026-10-23",
    "bron": "https://www.nike.com/nl/",
    "zeker": 0.3,
    "retour": {
-    "dagen": 60,
-    "vanaf": "levering",
-    "kosten": "Gratis voor Nike Members, mogelijk van toepassing voor niet-leden",
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
     "manieren": [
      "account",
      "winkel"
@@ -390,7 +412,8 @@
      "Klik op 'Start Return' en vink de items aan die je terug wilt sturen",
      "Print het retourlabel en lever het pakket in bij de aangegeven vervoerder"
     ],
-    "url": "https://www.nike.com/nl/help/a/retourneren-eu"
+    "url": "https://www.nike.com/nl/help/a/retourneren-eu",
+    "bronpagina": "https://www.nike.com/nl/help/a/retourneren-eu"
    },
    "opzeggen": null,
    "contact": {
@@ -403,13 +426,13 @@
    "soort": "retour",
    "slug": "de-bijenkorf",
    "klaar": true,
-   "bijgewerkt": "2026-10-14",
+   "bijgewerkt": "2026-10-23",
    "bron": null,
    "zeker": 0.1,
    "retour": {
-    "dagen": 30,
-    "vanaf": "levering",
-    "kosten": "Gratis",
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
     "manieren": [
      "account",
      "winkel"
@@ -420,7 +443,8 @@
      "Meld je retour aan",
      "Lever het pakket in bij een PostNL-punt"
     ],
-    "url": "https://klantenservice.debijenkorf.nl"
+    "url": "https://klantenservice.debijenkorf.nl",
+    "bronpagina": "https://klantenservice.debijenkorf.nl"
    },
    "opzeggen": null,
    "contact": {
@@ -433,13 +457,13 @@
    "soort": "retour",
    "slug": "hema",
    "klaar": true,
-   "bijgewerkt": "2026-10-14",
+   "bijgewerkt": "2026-10-23",
    "bron": "https://www.hema.nl/klantenservice",
    "zeker": 0.1,
    "retour": {
     "dagen": 30,
     "vanaf": "levering",
-    "kosten": "Gratis in winkel, verzendkosten via UPS of DHL",
+    "kosten": "gratis retour",
     "manieren": [
      "winkel",
      "retourpunt"
@@ -450,7 +474,8 @@
      "Meld de retour aan en vul het retourformulier in",
      "Breng het pakket naar een UPS-punt of HEMA-winkel"
     ],
-    "url": "https://www.hema.nl/klantenservice/retourneren-en-ruilen"
+    "url": "https://www.hema.nl/klantenservice/retourneren-en-ruilen",
+    "bronpagina": "https://www.hema.nl/klantenservice/retourneren-en-ruilen"
    },
    "opzeggen": null,
    "contact": {

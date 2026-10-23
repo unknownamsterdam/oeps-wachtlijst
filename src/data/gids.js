@@ -17,7 +17,7 @@ function inEngels(p) {
   if (!e) return null;
   if (e.nl && p.bijgewerkt && e.nl !== p.bijgewerkt) console.warn(`[engels] ${p.soort}/${p.slug}: Nederlandse pagina is bijgewerkt (${p.bijgewerkt}), vertaling is van ${e.nl}`);
   return p.soort === 'retour'
-    ? { ...p, retour: { ...p.retour, kosten: e.kosten ?? null, stappen: e.stappen } }
+    ? { ...p, retour: { ...p.retour, kosten: p.retour.kosten ? (e.kosten ?? null) : null, stappen: e.stappen } } // 23 okt: geen kosten als de Nederlandse pagina ze niet toont (niet bevestigd)
     : { ...p, opzeggen: { ...p.opzeggen, let_op: e.let_op ?? null, stappen: e.stappen } };
 }
 export const RETOUR_EN = RETOUR.map(inEngels).filter(Boolean);
