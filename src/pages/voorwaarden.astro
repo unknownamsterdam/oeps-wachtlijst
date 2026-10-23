@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import { SITE } from '../data/site.js';
 // 13 okt 2026: eerste versie van de gebruiksvoorwaarden, voor de bèta. Laten nakijken vóór er betaald wordt.
+// 23 okt 2026: kortingscodes en 'Wie ons helpen' (Brevo e.a.) erbij.
 ---
 <Base
   title="Voorwaarden | OEPS!"
@@ -13,7 +14,7 @@ import { SITE } from '../data/site.js';
     <p class="lead">De afspraken tussen jou en OEPS!, kort en duidelijk.</p>
 
     <h2>Wat OEPS! doet</h2>
-    <p>OEPS! leest je mails over aankopen, rekeningen en abonnementen en de bonnen die je toevoegt. Daaruit houden we termijnen bij, zoals retour, garantie, verlenging en opzeggen, en we geven je op tijd een seintje. Hoe we met je gegevens omgaan, staat in de <a href="/privacy/">privacyuitleg</a>.</p>
+    <p>OEPS! leest je mails over aankopen, rekeningen en abonnementen en de bonnen die je toevoegt. Daaruit houden we termijnen bij, zoals retour, garantie, verlenging en opzeggen, en we geven je op tijd een seintje. Ook zoeken we in reclamemails naar kortingscodes, en laten we je die zien in de app. Hoe we met je gegevens omgaan, staat in de <a href="/privacy/">privacyuitleg</a>.</p>
 
     <h2>Een hulpmiddel, geen garantie</h2>
     <ul>
@@ -22,6 +23,9 @@ import { SITE } from '../data/site.js';
       <li>Jij blijft zelf verantwoordelijk voor je afspraken met winkels en aanbieders.</li>
       <li>Wat we vertellen over je rechten (bijvoorbeeld bedenktijd of garantie) is algemene uitleg, geen juridisch advies.</li>
     </ul>
+
+    <h2>Wie ons helpen</h2>
+    <p>Voor de app gebruiken we een paar andere bedrijven, zoals Cloudflare (hosting), Anthropic (mails en bonnen lezen) en Brevo (mails van OEPS! aan jou versturen). Zij mogen je gegevens alleen gebruiken voor wat wij ze vragen. Wie precies wat doet, staat in de <a href="/privacy/">privacyuitleg</a>.</p>
 
     <h2>Jij beslist</h2>
     <p>OEPS! verstuurt niets, zegt niets op en koopt niets zonder dat jij op de knop drukt. Een conceptmail of opzegstap is een voorstel; jij kijkt het na en verstuurt het.</p>
@@ -49,7 +53,7 @@ import { SITE } from '../data/site.js';
     <h2>Recht en vragen</h2>
     <p>Op deze afspraken is Nederlands recht van toepassing. Vragen of een klacht? Mail naar <a href={`mailto:${SITE.mail}`}>{SITE.mail}</a>, dan zoeken we samen een oplossing.</p>
 
-    <p class="klein">Laatst bijgewerkt: 13 oktober 2026</p>
+    <p class="klein">Laatst bijgewerkt: 23 oktober 2026</p>
   </div>
 </Base>
 

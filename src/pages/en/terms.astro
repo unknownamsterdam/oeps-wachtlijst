@@ -1,7 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { SITE } from '../../data/site.js';
-// 22 okt 2026: Engelse vertaling van /voorwaarden/ (stand 13 okt). Pas je de Nederlandse tekst aan, pas deze dan ook aan.
+// 22 okt 2026: Engelse vertaling van /voorwaarden/. 23 okt 2026: bijgewerkt (kortingscodes, wie ons helpen). Pas je de Nederlandse tekst aan, pas deze dan ook aan.
 ---
 <Base
   title="Terms | OEPS!"
@@ -14,7 +14,7 @@ import { SITE } from '../../data/site.js';
     <p class="vertaling">This is a translation of our Dutch <a href="/voorwaarden/" hreflang="nl" lang="nl">Voorwaarden</a>. If the two differ, the Dutch version applies.</p>
 
     <h2>What OEPS! does</h2>
-    <p>OEPS! reads your emails about purchases, bills and subscriptions, and the receipts you add. From those we keep track of deadlines, such as returns, warranty, renewals and cancelling, and we give you a nudge in time. How we handle your data is explained in the <a href="/en/privacy/">privacy explanation</a>.</p>
+    <p>OEPS! reads your emails about purchases, bills and subscriptions, and the receipts you add. From those we keep track of deadlines, such as returns, warranty, renewals and cancelling, and we give you a nudge in time. We also look in promotional emails for discount codes, and show them to you in the app. How we handle your data is explained in the <a href="/en/privacy/">privacy explanation</a>.</p>
 
     <h2>A tool, not a guarantee</h2>
     <ul>
@@ -23,6 +23,9 @@ import { SITE } from '../../data/site.js';
       <li>You remain responsible for your own agreements with shops and providers.</li>
       <li>What we tell you about your rights (for example the cooling-off period or warranty) is a general explanation, not legal advice.</li>
     </ul>
+
+    <h2>Who helps us</h2>
+    <p>For the app we use a few other companies, such as Cloudflare (hosting), Anthropic (reading emails and receipts) and Brevo (sending the emails from OEPS! to you). They may only use your data for what we ask them to do. Who does exactly what is in the <a href="/en/privacy/">privacy explanation</a>.</p>
 
     <h2>You decide</h2>
     <p>OEPS! doesn't send anything, cancel anything or buy anything unless you press the button. A draft email or cancellation step is a suggestion; you check it and send it.</p>
@@ -50,7 +53,7 @@ import { SITE } from '../../data/site.js';
     <h2>Law and questions</h2>
     <p>Dutch law applies to these agreements. Questions or a complaint? Email <a href={`mailto:${SITE.mail}`}>{SITE.mail}</a> and we'll find a solution together.</p>
 
-    <p class="klein">Last updated: 13 October 2026 (English translation: 22 October 2026)</p>
+    <p class="klein">Last updated: 23 October 2026</p>
   </div>
 </Base>
 

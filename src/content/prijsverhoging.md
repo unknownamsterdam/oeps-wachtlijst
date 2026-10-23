@@ -7,7 +7,7 @@ volgorde: 4
 kortAntwoord: "Niet zomaar. Het moet vooraf in de voorwaarden staan en het bedrijf moet het je op tijd laten weten. Kun je dan niet opzeggen? Dan is de prijsverhoging bijna altijd niet eerlijk."
 misgaat: "Het bericht komt in een mail met als onderwerp 'Wijziging in je voorwaarden'. Tussen de nieuwsbrieven. Je leest het niet. Drie maanden later zie je het pas op je bankafschrift, en is je kans om op te zeggen voorbij."
 oepsZin: "OEPS! leest mee met je mails over prijswijzigingen en ziet het meteen als iets duurder wordt. Je krijgt een seintje met wat het je kost en wat je kunt doen."
-bijgewerkt: 2026-10-05
+bijgewerkt: 2026-10-23
 bronnen:
   - naam: "ACM ConsuWijzer — Prijsverhogingen van abonnementen"
     url: https://consument.acm.nl/prijzen-en-kosten/prijzen/prijsverhogingen-van-abonnementen
@@ -18,6 +18,8 @@ faq:
     antwoord: "Soms wel, als dat vooraf duidelijk in de voorwaarden stond."
   - vraag: "Wat als de belasting omhoog gaat?"
     antwoord: "Dan mag de prijs ook omhoog, want dat kiest het bedrijf niet zelf."
+  - vraag: "Waarom wordt er rond 1 januari zoveel duurder?"
+    antwoord: "Veel bedrijven passen hun prijzen aan het begin van het jaar aan. Let in december en januari extra op mails met 'nieuwe tarieven' of 'wijziging' in het onderwerp."
 ---
 
 ## Zo zit het

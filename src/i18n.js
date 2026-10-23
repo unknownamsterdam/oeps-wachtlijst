@@ -29,7 +29,7 @@ export const TEKST = {
     aanmelden: 'Aanmelden', privacy: 'Privacy', voorwaarden: 'Voorwaarden', cookies: 'Cookies',
     voetOnder: 'Uitleg op deze site is algemene informatie, geen juridisch advies.',
     kruimel: 'Kruimelpad', kortGezegd: 'Kort gezegd', gecontroleerdOp: 'Gecontroleerd op', bron: 'bron', bronnen: 'bronnen', siteVan: (n) => `site van ${n}`,
-    veelgesteld: 'Veelgestelde vragen', binnenkort: 'Binnenkort',
+    veelgesteld: 'Veelgestelde vragen', binnenkort: 'Probeer gratis',
     opgezocht: (n) => `Opgezocht op de site van ${n}`, bijgewerktOp: 'Bijgewerkt op',
     kloptNiet: 'Klopt er iets niet meer? Mail', kloptNiet2: (n) => `dan passen we het aan. Voorwaarden kunnen veranderen; check bij twijfel de site van ${n}.`,
     // formulier
