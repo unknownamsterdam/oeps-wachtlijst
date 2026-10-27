@@ -15,6 +15,8 @@ const X = {
     beschrijving: 'Leg het één keer vast, OEPS! onthoudt de rest. Wij bewaken je retourtermijnen, terugbetalingen, garanties en pakketten. Meld je gratis aan.',
     h1a: 'Leg het één keer vast.', h1b: 'Wij onthouden de rest.',
     lead: 'OEPS! is het geheugen van alles wat je koopt. Koppel je mailbox of stuur je bonnen door. Wij letten op je retourtermijn, of je geld terugkomt en hoe lang je garantie loopt.',
+    zeker: ['Alleen lezen, nooit iets versturen of wijzigen.', 'Geen mensen die je mail lezen.', 'Je kunt altijd ontkoppelen en alles wissen.'],
+    geenKoppeling: 'Geen koppeling nodig: stuur gewoon één mail door.',
     bonKop: 'OEPS! · DEZE MAAND',
     bon: [['Koptelefoon', 'retour ok'], ['Zalando', '€89,95 terug ✓'], ['Wasmachine', 'garantie tot 2028'], ['Pakket', 'ligt klaar'], ['Dit jaar', '€134 opgeleverd']],
     bonTot: ['ACTIES', '1 klaar'],
@@ -33,6 +35,8 @@ const X = {
       ['Je data is van jou.', 'We verkopen niets door. Account weg is alles weg.'],
       ['Niets zonder jouw ja.', 'OEPS! verstuurt nooit iets zonder je bevestiging.'],
     ],
+    wieKop: 'Wie bouwt dit?',
+    wie: 'Ik ben Joël. Negen jaar lang had ik een webshop en zag ik hoe vaak klanten een retourtermijn of garantie misten. Dat kan beter, dus ik bouw OEPS! Een vraag of een idee? Mail me gerust:',
     volgKop: 'Volg OEPS!',
     volg: 'Korte tips over retourtermijnen, terugbetalingen en garantie. En een kijkje achter de schermen terwijl we bouwen.',
   },
@@ -41,6 +45,8 @@ const X = {
     beschrijving: 'Save it once, OEPS! remembers the rest. We keep track of your return deadlines, refunds, warranties and parcels. For people living in the Netherlands. Sign up for free.',
     h1a: 'Save it once.', h1b: 'We remember the rest.',
     lead: 'OEPS! is the memory for everything you buy. Connect your mailbox or forward your receipts. We keep an eye on your return deadline, whether your money comes back and how long your warranty lasts.',
+    zeker: ['Read-only, never sending or changing anything.', 'No people reading your email.', 'You can disconnect and delete everything at any time.'],
+    geenKoppeling: 'No connection needed: just forward one email.',
     bonKop: 'OEPS! · THIS MONTH',
     bon: [['Headphones', 'return ok'], ['Zalando', '€89.95 back ✓'], ['Washing machine', 'warranty until 2028'], ['Parcel', 'ready for pickup'], ['This year', '€134 saved']],
     bonTot: ['ACTIONS', '1 done'],
@@ -59,6 +65,8 @@ const X = {
       ['Your data is yours.', 'We never sell anything on. Delete your account and everything is gone.'],
       ['Nothing without your yes.', 'OEPS! never sends anything without your confirmation.'],
     ],
+    wieKop: 'Who builds this?',
+    wie: "I'm Joël. For nine years I ran a web shop and saw how often customers missed a return deadline or a warranty. That can be better, so I'm building OEPS! Got a question or an idea? Email me:",
     volgKop: 'Follow OEPS!',
     volg: 'Short tips on return deadlines, refunds and warranties. Plus a look behind the scenes while we build. (Our posts are in Dutch.)',
   },
@@ -70,6 +78,10 @@ const andere = taal === 'en' ? PAD.nl.home : PAD.en.home;
     <div>
       <h1>{X.h1a} <mark>{X.h1b}</mark></h1>
       <p class="lead">{X.lead}</p>
+      <ul class="zeker">
+        {X.zeker.map((z) => <li>{z}</li>)}
+      </ul>
+      <p class="geenkoppeling">{X.geenKoppeling}</p>
       <Wachtlijst taal={taal} />
     </div>
 
@@ -129,6 +141,13 @@ const andere = taal === 'en' ? PAD.nl.home : PAD.en.home;
     </div>
   </section>
 
+  <section class="wie">
+    <div class="wrap">
+      <h2>{X.wieKop}</h2>
+      <p>{X.wie} <a href={`mailto:${SITE.mail}`}>{SITE.mail}</a></p>
+    </div>
+  </section>
+
   <section class="volg">
     <div class="wrap">
       <h2>{X.volgKop}</h2>
@@ -145,6 +164,10 @@ const andere = taal === 'en' ? PAD.nl.home : PAD.en.home;
   .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding:32px 20px 64px}
   .hero h1{margin-bottom:20px}
   .lead{font-size:19px;color:var(--zacht);max-width:34em;margin-bottom:28px}
+  .zeker{list-style:none;display:flex;flex-direction:column;gap:6px;margin:-12px 0 14px;font-size:17px;color:var(--marine)}
+  .zeker li{position:relative;padding-left:26px}
+  .zeker li::before{content:"✓";position:absolute;left:0;font-weight:800}
+  .geenkoppeling{font-size:16px;color:var(--zacht);margin:0 0 26px}
   .bon{background:var(--wit);font-family:"IBM Plex Mono",monospace;font-size:14px;padding:24px 22px 30px;box-shadow:0 10px 30px rgba(20,33,61,.12);transform:rotate(1.5deg);max-width:360px;justify-self:center;width:100%;
        -webkit-mask:linear-gradient(#000 0 0) top/100% calc(100% - 10px) no-repeat,radial-gradient(circle 6px at 8px 100%,transparent 6px,#000 6.5px) bottom left/16px 10px repeat-x;
        mask:linear-gradient(#000 0 0) top/100% calc(100% - 10px) no-repeat,radial-gradient(circle 6px at 8px 100%,transparent 6px,#000 6.5px) bottom left/16px 10px repeat-x}
@@ -171,6 +194,9 @@ const andere = taal === 'en' ? PAD.nl.home : PAD.en.home;
   .belofte ul{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
   .belofte li{border-top:3px solid var(--marine);padding-top:12px}
 
+  section.wie{padding:8px 0 48px}
+  section.wie p{color:var(--zacht);max-width:34em;margin-top:6px}
+  section.wie a{color:var(--marine);font-weight:700}
   section.volg{background:var(--wit);border-radius:var(--rond);max-width:1000px;margin:0 auto;padding:40px 0}
   section.volg p{color:var(--zacht);max-width:34em;margin-top:6px}
 
