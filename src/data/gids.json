@@ -1,5 +1,5 @@
 {
- "bijgewerkt": "2026-10-23",
+ "bijgewerkt": "2026-11-01",
  "paginas": [
   {
    "naam": "bol",
@@ -152,7 +152,7 @@
    "soort": "retour",
    "slug": "h-en-m",
    "klaar": true,
-   "bijgewerkt": "2026-10-23",
+   "bijgewerkt": "2026-11-01",
    "bron": "https://www2.hm.com/nl_nl/customer-service/h-m-club/h-m-club-terms-conditions.html",
    "zeker": 0.7,
    "retour": {
@@ -183,7 +183,7 @@
    "soort": "retour",
    "slug": "zara",
    "klaar": true,
-   "bijgewerkt": "2026-10-23",
+   "bijgewerkt": "2026-11-01",
    "bron": "https://www.zara.com/nl/nl/",
    "zeker": 1,
    "retour": {
@@ -279,7 +279,7 @@
    "soort": "retour",
    "slug": "decathlon",
    "klaar": true,
-   "bijgewerkt": "2026-10-23",
+   "bijgewerkt": "2026-11-01",
    "bron": null,
    "zeker": 0.1,
    "retour": {
@@ -426,7 +426,7 @@
    "soort": "retour",
    "slug": "de-bijenkorf",
    "klaar": true,
-   "bijgewerkt": "2026-10-23",
+   "bijgewerkt": "2026-11-01",
    "bron": null,
    "zeker": 0.1,
    "retour": {
