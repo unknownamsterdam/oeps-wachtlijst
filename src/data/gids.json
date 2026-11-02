@@ -1,5 +1,5 @@
 {
- "bijgewerkt": "2026-11-01",
+ "bijgewerkt": "2026-11-02",
  "paginas": [
   {
    "naam": "bol",
@@ -481,6 +481,162 @@
    "contact": {
     "url": "https://www.hema.nl/klantenservice",
     "telefoon": "020 224 2424"
+   }
+  },
+  {
+   "naam": "Temu",
+   "soort": "retour",
+   "slug": "temu",
+   "klaar": true,
+   "bijgewerkt": "2026-11-02",
+   "bron": null,
+   "zeker": 0.1,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "account"
+    ],
+    "stappen": [
+     "Log in op je Temu account",
+     "Ga naar 'Mijn bestellingen'",
+     "Selecteer het item dat je wil retourneren",
+     "Kies 'Retour/Restitutie' en volg de stappen"
+    ],
+    "url": "https://www.temu.com/nl-en/terms-of-use.html",
+    "bronpagina": "https://www.temu.com/nl-en/terms-of-use.html"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.temu.com/nl-en/contact-us.html",
+    "telefoon": "+31203695130"
+   }
+  },
+  {
+   "naam": "AliExpress",
+   "soort": "retour",
+   "slug": "aliexpress",
+   "klaar": true,
+   "bijgewerkt": "2026-10-12",
+   "bron": null,
+   "zeker": 0.1,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "account"
+    ],
+    "stappen": [
+     "Log in op je AliExpress-account en ga naar 'Mijn Bestellingen'",
+     "Klik op 'Bestelgegevens' en vervolgens op 'Retourneren/terugbetaling'",
+     "Selecteer 'Retourneren' en kies een reden zoals 'Ik heb het niet meer nodig'",
+     "Print het retourlabel en lever het pakket in bij DHL of PostNL"
+    ],
+    "url": "https://nl.aliexpress.com/",
+    "bronpagina": "https://nl.aliexpress.com/"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://nl.aliexpress.com/",
+    "telefoon": "+86 571 8656 3839"
+   }
+  },
+  {
+   "naam": "Lidl",
+   "soort": "retour",
+   "slug": "lidl",
+   "klaar": true,
+   "bijgewerkt": "2026-10-19",
+   "bron": null,
+   "zeker": 0.9,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "account",
+     "winkel"
+    ],
+    "stappen": [
+     "Log in op je Lidl-account of open je factuur als gast",
+     "Selecteer het artikel dat je wilt retourneren",
+     "Genereer het DHL retourlabel of QR-code",
+     "Stuur het pakket met het label naar het retouradres"
+    ],
+    "url": "https://customercare.lidl.nl/SelfServiceNL/s/article/Ik-wil-mijn-artikel-retourneren-terugs",
+    "bronpagina": "https://customercare.lidl.nl/SelfServiceNL/s/article/Ik-wil-mijn-artikel-retourneren-terugs"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://customercare.lidl.nl/SelfServiceNL/s/contactsupport",
+    "telefoon": "020-7095039"
+   }
+  },
+  {
+   "naam": "Apple",
+   "soort": "retour",
+   "slug": "apple",
+   "klaar": true,
+   "bijgewerkt": "2026-11-02",
+   "bron": "https://www.apple.com/nl/shop/account/home",
+   "zeker": 0.85,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "account",
+     "winkel",
+     "retourpunt",
+     "ophalen"
+    ],
+    "stappen": [
+     "Log in op je Apple-account onder Bestellingen",
+     "Selecteer het artikel dat je wil retourneren",
+     "Klik op 'Retourneer artikelen'",
+     "Kies terugbrengen naar Apple Store, zelf terugsturen of ophalen door koerier"
+    ],
+    "url": "https://www.apple.com/nl/shop/account/home",
+    "bronpagina": "https://www.apple.com/nl/shop/account/home"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.apple.com/nl/contact/",
+    "telefoon": "0800 0200 570"
+   }
+  },
+  {
+   "naam": "Douglas",
+   "soort": "retour",
+   "slug": "douglas",
+   "klaar": true,
+   "bijgewerkt": "2026-11-02",
+   "bron": "https://www.douglas.nl/nl/cp/helpbeautycardcancelaccount/help-beauty-card-cancel-account",
+   "zeker": 0.95,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "account",
+     "winkel",
+     "retourpunt"
+    ],
+    "stappen": [
+     "Ga naar retour.douglas.nl en meld je retour aan",
+     "Verpak het product in de originele Douglas-doos",
+     "Download het retourlabel en plak het op de doos",
+     "Geef het pakket af bij een DHL ServicePoint of Douglas-store"
+    ],
+    "url": "https://retour.douglas.nl",
+    "bronpagina": "https://retour.douglas.nl"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.douglas.nl/nl/cp/helpservices/help-services",
+    "telefoon": "088-368 45 45"
    }
   },
   {

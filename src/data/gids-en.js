@@ -93,6 +93,37 @@ export const GIDS_EN = {
     'Register the return and fill in the return form',
     'Take the parcel to a UPS point or a HEMA store',
   ] },
+  // 2 nov: vijf drukke Black Friday-winkels erbij.
+  'retour/temu': { nl: '2026-11-02', kosten: null, stappen: [
+    'Log in to your Temu account',
+    "Go to 'Mijn bestellingen' (My orders)",
+    'Select the item you want to return',
+    "Choose 'Retour/Restitutie' (Return/Refund) and follow the steps",
+  ] },
+  'retour/aliexpress': { nl: '2026-10-12', kosten: null, stappen: [
+    "Log in to your AliExpress account and go to 'Mijn Bestellingen' (My orders)",
+    "Click 'Bestelgegevens' (Order details) and then 'Retourneren/terugbetaling' (Return/refund)",
+    "Select 'Retourneren' (Return) and choose a reason, such as 'Ik heb het niet meer nodig' (I no longer need it)",
+    'Print the return label and drop the parcel off at DHL or PostNL',
+  ] },
+  'retour/lidl': { nl: '2026-10-19', kosten: null, stappen: [
+    'Log in to your Lidl account, or open your invoice as a guest',
+    'Select the item you want to return',
+    'Create the DHL return label or QR code',
+    'Send the parcel with the label to the return address',
+  ] },
+  'retour/apple': { nl: '2026-11-02', kosten: null, stappen: [
+    'Log in to your Apple account under Orders',
+    'Select the item you want to return',
+    "Click 'Retourneer artikelen' (Return items)",
+    'Choose to bring it to an Apple Store, send it back yourself or have a courier collect it',
+  ] },
+  'retour/douglas': { nl: '2026-11-02', kosten: null, stappen: [
+    'Go to retour.douglas.nl and register your return',
+    'Pack the product in the original Douglas box',
+    'Download the return label and stick it on the box',
+    'Drop the parcel off at a DHL ServicePoint or a Douglas store',
+  ] },
 
   'opzeggen/netflix': { nl: '2026-10-14', let_op: 'You keep access to Netflix until the end of your current billing period.', stappen: [
     'Log in on netflix.com',
