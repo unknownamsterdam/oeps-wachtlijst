@@ -8,7 +8,7 @@ nl: cadeau-retour
 kortAntwoord: "Bought online? Then the return time starts the day the parcel reached the buyer. Not at Sinterklaas or Christmas. In a regular shop, exchanging is only possible if the shop offers it."
 misgaat: "The gift has been wrapped in the cupboard since early December. On 5 January you want to exchange it. The last return day was yesterday."
 oepsZin: "OEPS! remembers the last return day of every gift you buy online, even when it's been wrapped in the cupboard for weeks. You get a nudge before the deadline, not after."
-bijgewerkt: 2026-10-23
+bijgewerkt: 2026-11-02
 bronnen:
   - naam: "ACM ConsuWijzer — Cooling-off period (Dutch)"
     url: https://consument.acm.nl/aankoop-dienst-annuleren/bedenktijd
@@ -34,3 +34,14 @@ Was the gift bought in a **regular shop**? Then there's no cooling-off period. E
 ## The tricky part
 
 The buyer and the receiver are two people. The receiver notices it doesn't fit. But only the buyer can send it back, through their own account. And they forgot the date long ago.
+
+## How to solve it: the OEPS! exchange card
+
+Giving a present you bought online? Make an **exchange card** for it in OEPS!. That's a link or a card with a QR code, without the price on it.
+
+- The receiver opens the link, without an app or account, and sees until when they can exchange it.
+- Does it fit? Then they tap keep. Done.
+- Doesn't it fit? Then you, the buyer, get a nudge. You register the return with the shop and add the label. The receiver sees on the same link where the parcel has to go.
+- Rather sell it? Then the page helps with an ad text for Vinted or Marktplaats. You don't get a nudge about that.
+
+You can print the card and fold it, with a greeting for Sinterklaas, Christmas, a birthday and more.

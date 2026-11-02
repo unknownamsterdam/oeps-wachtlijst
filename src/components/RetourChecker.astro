@@ -1,0 +1,271 @@
+---
+// 2 nov (Joël, Black Friday): retourchecker. Kies een winkel en de dag dat je pakket binnenkwam, en zie je laatste retourdag.
+// Alleen winkels met een termijn die de maandelijkse retourcontrole letterlijk op de site van de winkel vond (gids.json, `dagen`).
+// Rekenregel: de termijn begint de dag na ontvangst, dus laatste dag = ontvangstdatum + aantal dagen (ACM ConsuWijzer).
+// Alles rekent in de browser; er gaat niets naar een server, behalve als je je aanmeldt.
+import Base from '../layouts/Base.astro';
+import Plaatje from './Plaatje.astro';
+import Wachtlijst from './Wachtlijst.astro';
+import AppBalk from './AppBalk.astro';
+import { SITE } from '../data/site.js';
+import { RETOUR, RETOUR_EN, gidsPad } from '../data/gids.js';
+import { PAD, tegenhanger, datum } from '../i18n.js';
+const { taal = 'nl' } = Astro.props;
+const en = taal === 'en';
+const bijgewerkt = '2026-11-02';
+const pad = PAD[taal].checker;
+const bron = 'https://consument.acm.nl/aankoop-dienst-annuleren/bedenktijd';
+const lijst = (en ? RETOUR_EN : RETOUR)
+  .filter((p) => p.retour && p.retour.dagen)
+  .map((p) => ({ naam: p.naam, dagen: p.retour.dagen, vanaf: p.retour.vanaf || 'levering', pad: gidsPad('retour', p.slug, taal), op: p.bijgewerkt }))
+  .sort((a, b) => a.naam.localeCompare(b.naam, taal));
+const NL = {
+  titel: 'Retourchecker: tot wanneer mag het terug?',
+  seoTitel: 'Retourchecker: bereken je laatste retourdag per winkel | OEPS!',
+  beschrijving: 'Kies je winkel en de dag dat je pakket binnenkwam. Dan zie je meteen tot wanneer je het mag terugsturen. Handig na Black Friday en de feestdagen.',
+  kruimel: 'Retourtermijnen', kruimelLabel: 'Kruimelpad', kortLabel: 'Zo werkt het',
+  kort: 'Kies je winkel en de dag dat je pakket binnenkwam. Dan zie je meteen je laatste retourdag. Gratis, en je hoeft niets in te vullen over jezelf.',
+  winkel: 'Waar heb je het gekocht?', anders: 'Een andere webwinkel (14 dagen bedenktijd)',
+  dagLevering: 'Wanneer kwam je pakket binnen?', dagAankoop: 'Wanneer heb je besteld?',
+  knop: 'Bereken mijn retourdag',
+  laatste: 'Je laatste retourdag', nog: (n) => (n === 0 ? 'Dat is vandaag!' : n === 1 ? 'Nog 1 dag. Morgen is het te laat.' : `Nog ${n} dagen.`),
+  voorbij: (n) => `Oeps. Die dag was ${n === 1 ? 'gisteren' : `${n} dagen geleden`}.`,
+  voorbijUit: 'Bel of mail de winkel toch even. Soms denken ze mee, zeker als je het netjes vraagt. Zonder bon of te laat mag een winkel wel nee zeggen.',
+  regelWinkel: (w) => `${w.naam} geeft ${w.dagen} dagen${w.vanaf === 'aankoop' ? ' vanaf je bestelling' : ' vanaf de dag dat je pakket binnen is'}.`,
+  regelWet: 'Bij elke webwinkel heb je volgens de wet minstens 14 dagen bedenktijd na ontvangst. Meld uiterlijk op deze dag dat je het terugstuurt. Daarna heb je nog 14 dagen om het op te sturen.',
+  meerInfo: (w) => `Stappen en kosten bij ${w.naam}`,
+  tip: 'Twijfel je? Meld je retour een dag eerder. Winkels tellen niet allemaal precies hetzelfde.',
+  ctaKop: 'Wil je dit niet zelf onthouden?',
+  cta: 'OEPS! leest je bestellingen mee en onthoudt de retourdag van elk pakket. Je krijgt een seintje voordat het te laat is. Ook bij tien Black Friday-pakketten tegelijk.',
+  badge: 'Probeer gratis',
+  meerKop: 'Meer pakketten?', meer: 'Reken ze één voor één uit. Elk pakket heeft zijn eigen laatste dag, want ze komen op andere dagen binnen. Of laat OEPS! het doen.',
+  rekenKop: 'Zo rekenen we',
+  reken: [
+    'De klok begint de dag nadat je pakket binnen is. Kwam het op 1 december, dan is 2 december dag 1.',
+    'Geeft de winkel meer tijd dan de wet, dan rekenen we met de termijn van de winkel. Die halen we elke maand van de site van de winkel zelf.',
+    'Korting of niet: met Black Friday heb je precies dezelfde bedenktijd als altijd.',
+  ],
+  faqKop: 'Veelgestelde vragen', faq: [
+    { v: 'Telt de dag van bezorging mee?', a: 'Nee. De bedenktijd begint de dag nadat je het pakket hebt gekregen. Bestel je meer dingen in één bestelling die apart komen, dan begint hij als het laatste pakket binnen is.' },
+    { v: 'Mijn winkel staat er niet tussen. Wat nu?', a: 'Kies "Een andere webwinkel". Dan rekenen we met de 14 dagen bedenktijd die bij elke webwinkel geldt. Kijk daarna in de voorwaarden van de winkel of je meer tijd krijgt.' },
+    { v: 'Geldt dit ook als ik in een gewone winkel koop?', a: 'Nee. In een gewone winkel heb je geen wettelijke bedenktijd. Of je mag ruilen of terugbrengen, bepaalt de winkel zelf. Vraag het bij het afrekenen.' },
+    { v: 'Telt Black Friday anders?', a: 'Nee. Korting verandert niets aan je bedenktijd. Wel komen je pakketten op verschillende dagen binnen, dus elk pakket heeft een eigen laatste dag.' },
+    { v: 'Wat gebeurt er met wat ik hier invul?', a: 'Niets. De retourchecker rekent alles op je eigen telefoon of computer uit. We bewaren je winkel en datum niet.' },
+  ],
+  alle: 'Alle retourtermijnen per winkel ›',
+  bijgewerktOp: 'Bijgewerkt op', bronnenWoord: 'bron', bronNaam: 'ACM ConsuWijzer: bedenktijd',
+  advies: 'Dit is algemene informatie en geen juridisch advies. Klopt er iets niet meer? Mail', advies2: 'dan passen we het aan.',
+  balk: 'Nooit meer net te laat met je retour?',
+  taalcode: 'nl-NL',
+};
+const EN = {
+  titel: 'Return checker: until when can it go back?',
+  seoTitel: 'Return checker: work out your last return day per shop in the Netherlands | OEPS!',
+  beschrijving: 'Pick your shop and the day your parcel arrived. You’ll see straight away until when you can send it back. Handy after Black Friday and the holidays.',
+  kruimel: 'Return periods', kruimelLabel: 'Breadcrumb', kortLabel: 'How it works',
+  kort: 'Pick your shop and the day your parcel arrived. You’ll see your last return day straight away. Free, and you don’t have to fill in anything about yourself.',
+  winkel: 'Where did you buy it?', anders: 'Another web shop (14-day cooling-off period)',
+  dagLevering: 'When did your parcel arrive?', dagAankoop: 'When did you order?',
+  knop: 'Work out my return day',
+  laatste: 'Your last return day', nog: (n) => (n === 0 ? 'That’s today!' : n === 1 ? '1 day left. Tomorrow is too late.' : `${n} days left.`),
+  voorbij: (n) => `Oops. That day was ${n === 1 ? 'yesterday' : `${n} days ago`}.`,
+  voorbijUit: 'Call or email the shop anyway. Sometimes they’ll help, especially if you ask nicely. Too late or without a receipt, a shop is allowed to say no.',
+  regelWinkel: (w) => `${w.naam} gives you ${w.dagen} days${w.vanaf === 'aankoop' ? ' from your order' : ' from the day your parcel arrives'}.`,
+  regelWet: 'With every web shop, Dutch law gives you at least 14 days to change your mind after delivery. Let the shop know by this day that you’re sending it back. After that you have another 14 days to post it.',
+  meerInfo: (w) => `Steps and costs at ${w.naam}`,
+  tip: 'Not sure? Register your return a day early. Not every shop counts in exactly the same way.',
+  ctaKop: 'Rather not remember this yourself?',
+  cta: 'OEPS! reads your orders and remembers the return day of every parcel. You get a nudge before it’s too late. Even with ten Black Friday parcels at once.',
+  badge: 'Try it free',
+  meerKop: 'More parcels?', meer: 'Work them out one by one. Every parcel has its own last day, because they arrive on different days. Or let OEPS! do it.',
+  rekenKop: 'How we count',
+  reken: [
+    'The clock starts the day after your parcel arrives. If it came on 1 December, then 2 December is day 1.',
+    'If the shop gives you more time than the law, we use the shop’s period. We take it from the shop’s own website every month.',
+    'Discount or not: on Black Friday you have exactly the same cooling-off period as always.',
+  ],
+  faqKop: 'Frequently asked questions', faq: [
+    { v: 'Does the day of delivery count?', a: 'No. The cooling-off period starts the day after you received the parcel. If one order arrives in several parcels, it starts when the last parcel arrives.' },
+    { v: 'My shop isn’t in the list. What now?', a: 'Choose "Another web shop". Then we use the 14-day cooling-off period that applies to every web shop. Then check the shop’s terms to see if you get more time.' },
+    { v: 'Does this also apply when I buy in a regular shop?', a: 'No. In a regular shop there is no legal cooling-off period. Whether you can exchange or return something is up to the shop. Ask at the till.' },
+    { v: 'Is Black Friday different?', a: 'No. A discount doesn’t change your cooling-off period. Your parcels do arrive on different days, so every parcel has its own last day.' },
+    { v: 'What happens to what I fill in here?', a: 'Nothing. The return checker works everything out on your own phone or computer. We don’t store your shop or date.' },
+  ],
+  alle: 'All return periods per shop ›',
+  bijgewerktOp: 'Updated on', bronnenWoord: 'source', bronNaam: 'ACM ConsuWijzer: cooling-off period (Dutch)',
+  advies: 'This is general information about Dutch rules and not legal advice. Something no longer right? Email', advies2: 'and we’ll fix it.',
+  balk: 'Never just too late with a return again?',
+  taalcode: 'en-GB',
+};
+const X = en ? EN : NL;
+const { titel, seoTitel, beschrijving, faq } = X;
+// Teksten voor het script (functies kunnen niet mee, dus de stukjes los).
+const S = en
+  ? { nog0: 'That’s today!', nog1: '1 day left. Tomorrow is too late.', nogN: '{n} days left.', weg1: 'Oops. That day was yesterday.', wegN: 'Oops. That day was {n} days ago.', winkelZin: '{naam} gives you {dagen} days from the day your parcel arrives.', winkelZinA: '{naam} gives you {dagen} days from your order.', info: 'Steps and costs at {naam}', fout: 'Pick a date first.' }
+  : { nog0: 'Dat is vandaag!', nog1: 'Nog 1 dag. Morgen is het te laat.', nogN: 'Nog {n} dagen.', weg1: 'Oeps. Die dag was gisteren.', wegN: 'Oeps. Die dag was {n} dagen geleden.', winkelZin: '{naam} geeft {dagen} dagen vanaf de dag dat je pakket binnen is.', winkelZinA: '{naam} geeft {dagen} dagen vanaf je bestelling.', info: 'Stappen en kosten bij {naam}', fout: 'Kies eerst een datum.' };
+const schema = [
+  { '@type': 'WebPage', '@id': SITE.url + pad + '#pagina', url: SITE.url + pad, name: titel, description: beschrijving, inLanguage: en ? 'en' : 'nl-NL', dateModified: bijgewerkt, isPartOf: { '@id': SITE.url + '/#website' }, publisher: { '@id': SITE.url + '/#organization' } },
+  { '@type': 'WebApplication', name: titel, url: SITE.url + pad, applicationCategory: 'UtilitiesApplication', operatingSystem: 'Any', inLanguage: en ? 'en' : 'nl-NL', offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' } },
+  { '@type': 'FAQPage', mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.v, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url + PAD[taal].home },
+    { '@type': 'ListItem', position: 2, name: X.kruimel, item: SITE.url + PAD[taal].retour },
+    { '@type': 'ListItem', position: 3, name: titel, item: SITE.url + pad } ] },
+];
+---
+<Base title={seoTitel} description={beschrijving} schema={schema} taal={taal} andere={tegenhanger(taal, 'checker')}>
+  <article class="gids">
+    <div class="kopblok bg-perzik">
+      <div class="wrap smal kopblok-in">
+        <div>
+          <nav class="kruimel" aria-label={X.kruimelLabel}><a href={PAD[taal].retour}>{X.kruimel}</a> <span>›</span> {en ? 'Return checker' : 'Retourchecker'}</nav>
+          <h1>{titel}</h1>
+        </div>
+        <Plaatje naam="kalender" grootte={130} />
+      </div>
+    </div>
+    <div class="wrap smal">
+      <div class="kort"><span class="kort-label">{X.kortLabel}</span><p>{X.kort}</p></div>
+
+      <form class="checker" id="checker" data-taal={X.taalcode} data-s={JSON.stringify(S)} data-lijst={JSON.stringify(lijst)}>
+        <label for="ck-winkel">{X.winkel}</label>
+        <select id="ck-winkel" name="winkel">
+          {lijst.map((w, i) => <option value={i}>{w.naam} ({w.dagen} {en ? 'days' : 'dagen'})</option>)}
+          <option value="wet" selected>{X.anders}</option>
+        </select>
+        <label for="ck-dag" id="ck-daglabel" data-levering={X.dagLevering} data-aankoop={X.dagAankoop}>{X.dagLevering}</label>
+        <input id="ck-dag" name="dag" type="date" required />
+        <button type="submit">{X.knop}</button>
+        <div class="uitkomst" id="ck-uit" hidden aria-live="polite">
+          <p class="uit-label">{X.laatste}</p>
+          <p class="uit-dag" id="ck-datum"></p>
+          <p class="uit-nog" id="ck-nog"></p>
+          <p class="uit-regel" id="ck-regel"></p>
+          <p class="uit-voorbij" id="ck-voorbij" hidden>{X.voorbijUit}</p>
+          <p class="uit-info"><a id="ck-info" href={PAD[taal].retour} hidden></a></p>
+          <p class="uit-tip">{X.tip}</p>
+        </div>
+      </form>
+
+      <aside class="oeps-blok" id="herinner">
+        <div><span class="badge">{X.badge}</span>
+          <h2>{X.ctaKop}</h2>
+          <p>{X.cta}</p></div>
+        <Wachtlijst compact bron="retourchecker" taal={taal} />
+      </aside>
+
+      <p class="tip"><b>{X.meerKop}</b> {X.meer}</p>
+
+      <section class="tekst"><h2>{X.rekenKop}</h2>
+        <ul>{X.reken.map((x) => <li>{x}</li>)}</ul>
+        <p class="wet" id="ck-wet">{X.regelWet}</p></section>
+
+      <section class="tekst vragen"><h2>{X.faqKop}</h2>
+        {faq.map((f) => (<details><summary>{f.v}</summary><p>{f.a}</p></details>))}
+      </section>
+
+      <p class="naar"><a href={PAD[taal].retour}>{X.alle}</a></p>
+
+      <footer class="info">
+        <p>{X.bijgewerktOp} {datum(bijgewerkt, taal)} · {X.bronnenWoord}: <a href={bron} rel="noopener nofollow" target="_blank">{X.bronNaam}</a>.</p>
+        <p>{X.advies} <a href={`mailto:${SITE.mail}`}>{SITE.mail}</a>, {X.advies2}</p>
+      </footer>
+    </div>
+  </article>
+
+<AppBalk tekst={X.balk} />
+<script>
+  const vorm = document.getElementById('checker');
+  if (vorm) {
+    const lijst = JSON.parse(vorm.dataset.lijst || '[]');
+    const S = JSON.parse(vorm.dataset.s || '{}');
+    const taal = vorm.dataset.taal || 'nl-NL';
+    const winkel = document.getElementById('ck-winkel');
+    const dag = document.getElementById('ck-dag');
+    const label = document.getElementById('ck-daglabel');
+    const vul = (t, o) => t.replace(/\{(\w+)\}/g, (_, k) => o[k]);
+    const iso = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+    const vandaag = new Date(); vandaag.setHours(12, 0, 0, 0);
+    dag.value = iso(vandaag);
+    const gekozen = () => (winkel.value === 'wet' ? null : lijst[Number(winkel.value)]);
+    const zetLabel = () => { const w = gekozen(); label.textContent = w && w.vanaf === 'aankoop' ? label.dataset.aankoop : label.dataset.levering; };
+    winkel.addEventListener('change', zetLabel);
+    vorm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!dag.value) { dag.setCustomValidity(S.fout); dag.reportValidity(); return; }
+      dag.setCustomValidity('');
+      const w = gekozen();
+      const [j, m, d] = dag.value.split('-').map(Number);
+      const eind = new Date(j, m - 1, d, 12);
+      eind.setDate(eind.getDate() + (w ? w.dagen : 14));
+      const over = Math.round((eind - vandaag) / 86400000);
+      document.getElementById('ck-datum').textContent = new Intl.DateTimeFormat(taal, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }).format(eind);
+      const nog = document.getElementById('ck-nog');
+      nog.textContent = over > 1 ? vul(S.nogN, { n: over }) : over === 1 ? S.nog1 : over === 0 ? S.nog0 : (over === -1 ? S.weg1 : vul(S.wegN, { n: -over }));
+      nog.classList.toggle('rood', over < 0);
+      nog.classList.toggle('geel', over >= 0 && over <= 3);
+      document.getElementById('ck-voorbij').hidden = over >= 0;
+      const regel = document.getElementById('ck-regel');
+      const info = document.getElementById('ck-info');
+      if (w) {
+        regel.textContent = vul(w.vanaf === 'aankoop' ? S.winkelZinA : S.winkelZin, w);
+        info.textContent = vul(S.info, w) + ' ›'; info.href = w.pad; info.hidden = false;
+      } else {
+        regel.textContent = document.getElementById('ck-wet').textContent;
+        info.hidden = true;
+      }
+      const uit = document.getElementById('ck-uit');
+      uit.hidden = false;
+      uit.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  }
+</script>
+</Base>
+<style>
+  .kopblok{padding:28px 0 46px;margin-bottom:-22px}
+  .kopblok-in{display:flex;align-items:center;gap:20px;justify-content:space-between}
+  .kopblok h1{font-size:clamp(32px,5.4vw,50px)}
+  .kruimel{font-size:14px;font-weight:600;margin-bottom:12px}
+  .kruimel a{text-decoration:none;opacity:.8}
+  .kruimel span{opacity:.5;margin:0 4px}
+  .kort{position:relative;background:var(--wit);border-radius:var(--rond);box-shadow:var(--schaduw);padding:24px 24px 22px;border:3px solid var(--marine)}
+  .kort-label{position:absolute;top:-14px;left:20px;background:var(--geel);font-weight:800;font-stretch:112%;font-size:14px;padding:3px 12px;border-radius:999px;border:3px solid var(--marine)}
+  .kort p{font-size:20px;line-height:1.45;font-weight:600}
+  .checker{margin-top:24px;background:var(--wit);border-radius:var(--rond);padding:22px;display:grid;gap:8px}
+  .checker label{font-weight:800;font-stretch:112%;font-size:17px;margin-top:6px}
+  .checker select,.checker input{font:inherit;font-size:17px;padding:13px 14px;border:2.5px solid var(--marine);border-radius:12px;background:var(--wit);color:var(--marine);width:100%;min-height:52px}
+  .checker button{margin-top:12px;font:inherit;font-weight:800;font-stretch:112%;font-size:18px;padding:15px 20px;border:0;border-radius:12px;background:var(--marine);color:var(--wit);cursor:pointer}
+  .checker button:hover{background:#0c1528}
+  .uitkomst{margin-top:16px;border:3px solid var(--marine);border-radius:var(--rond);padding:18px 18px 14px;background:var(--creme, #fff8ec)}
+  .uit-label{font-size:14px;font-weight:700;color:var(--zacht)}
+  .uit-dag{font-size:clamp(24px,5vw,32px);font-weight:800;font-stretch:112%;line-height:1.2;margin-top:2px}
+  .uit-nog{display:inline-block;margin-top:8px;font-weight:800;padding:4px 12px;border-radius:14px;background:var(--mint)}
+  .uit-nog.geel{background:var(--geel)}
+  .uit-nog.rood{background:var(--marine);color:var(--wit)}
+  .uit-regel,.uit-voorbij,.uit-tip{margin-top:10px;font-size:16px}
+  .uit-tip{color:var(--zacht);font-size:14px}
+  .uit-info a{font-weight:800}
+  .tekst{margin-top:32px;font-size:18px}
+  .tekst h2{margin:0 0 12px}
+  .tekst ul{margin:12px 0;padding-left:0;list-style:none;display:grid;gap:10px}
+  .tekst li{background:var(--wit);border-radius:14px;padding:12px 16px 12px 48px;position:relative}
+  .tekst ul li::before{content:"";position:absolute;left:18px;top:19px;width:12px;height:12px;border-radius:50%;background:var(--geel);border:2.5px solid var(--marine)}
+  .wet{margin-top:14px;font-size:15px;color:var(--zacht)}
+  .naar{margin-top:18px;font-weight:700}
+  .vragen details{background:var(--wit);border-radius:14px;padding:0;margin-top:10px}
+  .vragen summary{cursor:pointer;font-weight:700;padding:14px 18px;list-style:none;font-size:17px}
+  .vragen summary::-webkit-details-marker{display:none}
+  .vragen summary::after{content:"+";float:right;font-weight:800}
+  .vragen details[open] summary::after{content:"–"}
+  .vragen details p{padding:0 18px 16px;font-size:16px;color:var(--zacht)}
+  .oeps-blok{margin:24px 0 0;background:var(--marine);color:var(--wit);border-radius:var(--rond);padding:26px;display:grid;gap:18px}
+  .oeps-blok h2{color:var(--wit);margin:10px 0 6px}
+  .oeps-blok p{color:#d6dbe5}
+  .badge{display:inline-block;background:var(--geel);color:var(--marine);font-weight:800;font-size:13px;padding:3px 10px;border-radius:999px}
+  .oeps-blok :global(label){color:var(--wit)}
+  .oeps-blok :global(.klein){color:#aab3c5}
+  .oeps-blok :global(.formulier button){background:var(--geel);color:var(--marine)}
+  .tip{margin-top:22px;background:var(--mint);border-radius:var(--rond);padding:16px 18px;font-size:16px}
+  .info{margin-top:30px;font-size:14px;color:var(--zacht);display:grid;gap:4px}
+  @media (max-width:640px){.kopblok-in{flex-direction:column-reverse;align-items:flex-start;gap:4px}.kopblok :global(.plaatje){width:90px;height:90px}.tekst{font-size:17px}.kort p{font-size:18px}}
+</style>

@@ -7,7 +7,7 @@ volgorde: 5
 kortAntwoord: "Precies zo lang als altijd. Online gekocht? Dan heb je 14 dagen bedenktijd vanaf de dag dat je pakketje binnen is. Korting maakt daar niets aan uit. Veel winkels geven zelf nog langer."
 misgaat: "Vrijdag bestel je vijf dingen bij vier winkels. Ze komen op vier verschillende dagen binnen. Eén jas past net niet. Je denkt: die stuur ik later terug. En dan is het dag 17."
 oepsZin: "OEPS! leest je bestellingen mee, telt per pakket vanaf de dag dat het binnen is, en seint je op tijd. Ook als je tien Black Friday-bestellingen tegelijk hebt lopen."
-bijgewerkt: 2026-10-23
+bijgewerkt: 2026-11-02
 bronnen:
   - naam: "ACM ConsuWijzer — Bedenktijd"
     url: https://consument.acm.nl/aankoop-dienst-annuleren/bedenktijd
@@ -33,3 +33,11 @@ Niet alles mag terug. Iets wat speciaal voor jou is gemaakt, of verzegelde verzo
 ## Het lastige deel
 
 Met Black Friday bestel je niet één ding. Je bestelt er vijf, bij verschillende winkels. Elk pakket komt op een andere dag. Dus heeft elk pakket een **andere laatste retourdag**. Dat houdt bijna niemand bij.
+
+Reken het per pakket uit met de [retourchecker](/retourchecker/). Kies de winkel en de dag dat het binnenkwam, en je ziet je laatste dag.
+
+## Nog meer na Black Friday
+
+- Een week later nóg goedkoper? Lees [krijg je het verschil terug?](/hoe-zit-dat/prijs-gedaald/)
+- Achteraf betaald en teruggestuurd? Zo voorkom je een herinnering met kosten: [achteraf betalen en retour](/hoe-zit-dat/achteraf-betalen-retour/).
+- Staat je pakket op bezorgd, maar is het er niet? Lees [pakket niet ontvangen](/hoe-zit-dat/pakket-niet-ontvangen/).

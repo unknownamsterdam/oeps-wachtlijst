@@ -19,9 +19,13 @@ const andere = en ? gidsPad(p.soort, p.slug, 'nl') : (heeftEngels(p.soort, p.slu
 const zin = (x) => x.replace(/\.$/, '');
 const stappenZin = (a) => a.map((x, i) => `${i + 1}. ${zin(x)}.`).join(' ');
 const kosten = r.kosten ? zin(r.kosten) : null;
+// 2 nov (Joël, Black Friday): in het seizoen staat het aantal dagen en het moment in de titel (meer kliks bij veel vertoningen op plek 6–10).
+const nu = new Date(); const md = (nu.getMonth() + 1) * 100 + nu.getDate();
+const seizoen = md >= 1101 && md <= 1130 ? 'bf' : (md >= 1201 || md <= 115) ? 'feest' : null;
+const dagenTitel = retour && r.dagen ? r.dagen : null;
 const X = en ? {
   titel: retour ? `${p.naam} return period` : `Cancel ${p.naam}`,
-  seoTitel: retour ? `${p.naam} return period: how long can you send it back? | OEPS!` : `How to cancel ${p.naam}: step by step | OEPS!`,
+  seoTitel: retour ? (dagenTitel ? `${p.naam} return period: ${dagenTitel} days${seizoen === 'bf' ? ', also after Black Friday' : seizoen === 'feest' ? ', also after the holidays' : '. How it works'} | OEPS!` : `${p.naam} return period: how long can you send it back? | OEPS!`) : `How to cancel ${p.naam}: step by step | OEPS!`,
   termijn: r.dagen ? `${r.dagen} days${r.vanaf === 'levering' ? ' after delivery' : r.vanaf === 'aankoop' ? ' after you order' : ''}` : null,
   via: VIA_EN[o.via] || 'in your account', manier: MANIER_EN, kruimel: retour ? 'Return periods' : 'Cancel a subscription',
   terug: 'How to send it back', opzeg: 'How to cancel', manieren: 'Ways to send it back',
@@ -33,7 +37,7 @@ const X = en ? {
   nlKnoppen: `These steps are for ${p.naam}’s Dutch website. Buttons and menus are named in Dutch there; the English meaning is in brackets.`,
 } : {
   titel: retour ? `Retourtermijn ${p.naam}` : `${p.naam} opzeggen`,
-  seoTitel: retour ? `Retourtermijn ${p.naam}: hoe lang kun je terugsturen? | OEPS!` : `${p.naam} opzeggen: zo doe je het | OEPS!`,
+  seoTitel: retour ? (dagenTitel ? `Retourtermijn ${p.naam}: ${dagenTitel} dagen${seizoen === 'bf' ? ', ook na Black Friday' : seizoen === 'feest' ? ', ook na de feestdagen' : '. Zo werkt het'} | OEPS!` : `Retourtermijn ${p.naam}: hoe lang kun je terugsturen? | OEPS!`) : `${p.naam} opzeggen: zo doe je het | OEPS!`,
   termijn: r.dagen ? `${r.dagen} dagen${r.vanaf === 'levering' ? ' na ontvangst' : r.vanaf === 'aankoop' ? ' na je bestelling' : ''}` : null,
   via: VIA[o.via] || 'via je account', manier: MANIER, kruimel: retour ? 'Retourtermijnen' : 'Opzeggen',
   terug: 'Zo stuur je het terug', opzeg: 'Zo zeg je op', manieren: 'Manieren om terug te sturen',
@@ -120,6 +124,7 @@ const schema = [
       <div class="kort"><span class="kort-label">{T.kortGezegd}</span><p>{kort}</p><p class="gecontroleerd">{T.gecontroleerdOp} {gecontroleerd}{p.bron && <> · {T.bron}: <a href={p.bron} rel="noopener nofollow" target="_blank">{T.siteVan(p.naam)}</a></>}</p></div>
       {stappen.length > 0 && (<section class="tekst"><h2>{retour ? X.terug : X.opzeg}</h2><ol>{stappen.map((s) => <li>{s}</li>)}</ol>{X.nlKnoppen && <p class="wet">{X.nlKnoppen}</p>}</section>)}
       {retour && r.manieren?.length > 0 && (<section class="tekst"><h2>{X.manieren}</h2><ul>{r.manieren.map((m) => <li>{X.manier[m] || m}</li>)}</ul></section>)}
+      {retour && termijn && <p class="naar"><a href={PAD[taal].checker}>{en ? `Work out your last return day at ${p.naam} ›` : `Reken je laatste retourdag bij ${p.naam} uit ›`}</a></p>}
       {retour && GARANTIE.some((x) => x.slug === p.slug) && <p class="naar"><a href={garantiePad}>{X.naarGarantie}</a></p>}
       {link && <p class="naar"><a href={link} rel="noopener nofollow" target="_blank">{X.naarLink} ›</a></p>}
       <section class="tekst vragen"><h2>{T.veelgesteld}</h2>

@@ -7,7 +7,7 @@ volgorde: 6
 kortAntwoord: "Online gekocht? Dan telt de retourtijd vanaf de dag dat het pakket bij de koper binnenkwam. Niet vanaf pakjesavond of kerst. In een gewone winkel mag ruilen alleen als de winkel dat zelf aanbiedt."
 misgaat: "Het cadeau ligt sinds begin december ingepakt in de kast. Op 5 januari wil je het ruilen. De laatste retourdag was gisteren."
 oepsZin: "OEPS! onthoudt de laatste retourdag van elk cadeau dat je online koopt, ook als het nog weken ingepakt in de kast ligt. Je krijgt een seintje vóór de deadline, niet erna."
-bijgewerkt: 2026-10-23
+bijgewerkt: 2026-11-02
 bronnen:
   - naam: "ACM ConsuWijzer — Bedenktijd"
     url: https://consument.acm.nl/aankoop-dienst-annuleren/bedenktijd
@@ -33,3 +33,14 @@ Is het cadeau in een **gewone winkel** gekocht? Dan is er geen bedenktijd. Ruile
 ## Het lastige deel
 
 De koper en de ontvanger zijn twee mensen. De ontvanger merkt dat het niet past. Maar alleen de koper kan het terugsturen, via zijn eigen account. En die is de datum allang vergeten.
+
+## Zo los je het op: de ruilbon van OEPS!
+
+Geef je iets cadeau dat je online kocht? Maak er in OEPS! een **ruilbon** bij. Dat is een link of een kaartje met een QR-code, zonder prijs erop.
+
+- De ontvanger opent de link, zonder app of account, en ziet tot wanneer ruilen kan.
+- Past het? Dan tikt de ontvanger op houden. Klaar.
+- Past het niet? Dan krijg jij als koper een seintje. Jij meldt het retour aan bij de winkel en zet het label klaar. De ontvanger ziet op dezelfde link waar het pakket heen moet.
+- Liever zelf verkopen? Dan helpt de pagina met een advertentietekst voor Vinted of Marktplaats. Jij krijgt daar geen seintje van.
+
+Het kaartje kun je printen en dubbelvouwen, met een groet voor Sinterklaas, Kerst, een verjaardag en meer.

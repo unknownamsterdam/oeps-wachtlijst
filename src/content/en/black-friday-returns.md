@@ -8,7 +8,7 @@ nl: black-friday-retour
 kortAntwoord: "Exactly as long as always. Bought online? Then you have 14 days to change your mind, starting the day your parcel arrives. A discount doesn't change that. Many shops even give you longer."
 misgaat: "On Friday you order five things from four shops. They arrive on four different days. One coat is just a bit too small. You think: I'll send it back later. And then it's day 17."
 oepsZin: "OEPS! reads your orders, counts from the day each parcel arrives, and nudges you in time. Even with ten Black Friday orders running at once."
-bijgewerkt: 2026-10-23
+bijgewerkt: 2026-11-02
 bronnen:
   - naam: "ACM ConsuWijzer — Cooling-off period (Dutch)"
     url: https://consument.acm.nl/aankoop-dienst-annuleren/bedenktijd
@@ -34,3 +34,11 @@ Not everything can go back. Something made especially for you, or sealed persona
 ## The tricky part
 
 On Black Friday you don't order one thing. You order five, from different shops. Each parcel arrives on a different day. So each parcel has a **different last return day**. Almost nobody keeps track of that.
+
+Work it out per parcel with the [return checker](/en/return-checker/). Pick the shop and the day it arrived, and you'll see your last day.
+
+## More after Black Friday
+
+- Even cheaper a week later? Read [do you get the difference back?](/en/explained/price-dropped/)
+- Paid later and sent it back? How to avoid a reminder with fees: [pay later and returns](/en/explained/pay-later-return/).
+- Parcel marked delivered, but it isn't there? Read [parcel not received](/en/explained/parcel-not-received/).

@@ -12,8 +12,8 @@ export function datum(iso, taal = 'nl') {
 
 // Vaste adressen per taal.
 export const PAD = {
-  nl: { home: '/', uitleg: '/hoe-zit-dat/', retour: '/retour/', opzeggen: '/opzeggen/', garantie: '/garantie/', voorbij: '/garantie/voorbij/', privacy: '/privacy/', voorwaarden: '/voorwaarden/', aanmelden: '/#aanmelden' },
-  en: { home: '/en/', uitleg: '/en/explained/', retour: '/en/returns/', opzeggen: '/en/cancel/', garantie: '/en/warranty/', voorbij: '/en/warranty/expired/', privacy: '/en/privacy/', voorwaarden: '/en/terms/', aanmelden: '/en/#aanmelden' },
+  nl: { home: '/', uitleg: '/hoe-zit-dat/', retour: '/retour/', opzeggen: '/opzeggen/', garantie: '/garantie/', voorbij: '/garantie/voorbij/', checker: '/retourchecker/', privacy: '/privacy/', voorwaarden: '/voorwaarden/', aanmelden: '/#aanmelden' },
+  en: { home: '/en/', uitleg: '/en/explained/', retour: '/en/returns/', opzeggen: '/en/cancel/', garantie: '/en/warranty/', voorbij: '/en/warranty/expired/', checker: '/en/return-checker/', privacy: '/en/privacy/', voorwaarden: '/en/terms/', aanmelden: '/en/#aanmelden' },
 };
 export const andereTaal = (taal) => (taal === 'en' ? 'nl' : 'en');
 // Zelfde soort pagina in de andere taal, bijv. PAD.nl.retour <-> PAD.en.retour.

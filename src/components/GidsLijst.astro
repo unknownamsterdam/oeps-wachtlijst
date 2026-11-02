@@ -3,7 +3,7 @@
 import Base from '../layouts/Base.astro';
 import Wachtlijst from './Wachtlijst.astro';
 import { RETOUR, OPZEGGEN, RETOUR_EN, OPZEGGEN_EN, gidsPad } from '../data/gids.js';
-import { tegenhanger } from '../i18n.js';
+import { tegenhanger, PAD } from '../i18n.js';
 const { soort, taal = 'nl' } = Astro.props;
 const retour = soort === 'retour';
 const en = taal === 'en';
@@ -27,7 +27,7 @@ const X = en ? {
 const titel = X.titel;
 ---
 <Base title={`${titel} | OEPS!`} description={X.beschrijving} taal={taal} andere={tegenhanger(taal, retour ? 'retour' : 'opzeggen')}>
-  <div class={`kopblok bg-${retour ? 'mint' : 'geel'}`}><div class="wrap smal"><h1>{titel}</h1><p class="sub">{X.sub}</p></div></div>
+  <div class={`kopblok bg-${retour ? 'mint' : 'geel'}`}><div class="wrap smal"><h1>{titel}</h1><p class="sub">{X.sub}</p>{retour && <p class="sub"><a href={PAD[taal].checker}><b>{en ? 'Return checker: work out your last day ›' : 'Retourchecker: reken je laatste dag uit ›'}</b></a></p>}</div></div>
   <div class="wrap smal">
     <div class="lijst">{lijst.map((p) => <a class="mini" href={gidsPad(soort, p.slug, taal)}><span>{X.item(p)}</span>{retour && p.retour.dagen && <b>{p.retour.dagen} {X.dagen}</b>}</a>)}</div>
     <aside class="oeps"><h2>{X.oepsKop}</h2><p>{X.oeps}</p><Wachtlijst compact bron={retour ? 'retour-lijst' : 'opzeggen-lijst'} taal={taal} /></aside>
