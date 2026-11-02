@@ -6,7 +6,7 @@
    "soort": "retour",
    "slug": "bol",
    "klaar": true,
-   "bijgewerkt": "2026-10-23",
+   "bijgewerkt": "2026-11-02",
    "bron": "https://www.bol.com/nl/nl/klantenservice/a/5692853414002688/select",
    "zeker": 0.95,
    "retour": {
@@ -37,13 +37,13 @@
    "soort": "retour",
    "slug": "coolblue",
    "klaar": true,
-   "bijgewerkt": "2026-10-23",
+   "bijgewerkt": "2026-11-02",
    "bron": "https://www.coolblue.nl/klantenservice/abonnement",
    "zeker": 0.9,
    "retour": {
     "dagen": 30,
     "vanaf": "levering",
-    "kosten": "Gratis retourneren",
+    "kosten": "Gratis retourneren en geld terug",
     "manieren": [
      "account",
      "winkel"
@@ -68,7 +68,7 @@
    "soort": "retour",
    "slug": "zalando",
    "klaar": true,
-   "bijgewerkt": "2026-10-22",
+   "bijgewerkt": "2026-11-02",
    "bron": null,
    "zeker": 0,
    "retour": {
@@ -91,7 +91,7 @@
    "soort": "retour",
    "slug": "amazon-nl",
    "klaar": true,
-   "bijgewerkt": "2026-10-23",
+   "bijgewerkt": "2026-11-02",
    "bron": "https://www.amazon.nl/gp/help/customer/display.html?nodeId=201910380",
    "zeker": 0.95,
    "retour": {
@@ -152,7 +152,7 @@
    "soort": "retour",
    "slug": "h-en-m",
    "klaar": true,
-   "bijgewerkt": "2026-11-01",
+   "bijgewerkt": "2026-11-02",
    "bron": "https://www2.hm.com/nl_nl/customer-service/h-m-club/h-m-club-terms-conditions.html",
    "zeker": 0.7,
    "retour": {
@@ -183,7 +183,7 @@
    "soort": "retour",
    "slug": "zara",
    "klaar": true,
-   "bijgewerkt": "2026-11-01",
+   "bijgewerkt": "2026-11-02",
    "bron": "https://www.zara.com/nl/nl/",
    "zeker": 1,
    "retour": {
@@ -215,13 +215,13 @@
    "soort": "retour",
    "slug": "mediamarkt",
    "klaar": true,
-   "bijgewerkt": "2026-10-23",
+   "bijgewerkt": "2026-11-02",
    "bron": "https://assets.ctfassets.net/jq6pdee2ul1f/1DC9sUetJFb8iQwk9YfjZN/ae0aede56b84cb2525f429c4067db0f8/Algemene-voorwaarden-MediaMarkt-Club.pdf",
    "zeker": 0.85,
    "retour": {
     "dagen": 30,
     "vanaf": "levering",
-    "kosten": "Gratis retourneren in alle winkels en online per post",
+    "kosten": "Gratis retourneren in alle winkels en online",
     "manieren": [
      "account",
      "winkel",
@@ -246,7 +246,7 @@
    "soort": "retour",
    "slug": "ikea",
    "klaar": true,
-   "bijgewerkt": "2026-10-23",
+   "bijgewerkt": "2026-11-02",
    "bron": "https://www.ikea.com/nl/nl/customer-service/knowledge/articles/bb4f4276-37ff-41b8-beba-955674d9f53f.html",
    "zeker": 0.95,
    "retour": {
@@ -279,7 +279,7 @@
    "soort": "retour",
    "slug": "decathlon",
    "klaar": true,
-   "bijgewerkt": "2026-11-01",
+   "bijgewerkt": "2026-11-02",
    "bron": null,
    "zeker": 0.1,
    "retour": {
@@ -364,7 +364,7 @@
    "soort": "retour",
    "slug": "uniqlo",
    "klaar": true,
-   "bijgewerkt": "2026-10-23",
+   "bijgewerkt": "2026-11-02",
    "bron": "https://faq-nl.uniqlo.com/",
    "zeker": 0.3,
    "retour": {
@@ -395,7 +395,7 @@
    "soort": "retour",
    "slug": "nike",
    "klaar": true,
-   "bijgewerkt": "2026-10-23",
+   "bijgewerkt": "2026-11-02",
    "bron": "https://www.nike.com/nl/",
    "zeker": 0.3,
    "retour": {
@@ -426,7 +426,7 @@
    "soort": "retour",
    "slug": "de-bijenkorf",
    "klaar": true,
-   "bijgewerkt": "2026-11-01",
+   "bijgewerkt": "2026-11-02",
    "bron": null,
    "zeker": 0.1,
    "retour": {
@@ -457,7 +457,7 @@
    "soort": "retour",
    "slug": "hema",
    "klaar": true,
-   "bijgewerkt": "2026-10-23",
+   "bijgewerkt": "2026-11-02",
    "bron": "https://www.hema.nl/klantenservice",
    "zeker": 0.1,
    "retour": {
@@ -518,7 +518,7 @@
    "soort": "retour",
    "slug": "aliexpress",
    "klaar": true,
-   "bijgewerkt": "2026-10-12",
+   "bijgewerkt": "2026-11-02",
    "bron": null,
    "zeker": 0.1,
    "retour": {
@@ -548,7 +548,7 @@
    "soort": "retour",
    "slug": "lidl",
    "klaar": true,
-   "bijgewerkt": "2026-10-19",
+   "bijgewerkt": "2026-11-02",
    "bron": null,
    "zeker": 0.9,
    "retour": {
@@ -583,9 +583,9 @@
    "bron": "https://www.apple.com/nl/shop/account/home",
    "zeker": 0.85,
    "retour": {
-    "dagen": null,
-    "vanaf": null,
-    "kosten": null,
+    "dagen": 14,
+    "vanaf": "levering",
+    "kosten": "Gratis",
     "manieren": [
      "account",
      "winkel",
@@ -598,8 +598,8 @@
      "Klik op 'Retourneer artikelen'",
      "Kies terugbrengen naar Apple Store, zelf terugsturen of ophalen door koerier"
     ],
-    "url": "https://www.apple.com/nl/shop/account/home",
-    "bronpagina": "https://www.apple.com/nl/shop/account/home"
+    "url": "https://www.apple.com/nl/shop/help/returns_refund",
+    "bronpagina": "https://www.apple.com/nl/shop/help/returns_refund"
    },
    "opzeggen": null,
    "contact": {

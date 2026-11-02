@@ -100,13 +100,13 @@ export const GIDS_EN = {
     'Select the item you want to return',
     "Choose 'Retour/Restitutie' (Return/Refund) and follow the steps",
   ] },
-  'retour/aliexpress': { nl: '2026-10-12', kosten: null, stappen: [
+  'retour/aliexpress': { nl: '2026-11-02', kosten: null, stappen: [
     "Log in to your AliExpress account and go to 'Mijn Bestellingen' (My orders)",
     "Click 'Bestelgegevens' (Order details) and then 'Retourneren/terugbetaling' (Return/refund)",
     "Select 'Retourneren' (Return) and choose a reason, such as 'Ik heb het niet meer nodig' (I no longer need it)",
     'Print the return label and drop the parcel off at DHL or PostNL',
   ] },
-  'retour/lidl': { nl: '2026-10-19', kosten: null, stappen: [
+  'retour/lidl': { nl: '2026-11-02', kosten: null, stappen: [
     'Log in to your Lidl account, or open your invoice as a guest',
     'Select the item you want to return',
     'Create the DHL return label or QR code',
