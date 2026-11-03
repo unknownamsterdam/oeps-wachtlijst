@@ -1,6 +1,6 @@
 ---
 // 2 nov (Joël, Black Friday): retourchecker. Kies een winkel en de dag dat je pakket binnenkwam, en zie je laatste retourdag.
-// Alleen winkels met een termijn die de maandelijkse retourcontrole letterlijk op de site van de winkel vond (gids.json, `dagen`).
+// Alle winkels uit gids.json. Bij een winkel zonder bevestigde termijn (`dagen`) rekenen we met 14 dagen: het wettelijke minimum, dus de vroegste datum.
 // Rekenregel: de termijn begint de dag na ontvangst, dus laatste dag = ontvangstdatum + aantal dagen (ACM ConsuWijzer).
 // Alles rekent in de browser; er gaat niets naar een server, behalve als je je aanmeldt.
 import Base from '../layouts/Base.astro';
@@ -16,8 +16,7 @@ const bijgewerkt = '2026-11-02';
 const pad = PAD[taal].checker;
 const bron = 'https://consument.acm.nl/aankoop-dienst-annuleren/bedenktijd';
 const lijst = (en ? RETOUR_EN : RETOUR)
-  .filter((p) => p.retour && p.retour.dagen)
-  .map((p) => ({ naam: p.naam, dagen: p.retour.dagen, vanaf: p.retour.vanaf || 'levering', pad: gidsPad('retour', p.slug, taal), op: p.bijgewerkt }))
+  .map((p) => ({ naam: p.naam, dagen: (p.retour && p.retour.dagen) || null, vanaf: (p.retour && p.retour.vanaf) || 'levering', pad: gidsPad('retour', p.slug, taal), op: p.bijgewerkt }))
   .sort((a, b) => a.naam.localeCompare(b.naam, taal));
 const NL = {
   titel: 'Retourchecker: tot wanneer mag het terug?',
@@ -101,8 +100,8 @@ const X = en ? EN : NL;
 const { titel, seoTitel, beschrijving, faq } = X;
 // Teksten voor het script (functies kunnen niet mee, dus de stukjes los).
 const S = en
-  ? { nog0: 'That’s today!', nog1: '1 day left. Tomorrow is too late.', nogN: '{n} days left.', weg1: 'Oops. That day was yesterday.', wegN: 'Oops. That day was {n} days ago.', winkelZin: '{naam} gives you {dagen} days from the day your parcel arrives.', winkelZinA: '{naam} gives you {dagen} days from your order.', info: 'Steps and costs at {naam}', fout: 'Pick a date first.' }
-  : { nog0: 'Dat is vandaag!', nog1: 'Nog 1 dag. Morgen is het te laat.', nogN: 'Nog {n} dagen.', weg1: 'Oeps. Die dag was gisteren.', wegN: 'Oeps. Die dag was {n} dagen geleden.', winkelZin: '{naam} geeft {dagen} dagen vanaf de dag dat je pakket binnen is.', winkelZinA: '{naam} geeft {dagen} dagen vanaf je bestelling.', info: 'Stappen en kosten bij {naam}', fout: 'Kies eerst een datum.' };
+  ? { nog0: 'That’s today!', nog1: '1 day left. Tomorrow is too late.', nogN: '{n} days left.', weg1: 'Oops. That day was yesterday.', wegN: 'Oops. That day was {n} days ago.', winkelZin: '{naam} gives you {dagen} days from the day your parcel arrives.', winkelZinA: '{naam} gives you {dagen} days from your order.', info: 'Steps and costs at {naam}', fout: 'Pick a date first.', onbekend: 'We don’t know {naam}’s return period yet. We count 14 days, the legal minimum. Check the shop’s terms: you may have longer.' }
+  : { nog0: 'Dat is vandaag!', nog1: 'Nog 1 dag. Morgen is het te laat.', nogN: 'Nog {n} dagen.', weg1: 'Oeps. Die dag was gisteren.', wegN: 'Oeps. Die dag was {n} dagen geleden.', winkelZin: '{naam} geeft {dagen} dagen vanaf de dag dat je pakket binnen is.', winkelZinA: '{naam} geeft {dagen} dagen vanaf je bestelling.', info: 'Stappen en kosten bij {naam}', fout: 'Kies eerst een datum.', onbekend: 'We kennen de retourtermijn van {naam} nog niet. We rekenen met 14 dagen, het wettelijke minimum. Kijk in de voorwaarden van de winkel: vaak krijg je meer tijd.' };
 const schema = [
   { '@type': 'WebPage', '@id': SITE.url + pad + '#pagina', url: SITE.url + pad, name: titel, description: beschrijving, inLanguage: en ? 'en' : 'nl-NL', dateModified: bijgewerkt, isPartOf: { '@id': SITE.url + '/#website' }, publisher: { '@id': SITE.url + '/#organization' } },
   { '@type': 'WebApplication', name: titel, url: SITE.url + pad, applicationCategory: 'UtilitiesApplication', operatingSystem: 'Any', inLanguage: en ? 'en' : 'nl-NL', offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' } },
@@ -130,7 +129,7 @@ const schema = [
       <form class="checker" id="checker" data-taal={X.taalcode} data-s={JSON.stringify(S)} data-lijst={JSON.stringify(lijst)}>
         <label for="ck-winkel">{X.winkel}</label>
         <select id="ck-winkel" name="winkel">
-          {lijst.map((w, i) => <option value={i}>{w.naam} ({w.dagen} {en ? 'days' : 'dagen'})</option>)}
+          {lijst.map((w, i) => <option value={i}>{w.naam} ({w.dagen ? `${w.dagen} ${en ? 'days' : 'dagen'}` : (en ? 'period unknown' : 'termijn onbekend')})</option>)}
           <option value="wet" selected>{X.anders}</option>
         </select>
         <label for="ck-dag" id="ck-daglabel" data-levering={X.dagLevering} data-aankoop={X.dagAankoop}>{X.dagLevering}</label>
@@ -197,7 +196,7 @@ const schema = [
       const w = gekozen();
       const [j, m, d] = dag.value.split('-').map(Number);
       const eind = new Date(j, m - 1, d, 12);
-      eind.setDate(eind.getDate() + (w ? w.dagen : 14));
+      eind.setDate(eind.getDate() + (w && w.dagen ? w.dagen : 14));
       const over = Math.round((eind - vandaag) / 86400000);
       document.getElementById('ck-datum').textContent = new Intl.DateTimeFormat(taal, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }).format(eind);
       const nog = document.getElementById('ck-nog');
@@ -207,7 +206,10 @@ const schema = [
       document.getElementById('ck-voorbij').hidden = over >= 0;
       const regel = document.getElementById('ck-regel');
       const info = document.getElementById('ck-info');
-      if (w) {
+      if (w && !w.dagen) {
+        regel.textContent = vul(S.onbekend, w);
+        info.textContent = vul(S.info, w) + ' ›'; info.href = w.pad; info.hidden = false;
+      } else if (w) {
         regel.textContent = vul(w.vanaf === 'aankoop' ? S.winkelZinA : S.winkelZin, w);
         info.textContent = vul(S.info, w) + ' ›'; info.href = w.pad; info.hidden = false;
       } else {
