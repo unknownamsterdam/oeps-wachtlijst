@@ -26,7 +26,7 @@ faq:
   - vraag: "Can I ask my credit card company for the money back?"
     antwoord: "Yes, with a chargeback, a refund through your credit card company. This only works if the order was not delivered, and you first tried to solve it with the shop. So keep all your emails. It can take 5 to 6 months. A normal debit card does not have this option."
   - vraag: "Can I get money back if I paid with iDEAL?"
-    antwoord: "A chargeback like with a credit card does not exist for iDEAL. Call your bank to ask what they can do in your case. You should also register as a creditor with the curator."
+    antwoord: "iDEAL is changing into Wero. iDEAL has no chargeback like a credit card. With Wero, first contact the webshop. If that does not work, you can report a problem in the Wero app on your payment. What Wero does in case of bankruptcy is not clear yet. You should also register as a creditor with the curator."
   - vraag: "Can I still return items if the shop is bankrupt?"
     antwoord: "In practice this is difficult. If you have not received your order, there is nothing to send back. If you already have it, contact the curator and ask what you can do. Sending something back without a reply is a risk."
   - vraag: "What is the warranty worth from a bankrupt webshop?"

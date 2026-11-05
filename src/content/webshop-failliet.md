@@ -25,7 +25,7 @@ faq:
   - vraag: "Kan ik mijn geld terugvragen via de creditcard?"
     antwoord: "Dat kan met een chargeback, een terugboeking via je creditcardmaatschappij. Dit kan alleen als de bestelling niet is geleverd en je eerst bij de winkel hebt geprobeerd het op te lossen. Bewaar daarom alle mails. De behandeling kan wel 5 à 6 maanden duren. Een gewone betaalpas heeft deze functie niet."
   - vraag: "Kan ik ook iDEAL terugvragen?"
-    antwoord: "Een chargeback zoals bij een creditcard is er bij iDEAL niet. Neem contact op met je bank om te horen wat zij voor jouw geval kunnen doen. Meld je ook als schuldeiser bij de curator."
+    antwoord: "iDEAL gaat over naar Wero. Bij iDEAL is er geen chargeback zoals bij een creditcard. Bij Wero kun je eerst contact opnemen met de webwinkel. Lukt dat niet, dan kun je in de Wero-app bij je betaling een probleem melden. Wat Wero bij een faillissement doet, is nog niet duidelijk. Meld je ook als schuldeiser bij de curator."
   - vraag: "Kan ik nog retourneren als de winkel failliet is?"
     antwoord: "Dat is in de praktijk lastig. Heb je een bestelling nog niet ontvangen, dan is er niets om terug te sturen. Heb je het al wel, neem dan contact op met de curator en vraag wat je kunt doen. Een retourzending zonder reactie is zonder afspraak een risico."
   - vraag: "Wat is de garantie waard bij een failliete webshop?"
