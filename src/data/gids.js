@@ -34,10 +34,14 @@ export const CATEGORIE = {
   kleding: { nl: 'Kleding en sport', en: 'clothing and sports' },
   online: { nl: 'Alles online', en: 'online shops' },
   wonen: { nl: 'Wonen en verzorging', en: 'home and beauty' },
+  mode: { nl: 'Mode en sieraden', en: 'fashion and jewellery' },
+  baby: { nl: 'Baby en moeder', en: 'baby and mum' },
 };
 const CATEGORIE_VAN = {
   uniqlo: 'kleding', zara: 'kleding', 'h-en-m': 'kleding', shein: 'kleding', 'about-you': 'kleding', nike: 'kleding', decathlon: 'kleding', zalando: 'kleding', 'de-bijenkorf': 'kleding',
   'amazon-nl': 'online', bol: 'online', coolblue: 'online', mediamarkt: 'online', apple: 'online', wehkamp: 'online', temu: 'online', aliexpress: 'online',
-  ikea: 'wonen', hema: 'wonen', douglas: 'wonen', lidl: 'wonen',
+  ikea: 'wonen', hema: 'wonen', douglas: 'wonen', lidl: 'wonen', kruidvat: 'wonen', zeeman: 'wonen',
+  'my-jewellery': 'mode', pandora: 'mode', 'bijou-brigitte': 'mode', 'claire-s': 'mode', only: 'mode', pieces: 'mode',
+  prenatal: 'baby', babypark: 'baby',
 };
 export const categorieVan = (slug) => (CATEGORIE_VAN[slug] ? { key: CATEGORIE_VAN[slug], ...CATEGORIE[CATEGORIE_VAN[slug]] } : null);
