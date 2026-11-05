@@ -5,7 +5,7 @@ import Base from '../layouts/Base.astro';
 import Plaatje from './Plaatje.astro';
 import Wachtlijst from './Wachtlijst.astro';
 import { SITE } from '../data/site.js';
-import { RETOUR, OPZEGGEN, VIA, MANIER, RETOUR_EN, OPZEGGEN_EN, VIA_EN, MANIER_EN, gidsPad, heeftEngels } from '../data/gids.js';
+import { RETOUR, OPZEGGEN, VIA, MANIER, RETOUR_EN, OPZEGGEN_EN, VIA_EN, MANIER_EN, gidsPad, heeftEngels, categorieVan } from '../data/gids.js';
 import { GARANTIE } from '../data/garantie.js';
 import { PAD, TEKST, datum } from '../i18n.js';
 
@@ -66,7 +66,16 @@ const beschrijving = en
 const stappen = retour ? r.stappen : o.stappen;
 const link = retour ? r.url : o.url;
 const lijstIn = en ? (retour ? RETOUR_EN : OPZEGGEN_EN) : (retour ? RETOUR : OPZEGGEN);
-const meer = lijstIn.filter((x) => x.slug !== p.slug).slice(0, 6);
+// 5 nov: bij een retourpagina eerst winkels uit dezelfde categorie (Uniqlo bij Zara, H&M, Shein), dan pas de rest.
+const cat = retour ? categorieVan(p.slug) : null;
+const zelfde = cat ? lijstIn.filter((x) => x.slug !== p.slug && categorieVan(x.slug)?.key === cat.key) : [];
+const meer = zelfde.length >= 2 ? zelfde.slice(0, 6) : lijstIn.filter((x) => x.slug !== p.slug).slice(0, 6);
+const meerKop = zelfde.length >= 2 ? (en ? `Other shops: ${cat.en}` : `Andere winkels: ${cat.nl}`) : X.meer;
+// 5 nov (Joël): de retourcheck staat ook op de winkelpagina, net boven de andere retourtermijnen.
+const check = retour && r.dagen ? { dagen: r.dagen, vanaf: r.vanaf || 'levering' } : null;
+const checkMsg = en
+  ? { kop: `When is the last day to return something to ${p.naam}?`, vraag: r.vanaf === 'aankoop' ? 'When did you order?' : 'When did your parcel arrive?', laatste: 'Your last return day:', voorbij: 'That day has already passed.', vandaag: 'That is today!', een: 'Tomorrow is the last day.', dagPre: '', dagPost: ' days to go.', lang: 'en-GB' }
+  : { kop: `Tot wanneer kun je iets terugsturen naar ${p.naam}?`, vraag: r.vanaf === 'aankoop' ? 'Wanneer heb je besteld?' : 'Wanneer kwam je pakket binnen?', laatste: 'Je laatste retourdag:', voorbij: 'Die dag is al voorbij.', vandaag: 'Dat is vandaag!', een: 'Morgen is de laatste dag.', dagPre: 'Nog ', dagPost: ' dagen.', lang: 'nl-NL' };
 const gecontroleerd = datum(p.bijgewerkt, taal);
 const contactTel = p.contact && p.contact.telefoon;
 // Vragen en antwoorden: alleen wat in de gids staat, in gewone zinnen. Staan ook zichtbaar op de pagina (schema moet daarmee kloppen).
@@ -122,7 +131,7 @@ const schema = [
     </div>
     <div class="wrap smal">
       <div class="kort"><span class="kort-label">{T.kortGezegd}</span><p>{kort}</p><p class="gecontroleerd">{T.gecontroleerdOp} {gecontroleerd}{p.bron && <> · {T.bron}: <a href={p.bron} rel="noopener nofollow" target="_blank">{T.siteVan(p.naam)}</a></>}</p></div>
-      {stappen.length > 0 && (<section class="tekst"><h2>{retour ? X.terug : X.opzeg}</h2><ol>{stappen.map((s) => <li>{s}</li>)}</ol>{X.nlKnoppen && <p class="wet">{X.nlKnoppen}</p>}</section>)}
+      {stappen.length > 0 && (<section class="tekst"><h2>{retour ? X.terug : X.opzeg}</h2><ol>{stappen.map((s) => <li>{retour && link && /bestelling|order/i.test(s) ? <a href={link} rel="noopener nofollow" target="_blank">{s}</a> : s}</li>)}</ol>{X.nlKnoppen && <p class="wet">{X.nlKnoppen}</p>}</section>)}
       {retour && r.manieren?.length > 0 && (<section class="tekst"><h2>{X.manieren}</h2><ul>{r.manieren.map((m) => <li>{X.manier[m] || m}</li>)}</ul></section>)}
       {retour && termijn && <p class="naar"><a href={PAD[taal].checker}>{en ? `Work out your last return day at ${p.naam} ›` : `Reken je laatste retourdag bij ${p.naam} uit ›`}</a></p>}
       {retour && GARANTIE.some((x) => x.slug === p.slug) && <p class="naar"><a href={garantiePad}>{X.naarGarantie}</a></p>}
@@ -141,7 +150,11 @@ const schema = [
         <p>{T.opgezocht(p.naam)} · {T.bijgewerktOp} {gecontroleerd}{p.bron && <> · <a href={p.bron} rel="noopener nofollow" target="_blank">{T.bron}</a></>}</p>
         <p>{T.kloptNiet} <a href={`mailto:${SITE.mail}`}>{SITE.mail}</a>, {T.kloptNiet2(p.naam)}</p>
       </footer>
-      {meer.length > 0 && (<section class="meer"><h2>{X.meer}</h2>
+      {check && (<section class="check" aria-labelledby="chk"><h2 id="chk">{checkMsg.kop}</h2>
+        <label class="chk-veld" for="chk-datum">{checkMsg.vraag}</label>
+        <input type="date" id="chk-datum" class="chk-datum">
+        <p class="chk-uit" id="chk-uit" aria-live="polite"></p></section>)}
+      {meer.length > 0 && (<section class="meer"><h2>{meerKop}</h2>
         <div class="meer-lijst">{meer.map((x) => <a class="mini" href={gidsPad(x.soort, x.slug, taal)}>{X.mini(x)}</a>)}</div></section>)}
     </div>
   </article>
@@ -186,4 +199,27 @@ const schema = [
   .meer-lijst{display:grid;gap:10px}
   .mini{display:block;padding:12px 16px;border-radius:16px;background:var(--wit);text-decoration:none;font-weight:700;font-size:17px}
   @media (max-width:640px){.kopblok-in{flex-direction:column-reverse;align-items:flex-start;gap:4px}.kopblok :global(.plaatje){width:90px;height:90px}.tekst{font-size:17px}.kort p{font-size:18px}}
+.check { margin: 2rem 0; padding: 1.25rem; border-radius: 14px; background: #f4f7f1; }
+  .check h2 { margin-top: 0; }
+  .chk-veld { display: block; margin: 0.25rem 0 0.5rem; }
+  .chk-datum { font: inherit; padding: 0.6rem 0.75rem; border: 1px solid #b9c4b0; border-radius: 10px; width: 100%; max-width: 16rem; background: #fff; }
+  .chk-uit { margin: 0.9rem 0 0; font-weight: 600; min-height: 1.5em; }
 </style>
+
+{check && (
+  <script define:vars={{ dagen: check.dagen, msg: checkMsg }}>
+    const inp = document.getElementById('chk-datum');
+    const uit = document.getElementById('chk-uit');
+    const fmt = new Intl.DateTimeFormat(msg.lang, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+    const reken = () => {
+      if (!inp.value) { uit.textContent = ''; return; }
+      const d = new Date(inp.value + 'T12:00:00');
+      d.setDate(d.getDate() + dagen);
+      const nu = new Date(); nu.setHours(12, 0, 0, 0);
+      const n = Math.round((d - nu) / 864e5);
+      const rest = n < 0 ? msg.voorbij : n === 0 ? msg.vandaag : n === 1 ? msg.een : msg.dagPre + n + msg.dagPost;
+      uit.textContent = msg.laatste + ' ' + fmt.format(d) + '. ' + rest;
+    };
+    inp.addEventListener('input', reken);
+  </script>
+)}

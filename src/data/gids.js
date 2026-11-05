@@ -27,3 +27,17 @@ if (zonder.length) console.warn(`[engels] nog geen Engelse pagina voor: ${zonder
 // Adres van een gidspagina in een taal.
 export const gidsPad = (soort, slug, taal = 'nl') => (taal === 'en' ? `/en/${soort === 'retour' ? 'returns' : 'cancel'}/${slug}/` : `/${soort}/${slug}/`);
 export const heeftEngels = (soort, slug) => !!GIDS_EN[`${soort}/${slug}`];
+
+// 5 nov (Joël, retourpagina Uniqlo): elke winkel krijgt een categorie, zodat de lijst onderaan logisch is
+// (Uniqlo bij Zara en H&M, niet bij Amazon). Nieuwe winkel = hier één regel toevoegen.
+export const CATEGORIE = {
+  kleding: { nl: 'Kleding en sport', en: 'clothing and sports' },
+  online: { nl: 'Alles online', en: 'online shops' },
+  wonen: { nl: 'Wonen en verzorging', en: 'home and beauty' },
+};
+const CATEGORIE_VAN = {
+  uniqlo: 'kleding', zara: 'kleding', 'h-en-m': 'kleding', shein: 'kleding', 'about-you': 'kleding', nike: 'kleding', decathlon: 'kleding', zalando: 'kleding', 'de-bijenkorf': 'kleding',
+  'amazon-nl': 'online', bol: 'online', coolblue: 'online', mediamarkt: 'online', apple: 'online', wehkamp: 'online', temu: 'online', aliexpress: 'online',
+  ikea: 'wonen', hema: 'wonen', douglas: 'wonen', lidl: 'wonen',
+};
+export const categorieVan = (slug) => (CATEGORIE_VAN[slug] ? { key: CATEGORIE_VAN[slug], ...CATEGORIE[CATEGORIE_VAN[slug]] } : null);
