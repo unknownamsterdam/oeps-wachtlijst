@@ -7,7 +7,7 @@ volgorde: 12
 kortAntwoord: "Voor garantie hoeft het geen kassabon te zijn. Je moet kunnen laten zien dat je het daar kocht, wanneer en voor hoeveel. Een bankafschrift, een bestelmail of een foto van de bon kan genoeg zijn. Ruilen zonder bon is anders: dat is een gunst van de winkel, geen recht."
 misgaat: "Je wasmachine gaat na anderhalf jaar stuk. De bon zat in een la. Hij is wit geworden: het papier is helemaal vervaagd."
 oepsZin: "OEPS! bewaart je bon voor je, uit je mail of als foto. Met de datum en de garantie erbij. Gaat er iets stuk, dan heb je hem in twee tikken."
-bijgewerkt: 2026-11-02
+bijgewerkt: 2026-11-05
 bronnen:
   - naam: "Radar — Garantiebewijs: bon of bankafschrift?"
     url: https://radar.avrotros.nl/artikel/garantiebewijs-bon-of-bankafschrift-zo-dwing-je-jouw-gelijk-af-62374
@@ -43,3 +43,11 @@ Iets kapot? Dan gaat het om garantie. Past het gewoon niet, of vind je het niet 
 ## Het lastige deel
 
 Bonnetjes zijn klein, verdwijnen in jaszakken en vervagen in een la. En je hebt ze pas nodig als je ze kwijt bent. Bij grote apparaten pas na een jaar of twee.
+
+## Wat kun je doen?
+
+Maak meteen na het kopen een foto van je bon. Meer hoef je niet te doen. Een foto of scan telt als bewijs, ook als het papier later wit wordt.
+
+Zet de foto in OEPS! met de knop **Bon of foto toevoegen**. Dan staat hij er, met de datum en de garantie erbij. Je hoeft er je mail niet voor te koppelen.
+
+En het papier zelf? Voor garantie is de foto meestal genoeg, dus dat mag weg. Wil je later ruilen in een gewone winkel? Dan mag de winkel om het echte bonnetje vragen. Bewaar het papier dan nog even.
