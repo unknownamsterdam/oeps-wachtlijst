@@ -88,6 +88,13 @@ export default {
     if (pad === '/contenthub' || pad.startsWith('/contenthub/') || pad === '/makers' || pad.startsWith('/makers/')) return naarApp(request, env);
     // 24 okt: ruilbon. De pagina van de ontvanger (oeps.app/ruilbon/<code>) en het kaartje zitten in oeps-mail; de API loopt via /api/*.
     if (pad === '/ruilbon' || pad.startsWith('/ruilbon/')) return naarApp(request, env);
+    // Winkelvoorstel uit de retourchecker: alleen de winkelnaam, opgeslagen in oeps-mail (tabel winkelvoorstellen).
+    if (pad === '/winkelvoorstel') {
+      if (request.method !== 'POST') return tekst('Alleen POST.', 405);
+      const body = await request.json().catch(() => null);
+      const r = await env.MAIL.winkelvoorstel(body && body.naam).catch(() => ({ ok: false }));
+      return new Response(JSON.stringify(r), { status: r.ok ? 200 : 400, headers: { 'content-type': 'application/json', 'cache-control': 'no-store' } });
+    }
     if (pad.replace(/\/$/, '') === '/aanmelden') {
       if (request.method !== 'POST') return Response.redirect(new URL('/#aanmelden', request.url).toString(), 302);
       // (De Engelse site post naar hetzelfde adres; het verborgen veld taal=en regelt de taal.)
