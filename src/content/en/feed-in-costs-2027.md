@@ -7,7 +7,7 @@ volgorde: 15
 nl: terugleverkosten-2027
 kortAntwoord: "From 1 January 2027 the net metering scheme (salderingsregeling) ends. The solar power you send back will earn you much less. Suppliers pay a feed-in payment, and they may deduct feed-in costs from it. Your bill must show what those costs are per kWh."
 misgaat: "You have solar panels and assumed the power you send back is free money. In January 2027 a new line appears on your bill, and the power you send back earns almost nothing. You only notice when the yearly statement does not add up."
-oepsZin: "OEPS! reads your energy emails. When a tariff changes, you see straight away what it costs per kWh and what it costs per kWh. So you do not miss the difference."
+oepsZin: "OEPS! reads your energy emails. When a tariff changes, you see straight away what it costs per kWh. So you do not miss the difference."
 bijgewerkt: 2026-11-05
 bronnen:
   - naam: "Gaslicht.com — New feed-in cost rules from 2027 (in Dutch, 9 September 2026)"
