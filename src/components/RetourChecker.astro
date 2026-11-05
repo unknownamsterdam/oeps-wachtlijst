@@ -24,7 +24,7 @@ const NL = {
   beschrijving: 'Kies je winkel en de dag dat je pakket binnenkwam. Dan zie je meteen tot wanneer je het mag terugsturen. Handig na Black Friday en de feestdagen.',
   kruimel: 'Retourtermijnen', kruimelLabel: 'Kruimelpad', kortLabel: 'Zo werkt het',
   kort: 'Kies je winkel en de dag dat je pakket binnenkwam. Dan zie je meteen je laatste retourdag. Gratis, en je hoeft niets in te vullen over jezelf.',
-  winkel: 'Waar heb je het gekocht?', anders: 'Een andere webwinkel (14 dagen bedenktijd)',
+  winkel: 'Waar heb je het gekocht?', zoek: 'Typ de naam, bijvoorbeeld bol', anders: 'Een andere webwinkel (14 dagen bedenktijd)',
   dagLevering: 'Wanneer kwam je pakket binnen?', dagAankoop: 'Wanneer heb je besteld?',
   knop: 'Bereken mijn retourdag',
   laatste: 'Je laatste retourdag', nog: (n) => (n === 0 ? 'Dat is vandaag!' : n === 1 ? 'Nog 1 dag. Morgen is het te laat.' : `Nog ${n} dagen.`),
@@ -46,7 +46,7 @@ const NL = {
   ],
   faqKop: 'Veelgestelde vragen', faq: [
     { v: 'Telt de dag van bezorging mee?', a: 'Nee. De bedenktijd begint de dag nadat je het pakket hebt gekregen. Bestel je meer dingen in één bestelling die apart komen, dan begint hij als het laatste pakket binnen is.' },
-    { v: 'Mijn winkel staat er niet tussen. Wat nu?', a: 'Kies "Een andere webwinkel". Dan rekenen we met de 14 dagen bedenktijd die bij elke webwinkel geldt. Kijk daarna in de voorwaarden van de winkel of je meer tijd krijgt.' },
+    { v: 'Mijn winkel staat er niet tussen. Wat nu?', a: 'Laat het veld leeg of typ een andere naam. Dan rekenen we met de 14 dagen bedenktijd die bij elke webwinkel geldt. Kijk daarna in de voorwaarden van de winkel of je meer tijd krijgt.' },
     { v: 'Geldt dit ook als ik in een gewone winkel koop?', a: 'Nee. In een gewone winkel heb je geen wettelijke bedenktijd. Of je mag ruilen of terugbrengen, bepaalt de winkel zelf. Vraag het bij het afrekenen.' },
     { v: 'Telt Black Friday anders?', a: 'Nee. Korting verandert niets aan je bedenktijd. Wel komen je pakketten op verschillende dagen binnen, dus elk pakket heeft een eigen laatste dag.' },
     { v: 'Wat gebeurt er met wat ik hier invul?', a: 'Niets. De retourchecker rekent alles op je eigen telefoon of computer uit. We bewaren je winkel en datum niet.' },
@@ -63,7 +63,7 @@ const EN = {
   beschrijving: 'Pick your shop and the day your parcel arrived. You’ll see straight away until when you can send it back. Handy after Black Friday and the holidays.',
   kruimel: 'Return periods', kruimelLabel: 'Breadcrumb', kortLabel: 'How it works',
   kort: 'Pick your shop and the day your parcel arrived. You’ll see your last return day straight away. Free, and you don’t have to fill in anything about yourself.',
-  winkel: 'Where did you buy it?', anders: 'Another web shop (14-day cooling-off period)',
+  winkel: 'Where did you buy it?', zoek: 'Type the name, for example bol', anders: 'Another web shop (14-day cooling-off period)',
   dagLevering: 'When did your parcel arrive?', dagAankoop: 'When did you order?',
   knop: 'Work out my return day',
   laatste: 'Your last return day', nog: (n) => (n === 0 ? 'That’s today!' : n === 1 ? '1 day left. Tomorrow is too late.' : `${n} days left.`),
@@ -85,7 +85,7 @@ const EN = {
   ],
   faqKop: 'Frequently asked questions', faq: [
     { v: 'Does the day of delivery count?', a: 'No. The cooling-off period starts the day after you received the parcel. If one order arrives in several parcels, it starts when the last parcel arrives.' },
-    { v: 'My shop isn’t in the list. What now?', a: 'Choose "Another web shop". Then we use the 14-day cooling-off period that applies to every web shop. Then check the shop’s terms to see if you get more time.' },
+    { v: 'My shop isn’t in the list. What now?', a: 'Leave the box empty or type another name. Then we use the 14-day cooling-off period that applies to every web shop. Then check the shop’s terms to see if you get more time.' },
     { v: 'Does this also apply when I buy in a regular shop?', a: 'No. In a regular shop there is no legal cooling-off period. Whether you can exchange or return something is up to the shop. Ask at the till.' },
     { v: 'Is Black Friday different?', a: 'No. A discount doesn’t change your cooling-off period. Your parcels do arrive on different days, so every parcel has its own last day.' },
     { v: 'What happens to what I fill in here?', a: 'Nothing. The return checker works everything out on your own phone or computer. We don’t store your shop or date.' },
@@ -128,10 +128,10 @@ const schema = [
 
       <form class="checker" id="checker" data-taal={X.taalcode} data-s={JSON.stringify(S)} data-lijst={JSON.stringify(lijst)}>
         <label for="ck-winkel">{X.winkel}</label>
-        <select id="ck-winkel" name="winkel">
-          {lijst.map((w, i) => <option value={i}>{w.naam} ({w.dagen ? `${w.dagen} ${en ? 'days' : 'dagen'}` : (en ? 'period unknown' : 'termijn onbekend')})</option>)}
-          <option value="wet" selected>{X.anders}</option>
-        </select>
+        <input id="ck-winkel" name="winkel" type="text" list="ck-winkels" autocomplete="off" placeholder={X.zoek} />
+        <datalist id="ck-winkels">
+          {lijst.map((w) => <option value={w.naam}>{w.dagen ? `${w.dagen} ${en ? 'days' : 'dagen'}` : ''}</option>)}
+        </datalist>
         <label for="ck-dag" id="ck-daglabel" data-levering={X.dagLevering} data-aankoop={X.dagAankoop}>{X.dagLevering}</label>
         <input id="ck-dag" name="dag" type="date" required />
         <button type="submit">{X.knop}</button>
@@ -186,8 +186,9 @@ const schema = [
     const iso = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
     const vandaag = new Date(); vandaag.setHours(12, 0, 0, 0);
     dag.value = iso(vandaag);
-    const gekozen = () => (winkel.value === 'wet' ? null : lijst[Number(winkel.value)]);
+    const gekozen = () => { const t = winkel.value.trim().toLowerCase(); return lijst.find((w) => w.naam.toLowerCase() === t) || null; };
     const zetLabel = () => { const w = gekozen(); label.textContent = w && w.vanaf === 'aankoop' ? label.dataset.aankoop : label.dataset.levering; };
+    winkel.addEventListener('input', zetLabel);
     winkel.addEventListener('change', zetLabel);
     vorm.addEventListener('submit', (e) => {
       e.preventDefault();
