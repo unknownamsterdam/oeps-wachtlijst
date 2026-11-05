@@ -1,5 +1,5 @@
 {
- "bijgewerkt": "2026-11-02",
+ "bijgewerkt": "2026-11-05",
  "paginas": [
   {
    "naam": "bol",
@@ -91,13 +91,13 @@
    "soort": "retour",
    "slug": "amazon-nl",
    "klaar": true,
-   "bijgewerkt": "2026-11-02",
+   "bijgewerkt": "2026-11-05",
    "bron": "https://www.amazon.nl/gp/help/customer/display.html?nodeId=201910380",
    "zeker": 0.95,
    "retour": {
-    "dagen": null,
-    "vanaf": null,
-    "kosten": null,
+    "dagen": 30,
+    "vanaf": "levering",
+    "kosten": "Gratis voor bepaalde items, anders afhankelijk van verkoper",
     "manieren": [
      "account"
     ],
@@ -246,13 +246,13 @@
    "soort": "retour",
    "slug": "ikea",
    "klaar": true,
-   "bijgewerkt": "2026-11-02",
+   "bijgewerkt": "2026-11-05",
    "bron": "https://www.ikea.com/nl/nl/customer-service/knowledge/articles/bb4f4276-37ff-41b8-beba-955674d9f53f.html",
    "zeker": 0.95,
    "retour": {
-    "dagen": null,
-    "vanaf": null,
-    "kosten": null,
+    "dagen": 365,
+    "vanaf": "levering",
+    "kosten": "Gratis retour in IKEA winkel, betaald retour per pakket of vrachtwagen",
     "manieren": [
      "account",
      "winkel",
@@ -279,13 +279,13 @@
    "soort": "retour",
    "slug": "decathlon",
    "klaar": true,
-   "bijgewerkt": "2026-11-02",
+   "bijgewerkt": "2026-11-05",
    "bron": null,
    "zeker": 0.1,
    "retour": {
-    "dagen": null,
-    "vanaf": null,
-    "kosten": null,
+    "dagen": 365,
+    "vanaf": "levering",
+    "kosten": "Gratis",
     "manieren": [
      "account",
      "winkel",
@@ -298,7 +298,7 @@
      "Lever het pakket in bij een PostNL-pakketpunt of Decathlon-winkel"
     ],
     "url": "https://help.decathlon.nl/hc/nl/articles/13672938618652-Hoe-kan-ik-mijn-Decathlon-producten-retourneren",
-    "bronpagina": "https://help.decathlon.nl/hc/nl/articles/13672938618652-Hoe-kan-ik-mijn-Decathlon-producten-retourneren"
+    "bronpagina": "https://help.decathlon.nl/hc/nl/articles/4404932172434-Wat-zijn-de-retourvoorwaarden-en-retourtermijnen-van-mijn-bestelling"
    },
    "opzeggen": null,
    "contact": {
@@ -364,13 +364,13 @@
    "soort": "retour",
    "slug": "uniqlo",
    "klaar": true,
-   "bijgewerkt": "2026-11-02",
+   "bijgewerkt": "2026-11-05",
    "bron": "https://faq-nl.uniqlo.com/",
    "zeker": 0.3,
    "retour": {
-    "dagen": null,
-    "vanaf": null,
-    "kosten": null,
+    "dagen": 30,
+    "vanaf": "levering",
+    "kosten": "€2,95 per retouraanvraag",
     "manieren": [
      "account",
      "winkel"
@@ -395,13 +395,13 @@
    "soort": "retour",
    "slug": "nike",
    "klaar": true,
-   "bijgewerkt": "2026-11-02",
+   "bijgewerkt": "2026-11-05",
    "bron": "https://www.nike.com/nl/",
    "zeker": 0.3,
    "retour": {
-    "dagen": null,
-    "vanaf": null,
-    "kosten": null,
+    "dagen": 30,
+    "vanaf": "aankoop",
+    "kosten": "Gratis voor Nike Members, mogelijk van toepassing voor niet-leden",
     "manieren": [
      "account",
      "winkel"
@@ -413,7 +413,7 @@
      "Print het retourlabel en lever het pakket in bij de aangegeven vervoerder"
     ],
     "url": "https://www.nike.com/nl/help/a/retourneren-eu",
-    "bronpagina": "https://www.nike.com/nl/help/a/retourneren-eu"
+    "bronpagina": "https://www.nike.com/nl/help/a/retourneren"
    },
    "opzeggen": null,
    "contact": {
@@ -426,13 +426,13 @@
    "soort": "retour",
    "slug": "de-bijenkorf",
    "klaar": true,
-   "bijgewerkt": "2026-11-02",
+   "bijgewerkt": "2026-11-05",
    "bron": null,
    "zeker": 0.1,
    "retour": {
-    "dagen": null,
-    "vanaf": null,
-    "kosten": null,
+    "dagen": 30,
+    "vanaf": "levering",
+    "kosten": "Gratis",
     "manieren": [
      "account",
      "winkel"
@@ -488,13 +488,13 @@
    "soort": "retour",
    "slug": "temu",
    "klaar": true,
-   "bijgewerkt": "2026-11-02",
+   "bijgewerkt": "2026-11-05",
    "bron": null,
    "zeker": 0.1,
    "retour": {
-    "dagen": null,
-    "vanaf": null,
-    "kosten": null,
+    "dagen": 90,
+    "vanaf": "aankoop",
+    "kosten": "Eerste retour gratis, verdere retours betaald",
     "manieren": [
      "account"
     ],
@@ -505,7 +505,7 @@
      "Kies 'Retour/Restitutie' en volg de stappen"
     ],
     "url": "https://www.temu.com/nl-en/terms-of-use.html",
-    "bronpagina": "https://www.temu.com/nl-en/terms-of-use.html"
+    "bronpagina": "https://www.temu.com/nl/return-and-refund-policy.html"
    },
    "opzeggen": null,
    "contact": {
@@ -548,13 +548,13 @@
    "soort": "retour",
    "slug": "lidl",
    "klaar": true,
-   "bijgewerkt": "2026-11-02",
+   "bijgewerkt": "2026-11-05",
    "bron": null,
    "zeker": 0.9,
    "retour": {
-    "dagen": null,
-    "vanaf": null,
-    "kosten": null,
+    "dagen": 30,
+    "vanaf": "levering",
+    "kosten": "Gratis",
     "manieren": [
      "account",
      "winkel"
@@ -612,13 +612,13 @@
    "soort": "retour",
    "slug": "douglas",
    "klaar": true,
-   "bijgewerkt": "2026-11-02",
+   "bijgewerkt": "2026-11-05",
    "bron": "https://www.douglas.nl/nl/cp/helpbeautycardcancelaccount/help-beauty-card-cancel-account",
    "zeker": 0.95,
    "retour": {
-    "dagen": null,
-    "vanaf": null,
-    "kosten": null,
+    "dagen": 14,
+    "vanaf": "levering",
+    "kosten": "Gratis",
     "manieren": [
      "account",
      "winkel",
@@ -637,6 +637,1202 @@
    "contact": {
     "url": "https://www.douglas.nl/nl/cp/helpservices/help-services",
     "telefoon": "088-368 45 45"
+   }
+  },
+  {
+   "naam": "Otto",
+   "soort": "retour",
+   "slug": "otto",
+   "klaar": false
+  },
+  {
+   "naam": "Action",
+   "soort": "retour",
+   "slug": "action",
+   "klaar": true,
+   "bijgewerkt": "2026-11-05",
+   "bron": null,
+   "zeker": 0,
+   "retour": {
+    "dagen": 14,
+    "vanaf": "levering",
+    "kosten": "Voor eigen rekening",
+    "manieren": [
+     "account",
+     "retourpunt"
+    ],
+    "stappen": [
+     "Log in op je account op shop.action.com",
+     "Ga naar je bestelhistorie",
+     "Klik op de bestelling die je wilt retourneren",
+     "Selecteer het product en meld de retour aan"
+    ],
+    "url": "https://shop.action.com/nl-nl/klantenservice",
+    "bronpagina": "https://shop.action.com/nl-nl/klantenservice"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://shop.action.com/nl-nl/klantenservice",
+    "telefoon": "+31 228 54 57 50"
+   }
+  },
+  {
+   "naam": "Blokker",
+   "soort": "retour",
+   "slug": "blokker",
+   "klaar": true,
+   "bijgewerkt": "2026-11-05",
+   "bron": "https://www.blokker.nl/nl/veelgestelde-vragen/categorie/algemeen/",
+   "zeker": 0.95,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "winkel",
+     "retourpunt"
+    ],
+    "stappen": [
+     "Vul het retourformulier in dat in je pakket zit",
+     "Breng je pakket naar een van de 3000 retourpuntlocaties",
+     "Bij zware/grote producten: bel de klantenservice om ophaling in te plannen"
+    ],
+    "url": "https://kiosk-production.blokker.nl/klantenservice/retourneren.html",
+    "bronpagina": "https://kiosk-production.blokker.nl/klantenservice/retourneren.html"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.blokker.nl/nl/blknl/customerService",
+    "telefoon": "088-9494800"
+   }
+  },
+  {
+   "naam": "Kwantum",
+   "soort": "retour",
+   "slug": "kwantum",
+   "klaar": true,
+   "bijgewerkt": "2026-11-05",
+   "bron": null,
+   "zeker": 1,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "winkel",
+     "retourpunt"
+    ],
+    "stappen": [
+     "Meld je retour aan via de website of het contactformulier",
+     "Download het retourformulier",
+     "Stuur je artikel terug naar Kwantum of breng het naar een winkel",
+     "Ontvang je geld terug op dezelfde betaalmethode"
+    ],
+    "url": "https://www.kwantum.nl/informatie-en-service/klantenservice/ruilen-en-retourneren",
+    "bronpagina": "https://www.kwantum.nl/informatie-en-service/klantenservice/ruilen-en-retourneren"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.kwantum.nl/informatie-en-service/klantenservice",
+    "telefoon": "0900-2355926"
+   }
+  },
+  {
+   "naam": "Leen Bakker",
+   "soort": "retour",
+   "slug": "leen-bakker",
+   "klaar": true,
+   "bijgewerkt": "2026-11-05",
+   "bron": "https://www.leenbakker.nl/thuiswinkelvoorwaarden",
+   "zeker": 0.65,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "winkel",
+     "ophalen"
+    ],
+    "stappen": [
+     "Breng je artikel gratis terug naar een Leen Bakker winkel",
+     "Of meld je retour aan via je account of klantenservice",
+     "Wacht maximaal 14 dagen nadat je het artikel hebt teruggestuurd",
+     "Je ontvangt je geld terug op je rekening"
+    ],
+    "url": "https://www.leenbakker.nl/retourneren",
+    "bronpagina": "https://www.leenbakker.nl/retourneren"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.leenbakker.nl/contact",
+    "telefoon": "088-7860200"
+   }
+  },
+  {
+   "naam": "Beter Bed",
+   "soort": "retour",
+   "slug": "beter-bed",
+   "klaar": true,
+   "bijgewerkt": "2026-11-05",
+   "bron": null,
+   "zeker": 0.2,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "account",
+     "ophalen"
+    ],
+    "stappen": [
+     "Meld de retour aan via het digitale herroepingsformulier op je account",
+     "Vul het papieren retourformulier in en voeg dit bij het pakket",
+     "Breng het pakket naar een PostNL-punt met het retourlabel of wacht op ophaling",
+     "Je ontvangt het geld terug binnen 14 dagen na ontvangst van het artikel"
+    ],
+    "url": "https://www.beterbed.nl/Klantenservice/alles-over-je-bestelling/ruilen-en-retourneren",
+    "bronpagina": "https://www.beterbed.nl/Klantenservice/alles-over-je-bestelling/ruilen-en-retourneren"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.beterbed.nl/Klantenservice/onze-gegevens",
+    "telefoon": "0413 338 800"
+   }
+  },
+  {
+   "naam": "Hornbach",
+   "soort": "retour",
+   "slug": "hornbach",
+   "klaar": true,
+   "bijgewerkt": "2026-11-05",
+   "bron": "https://media.hornbach.nl/cmsm/nl/algemene-voorwaarden-hornbach-nl-31-10-2024.pdf",
+   "zeker": 0.3,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "account",
+     "winkel",
+     "retourpunt"
+    ],
+    "stappen": [
+     "Meld je retour aan via Mijn Account of via het contactformulier",
+     "Breng het product binnen 30 dagen terug naar een Hornbach-vestiging of pak het in met het retourlabel",
+     "Geef je pakket af bij een retourpunt of bezorg het zelf"
+    ],
+    "url": "https://www.hornbach.nl/services/vraag-contact/",
+    "bronpagina": "https://www.hornbach.nl/services/vraag-contact/"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.hornbach.nl/services/vraag-contact/",
+    "telefoon": "030-266 98 98"
+   }
+  },
+  {
+   "naam": "Gamma",
+   "soort": "retour",
+   "slug": "gamma",
+   "klaar": true,
+   "bijgewerkt": "2026-11-05",
+   "bron": "https://www.gamma.nl/voordeelpas/veelgestelde-vragen",
+   "zeker": 0.6,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "winkel"
+    ],
+    "stappen": [
+     "Meld je retour aan via de website of ga naar een Gamma-bouwmarkt",
+     "Breng je artikel met aankoopbewijs naar een Gamma-bouwmarkt",
+     "Je ontvangt je geld terug binnen 14 dagen"
+    ],
+    "url": "https://www.gamma.nl/klantenservice/retourneren",
+    "bronpagina": "https://www.gamma.nl/klantenservice/retourneren"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.gamma.nl/klantenservice",
+    "telefoon": "088 010 86 10"
+   }
+  },
+  {
+   "naam": "Praxis",
+   "soort": "retour",
+   "slug": "praxis",
+   "klaar": true,
+   "bijgewerkt": "2026-11-05",
+   "bron": null,
+   "zeker": 0,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "account",
+     "winkel"
+    ],
+    "stappen": [
+     "Log in op je Praxis-account",
+     "Zoek je bestelling in je bestellingenoverzicht",
+     "Klik op 'Retourneren' en selecteer de artikelen",
+     "Volg de instructies om je retour in te dienen"
+    ],
+    "url": "https://www.praxis.nl/service/retourneren",
+    "bronpagina": "https://www.praxis.nl/service/retourneren"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.praxis.nl/service/klantenservice",
+    "telefoon": "085-0028020"
+   }
+  },
+  {
+   "naam": "Intertoys",
+   "soort": "retour",
+   "slug": "intertoys",
+   "klaar": true,
+   "bijgewerkt": "2026-11-05",
+   "bron": "https://www.intertoys.nl/klantenservice/contact",
+   "zeker": 1,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "account",
+     "winkel",
+     "retourpunt"
+    ],
+    "stappen": [
+     "Meld je retour aan via 'Retour aanmelden' in Mijn account of via de retourpagina",
+     "Stop de artikelen in de originele doos en gebruik het retourformulier",
+     "Stuur het pakket kosteloos naar een DHL ServicePoint",
+     "Ontvang je terugbetaling via je originele betaalmiddel"
+    ],
+    "url": "https://www.intertoys.nl/klantenservice/ruilen-retourneren",
+    "bronpagina": "https://www.intertoys.nl/klantenservice/ruilen-retourneren"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.intertoys.nl/klantenservice/contact",
+    "telefoon": "085-00 66 910"
+   }
+  },
+  {
+   "naam": "Rituals",
+   "soort": "retour",
+   "slug": "rituals",
+   "klaar": true,
+   "bijgewerkt": "2026-11-05",
+   "bron": null,
+   "zeker": 0.9,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "account"
+    ],
+    "stappen": [
+     "Ga naar het retourportaal van Rituals",
+     "Vul je e-mailadres en bestelnummer in",
+     "Selecteer de producten die je wilt retourneren",
+     "Je ontvangt per e-mail je retourlabel en instructies"
+    ],
+    "url": "https://eva-return-portal-rituals.netlify.app/nl/login",
+    "bronpagina": "https://eva-return-portal-rituals.netlify.app/nl/login"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.rituals.com/nl-nl/faq/ourstores",
+    "telefoon": "+31 (0)202415948"
+   }
+  },
+  {
+   "naam": "Hunkemöller",
+   "soort": "retour",
+   "slug": "hunkemoller",
+   "klaar": true,
+   "bijgewerkt": "2026-11-05",
+   "bron": "https://www.hunkemoller.nl/membercard-legal-agreements",
+   "zeker": 0.7,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "winkel",
+     "retourpunt"
+    ],
+    "stappen": [
+     "Registreer je retour in het Return Portal met bestelnummer en e-mailadres",
+     "Breng je bestelling naar een DHL Servicepunt of Hunkemöller-winkel",
+     "Je ontvangt een bevestigingsmail van DHL of de winkel verwerkt je retour direct",
+     "Je terugbetaling wordt verwerkt na ontvangst en controle van je retour"
+    ],
+    "url": "https://www.hunkemoller.nl/faq/retourneren-ruilen",
+    "bronpagina": "https://www.hunkemoller.nl/faq/retourneren-ruilen"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.hunkemoller.nl/help",
+    "telefoon": "+31 35 646 5412"
+   }
+  },
+  {
+   "naam": "Scapino",
+   "soort": "retour",
+   "slug": "scapino",
+   "klaar": true,
+   "bijgewerkt": "2026-11-05",
+   "bron": null,
+   "zeker": 0,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "account",
+     "winkel",
+     "retourpunt"
+    ],
+    "stappen": [
+     "Meld je retour aan via je Scapino-account of op de website",
+     "Ontvang een QR-code voor DHL-retourpunt, óf breng naar een Scapino-winkel",
+     "Retourneer je bestelling gratis in de winkel of via DHL tegen betaling van €4,95"
+    ],
+    "url": "https://www.scapino.nl/retourinformatie/",
+    "bronpagina": "https://www.scapino.nl/retourinformatie/"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.scapino.nl/contact/",
+    "telefoon": "0592-201260"
+   }
+  },
+  {
+   "naam": "Vinted",
+   "soort": "retour",
+   "slug": "vinted",
+   "klaar": true,
+   "bijgewerkt": "2026-10-08",
+   "bron": "https://www.vinted.nl/help/88",
+   "zeker": 0.85,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "account"
+    ],
+    "stappen": [
+     "Ga naar je bestelling en klik 'Ik heb een probleem'",
+     "Voeg foto's toe van het probleem",
+     "Stuur het rapport naar de verkoper",
+     "Klik op 'Bestelling retourzenden' en volg de instructies"
+    ],
+    "url": "https://www.vinted.nl/help/272-een-artikel-retourneren",
+    "bronpagina": "https://www.vinted.nl/help/272-een-artikel-retourneren"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.vinted.nl/help",
+    "telefoon": null
+   }
+  },
+  {
+   "naam": "eBay",
+   "soort": "retour",
+   "slug": "ebay",
+   "klaar": true,
+   "bijgewerkt": "2026-11-05",
+   "bron": "https://cloud.forbusiness.ebay.com/startpakket-promotie",
+   "zeker": 0.75,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "account"
+    ],
+    "stappen": [
+     "Ga naar je aankoopgeschiedenis in Mijn eBay",
+     "Selecteer het object dat je wilt retourneren",
+     "Volg de instructies van de verkoper voor retourverzending",
+     "Stuur het object zo snel mogelijk terug"
+    ],
+    "url": "https://pages.ebay.nl/geld-terug-garantie-van-eBay/",
+    "bronpagina": "https://pages.ebay.nl/geld-terug-garantie-van-eBay/"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.ebay.nl/help/home",
+    "telefoon": null
+   }
+  },
+  {
+   "naam": "Etsy",
+   "soort": "retour",
+   "slug": "etsy",
+   "klaar": true,
+   "bijgewerkt": "2026-11-05",
+   "bron": "https://help.etsy.com/hc/nl/articles/115015672628-Je-geschorste-account-herstellen",
+   "zeker": 0.7,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "account"
+    ],
+    "stappen": [
+     "Log in en ga naar Aankopen en recensies",
+     "Selecteer Help met bestelling bij het artikel",
+     "Neem contact op met de verkoper om retourvoorwaarden af te spreken",
+     "Stuur het artikel terug volgens de afgesproken voorwaarden"
+    ],
+    "url": "https://help.etsy.com/hc/nl/articles/115015440807",
+    "bronpagina": "https://help.etsy.com/hc/nl/articles/115015440807"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://help.etsy.com/hc/nl",
+    "telefoon": null
+   }
+  },
+  {
+   "naam": "Philips",
+   "soort": "retour",
+   "slug": "philips",
+   "klaar": true,
+   "bijgewerkt": "2026-11-05",
+   "bron": "https://www.philips.nl/shop/NL_voordeelvandeexpert//faq",
+   "zeker": 0.7,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "account"
+    ],
+    "stappen": [
+     "Neem contact op met de Philips webshop klantenservice",
+     "Meld je retour telefonisch aan",
+     "Ontvang instructies voor het verzenden van je product",
+     "Stuur het product binnen 30 dagen terug"
+    ],
+    "url": "https://www.philips.nl/c-f/XC000022955/wat-zijn-de-retourvoorwaarden",
+    "bronpagina": "https://www.philips.nl/c-f/XC000022955/wat-zijn-de-retourvoorwaarden"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.philips.nl/shop/NL_voordeelvandeexpert//faq",
+    "telefoon": "0800-0230047"
+   }
+  },
+  {
+   "naam": "Nespresso",
+   "soort": "retour",
+   "slug": "nespresso",
+   "klaar": true,
+   "bijgewerkt": "2026-11-05",
+   "bron": "https://www.nespresso.com/nl/nl/abonnement/koffieabonnement",
+   "zeker": 0.85,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "retourpunt"
+    ],
+    "stappen": [
+     "Download en print het retourformulier",
+     "Vul het formulier in en voeg het bij het pakket",
+     "Lever het pakket kosteloos in bij een DHL of PostNL servicepunt met antwoordnummer 54081",
+     "Het bedrag wordt binnen 14 dagen teruggestort of als tegoed op je account geplaatst"
+    ],
+    "url": "https://www.nespresso.com/shared_res/mos/free_html/nl/content/Retourneren.pdf",
+    "bronpagina": "https://www.nespresso.com/shared_res/mos/free_html/nl/content/Retourneren.pdf"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.nespresso.com/nl/nl/service-customer-care",
+    "telefoon": "0800 022 23 20"
+   }
+  },
+  {
+   "naam": "Samsung",
+   "soort": "retour",
+   "slug": "samsung",
+   "klaar": true,
+   "bijgewerkt": "2026-11-05",
+   "bron": "https://www.samsung.com/nl/",
+   "zeker": 0,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "account",
+     "ophalen"
+    ],
+    "stappen": [
+     "Meld je aan op samsung.com",
+     "Ga naar mijn bestellingen",
+     "Start een retouraanvraag",
+     "Stuur het product terug of maak een ophaalafspraak"
+    ],
+    "url": "https://www.samsung.com/nl/shop-faq/returns-and-cancellations/",
+    "bronpagina": "https://www.samsung.com/nl/shop-faq/returns-and-cancellations/"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.samsung.com/nl/support/contact/",
+    "telefoon": "088 909 0100"
+   }
+  },
+  {
+   "naam": "LEGO",
+   "soort": "retour",
+   "slug": "lego",
+   "klaar": true,
+   "bijgewerkt": "2026-11-05",
+   "bron": "https://www.lego.com/nl-nl/magazine/faq",
+   "zeker": 0.95,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "account",
+     "retourpunt"
+    ],
+    "stappen": [
+     "Ga naar 'Mijn bestellingen' in je account",
+     "Selecteer de items die je wilt retourneren",
+     "Ontvang een voorgefrankeerd DPD etiket",
+     "Breng je pakket naar een DPD parcelshop"
+    ],
+    "url": "https://www.lego.com/nl-nl/page/returns",
+    "bronpagina": "https://www.lego.com/nl-nl/page/returns"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.lego.com/nl-nl/service/contact-us",
+    "telefoon": "0800 022 2219"
+   }
+  },
+  {
+   "naam": "Dyson",
+   "soort": "retour",
+   "slug": "dyson",
+   "klaar": true,
+   "bijgewerkt": "2026-11-05",
+   "bron": "https://www.dyson.nl/over-dyson/voorwaarden/algemene-voorwaarden",
+   "zeker": 0.8,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "retourpunt"
+    ],
+    "stappen": [
+     "Vul het retourformulier in op dyson.nl",
+     "Ontvang het retourlabel binnen 24 uur per email",
+     "Verpak het product zorgvuldig in originele verpakking",
+     "Lever het pakket in bij een PostNL pakketpunt"
+    ],
+    "url": "https://www.dyson.nl/over-dyson/voorwaarden/boek-je-retour",
+    "bronpagina": "https://www.dyson.nl/over-dyson/voorwaarden/boek-je-retour"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.dyson.nl/over-dyson/neem-contact-met-ons-op",
+    "telefoon": "+31 20 793 1154"
+   }
+  },
+  {
+   "naam": "My Jewellery",
+   "soort": "retour",
+   "slug": "my-jewellery",
+   "klaar": true,
+   "bijgewerkt": "2026-11-05",
+   "bron": null,
+   "zeker": 0.95,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "account",
+     "winkel"
+    ],
+    "stappen": [
+     "Meld je retour aan via het digitale retourportaal op my-jewellery.com",
+     "Pak het artikel in met de originele verpakking en labels",
+     "Stuur het pakket met track & trace naar: My Jewellery Retourenafdeling, Ruwekampweg 4, 5222 AT 's-Hertogenbosch",
+     "Of breng het artikel gratis naar een My Jewellery boutique"
+    ],
+    "url": "https://www.my-jewellery.com/en/customer-service/returns-refunds",
+    "bronpagina": "https://www.my-jewellery.com/en/customer-service/returns-refunds"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.my-jewellery.com/en/customer-service/contact",
+    "telefoon": "+31 (0)73 203 2732"
+   }
+  },
+  {
+   "naam": "Pandora",
+   "soort": "retour",
+   "slug": "pandora",
+   "klaar": true,
+   "bijgewerkt": "2026-11-05",
+   "bron": "https://nl.pandora.net/nl/returns-csc/returns-csc.html",
+   "zeker": 0.3,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "retourpunt"
+    ],
+    "stappen": [
+     "Registreer je retour via het retourportaal",
+     "Maak de retourbon aan",
+     "Plak de retourbon op het pakket",
+     "Lever het pakket in bij een DPD-afhaalpunt"
+    ],
+    "url": "https://nl.pandora.net/nl/returns-csc/returns-csc.html",
+    "bronpagina": "https://nl.pandora.net/nl/returns-csc/returns-csc.html"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://nl.pandora.net/nl/",
+    "telefoon": "0800 022 6409"
+   }
+  },
+  {
+   "naam": "Bijou Brigitte",
+   "soort": "retour",
+   "slug": "bijou-brigitte",
+   "klaar": true,
+   "bijgewerkt": "2026-11-05",
+   "bron": "https://www.bijou-brigitte.com/nl/service/faq-bb-club/",
+   "zeker": 0.95,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "account"
+    ],
+    "stappen": [
+     "Vraag een gratis retourlabel aan bij online-shop@bijou-brigitte.com",
+     "Vul het retourformulier in en stuur het mee",
+     "Stuur het pakket naar Bijou Brigitte in Hamburg"
+    ],
+    "url": "https://www.bijou-brigitte.com/nl/service/veelgestelde-vragen/",
+    "bronpagina": "https://www.bijou-brigitte.com/nl/service/veelgestelde-vragen/"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.bijou-brigitte.com/nl/contact/contactformulier/",
+    "telefoon": "+49 (0) 40 / 60 609 3434"
+   }
+  },
+  {
+   "naam": "Claire's",
+   "soort": "retour",
+   "slug": "claire-s",
+   "klaar": true,
+   "bijgewerkt": "2026-11-05",
+   "bron": null,
+   "zeker": 0,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "winkel"
+    ],
+    "stappen": [
+     "Selecteer een retourcode op je orderoverzicht",
+     "Sluit het orderoverzicht in bij je pakket",
+     "Verstuur het pakket naar het retouradres in Birmingham",
+     "Of retourneer in-store met je orderoverzicht"
+    ],
+    "url": "https://www.claires.com/returns-policy.html",
+    "bronpagina": "https://www.claires.com/returns-policy.html"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": null,
+    "telefoon": null
+   }
+  },
+  {
+   "naam": "ONLY",
+   "soort": "retour",
+   "slug": "only",
+   "klaar": true,
+   "bijgewerkt": "2026-11-05",
+   "bron": "https://www.only-stores.com/nl/contact",
+   "zeker": 1,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "account",
+     "winkel"
+    ],
+    "stappen": [
+     "Meld je retour online aan via het retourportaal",
+     "Print het retourlabel of breng het artikel naar een ONLY-winkel",
+     "Stuur het artikel retour of lever het in bij een ONLY-winkel"
+    ],
+    "url": "https://support.only.com/hc/en-gb/articles/31839361580433-How-to-use-the-return-portal",
+    "bronpagina": "https://support.only.com/hc/en-gb/articles/31839361580433-How-to-use-the-return-portal"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.only-stores.com/nl/contact",
+    "telefoon": null
+   }
+  },
+  {
+   "naam": "Pieces",
+   "soort": "retour",
+   "slug": "pieces",
+   "klaar": true,
+   "bijgewerkt": "2026-11-05",
+   "bron": null,
+   "zeker": 1,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "account"
+    ],
+    "stappen": [
+     "Log in op je account op pieces.com",
+     "Ga naar je bestellingen en selecteer de bestelling die je wilt retourneren",
+     "Meld je retour online aan via de retourpagina",
+     "Print het retourlabel en verstuur het pakket"
+    ],
+    "url": "https://support.pieces.com/hc/nl-nl/articles/14157289475217-Hoe-gebruik-ik-de-retourpagina",
+    "bronpagina": "https://support.pieces.com/hc/nl-nl/articles/14157289475217-Hoe-gebruik-ik-de-retourpagina"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://pieces.com/contact",
+    "telefoon": null
+   }
+  },
+  {
+   "naam": "Prenatal",
+   "soort": "retour",
+   "slug": "prenatal",
+   "klaar": true,
+   "bijgewerkt": "2026-11-05",
+   "bron": "https://www.prenatal.nl/prenatalmoments/",
+   "zeker": 0.7,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "account",
+     "winkel"
+    ],
+    "stappen": [
+     "Meld je retour aan via de retourportaal",
+     "Je hebt 14 dagen om het daadwerkelijk te retourneren",
+     "Breng het naar een Prénatal-winkel of verzend het via PostNL"
+    ],
+    "url": "https://www.prenatal.nl/faq/retourneren/",
+    "bronpagina": "https://www.prenatal.nl/faq/retourneren/"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.prenatal.nl/faq/algemeen/",
+    "telefoon": "088-3320040"
+   }
+  },
+  {
+   "naam": "Babypark",
+   "soort": "retour",
+   "slug": "babypark",
+   "klaar": true,
+   "bijgewerkt": "2026-11-05",
+   "bron": "https://www.babypark.nl",
+   "zeker": 0.95,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "account",
+     "winkel",
+     "retourpunt"
+    ],
+    "stappen": [
+     "Meld je retour aan op babypark.nl",
+     "Stuur het pakket naar Hogeveldseweg 3, 4041CP Kesteren of lever af bij DPD Pakketpunt",
+     "Je kunt het ook retourneren in een Babypark Megastore",
+     "Ontvang je geld terug binnen 14 dagen na ontbinding"
+    ],
+    "url": "https://www.babypark.nl/klantenservice",
+    "bronpagina": "https://www.babypark.nl/klantenservice"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.babypark.nl/klantenservice",
+    "telefoon": "0488-488888"
+   }
+  },
+  {
+   "naam": "Kruidvat",
+   "soort": "retour",
+   "slug": "kruidvat",
+   "klaar": true,
+   "bijgewerkt": "2026-11-05",
+   "bron": null,
+   "zeker": 0,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "account",
+     "winkel"
+    ],
+    "stappen": [
+     "Meld je retour aan via het formulier op kruidvat.nl met je ordernummer",
+     "Ontvang binnen 3 werkdagen een retourlabel per e-mail",
+     "Print het label en pak het artikel in een aparte doos",
+     "Lever in bij een PostNL-punt binnen 7 werkdagen"
+    ],
+    "url": "https://www.kruidvat.nl/onlineonlyretour",
+    "bronpagina": "https://www.kruidvat.nl/onlineonlyretour"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.kruidvat.nl/bedrijfsgegevens",
+    "telefoon": "0318 798001"
+   }
+  },
+  {
+   "naam": "Zeeman",
+   "soort": "retour",
+   "slug": "zeeman",
+   "klaar": true,
+   "bijgewerkt": "2026-11-05",
+   "bron": null,
+   "zeker": 1,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "winkel",
+     "retourpunt"
+    ],
+    "stappen": [
+     "Breng je bestelling met digitale factuur naar een Zeeman-winkel",
+     "Of stuur je retourpakket met Track & Trace naar Postbus 301, 2400 AH Alphen aan den Rijn",
+     "Zeeman verwerkt je retour en betaalt je geld terug binnen 14 dagen"
+    ],
+    "url": "https://www.zeeman.com/nl-nl/faqs/retourneren",
+    "bronpagina": "https://www.zeeman.com/nl-nl/faqs/retourneren"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.zeeman.com/nl-nl/juridisch/privacy",
+    "telefoon": "088-007 0000"
+   }
+  },
+  {
+   "naam": "Etos",
+   "soort": "retour",
+   "slug": "etos",
+   "klaar": true,
+   "bijgewerkt": "2026-11-05",
+   "bron": "https://www.etos.nl/vraag-en-antwoord/?faqCat=mijn-account",
+   "zeker": 0.85,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [],
+    "stappen": [
+     "Print het retourformulier uit en vul het in",
+     "Verpak je producten en voeg het formulier toe",
+     "Stuur het pakket gratis naar Antwoordnummer 469, 4000 VB Tiel",
+     "Je geld wordt teruggestort op je betaalrekening"
+    ],
+    "url": "https://www.etos.nl/faq11.html",
+    "bronpagina": "https://www.etos.nl/faq11.html"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.etos.nl/etosplus/contact/",
+    "telefoon": "088 659 42 45"
+   }
+  },
+  {
+   "naam": "Sportdirect",
+   "soort": "retour",
+   "slug": "sportdirect",
+   "klaar": false
+  },
+  {
+   "naam": "Vero Moda",
+   "soort": "retour",
+   "slug": "vero-moda",
+   "klaar": true,
+   "bijgewerkt": "2026-11-05",
+   "bron": "https://www.veromoda.com/nl-nl/content/faq",
+   "zeker": 1,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "account"
+    ],
+    "stappen": [
+     "Meld je retour online aan via het retourportaal",
+     "Ontvang je retourlabel",
+     "Breng je pakket naar het dichtstbijzijnde pakketpunt",
+     "Bewaar je verzendbewijs"
+    ],
+    "url": "https://www.veromoda.com/nl-nl/content/hoe-retourneer-ik",
+    "bronpagina": "https://www.veromoda.com/nl-nl/content/hoe-retourneer-ik"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.veromoda.com/nl-nl/content/contact-us",
+    "telefoon": null
+   }
+  },
+  {
+   "naam": "Jack & Jones",
+   "soort": "retour",
+   "slug": "jack-en-jones",
+   "klaar": true,
+   "bijgewerkt": "2026-11-05",
+   "bron": "https://www.jackjones.com/nl-nl/jack-and-jones-club",
+   "zeker": 0.7,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "account"
+    ],
+    "stappen": [
+     "Log in op je account",
+     "Ga naar het retourportaal",
+     "Voer je bestelnummer en e-mailadres in",
+     "Maak een retourlabel aan en stuur het pakket terug"
+    ],
+    "url": "https://www.jackjones.com/nl-nl/return-items",
+    "bronpagina": "https://www.jackjones.com/nl-nl/return-items"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.jackjones.com/nl-nl/content/faq",
+    "telefoon": null
+   }
+  },
+  {
+   "naam": "Dille & Kamille",
+   "soort": "retour",
+   "slug": "dille-en-kamille",
+   "klaar": true,
+   "bijgewerkt": "2026-11-05",
+   "bron": null,
+   "zeker": 0,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "winkel",
+     "retourpunt"
+    ],
+    "stappen": [
+     "Meld je retour aan via Returnista",
+     "Selecteer de producten die je wilt retourneren",
+     "Kies of je in de winkel retourneert (gratis) of per post (€6,55+)",
+     "Breng het pakket naar je gekozen retourpunt"
+    ],
+    "url": "https://service.dille-kamille.com/hc/nl/articles/22967216447260-Wat-zijn-de-retouropties",
+    "bronpagina": "https://service.dille-kamille.com/hc/nl/articles/22967216447260-Wat-zijn-de-retouropties"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.dille-kamille.nl/klantenservice/contact/",
+    "telefoon": "030 3042400"
+   }
+  },
+  {
+   "naam": "Bever",
+   "soort": "retour",
+   "slug": "bever",
+   "klaar": true,
+   "bijgewerkt": "2026-11-05",
+   "bron": null,
+   "zeker": 0,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "account",
+     "winkel",
+     "retourpunt"
+    ],
+    "stappen": [
+     "Meld je retour aan via het retourportaal op je account",
+     "Verpak het product in de originele verpakking",
+     "Breng het pakket naar een Bever-winkel of stuur het via PostNL naar Bever"
+    ],
+    "url": "https://www.bever.nl/klantenservice/retourneren.html",
+    "bronpagina": "https://www.bever.nl/klantenservice/retourneren.html"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.bever.nl/klantenservice/contactgegevens.html",
+    "telefoon": "085-888 50 88"
+   }
+  },
+  {
+   "naam": "Wibra",
+   "soort": "retour",
+   "slug": "wibra",
+   "klaar": true,
+   "bijgewerkt": "2026-11-05",
+   "bron": "https://www.wibra.nl/",
+   "zeker": 1,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "winkel",
+     "ophalen"
+    ],
+    "stappen": [
+     "Meld je retour aan via het retourformulier op de Wibra website",
+     "Breng het artikel gratis naar een Wibra winkel of stuur het per post naar Ecofactorij 20, 7325 WC Apeldoorn",
+     "Zorg dat je de verzendbon meestuurt",
+     "Je ontvang je geld terug binnen 14 dagen"
+    ],
+    "url": "https://service.wibra.nl/hc/nl/articles/42359046175505-Hoe-kan-ik-mijn-webshop-aankoop-retourneren",
+    "bronpagina": "https://service.wibra.nl/hc/nl/articles/42359046175505-Hoe-kan-ik-mijn-webshop-aankoop-retourneren"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://service.wibra.nl/hc/nl",
+    "telefoon": "0578-676333"
+   }
+  },
+  {
+   "naam": "Ici Paris XL",
+   "soort": "retour",
+   "slug": "ici-paris-xl",
+   "klaar": true,
+   "bijgewerkt": "2026-11-05",
+   "bron": "https://www.iciparisxl.nl/algemene-voorwaarden-beauty-member-card",
+   "zeker": 0.5,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "account",
+     "winkel"
+    ],
+    "stappen": [
+     "Log in op je account op iciparisxl.nl",
+     "Vul het retourformulier in",
+     "Stop het formulier met je ongebruikte artikel in de originele verpakking",
+     "Stuur het gratis terug naar ICI PARIS XL Online, Retour, Antwoordnummer 518, 4460 VB Goes"
+    ],
+    "url": "https://www.iciparisxl.nl/retourrecht",
+    "bronpagina": "https://www.iciparisxl.nl/retourrecht"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.iciparisxl.nl/service",
+    "telefoon": "0318-264000"
+   }
+  },
+  {
+   "naam": "Bruna",
+   "soort": "retour",
+   "slug": "bruna",
+   "klaar": true,
+   "bijgewerkt": "2026-11-05",
+   "bron": null,
+   "zeker": 0.1,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [
+     "winkel",
+     "retourpunt"
+    ],
+    "stappen": [
+     "Meld je retour aan bij PostNL",
+     "Lever het pakket in bij een postpunt",
+     "Bruna verwerkt de terugbetaling binnen 7 werkdagen"
+    ],
+    "url": null,
+    "bronpagina": null
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.bruna.nl",
+    "telefoon": "088-7800600"
+   }
+  },
+  {
+   "naam": "Lush",
+   "soort": "retour",
+   "slug": "lush",
+   "klaar": true,
+   "bijgewerkt": "2026-11-05",
+   "bron": "https://www.lush.com/nl/nl/faq/nl-algemene-voorwaarden",
+   "zeker": 0.75,
+   "retour": {
+    "dagen": null,
+    "vanaf": null,
+    "kosten": null,
+    "manieren": [],
+    "stappen": [
+     "Neem contact op met klantenservice via info@lush.nl of (+31) 20 638 80 96 voordat je retourneert",
+     "Stuur de producten naar: Lush Nederland B.V., Kalverstraat 121-123, 1012 PA Amsterdam",
+     "Bewaar het verzendbewijs van de postdienst",
+     "Ontvang terugbetaling binnen 14 kalenderdagen nadat Lush de retour heeft ontvangen"
+    ],
+    "url": "https://www.lush.com/nl/nl/faq/nl-retourneren-en-terugbetalingen",
+    "bronpagina": "https://www.lush.com/nl/nl/faq/nl-retourneren-en-terugbetalingen"
+   },
+   "opzeggen": null,
+   "contact": {
+    "url": "https://www.lush.com/nl/nl/faq/nl-neem-contact-met-ons-op",
+    "telefoon": "+31 (0)20 - 638 80 96"
    }
   },
   {
