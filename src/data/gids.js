@@ -43,5 +43,7 @@ const CATEGORIE_VAN = {
   ikea: 'wonen', hema: 'wonen', douglas: 'wonen', lidl: 'wonen', kruidvat: 'wonen', zeeman: 'wonen',
   'my-jewellery': 'mode', pandora: 'mode', 'bijou-brigitte': 'mode', 'claire-s': 'mode', only: 'mode', pieces: 'mode',
   prenatal: 'baby', babypark: 'baby',
+  etos: 'wonen', bever: 'wonen', wibra: 'wonen', bruna: 'wonen', lush: 'wonen',
+  sportdirect: 'kleding', 'jack-en-jones': 'kleding', 'vero-moda': 'mode', 'ici-paris-xl': 'mode', 'dille-en-kamille': 'baby',
 };
 export const categorieVan = (slug) => (CATEGORIE_VAN[slug] ? { key: CATEGORIE_VAN[slug], ...CATEGORIE[CATEGORIE_VAN[slug]] } : null);
