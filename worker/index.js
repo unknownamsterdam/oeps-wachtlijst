@@ -86,6 +86,8 @@ export default {
     if (pad.startsWith('/api/') || APP_BESTANDEN.has(pad)) return naarApp(request, env);
     // 23 okt: content hub voor creators (oud adres /makers). Wachtwoord en bestanden zitten in oeps-mail (privé repo), de site stuurt alleen door.
     if (pad === '/contenthub' || pad.startsWith('/contenthub/') || pad === '/makers' || pad.startsWith('/makers/')) return naarApp(request, env);
+    // 26 okt / 7 nov: eigen link per maker (oeps.app/m/<naam>) en de makerspagina (oeps.app/maker/<code>) draaien in oeps-mail.
+    if (/^\/m\/[^/]+\/?$/.test(pad) || /^\/maker\/[^/]+\/?$/.test(pad)) return naarApp(request, env);
     // 24 okt: ruilbon. De pagina van de ontvanger (oeps.app/ruilbon/<code>) en het kaartje zitten in oeps-mail; de API loopt via /api/*.
     if (pad === '/ruilbon' || pad.startsWith('/ruilbon/')) return naarApp(request, env);
     // Winkelvoorstel uit de retourchecker: alleen de winkelnaam, opgeslagen in oeps-mail (tabel winkelvoorstellen).

@@ -285,6 +285,8 @@ import Cookies from '../components/Cookies.astro';
     if (p.get('aangemeld')) { document.body.classList.add('aangemeld'); }
     if (p.get('binnen')) { document.body.classList.add('binnen'); }
     var bron = p.get('utm_source') || p.get('bron');
+    // 26 okt: de bron (bv. de link van een maker) 30 dagen onthouden, ook als iemand eerst nog andere pagina's bekijkt.
+    try { if (bron) localStorage.setItem('oeps-bron', JSON.stringify({ b: bron, t: Date.now() })); else { var oud = JSON.parse(localStorage.getItem('oeps-bron') || 'null'); if (oud && oud.b && Date.now() - oud.t < 30 * 864e5) bron = String(oud.b).slice(0, 40); } } catch(e){}
     if (!bron && document.referrer) { try { var h = new URL(document.referrer).hostname; if (h !== location.hostname) bron = h; } catch(e){} }
     document.querySelectorAll('.js-bron').forEach(function(veld){
       if (bron) veld.value = bron + (p.get('utm_content') ? ' / ' + p.get('utm_content') : '') + (veld.value !== 'direct' ? ' / ' + veld.value : '');
