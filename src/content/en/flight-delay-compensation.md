@@ -5,7 +5,7 @@ beschrijving: "Flight more than 3 hours late or cancelled? You may be owed €25
 onderwerp: reizen
 volgorde: 18
 nl: vlucht-vertraagd-compensatie
-kortAntwoord: "If you arrive more than 3 hours late, you often have a right to €250, €400 or €600, depending on the distance. That does not apply with extraordinary circumstances, such as bad weather. On 15 June 2026 the EU countries and the European Parliament agreed to keep the 3-hour limit. The Parliament still has to approve it."
+kortAntwoord: "If you arrive more than 3 hours late, you often have a right to €250, €400 or €600, depending on the distance. That does not apply with extraordinary circumstances, such as bad weather. In 2026 it was agreed in Europe to keep the 3-hour limit. The European Parliament voted for it on 7 July 2026. The new rules start in 2027."
 misgaat: "You are at the airport and your flight is hours late. You do not know if you are owed money, food or a hotel. The airline offers a voucher. You accept it, and later it turns out you could have had money."
 oepsZin: "OEPS! keeps your booking and confirmation email in one place. If something goes wrong with your flight, you have everything at hand to claim."
 bijgewerkt: 2026-11-11
@@ -14,6 +14,8 @@ bronnen:
     url: https://www.consumentenbond.nl/vliegen/vlucht-vertraagd
   - naam: "VRT NWS — EU reaches agreement on air passenger rights (in Dutch, 15 June 2026)"
     url: https://www.vrt.be/vrtnws/nl/2026/06/15/eu-bereikt-akkoord-rechten-van-vliegtuigpassagiers-bij-vertragi/
+  - naam: "Euronews — European Parliament votes in favour (in German, 7 July 2026)"
+    url: https://de.euronews.com/my-europe/2026/07/07/eu-parlament-gratis-handgepack
   - naam: "Kassa (BNNVARA) — Flight delayed (in Dutch, 17 January 2026)"
     url: https://www.bnnvara.nl/kassa/artikelen/vlucht-vertraagd-door-nieuwe-europese-regels-kun-je-compensatie-vaak-wel-vergeten
 faq:
@@ -26,7 +28,7 @@ faq:
   - vraag: "What else do I get during a long wait?"
     antwoord: "From 2 hours of delay the airline must give you food and drink, and a hotel if needed. This also applies with extraordinary circumstances. If the delay is over 5 hours, you may skip the trip and ask for your ticket money back."
   - vraag: "What is happening with the European rules?"
-    antwoord: "The European Commission wanted to raise the 3-hour limit to 5 hours. On 15 June 2026 it was agreed that the 3-hour limit stays and that the amounts stay the same. The European Parliament still has to approve it. It is not yet known when it starts."
+    antwoord: "The European Commission wanted to raise the 3-hour limit to 5 hours. That was not adopted: the 3-hour limit stays and the amounts stay the same. The European Parliament voted for the agreement on 7 July 2026. The new rules are expected to start in 2027, and tickets you book before then still fall under the old rules."
   - vraag: "How long can I claim?"
     antwoord: "According to Kassa you can file a claim with the Dutch court up to 2 years after the flight date. Better to start sooner, and ask the airline first."
 ---
@@ -59,9 +61,11 @@ Then you choose: your money back or another flight. Compensation can also apply.
 
 ## What is happening with the European rules?
 
-There was a proposal to give compensation only after **5 hours**. In June 2026 that was dropped: the **3-hour limit stays** and the amounts stay the same. The European Parliament still has to approve it, and it is not known when it starts. Until then the rules above apply.
+There was a proposal to give compensation only after **5 hours**. That was not adopted: the **3-hour limit stays** and the amounts stay the same. The European Parliament voted for the agreement on **7 July 2026**. The new rules are expected to start in **2027**. Tickets you book before then still fall under the old rules. Until then the rules above apply.
 
 New in the agreement: for a delay of more than 3 hours the airline must email you within 4 days about your rights, and within 30 days either pay or explain why not. Automatic payouts are not included.
+
+Also read: [luggage on a plane](/en/explained/luggage-flying-eu/).
 
 ## Why OEPS!?
 
