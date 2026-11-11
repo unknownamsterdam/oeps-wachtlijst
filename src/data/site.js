@@ -38,6 +38,13 @@ export const ONDERWERPEN = {
     kleur: 'lila',
     plaatje: 'kalender',
   },
+  reizen: {
+    naam: 'Reizen',
+    kort: 'Als je reis niet loopt zoals gepland',
+    en: { naam: 'Travel', kort: 'When your trip does not go as planned' },
+    kleur: 'mint',
+    plaatje: 'brief',
+  },
   duurder: {
     naam: 'Duurder geworden',
     kort: 'Als de prijs omhoog gaat',
