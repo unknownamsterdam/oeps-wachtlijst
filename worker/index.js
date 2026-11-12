@@ -57,6 +57,15 @@ export function naarApp(request, env, pad) {
 }
 
 // Ingelogd? Vraag het de app (met de cookie van de bezoeker). Geeft het antwoord terug, of null.
+const KORT = { fb: ['facebook', 'pagina'], li: ['linkedin', 'bedrijf'], joel: ['linkedin', 'joel'], wa: ['whatsapp', 'netwerk'] };
+export function korteLink(pad) {
+  const p = pad.toLowerCase().replace(/\/$/, '');
+  const g = /^\/g\/([a-z0-9-]{1,40})$/.exec(p);
+  if (g) return ['fbgroep', g[1]];
+  const k = KORT[p.slice(1)];
+  return k || null;
+}
+
 async function ingelogd(request, env) {
   if (!/(?:^|;\s*)oeps_sessie=/.test(request.headers.get('cookie') || '')) return null;
   const r = await env.APP.fetch(new Request(new URL('/api/ik', request.url), { headers: { cookie: request.headers.get('cookie') } }));
@@ -97,6 +106,10 @@ export default {
       const r = await env.MAIL.winkelvoorstel(body && body.naam).catch(() => ({ ok: false }));
       return new Response(JSON.stringify(r), { status: r.ok ? 200 : 400, headers: { 'content-type': 'application/json', 'cache-control': 'no-store' } });
     }
+    // 12 nov: korte links voor posts, zodat de herkomst in "Bron" komt zonder lange utm-link.
+    // oeps.app/g/<groep> = Facebookgroep; oeps.app/fb, /li, /joel, /wa = vaste kanalen.
+    const kort = korteLink(pad);
+    if (kort) return Response.redirect(new URL('/?utm_source=' + kort[0] + '&utm_content=' + kort[1], request.url).toString(), 302);
     if (pad.replace(/\/$/, '') === '/aanmelden') {
       if (request.method !== 'POST') return Response.redirect(new URL('/#aanmelden', request.url).toString(), 302);
       // (De Engelse site post naar hetzelfde adres; het verborgen veld taal=en regelt de taal.)
