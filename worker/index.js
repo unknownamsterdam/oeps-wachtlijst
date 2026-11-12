@@ -21,7 +21,7 @@ export async function aanmelden(request, env) {
   const vergeet = String(f.get('vergeet-het-vaakst') || '');
   const anders = String(f.get('vergeet-anders') || '').slice(0, 200);
   const velden = {
-    BRON: String(f.get('bron') || 'direct').slice(0, 50),
+    BRON: String(f.get('bron') || 'direct').slice(0, 100),
     VERGEET: vergeet === 'Iets anders' && anders ? `Iets anders: ${anders}` : vergeet,
     BEDRAG: String(f.get('bedrag-per-maand') || ''),
   };

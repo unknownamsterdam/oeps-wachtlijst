@@ -284,12 +284,18 @@ import Cookies from '../components/Cookies.astro';
     var p = new URLSearchParams(location.search);
     if (p.get('aangemeld')) { document.body.classList.add('aangemeld'); }
     if (p.get('binnen')) { document.body.classList.add('binnen'); }
+    // Herkomst: gelabelde link (utm_source + utm_content) gaat voor, anders de site waar iemand vandaan klikte (bv. lm.facebook.com).
     var bron = p.get('utm_source') || p.get('bron');
-    // 26 okt: de bron (bv. de link van een maker) 30 dagen onthouden, ook als iemand eerst nog andere pagina's bekijkt.
-    try { if (bron) localStorage.setItem('oeps-bron', JSON.stringify({ b: bron, t: Date.now() })); else { var oud = JSON.parse(localStorage.getItem('oeps-bron') || 'null'); if (oud && oud.b && Date.now() - oud.t < 30 * 864e5) bron = String(oud.b).slice(0, 40); } } catch(e){}
-    if (!bron && document.referrer) { try { var h = new URL(document.referrer).hostname; if (h !== location.hostname) bron = h; } catch(e){} }
+    if (bron && p.get('utm_content')) bron += ' / ' + p.get('utm_content');
+    if (!bron && document.referrer) { try { var h = new URL(document.referrer).hostname.replace(/^www\./, ''); if (h && h !== location.hostname.replace(/^www\./, '')) bron = h; } catch(e){} }
+    // 26 okt / 12 nov: herkomst 30 dagen onthouden (ook utm_content en de verwijzende site), zodat wie eerst andere pagina's leest niet als "direct" telt.
+    try { if (bron) localStorage.setItem('oeps-bron', JSON.stringify({ b: String(bron).slice(0, 40), t: Date.now() })); else { var oud = JSON.parse(localStorage.getItem('oeps-bron') || 'null'); if (oud && oud.b && Date.now() - oud.t < 30 * 864e5) bron = String(oud.b).slice(0, 40); } } catch(e){}
+    // 12 nov: de eerste pagina van dit bezoek onthouden (alleen voor dit tabblad, geen cookie).
+    var start = location.pathname.replace(/^\/|\/$/g, '') || 'home';
+    try { var s = sessionStorage.getItem('oeps-start'); if (s) start = s; else sessionStorage.setItem('oeps-start', start.slice(0, 30)); } catch(e){}
     document.querySelectorAll('.js-bron').forEach(function(veld){
-      if (bron) veld.value = bron + (p.get('utm_content') ? ' / ' + p.get('utm_content') : '') + (veld.value !== 'direct' ? ' / ' + veld.value : '');
+      var form = veld.value !== 'direct' ? ' / ' + veld.value : '';
+      veld.value = (bron ? String(bron).slice(0, 40) : 'direct') + ' · start: ' + String(start).slice(0, 30) + form;
     });
     document.querySelectorAll('form[name=wachtlijst]').forEach(function(form){
       var sel = form.querySelector('.js-vergeet');
