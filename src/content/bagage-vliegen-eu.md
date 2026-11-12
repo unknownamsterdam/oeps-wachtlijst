@@ -6,7 +6,7 @@ onderwerp: reizen
 volgorde: 23
 kortAntwoord: "Nu bepaalt je maatschappij zelf wat handbagage en ruimbagage kost. Vanaf 2027 komen er nieuwe Europese regels: een klein persoonlijk item mag gratis mee en de prijs met handbagage moet bij het boeken zichtbaar zijn. Is je koffer kwijt of kapot, meld het dan meteen bij de bagagebalie. Beschadigd? Meld het binnen 7 dagen. Vertraagd of kwijt? Binnen 21 dagen."
 misgaat: "Je staat bij de gate en je moet betalen voor je tas. Of je koffer komt niet aan en je weet niet wat je mag doen. Je meldt het te laat, en de maatschappij betaalt niets."
-oepsZin: "OEPS! bewaart je boeking en laat je zien wat erbij zit, zoals bagage. Zo weet je op tijd wat je mee mag en wat je nog moet bijboeken."
+oepsZin: "OEPS! herkent je vliegticket in je mail en zet er een knop bij om bagage te boeken bij je maatschappij. Zo denk je er op tijd aan."
 bijgewerkt: 2026-11-11
 bronnen:
   - naam: "Radar (AVROTROS) — EU-akkoord over nieuwe vliegregels: wat verandert er voor jouw handbagage en compensatie? (16 juni 2026)"
@@ -78,7 +78,7 @@ De maatschappij is verantwoordelijk voor ingecheckte bagage. Het maximum is onge
 
 ## Waarom OEPS!?
 
-Je bagage regel je bij het boeken en je claim moet op tijd. OEPS! bewaart je boeking en laat je zien wat erbij zit, zoals bagage. Zo weet je op tijd wat je mee mag en wat je nog moet bijboeken.
+Je bagage regel je bij het boeken en je claim moet op tijd. OEPS! herkent je vliegticket in je mail. Bij de aankoop staat een knop 'Bagage boeken bij' je maatschappij, die de site van de maatschappij opent. Vlak voor vertrek wordt het 'Inchecken bij'. Zo denk je er op tijd aan.
 
 Lees ook: [vlucht vertraagd of geannuleerd](/hoe-zit-dat/vlucht-vertraagd-compensatie/).
 

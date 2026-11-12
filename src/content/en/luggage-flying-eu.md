@@ -7,7 +7,7 @@ volgorde: 23
 nl: bagage-vliegen-eu
 kortAntwoord: "Right now your airline decides what hand luggage and checked luggage cost. From 2027 new European rules apply: a small personal item may come along for free and the price including hand luggage must be visible when booking. If your suitcase is lost or damaged, report it right away at the baggage desk. Damaged? Report within 7 days. Delayed or lost? Within 21 days."
 misgaat: "You stand at the gate and have to pay for your bag. Or your suitcase does not arrive and you do not know what to do. You report it too late, and the airline pays nothing."
-oepsZin: "OEPS! keeps your booking and shows what is included, such as luggage. So you know in time what you can take and what you still need to add."
+oepsZin: "OEPS! recognises your flight ticket in your email and adds a button to book luggage with your airline. So you remember in time."
 bijgewerkt: 2026-11-11
 bronnen:
   - naam: "Radar (AVROTROS) — EU agreement on new flight rules (in Dutch, 16 June 2026)"
@@ -79,7 +79,7 @@ The airline is responsible for checked luggage. The maximum is about **€1,860 
 
 ## Why OEPS!?
 
-You arrange your luggage when booking and your claim must be in time. OEPS! keeps your booking and shows what is included, such as luggage. So you know in time what you can take and what you still need to add.
+You arrange your luggage when booking and your claim must be in time. OEPS! recognises your flight ticket in your email. On the purchase there is a 'Book luggage with' button for your airline, which opens the airline's site. Just before departure it becomes 'Check in with'. So you remember in time.
 
 Also read: [flight delayed or cancelled](/en/explained/flight-delay-compensation/).
 
