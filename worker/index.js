@@ -109,7 +109,7 @@ export default {
     // 12 nov: korte links voor posts, zodat de herkomst in "Bron" komt zonder lange utm-link.
     // oeps.app/g/<groep> = Facebookgroep; oeps.app/fb, /li, /joel, /wa = vaste kanalen.
     const kort = korteLink(pad);
-    if (kort) return Response.redirect(new URL('/?utm_source=' + kort[0] + '&utm_content=' + kort[1], request.url).toString(), 302);
+    if (kort) return Response.redirect(new URL('/?utm_source=' + kort[0] + '&utm_medium=social&utm_content=' + kort[1], request.url).toString(), 302);
     if (pad.replace(/\/$/, '') === '/aanmelden') {
       if (request.method !== 'POST') return Response.redirect(new URL('/#aanmelden', request.url).toString(), 302);
       // (De Engelse site post naar hetzelfde adres; het verborgen veld taal=en regelt de taal.)
