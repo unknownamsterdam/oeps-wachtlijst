@@ -45,6 +45,13 @@ export const ONDERWERPEN = {
     kleur: 'zon',
     plaatje: 'prijskaartje',
   },
+  auto: {
+    naam: 'Auto',
+    kort: 'APK en andere datums',
+    en: { naam: 'Car', kort: 'MOT and other dates' },
+    kleur: 'mint',
+    plaatje: 'kalender',
+  },
 };
 
 // Een onderwerp in de gevraagde taal (naam en kort in het Engels als taal = 'en').
