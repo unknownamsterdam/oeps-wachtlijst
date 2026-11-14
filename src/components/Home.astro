@@ -26,7 +26,14 @@ const X = {
       ['Actie klaar', 'Bij elke melding staat de retourlink, de mail aan de winkel of je garantieclaim klaar. Jij verstuurt zelf.'],
     ],
     oplevertKop: 'Wat het je oplevert',
-    oplevert: 'Eén gemiste retour kost je zo €40. OEPS! laat zien wat het je oplevert: geld terug na retour en hoe vaak je iets op tijd regelde.',
+    oplevert: 'Eén retour op tijd en je hebt al geld terug. Dit zijn de dingen die mensen het vaakst missen.',
+    opl: [
+      ['€40', 'Een gemiste retour', 'Gemiddeld laat je zo €40 liggen. OEPS! zegt het op tijd, met de retourlink erbij.'],
+      ['€90', 'Een prijsverhoging gemist', 'Je abonnement wordt €7,50 per maand duurder. Dat is €90 per jaar. Wij zeggen het meteen.'],
+      ['2 jaar', 'Garantie die verloopt', 'Je wasmachine gaat kapot net na de garantie. Wij waarschuwen je ervoor, met je bon klaar.'],
+      ['1 jaar', 'Te laat opgezegd', 'Mis je de opzegtermijn, dan loopt het abonnement nog een jaar door. Wij letten op de datum.'],
+    ],
+    oplSlot: 'Meteen merkbaar: OEPS! telt bij hoeveel geld je terugkreeg en hoe vaak je iets op tijd regelde.',
     hoeKop: 'Hoe zit dat?', alles: 'Alles bekijken →', hoeSub: 'Je hebt vaak meer rechten dan je denkt. Simpel uitgelegd.',
     belofteKop: 'Onze belofte',
     belofte: [
@@ -52,7 +59,14 @@ const X = {
       ['Action ready', 'Every alert comes with the return link, the email to the shop or your warranty claim ready to go. You hit send yourself.'],
     ],
     oplevertKop: 'What you get out of it',
-    oplevert: 'One missed return easily costs you €40. OEPS! shows you what it brings in: money back after a return and how often you sorted something out in time.',
+    oplevert: 'One return made in time and you already have money back. These are the things people miss most often.',
+    opl: [
+      ['€40', 'A missed return', 'On average you leave about €40 on the table. OEPS! tells you in time, with the return link ready.'],
+      ['€90', 'A missed price increase', 'Your subscription goes up €7.50 a month. That is €90 a year. We tell you right away.'],
+      ['2 years', 'Warranty running out', 'Your washing machine breaks just after the warranty ends. We warn you first, with your receipt ready.'],
+      ['1 year', 'Cancelled too late', 'Miss the notice period and the subscription runs for another year. We watch the date.'],
+    ],
+    oplSlot: 'You see it quickly: OEPS! keeps count of the money you got back and how often you sorted something out in time.',
     hoeKop: 'Know your rights', alles: 'See all →', hoeSub: 'You often have more rights than you think. Simply explained, for shopping in the Netherlands.',
     belofteKop: 'Our promise',
     belofte: [
@@ -96,6 +110,10 @@ const andere = taal === 'en' ? PAD.nl.home : PAD.en.home;
     <div class="wrap">
       <h2>{X.oplevertKop}</h2>
       <p class="lead" style="max-width:640px">{X.oplevert}</p>
+      <div class="opl">
+        {X.opl.map(([getal, kop, tekst]) => <div class="oplk"><span class="g">{getal}</span><b>{kop}</b>{tekst}</div>)}
+      </div>
+      <p class="oplslot">{X.oplSlot}</p>
     </div>
   </section>
 
@@ -165,6 +183,12 @@ const andere = taal === 'en' ? PAD.nl.home : PAD.en.home;
   .stap b{display:block;font-stretch:112%;font-size:19px;margin-bottom:6px}
   .stap .n{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--zacht);display:block;margin-bottom:10px}
 
+  .opl{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:8px}
+  .oplk{background:var(--grijs);border-radius:var(--rond);padding:20px;font-size:16px}
+  .oplk .g{display:inline-block;background:var(--geel);font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:26px;padding:2px 10px;border-radius:10px;margin-bottom:12px}
+  .oplk b{display:block;font-stretch:112%;font-size:18px;margin-bottom:6px}
+  .oplslot{margin-top:22px;font-weight:600;max-width:640px}
+
   .hoe{padding:64px 0 8px}
   .hoe-kop{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
   .alles{font-weight:700;text-decoration:none;white-space:nowrap}
@@ -183,6 +207,8 @@ const andere = taal === 'en' ? PAD.nl.home : PAD.en.home;
     .hero{grid-template-columns:1fr;gap:36px;padding:16px 20px 48px}
     .bon{grid-column:auto;grid-row:auto}
     .grid,.belofte ul{grid-template-columns:1fr}
+    .opl{grid-template-columns:1fr}
+    .oplk .g{white-space:nowrap}
     .bon{transform:none}
     section.volg{border-radius:0}
   }
