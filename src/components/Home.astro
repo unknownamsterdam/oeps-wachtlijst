@@ -15,13 +15,17 @@ const X = {
     titel: 'OEPS! — Nooit meer een opzegtermijn, garantie of prijsverhoging missen',
     beschrijving: 'Leg het één keer vast, OEPS! onthoudt de rest. Wij bewaken je retourtermijnen, retouren, garanties en pakketten. Meld je gratis aan.',
     h1a: 'Leg het één keer vast.', h1b: 'Wij onthouden de rest.',
-    lead: 'OEPS! is het geheugen van alles wat je koopt. Koppel je mailbox of stuur je bonnen door. Wij letten op je retourtermijn, je pakketten en hoe lang je garantie loopt.',
+    lead: 'OEPS! is het geheugen van alles wat je koopt. Koppel je Gmail of Outlook of stuur je bonnen door. Wij letten op je retourtermijn, je pakketten en hoe lang je garantie loopt.',
     bonKop: 'OEPS! · DEZE MAAND',
     bon: [['Koptelefoon', 'retour ok'], ['Zalando', '€89,95 terug ✓'], ['Wasmachine', 'garantie tot 2028'], ['Pakket', 'ligt klaar'], ['Dit jaar', '€134 opgeleverd']],
     bonTot: ['ACTIES', '1 klaar'],
+    inbKop: 'Wie kent het niet?',
+    inb: 'Een volle inbox, en ergens daartussen die ene belangrijke mail. De orderbevestiging. De retourtermijn. De brief over je prijsverhoging. Wij vissen ze eruit, zodat jij niet hoeft te zoeken.',
+    inbHulp: 'Wij helpen je daarbij.',
+    inbRijen: [['Nieuwsbrief', '20% korting op alles!', ''], ['Zalando', 'Je bestelling is onderweg', 'retour t/m 28 nov'], ['LinkedIn', '3 nieuwe uitnodigingen', ''], ['Vitens', 'Wijziging tarief 2027', 'duurder per jan'], ['Webshop', 'Tip: onze zomercollectie', ''], ['Coolblue', 'Bonnetje wasmachine', 'garantie tot 2028']],
     zoKop: 'Zo werkt het',
     stappen: [
-      ['Koppel of stuur door', 'Koppel je Gmail, of stuur orderbevestigingen en bonnen naar je eigen OEPS!-adres. Een foto van de kassabon kan ook.'],
+      ['Koppel of stuur door', 'Koppel je Gmail of Outlook, of stuur orderbevestigingen en bonnen naar je eigen OEPS!-adres. Een foto van de kassabon kan ook.'],
       ['Wij bewaken', 'Retourtermijnen, terugbetalingen, garanties en je pakketten. Je hoort alleen iets als het nodig is.'],
       ['Actie klaar', 'Bij elke melding staat de retourlink, de mail aan de winkel of je garantieclaim klaar. Jij verstuurt zelf.'],
     ],
@@ -48,13 +52,17 @@ const X = {
     titel: 'OEPS! — Never miss a return deadline, warranty or price increase again',
     beschrijving: 'Save it once, OEPS! remembers the rest. We keep track of your return deadlines, returns, warranties and parcels. For people living in the Netherlands. Sign up for free.',
     h1a: 'Save it once.', h1b: 'We remember the rest.',
-    lead: 'OEPS! is the memory for everything you buy. Connect your mailbox or forward your receipts. We keep an eye on your return deadline, your parcels and how long your warranty lasts.',
+    lead: 'OEPS! is the memory for everything you buy. Connect your Gmail or Outlook, or forward your receipts. We keep an eye on your return deadline, your parcels and how long your warranty lasts.',
     bonKop: 'OEPS! · THIS MONTH',
     bon: [['Headphones', 'return ok'], ['Zalando', '€89.95 back ✓'], ['Washing machine', 'warranty until 2028'], ['Parcel', 'ready for pickup'], ['This year', '€134 saved']],
     bonTot: ['ACTIONS', '1 done'],
+    inbKop: 'We all know it',
+    inb: 'A full inbox, and somewhere in there that one important email. The order confirmation. The return deadline. The letter about a price increase. We pick them out, so you do not have to search.',
+    inbHulp: 'We help you with that.',
+    inbRijen: [['Newsletter', '20% off everything!', ''], ['Zalando', 'Your order is on its way', 'return by 28 Nov'], ['LinkedIn', '3 new invitations', ''], ['Vitens', 'Tariff change 2027', 'more expensive from Jan'], ['Webshop', 'Tip: our summer collection', ''], ['Coolblue', 'Receipt washing machine', 'warranty until 2028']],
     zoKop: 'How it works',
     stappen: [
-      ['Connect or forward', 'Connect your Gmail, or forward order confirmations and receipts to your own OEPS! address. A photo of a paper receipt works too.'],
+      ['Connect or forward', 'Connect your Gmail or Outlook, or forward order confirmations and receipts to your own OEPS! address. A photo of a paper receipt works too.'],
       ['We keep watch', "Return deadlines, refunds, warranties and your parcels. You only hear from us when it matters."],
       ['Action ready', 'Every alert comes with the return link, the email to the shop or your warranty claim ready to go. You hit send yourself.'],
     ],
@@ -96,6 +104,19 @@ const andere = taal === 'en' ? PAD.nl.home : PAD.en.home;
       <div class="r tot"><span>{X.bonTot[0]}</span><span>{X.bonTot[1]}</span></div>
     </div>
   </div>
+
+  <section class="inbox">
+    <div class="wrap inb">
+      <div>
+        <h2>{X.inbKop}</h2>
+        <p class="lead">{X.inb}</p>
+        <p class="hulp">{X.inbHulp}</p>
+      </div>
+      <div class="post" aria-hidden="true">
+        {X.inbRijen.map(([van, onderwerp, tag]) => <div class={tag ? 'mrij vang' : 'mrij'}><span class="van">{van}</span><span class="ond">{onderwerp}</span>{tag && <mark>{tag}</mark>}</div>)}
+      </div>
+    </div>
+  </section>
 
   <section class="drie">
     <div class="wrap">
@@ -176,6 +197,17 @@ const andere = taal === 'en' ? PAD.nl.home : PAD.en.home;
   .bon .hl{background:var(--geel);margin:0 -6px;padding:6px}
   .bon .tot{border:0;font-weight:500;margin-top:8px}
 
+  section.inbox{padding:8px 0 64px}
+  .inb{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+  .inb h2{margin-bottom:12px}
+  .inb .lead{margin-bottom:14px}
+  .hulp{font-weight:800;font-stretch:112%;font-size:20px}
+  .post{background:var(--wit);border-radius:var(--rond);padding:10px;display:grid;gap:6px;box-shadow:0 10px 30px rgba(20,33,61,.1)}
+  .mrij{display:grid;grid-template-columns:96px 1fr;gap:2px 10px;padding:10px 12px;border-radius:12px;font-size:15px;color:var(--zacht);opacity:.6}
+  .mrij .van{font-weight:700}
+  .mrij mark{background:var(--geel);color:var(--marine);line-height:1.5;grid-column:2;justify-self:start;font-size:13px;font-weight:700;padding:1px 8px;border-radius:8px}
+  .mrij.vang{opacity:1;color:var(--marine);background:var(--grijs);border:2px solid var(--marine)}
+
   section.drie{background:var(--wit);padding:64px 0}
   section.drie h2{margin-bottom:28px}
   .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
@@ -208,6 +240,8 @@ const andere = taal === 'en' ? PAD.nl.home : PAD.en.home;
     .bon{grid-column:auto;grid-row:auto}
     .grid,.belofte ul{grid-template-columns:1fr}
     .opl{grid-template-columns:1fr}
+    .inb{grid-template-columns:1fr;gap:24px}
+    .mrij{grid-template-columns:80px 1fr}
     .oplk .g{white-space:nowrap}
     .bon{transform:none}
     section.volg{border-radius:0}
