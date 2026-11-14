@@ -118,7 +118,7 @@ const andere = taal === 'en' ? PAD.nl.home : PAD.en.home;
     </div>
   </section>
 
-  <section class="drie">
+  <section class="drie rand-boven">
     <div class="wrap">
       <h2>{X.zoKop}</h2>
       <div class="grid">
@@ -127,7 +127,7 @@ const andere = taal === 'en' ? PAD.nl.home : PAD.en.home;
     </div>
   </section>
 
-  <section class="drie">
+  <section class="drie rand-onder">
     <div class="wrap">
       <h2>{X.oplevertKop}</h2>
       <p class="lead" style="max-width:640px">{X.oplevert}</p>
@@ -221,6 +221,9 @@ const andere = taal === 'en' ? PAD.nl.home : PAD.en.home;
   .oplk b{display:block;font-stretch:112%;font-size:18px;margin-bottom:6px}
   .oplslot{margin-top:22px;font-weight:600;max-width:640px}
 
+  /* Gescheurde bon-rand: maar op twee plekken, boven en onder het witte blok */
+  section.rand-boven{padding-top:76px;-webkit-mask:linear-gradient(#000 0 0) bottom/100% calc(100% - 10px) no-repeat,radial-gradient(circle 6px at 8px 0,transparent 6px,#000 6.5px) top left/16px 10px repeat-x;mask:linear-gradient(#000 0 0) bottom/100% calc(100% - 10px) no-repeat,radial-gradient(circle 6px at 8px 0,transparent 6px,#000 6.5px) top left/16px 10px repeat-x}
+  section.rand-onder{padding-bottom:76px;-webkit-mask:linear-gradient(#000 0 0) top/100% calc(100% - 10px) no-repeat,radial-gradient(circle 6px at 8px 100%,transparent 6px,#000 6.5px) bottom left/16px 10px repeat-x;mask:linear-gradient(#000 0 0) top/100% calc(100% - 10px) no-repeat,radial-gradient(circle 6px at 8px 100%,transparent 6px,#000 6.5px) bottom left/16px 10px repeat-x}
   .hoe{padding:64px 0 8px}
   .hoe-kop{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
   .alles{font-weight:700;text-decoration:none;white-space:nowrap}
