@@ -6,7 +6,7 @@ onderwerp: terugsturen
 volgorde: 11
 kortAntwoord: "Stuur je iets terug, meld de retour dan óók bij je achteraf-betaaldienst. Bij Klarna pauzeert je betaling zodra je de retour meldt in de app. Pas als de winkel je retour verwerkt, wordt je rekening aangepast. Doe je niets, dan loopt de betaaltermijn gewoon door."
 misgaat: "Je stuurt de jas op tijd terug. Je denkt: klaar. Drie weken later komt er een herinnering, met extra kosten. De winkel had je retour nog niet verwerkt, en de klok bij de betaaldienst liep door."
-oepsZin: "OEPS! onthoudt wat je terugstuurde en kijkt of je geld of je nieuwe rekening echt komt. Blijft het stil? Dan krijg je een seintje."
+oepsZin: "OEPS! onthoudt wat je terugstuurde en wat je nog moet betalen. Zo betaal je niet per ongeluk voor iets dat al terug is."
 bijgewerkt: 2026-11-02
 bronnen:
   - naam: "Klarna — Hoe retourneer ik mijn bestelling?"

@@ -6,7 +6,7 @@ onderwerp: terugsturen
 volgorde: 8
 kortAntwoord: "Stuurde je iets terug binnen de bedenktijd? Dan moet de webwinkel binnen 14 dagen terugbetalen. Hij mag wachten tot het pakket terug is, of tot jij laat zien dat je het hebt verstuurd. De gewone verzendkosten krijg je ook terug."
 misgaat: "Je bracht het pakket drie weken geleden naar het pakketpunt. Het geld is nog niet binnen. Het bonnetje van het pakketpunt? Weg. En wanneer stuurde je het ook alweer?"
-oepsZin: "OEPS! onthoudt wanneer je iets terugstuurde. Is je geld na 14 dagen nog niet binnen? Dan krijg je een seintje, met een kant-en-klare mail voor de winkel."
+oepsZin: "OEPS! ziet je retourmail en zet je retour vanzelf op teruggestuurd. Zo weet je altijd wat je terugstuurde, en wanneer."
 bijgewerkt: 2026-10-26
 bronnen:
   - naam: "ACM — Bedenktijd (regels voor verkopers)"

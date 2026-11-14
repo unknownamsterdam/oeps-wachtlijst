@@ -7,7 +7,7 @@ volgorde: 11
 nl: achteraf-betalen-retour
 kortAntwoord: "When you send something back, also report the return to your pay-later service. With Klarna, your payment is paused as soon as you report the return in the app. Your bill is only adjusted once the shop has processed the return. If you do nothing, the payment term just keeps running."
 misgaat: "You send the coat back in time. You think: done. Three weeks later a reminder arrives, with extra costs. The shop hadn't processed your return yet, and the clock at the payment service kept ticking."
-oepsZin: "OEPS! remembers what you sent back and checks whether your money or your new bill really arrives. If it stays quiet, you get a nudge."
+oepsZin: "OEPS! remembers what you sent back and what you still have to pay. So you never pay by mistake for something that already went back."
 bijgewerkt: 2026-11-02
 bronnen:
   - naam: "Klarna — How do I return my order? (Dutch)"

@@ -7,7 +7,7 @@ volgorde: 8
 nl: geld-terug-na-retour
 kortAntwoord: "Returned something within the cooling-off period? Then the online shop must refund you within 14 days. It may wait until the parcel is back, or until you show you sent it. You also get the standard delivery costs back."
 misgaat: "You took the parcel to the pick-up point three weeks ago. The money still isn't in. The receipt from the pick-up point? Gone. And when did you send it again?"
-oepsZin: "OEPS! remembers when you sent something back. Still no money after 14 days? You get a nudge, with a ready-made email for the shop."
+oepsZin: "OEPS! spots your return email and marks your return as sent back by itself. So you always know what you sent back, and when."
 bijgewerkt: 2026-10-26
 bronnen:
   - naam: "ACM — Cooling-off period (rules for sellers, Dutch)"
