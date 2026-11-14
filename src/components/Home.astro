@@ -74,14 +74,14 @@ const andere = taal === 'en' ? PAD.nl.home : PAD.en.home;
       <Wachtlijst taal={taal} />
     </div>
 
+    <Animatie taal={taal} />
+
     <div class="bon" aria-hidden="true">
       <h3>{X.bonKop}</h3>
       {X.bon.map(([a, b], i) => <div class={i === 1 ? 'r hl' : 'r'}><span>{a}</span><span>{b}</span></div>)}
       <div class="r tot"><span>{X.bonTot[0]}</span><span>{X.bonTot[1]}</span></div>
     </div>
   </div>
-
-  <Animatie taal={taal} />
 
   <section class="drie">
     <div class="wrap">
@@ -145,7 +145,9 @@ const andere = taal === 'en' ? PAD.nl.home : PAD.en.home;
 </Base>
 
 <style>
-  .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding:32px 20px 64px}
+  .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:start;padding:32px 20px 64px}
+  .hero>div:first-child{grid-row:1 / span 2}
+  .bon{grid-column:2;grid-row:2}
   .hero h1{margin-bottom:20px}
   .lead{font-size:19px;color:var(--zacht);max-width:34em;margin-bottom:28px}
   .bon{background:var(--wit);font-family:"IBM Plex Mono",monospace;font-size:14px;padding:24px 22px 30px;box-shadow:0 10px 30px rgba(20,33,61,.12);transform:rotate(1.5deg);max-width:360px;justify-self:center;width:100%;
@@ -179,6 +181,7 @@ const andere = taal === 'en' ? PAD.nl.home : PAD.en.home;
 
   @media (max-width:800px){
     .hero{grid-template-columns:1fr;gap:36px;padding:16px 20px 48px}
+    .bon{grid-column:auto;grid-row:auto}
     .grid,.belofte ul{grid-template-columns:1fr}
     .bon{transform:none}
     section.volg{border-radius:0}
