@@ -3,6 +3,7 @@
 import Base from '../layouts/Base.astro';
 import Plaatje from './Plaatje.astro';
 import Wachtlijst from './Wachtlijst.astro';
+import Animatie from './Animatie.astro';
 import { SITE, ONDERWERPEN, onderwerpIn } from '../data/site.js';
 import { vragen } from '../data/vragen.js';
 import { PAD } from '../i18n.js';
@@ -79,6 +80,8 @@ const andere = taal === 'en' ? PAD.nl.home : PAD.en.home;
       <div class="r tot"><span>{X.bonTot[0]}</span><span>{X.bonTot[1]}</span></div>
     </div>
   </div>
+
+  <Animatie taal={taal} />
 
   <section class="drie">
     <div class="wrap">
