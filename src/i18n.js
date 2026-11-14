@@ -24,7 +24,7 @@ export const TEKST = {
   nl: {
     taalKnop: 'EN', taalKnopLabel: 'Read this page in English', taalNaam: 'English',
     menu: 'Hoofdmenu', uitleg: 'Hoe zit dat?', inloggen: 'Inloggen', start: 'Start gratis',
-    voetZin: 'Leg het één keer vast. Wij onthouden de rest. OEPS! wordt gebouwd in Nederland.',
+    voetZin: 'Eén koppeling. Wij onthouden de rest. OEPS! wordt gebouwd in Nederland.',
     handig: 'Handig', retourtermijnen: 'Retourtermijnen', garantiePerWinkel: 'Garantie per winkel', abonnementenOpzeggen: 'Abonnementen opzeggen',
     aanmelden: 'Aanmelden', privacy: 'Privacy', voorwaarden: 'Voorwaarden', cookies: 'Cookies',
     voetOnder: 'Uitleg op deze site is algemene informatie, geen juridisch advies.',
@@ -47,7 +47,7 @@ export const TEKST = {
   en: {
     taalKnop: 'NL', taalKnopLabel: 'Lees deze pagina in het Nederlands', taalNaam: 'Nederlands',
     menu: 'Main menu', uitleg: 'Know your rights', inloggen: 'Log in', start: 'Start free',
-    voetZin: 'Save it once. We remember the rest. OEPS! is built in the Netherlands.',
+    voetZin: 'One connection. We remember the rest. OEPS! is built in the Netherlands.',
     handig: 'Handy', retourtermijnen: 'Return periods', garantiePerWinkel: 'Warranty per shop', abonnementenOpzeggen: 'Cancel a subscription',
     aanmelden: 'Sign up', privacy: 'Privacy', voorwaarden: 'Terms', cookies: 'Cookies',
     voetOnder: 'The information on this site is general information, not legal advice.',
