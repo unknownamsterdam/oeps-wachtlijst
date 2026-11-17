@@ -92,8 +92,8 @@ export default {
     if (pad === '/inloggen') return geenCache(await naarApp(request, env, '/'));
     if (pad === '/inloggen/') return Response.redirect(new URL('/inloggen' + url.search, request.url).toString(), 301);
     if (pad === '/app' || pad.startsWith('/app/')) return Response.redirect(new URL('/inloggen', request.url).toString(), 302);
-    // 16 nov: /pdfjs/ = de pdf-lezer van de app (barcode van een kaartje als plaatje tonen).
-    if (pad.startsWith('/api/') || pad.startsWith('/pdfjs/') || APP_BESTANDEN.has(pad)) return naarApp(request, env);
+    // 16 nov: /pdfjs/ = de pdf-lezer van de app (barcode van een kaartje als plaatje tonen). 17 nov: /lib/ = barcode-tekenaar (afhaalcode).
+    if (pad.startsWith('/api/') || pad.startsWith('/pdfjs/') || pad.startsWith('/lib/') || APP_BESTANDEN.has(pad)) return naarApp(request, env);
     // 23 okt: content hub voor creators (oud adres /makers). Wachtwoord en bestanden zitten in oeps-mail (privé repo), de site stuurt alleen door.
     if (pad === '/contenthub' || pad.startsWith('/contenthub/') || pad === '/makers' || pad.startsWith('/makers/')) return naarApp(request, env);
     // 26 okt / 7 nov: eigen link per maker (oeps.app/m/<naam>) en de makerspagina (oeps.app/maker/<code>) draaien in oeps-mail.
