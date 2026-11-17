@@ -52,6 +52,13 @@ export const ONDERWERPEN = {
     kleur: 'mint',
     plaatje: 'kalender',
   },
+  reizen: {
+    naam: 'Reizen',
+    kort: 'Vertraging en geld terug',
+    en: { naam: 'Travel', kort: 'Delays and getting money back' },
+    kleur: 'lila',
+    plaatje: 'kalender',
+  },
 };
 
 // Een onderwerp in de gevraagde taal (naam en kort in het Engels als taal = 'en').
