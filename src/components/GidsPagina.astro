@@ -5,7 +5,7 @@ import Base from '../layouts/Base.astro';
 import Plaatje from './Plaatje.astro';
 import Wachtlijst from './Wachtlijst.astro';
 import { SITE } from '../data/site.js';
-import { RETOUR, OPZEGGEN, VIA, MANIER, RETOUR_EN, OPZEGGEN_EN, VIA_EN, MANIER_EN, gidsPad, heeftEngels, categorieVan } from '../data/gids.js';
+import { RETOUR, OPZEGGEN, VIA, MANIER, RETOUR_EN, OPZEGGEN_EN, VIA_EN, MANIER_EN, gidsPad, heeftEngels, categorieVan, KLIK } from '../data/gids.js';
 import { GARANTIE } from '../data/garantie.js';
 import { PAD, TEKST, datum } from '../i18n.js';
 
@@ -48,7 +48,9 @@ const X = en ? {
   meer: retour ? 'Andere retourtermijnen' : 'Andere abonnementen opzeggen', mini: (x) => (retour ? `Retourtermijn ${x.naam}` : `${x.naam} opzeggen`),
   nlKnoppen: null,
 };
-const { titel, seoTitel, termijn } = X;
+const klik = !en && retour ? KLIK[p.slug] : null;
+const { titel, termijn } = X;
+const seoTitel = klik ? klik.titel : X.seoTitel;
 const kort = en
   ? (retour
       ? (termijn ? `At ${p.naam} you have ${termijn} to send something back.${kosten ? (/^free$/i.test(kosten) ? ' Returning is free.' : ` Return costs: ${kosten}.`) : ''}` : `Here’s how to send something back to ${p.naam}.`)
@@ -56,7 +58,7 @@ const kort = en
   : (retour
       ? (termijn ? `Bij ${p.naam} heb je ${termijn} om iets terug te sturen.${r.kosten ? ` Retourkosten: ${r.kosten.replace(/\.$/, '')}.` : ''}` : `Zo stuur je iets terug naar ${p.naam}.`)
       : `Je zegt ${p.naam} op ${X.via}.${o.let_op ? ' ' + o.let_op : ''}`);
-const beschrijving = en
+const beschrijving = klik ? klik.omschrijving : en
   ? (retour
       ? `${termijn ? `You have ${termijn} to send your ${p.naam} order back.` : `How to send your ${p.naam} order back.`} Steps, costs and a nudge before it’s too late.`
       : `How to cancel ${p.naam} in a few steps. Plus: what to watch out for so you’re not stuck for another period.`)

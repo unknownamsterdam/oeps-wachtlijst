@@ -9,6 +9,16 @@ export const OPZEGGEN = klaar.filter((p) => p.soort === 'opzeggen' && p.opzeggen
 export const VIA = { account: 'in je account', mail: 'per mail', telefoon: 'telefonisch', formulier: 'met een formulier', brief: 'per brief', winkel: 'in de winkel' };
 export const MANIER = { account: 'Retour aanmelden in je account', winkel: 'Terugbrengen naar een winkel', retourpunt: 'Afgeven bij een pakketpunt', ophalen: 'Laten ophalen' };
 
+// 17 nov (Joël, klikkansen K1–K5): betere titel en omschrijving voor retourpagina's die vaak in Google staan maar weinig klikken krijgen.
+// Alleen Nederlandse pagina's. Feiten per winkel staan met bron in claude/onderwerpen/klikkansen.md (gezien 17-11-2026).
+export const KLIK = {
+  'h-en-m': { titel: 'Retour H&M: 30 dagen, ook in de winkel | OEPS!', omschrijving: 'Je hebt 30 dagen (sale: 14). Per post kost het € 2,99, of breng het naar de winkel. OEPS! geeft je een seintje voordat je termijn afloopt.' },
+  zara: { titel: 'Retour Zara: 30 dagen, gratis in de winkel | OEPS!', omschrijving: 'Je hebt 30 dagen. In de winkel is gratis, via een afleverpunt kost het € 2,95. OEPS! geeft je een seintje voordat je termijn afloopt.' },
+  hunkemoller: { titel: 'Retour Hunkemöller: 30 dagen, gratis in de winkel | OEPS!', omschrijving: 'Breng het binnen 30 dagen gratis terug naar de winkel. Zo werkt terugsturen. OEPS! geeft je een seintje voordat je termijn afloopt.' },
+  'my-jewellery': { titel: 'Retour My Jewellery: 14 dagen, gratis in de winkel | OEPS!', omschrijving: 'Je hebt 14 dagen. In de boutique is gratis, per post kost het € 4,99. OEPS! geeft je een seintje voordat je termijn afloopt.' },
+  hornbach: { titel: 'Retour Hornbach: 30 dagen, gratis terugsturen | OEPS!', omschrijving: 'Online besteld? Je hebt 30 dagen en terugsturen is gratis. OEPS! geeft je een seintje voordat je termijn afloopt.' },
+};
+
 // 22 okt: Engelse versies. Alleen winkels en diensten met een vertaling in gids-en.js krijgen een Engelse pagina.
 import { GIDS_EN, VIA_EN, MANIER_EN } from './gids-en.js';
 export { VIA_EN, MANIER_EN };
