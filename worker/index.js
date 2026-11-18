@@ -61,6 +61,8 @@ const KORT = { fb: ['facebook', 'pagina'], li: ['linkedin', 'bedrijf'], joel: ['
 export function korteLink(pad) {
   const p = pad.toLowerCase().replace(/\/$/, '');
   const g = /^\/g\/([a-z0-9-]{1,40})$/.exec(p);
+  const li = /^\/li\/([a-z0-9-]{1,40})$/.exec(p);
+  if (li) return ['linkedin', li[1]];
   if (g) return ['fbgroep', g[1]];
   const k = KORT[p.slice(1)];
   return k || null;
