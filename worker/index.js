@@ -100,6 +100,8 @@ export default {
     if (/^\/m\/[^/]+\/?$/.test(pad) || /^\/maker\/[^/]+\/?$/.test(pad)) return naarApp(request, env);
     // 24 okt: ruilbon. De pagina van de ontvanger (oeps.app/ruilbon/<code>) en het kaartje zitten in oeps-mail; de API loopt via /api/*.
     if (pad === '/ruilbon' || pad.startsWith('/ruilbon/')) return naarApp(request, env);
+    // 18 nov: delen van voucher, kaartje of reservering (oeps.app/deel/<code>) zit ook in oeps-mail (src/delen.js).
+    if (pad.startsWith('/deel/')) return naarApp(request, env);
     // Winkelvoorstel uit de retourchecker: alleen de winkelnaam, opgeslagen in oeps-mail (tabel winkelvoorstellen).
     if (pad === '/winkelvoorstel') {
       if (request.method !== 'POST') return tekst('Alleen POST.', 405);
