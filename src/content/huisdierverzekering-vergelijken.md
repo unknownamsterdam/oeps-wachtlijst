@@ -6,7 +6,7 @@ onderwerp: duurder
 volgorde: 28
 kortAntwoord: "Een huisdierverzekering is de laatste jaren duurder geworden, en veel dingen worden niet vergoed. Wil je overstappen, kijk dan eerst naar wat je nu betaalt, wat er is uitgesloten, de opzegtermijn en of je bij een nieuwe verzekeraar een wachttijd krijgt."
 misgaat: "Je verzekering wordt duurder. Je overweegt over te stappen, maar weet niet wanneer je mag opzeggen. En je ontdekt te laat dat een bestaande aandoening bij de nieuwe verzekeraar niet gedekt is."
-oepsZin: "OEPS! laat eerst zien wat je betaalt en wanneer je kunt opzeggen. Overstappen komt eraan: alternatieven laten we alleen zien als jij dat wilt."
+oepsZin: "OEPS! laat eerst zien wat je betaalt en wanneer je kunt opzeggen. Straks kun je ook via de app overstappen, als je dat wilt."
 bijgewerkt: 2026-11-23
 bronnen:
   - naam: "Radar — Onderzoek huisdierverzekeringen (10 november 2025)"
@@ -53,6 +53,6 @@ Een nieuw contract online afgesloten kun je volgens Overstappen.nl binnen 14 dag
 
 Je weet vaak niet wat je precies betaalt, of wanneer je kunt opzeggen. OEPS! laat dat eerst zien. Je krijgt een seintje als de prijs omhooggaat.
 
-Overstappen komt er ook aan in OEPS!. Eerst laten we zien wat je nu hebt. Alternatieven tonen we alleen als jij dat wilt.
+Straks kun je ook **via de app overstappen**. Je ziet daar wat je nu hebt en wat er anders kan. Jij bepaalt of je iets doet.
 
 Dit is algemene informatie, geen financieel advies. Overstappen.nl verdient aan overstappers, dus lees wat zij zeggen met die kennis.

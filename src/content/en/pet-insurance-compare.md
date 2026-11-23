@@ -7,7 +7,7 @@ volgorde: 28
 nl: huisdierverzekering-vergelijken
 kortAntwoord: "Pet insurance has become more expensive in recent years, and a lot is not reimbursed. If you want to switch, first look at what you pay now, what is excluded, the notice period and whether you get a waiting period with a new insurer."
 misgaat: "Your insurance gets more expensive. You think about switching, but don't know when you can cancel. And you find out too late that an existing condition is not covered by the new insurer."
-oepsZin: "OEPS! first shows what you pay and when you can cancel. Switching is coming: we only show alternatives if you want them."
+oepsZin: "OEPS! first shows what you pay and when you can cancel. Soon you can also switch through the app, if you want to."
 bijgewerkt: 2026-11-23
 bronnen:
   - naam: "Radar — Pet insurance survey (10 November 2025) (Dutch)"
@@ -54,6 +54,6 @@ According to Overstappen.nl, a new contract taken out online can be withdrawn wi
 
 You often don't know what exactly you pay, or when you can cancel. OEPS! shows that first. You get a nudge when the price goes up.
 
-Switching is also coming to OEPS!. First we show what you have now. We only show alternatives if you want them.
+Soon you can also **switch through the app**. You see what you have now and what could be different. You decide whether to do anything.
 
 This is general information, not financial advice. Overstappen.nl earns from switchers, so read what they say with that in mind.
