@@ -34,6 +34,7 @@ const basisSchema = {
       url: SITE.url + '/',
       logo: SITE.url + '/icon-512.png',
       email: SITE.mail,
+      identifier: { '@type': 'PropertyValue', propertyID: 'KvK', value: SITE.kvk },
       sameAs: [SITE.instagram, SITE.facebook],
     },
     {
@@ -262,7 +263,7 @@ import Cookies from '../components/Cookies.astro';
         </ul>
       </div>
     </div>
-    <div class="onder">© {new Date().getFullYear()} OEPS! · {T.voetOnder}</div>
+    <div class="onder">© {new Date().getFullYear()} OEPS! · KvK {SITE.kvk} · {T.voetOnder}</div>
   </div>
 </footer>
 
