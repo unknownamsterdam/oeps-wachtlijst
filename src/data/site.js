@@ -4,7 +4,7 @@ export const SITE = {
   naam: 'OEPS!',
   url: 'https://oeps.app',
   mail: 'hallo@oeps.app',
-  // 24 nov 2026: ingeschreven bij de KvK (eenmanszaak, handelsnaam OEPS!).
+  // 24 nov 2026: ingeschreven bij de KvK (handelsnaam OEPS!).
   kvk: '42229858',
   instagram: 'https://www.instagram.com/oeps.app/',
   facebook: 'https://www.facebook.com/profile.php?id=61594785122050',
