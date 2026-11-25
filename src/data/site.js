@@ -14,6 +14,8 @@ export const SITE = {
   // Google Analytics 4 (Metings-ID, begint met G-). Leeg = geen meting en geen cookiemelding.
   // GA4 laadt pas nadat een bezoeker op "Prima" heeft geklikt.
   ga4: 'G-ZT7YKY4KFQ',
+  // 25 nov 2026: Awin Publisher MasterTag (publisher-ID 3166309). Laadt net als GA4 pas na "Prima". Leeg = uit.
+  awin: '3166309',
 };
 
 // De vier onderwerpen van "Hoe zit dat?" (en: de Engelse naam, 22 okt). Ze volgen de onderdelen van de app,

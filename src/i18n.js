@@ -40,7 +40,7 @@ export const TEKST = {
     binnenKop: 'Kijk in je mail.', binnenTekst: 'Je inloglink staat klaar. Tik erop en je bent binnen. Niets gezien? Kijk even bij reclame of spam.',
     lijstKop: 'Je staat erop. Dank je!', lijstTekst: 'Zodra de bèta opengaat, hoor je het als eerste. Kijk in je mail: daar staat een berichtje van ons.',
     // cookiebalk
-    koekjeKop: 'Help je ons beter worden?', koekjeTekst: 'Een cookie van Google laat ons zien wat werkt en wat niet. Wie jij bent, blijft geheim.', koekjeMeer: 'Meer weten', koekjeJa: 'Prima', koekjeNee: 'Liever niet',
+    koekjeKop: 'Help je ons beter worden?', koekjeTekst: 'Cookies van Google en Awin laten ons zien wat werkt en wat niet. Wie jij bent, blijft geheim.', koekjeMeer: 'Meer weten', koekjeJa: 'Prima', koekjeNee: 'Liever niet',
     // app-balk
     balkTekst: 'Nooit meer je bon of garantie kwijt?', balkLabel: 'OEPS! uitnodiging', sluiten: 'Sluiten',
   },
@@ -61,7 +61,7 @@ export const TEKST = {
     formKlein: "Free. You'll get a login link in your inbox right away.",
     binnenKop: 'Check your inbox.', binnenTekst: "Your login link is waiting. Tap it and you're in. Nothing there? Have a look in your spam or promotions folder.",
     lijstKop: "You're on the list. Thanks!", lijstTekst: "As soon as the beta opens, you'll be the first to know. Check your inbox: we sent you a message.",
-    koekjeKop: 'Will you help us get better?', koekjeTekst: 'A cookie from Google shows us what works and what doesn’t. Who you are stays private.', koekjeMeer: 'Learn more', koekjeJa: 'Fine', koekjeNee: 'No thanks',
+    koekjeKop: 'Will you help us get better?', koekjeTekst: 'Cookies from Google and Awin show us what works and what doesn’t. Who you are stays private.', koekjeMeer: 'Learn more', koekjeJa: 'Fine', koekjeNee: 'No thanks',
     balkTekst: 'Never lose a receipt or warranty again?', balkLabel: 'OEPS! invitation', sluiten: 'Close',
   },
 };

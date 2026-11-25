@@ -1,9 +1,10 @@
 ---
-// Cookiemelding + Google Analytics 4. Laadt GA4 pas na toestemming (zo hoort het in Nederland).
+// Cookiemelding + Google Analytics 4 + Awin MasterTag. Laadt GA4 pas na toestemming (zo hoort het in Nederland).
 // De keuze wordt in de browser onthouden; via "Cookies" onderaan de pagina kun je hem veranderen.
 import { SITE } from '../data/site.js';
 import { taalVan, TEKST, PAD } from '../i18n.js';
 const id = SITE.ga4;
+const awin = SITE.awin || '';
 const taal = taalVan(Astro.url.pathname);
 const T = TEKST[taal];
 ---
@@ -16,7 +17,7 @@ const T = TEKST[taal];
         <button type="button" class="knop" data-keuze="nee">{T.koekjeNee}</button>
       </div>
     </div>
-    <script is:inline define:vars={{ id }}>
+    <script is:inline define:vars={{ id, awin }}>
       (function () {
         var SLEUTEL = 'oeps-cookies';
         var balk = document.getElementById('koekje');
@@ -35,12 +36,19 @@ const T = TEKST[taal];
           if (zoek.get('aangemeld')) gtag('event', 'generate_lead', { method: 'wachtlijst' });
           if (zoek.get('binnen')) gtag('event', 'sign_up', { method: 'direct' });
         }
+        // Awin Publisher MasterTag: hoort onderaan de body, alleen na toestemming.
+        function laadAwin() {
+          if (!awin || window.__oepsAwin) return; window.__oepsAwin = true;
+          var a = document.createElement('script'); a.async = true; a.src = 'https://www.dwin2.com/pub.' + awin + '.min.js';
+          document.body.appendChild(a);
+        }
+        function laadAlles() { laadGa(); laadAwin(); }
         var keuze = lees();
-        if (keuze === 'ja') laadGa(); else if (keuze !== 'nee') balk.hidden = false;
+        if (keuze === 'ja') laadAlles(); else if (keuze !== 'nee') balk.hidden = false;
         balk.addEventListener('click', function (e) {
           var k = e.target.getAttribute('data-keuze'); if (!k) return;
           bewaar(k); balk.hidden = true;
-          if (k === 'ja') laadGa();
+          if (k === 'ja') laadAlles();
         });
         document.querySelectorAll('.js-cookies').forEach(function (a) {
           a.addEventListener('click', function (e) { e.preventDefault(); balk.hidden = false; });
